@@ -8,8 +8,8 @@ basedirectory <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA"
 #inputdata_path <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA\\Data"
 input_datapath <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA/Data"
 
-vertex_datapath<-"vertex_test.csv"
-edge_datapath<-"attribute_test1.csv"
+vertex_datapath<-"vertex_test_df.csv"
+edge_datapath<-"edge_test_df.csv"
 
 setwd(input_datapath)
 
@@ -35,8 +35,8 @@ lapply(list.of.packages, require, character.only = TRUE)
 # header=T, which tells R that the first row of data contains
 # column names.
 
-vertex_test<- read.csv(vertex_datapath,header=T)
-edge_test<- read.csv(edge_datapath,header=T)
+vertex_test<- read.csv(vertex_datapath,header=T, row.names = 1)
+edge_test<- read.csv(edge_datapath,header=T, row.names = 1)
 
 str(vertex_test)
 summary(vertex_test)
@@ -51,71 +51,73 @@ colnames(edge_test)
 # Before we merge these data, we need to make sure 'ego' and 'alter' are the
 # same across data sets. We can compare each row using the == syntax. 
 # The command below should return TRUE for every row if all ego rows
-# are the same for advice and friendship:
+# are the same :
 unique(sort(vertex_test$ego)) == unique(sort(edge_test$ego))
 
 # We can just have R return which row entries are not equal using the syntax below:
 which(unique(sort(vertex_test$ego)) != unique(sort(edge_test$ego)))
 
 #Check names and ensure consistent with question inputs
-names(edge_test)[3:5] <- c("friendship_tie", "reports_to_tie") 
+#names(edge_test)[3:5] <- c("friendship_tie", "reports_to_tie") 
 
 #Consider subsetting to just certain types of connections or categories
-edge_test_subset <- subset(edge_test, 
-                                   (high_fives > 0 & beer_gift != "none"))
-head(edge_test_subset)
+# edge_test_subset <- subset(edge_test, 
+#                                    (high_fives > 0 & beer_gift != "none"))
+# head(edge_test_subset)
 
 #Combine edge and vertex attribute information into igraph format
-icon.graph <- graph.data.frame(d = edge_test, vertices = vertex_test)
-summary(icon.graph)
-icon.graph
-V(icon.graph)
+test.graph <- graph.data.frame(d = edge_test, vertices = vertex_test)
+summary(test.graph)
+test.graph
+V(test.graph)
 
 #Get a list of edge attribute responses
-get.edge.attribute(icon.graph,'beer_gift')
+get.edge.attribute(test.graph,'connection')
 
 #Can convert to undirected
-icon.graph_symmetrized <- as.undirected(icon.graph, mode='collapse')
+test.graph_symmetrized <- as.undirected(test.graph, mode='collapse')
 
-in.degree<-degree(icon.graph,mode="in")
+in.degree<-degree(test.graph,mode="in")
 
-plot(icon.graph,
-     edge.color=edge_test$beer_gift,
-     vertex.color=vertex_test$favorite_beer,
-     edge.arrow.size=.2,
-     vertex.size=((in.degree)*10),main='ICON Beers Given')
+plot(test.graph_symmetrized,
+     #edge.color=edge_test$beer_gift,
+     #vertex.color=vertex_test$favorite_beer,
+     edge.arrow.size=.1,
+     #vertex.size=((in.degree)*10),
+     vertex.size=2,
+     main='Test Data connections')
 
-legend(1, 
-       1.25,
-       legend = c('Beer Types'), 
-       col = vertex_test$favorite_beer, 
-       lty=1,
-       cex = .7)
-dev.off() 
+# legend(1, 
+#        1.25,
+#        legend = c('Beer Types'), 
+#        col = vertex_test$favorite_beer, 
+#        lty=1,
+#        cex = .7)
+# dev.off() 
 
-icon_beer_none_rm <- delete.edges(icon.graph, 
-                          E(icon.graph)[get.edge.attribute(icon.graph,
-                                        name = "beer_gift") == "none"])
+# icon_beer_none_rm <- delete.edges(icon.graph, 
+#                           E(icon.graph)[get.edge.attribute(icon.graph,
+#                                         name = "beer_gift") == "none"])
 
-plot(icon_beer_none_rm,
-     edge.color=edge_test$beer_gift,
-     vertex.color=vertex_test$favorite_beer,
-     edge.arrow.size=.2,
-     vertex.size=((in.degree)*10),main='ICON Beers Given ("None" removed)')
-
-plot(icon.graph,edge.color=edge_test$high_five,edge.width=edge_test$high_fives,edge.arrow.size=.2,main='ICON High-Fives (weighted)')
+# plot(icon_beer_none_rm,
+#      edge.color=edge_test$beer_gift,
+#      vertex.color=vertex_test$favorite_beer,
+#      edge.arrow.size=.2,
+#      vertex.size=((in.degree)*10),main='ICON Beers Given ("None" removed)')
+# 
+# plot(icon.graph,edge.color=edge_test$high_five,edge.width=edge_test$high_fives,edge.arrow.size=.2,main='ICON High-Fives (weighted)')
 
 ## network metrics
-degree(icon.graph)
-diameter(icon.graph)
-closeness(icon.graph)
-reciprocity(icon.graph)
-ecount(icon.graph)
-vcount(icon.graph)
-edge_density(icon.graph)
+degree(test.graph)
+diameter(test.graph)
+closeness(test.graph)
+reciprocity(test.graph)
+ecount(test.graph)
+vcount(test.graph)
+edge_density(test.graph)
 
 #Display information as matrix format
-icon.graph[]
+test.graph[]
 
 #################################################################
 #################################################################
@@ -140,7 +142,8 @@ issues.other.txt<-randomNames(100, which.names="first")
 
 
 ##################
-vertex.test.df <-cbind(ego.df,profession,issues.economic,issues.environmental,issues.social,issues.political,issues.other,issues.other.txt)
+vertex.test.df <-as.data.frame(cbind(ego.df,profession,issues.economic,issues.environmental,issues.social,issues.political,issues.other,issues.other.txt))
+names(vertex.test.df)[1]="ego"
 
 write.csv(vertex.test.df,"vertex_test_df.csv")
 
@@ -149,7 +152,7 @@ write.csv(vertex.test.df,"vertex_test_df.csv")
 #EDGE ATTRIBUTE GENERATOR
 
 #Vertex ego list
-ego.df<-vertex.test.df[,1]
+ego.df<-as.vector(vertex.test.df$ego)
 
 max_connections=5
 alter.test.df<-data.frame()
@@ -161,9 +164,11 @@ for(i in 1:length(ego.df)){
   alter.test.df<-rbind(alter.test.df,alter.df.i)
 }
 
+str(alter.test.df)
+
 names(alter.test.df)<-c("ego","alter")
 
-write.csv(alter.test.df,"atler_test_df.csv")
+write.csv(alter.test.df,"edge_test_df.csv")
 
 ######################################################
 ######################################################
