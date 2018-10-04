@@ -120,6 +120,7 @@ icon.graph[]
 #################################################################
 #################################################################
 
+#VERTEX ATTRIBUTE GENERATOR
 #Name generator
 ego.df<-randomNames(100, which.names="both",ethnicity = c(3:5),
                     name.order="last.first",name.sep=", ")
@@ -143,7 +144,26 @@ vertex.test.df <-cbind(ego.df,profession,issues.economic,issues.environmental,is
 
 write.csv(vertex.test.df,"vertex_test_df.csv")
 
+#################################################################
 
+#EDGE ATTRIBUTE GENERATOR
+
+#Vertex ego list
+ego.df<-vertex.test.df[,1]
+
+max_connections=5
+alter.test.df<-data.frame()
+
+for(i in 1:length(ego.df)){
+  ego.df.rm<-ego.df[!ego.df== ego.df[i]]
+  alter.i<-sample(ego.df.rm,sample(1:max_connections,1),replace = FALSE)
+  alter.df.i<-cbind(rep(ego.df[i],length(alter.i)),alter.i)
+  alter.test.df<-rbind(alter.test.df,alter.df.i)
+}
+
+names(alter.test.df)<-c("ego","alter")
+
+write.csv(alter.test.df,"atler_test_df.csv")
 
 ######################################################
 ######################################################
