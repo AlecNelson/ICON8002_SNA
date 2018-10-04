@@ -82,9 +82,9 @@ in.degree<-degree(test.graph,mode="in")
 plot(test.graph_symmetrized,
      #edge.color=edge_test$beer_gift,
      #vertex.color=vertex_test$favorite_beer,
-     edge.arrow.size=.1,
-     #vertex.size=((in.degree)*10),
-     vertex.size=2,
+     edge.arrow.size=.5,
+     vertex.size=((in.degree)*1.5),
+     vertex.label=NA,
      main='Test Data connections')
 
 # legend(1, 
@@ -118,6 +118,20 @@ edge_density(test.graph)
 
 #Display information as matrix format
 test.graph[]
+
+# The write.graph() function exports a graph object in various
+# formats readable by other programs. There is no explicit
+# option for a UCINET data type, but you can export the graph
+# as a Pajek object by setting the 'format' parameter to 'pajek.'
+# Note that the file will appear in whichever directory is set 
+# as the default in R's preferences, unless you previously 
+# changed this via setwd().
+write.graph(test.graph, file='test_full.dl', format="pajek")
+
+# For a more general file type (e.g., importable to Excel),
+# use the "edgelist" format. Note that neither of these will
+# write the attributes; only the ties are maintained.
+write.graph(test.graph, file='test_full.txt', format="edgelist")
 
 #################################################################
 #################################################################
@@ -201,3 +215,45 @@ fabricate(N = 3,
                                  break_labels = c("Not at all concerned",
                                                   "Somewhat concerned",
                                                   "Very concerned")))
+
+
+# Reachability can only be computed on one vertex at a time. To
+# get graph-wide statistics, change the value of "vertex"
+# manually or write a for loop. (Remember that, unlike R objects,
+# igraph objects are numbered from 0.)
+
+reachability <- function(g, m) {
+  reach_mat = matrix(nrow = vcount(g), 
+                     ncol = vcount(g))
+  for (i in 1:vcount(g)) {
+    reach_mat[i,] = 0
+    this_node_reach <- subcomponent(g, (i - 1), mode = m)
+    
+    for (j in 1:(length(this_node_reach))) {
+      alter = this_node_reach[j] + 1
+      reach_mat[i, alter] = 1
+    }
+  }
+  return(reach_mat)
+}
+
+reach_full_in <- reachability(krack_full, 'in')
+reach_full_out <- reachability(krack_full, 'out')
+reach_full_in
+reach_full_out
+
+reach_advice_in <- reachability(krack_advice, 'in')
+reach_advice_out <- reachability(krack_advice, 'out')
+reach_advice_in
+reach_advice_out
+
+reach_friendship_in <- reachability(krack_friendship, 'in')
+reach_friendship_out <- reachability(krack_friendship, 'out')
+reach_friendship_in
+reach_friendship_out
+
+reach_reports_to_in <- reachability(krack_reports_to, 'in')
+reach_reports_to_out <- reachability(krack_reports_to, 'out')
+reach_reports_to_in
+reach_reports_to_out
+
