@@ -1,8 +1,6 @@
 #Data Processing for ICON 8002
 # 10/4/18
 
-# hello there
-
 ############################
 #basedirectory <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA"
 basedirectory <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA"
@@ -15,7 +13,8 @@ edge_datapath<-"attribute_test1.csv"
 
 setwd(input_datapath)
 
-list.of.packages <- c("igraph")
+#List packages used
+list.of.packages <- c("igraph","randomNames","fabricatr")
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)){install.packages(new.packages)} 
@@ -118,3 +117,23 @@ edge_density(icon.graph)
 #Display information as matrix format
 icon.graph[]
 
+#################################################################
+#################################################################
+
+
+ego.df<-randomNames(100, which.names="both",ethnicity = c(3:5))
+
+profession<-c("Commercial fisherman","Commercial crabbers or dealer","Dock and fish house", "Shellfish")
+profession.df<-sample(profession,100,replace=TRUE,prob = c(0.53,.20,.15,.12))
+
+vertex.test.df <-cbind(ego.df,profession)
+
+
+
+categorical_example <- fabricate(
+  N = 6,
+  p1 = runif(N, 0, 1),
+  p2 = runif(N, 0, 1),
+  p3 = runif(N, 0, 1),
+  cat = draw_categorical(N = N, prob = cbind(p1, p2, p3))
+)
