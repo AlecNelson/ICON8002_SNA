@@ -121,10 +121,11 @@ icon.graph[]
 #################################################################
 
 #Name generator
-ego.df<-randomNames(100, which.names="both",ethnicity = c(3:5))
+ego.df<-randomNames(100, which.names="both",ethnicity = c(3:5),
+                    name.order="last.first",name.sep=", ")
 
 #Profession generator
-profession<-c("Commercial fisherman","Commercial crabbers or dealer","Dock and fish house", "Shellfish")
+profession<-c("Commercial fisherman","Commercial crabbers or dealer","Dock and fish house", "Shellfish gatherer")
 profession.df<-sample(profession,100,replace=TRUE,prob = c(0.53,.20,.15,.12))
 
 ##################
@@ -142,6 +143,14 @@ vertex.test.df <-cbind(ego.df,profession,issues.economic,issues.environmental,is
 
 write.csv(vertex.test.df,"vertex_test_df.csv")
 
+
+
+######################################################
+######################################################
+###EXPERIMENTAL ZONE###
+######################################################
+######################################################
+
 categorical_example <- fabricate(
   N = 6,
   p1 = runif(N, 0, 1),
@@ -149,3 +158,21 @@ categorical_example <- fabricate(
   p3 = runif(N, 0, 1),
   cat = draw_categorical(N = N, prob = cbind(p1, p2, p3))
 )
+
+survey_data <- fabricate(
+  N = 100,
+  Q1 = draw_likert(x = rnorm(N), type = 7),
+  Q2 = draw_likert(x = rnorm(N), type = 5),
+  Q3 = draw_likert(x = rnorm(N), type = 4),
+  Q4 = draw_likert(x = rnorm(N), breaks = c(-Inf, -0.8, 0, 1, 2, Inf))
+)
+
+table(survey_data$Q2)
+
+fabricate(N = 3,
+          x = 5 * rnorm(N),
+          ordered = draw_ordered(x = x,
+                                 breaks = c(-Inf, -1, 1, Inf),
+                                 break_labels = c("Not at all concerned",
+                                                  "Somewhat concerned",
+                                                  "Very concerned")))
