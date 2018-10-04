@@ -1,6 +1,8 @@
 #Data Processing for ICON 8002
 # 10/4/18
 
+# hello there
+
 ############################
 #basedirectory <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA"
 basedirectory <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA"
