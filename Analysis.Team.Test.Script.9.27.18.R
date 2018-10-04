@@ -120,15 +120,27 @@ icon.graph[]
 #################################################################
 #################################################################
 
-
+#Name generator
 ego.df<-randomNames(100, which.names="both",ethnicity = c(3:5))
 
+#Profession generator
 profession<-c("Commercial fisherman","Commercial crabbers or dealer","Dock and fish house", "Shellfish")
 profession.df<-sample(profession,100,replace=TRUE,prob = c(0.53,.20,.15,.12))
 
-vertex.test.df <-cbind(ego.df,profession)
+##################
+#Issues question:
+issues.economic<-round(runif(100, min = 0, max=1))
+issues.environmental<-round(runif(100, min = 0, max=1))
+issues.social<-round(runif(100, min = 0, max=1))
+issues.political<-round(runif(100, min = 0, max=1))
+issues.other<-round(runif(100, min = 0, max=1))
+issues.other.txt<-randomNames(100, which.names="first")
 
 
+##################
+vertex.test.df <-cbind(ego.df,profession,issues.economic,issues.environmental,issues.social,issues.political,issues.other,issues.other.txt)
+
+write.csv(vertex.test.df,"vertex_test_df.csv")
 
 categorical_example <- fabricate(
   N = 6,
