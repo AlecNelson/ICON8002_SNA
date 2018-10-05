@@ -71,8 +71,11 @@ summary(test.graph)
 test.graph
 V(test.graph)
 
-#Get a list of edge attribute responses
-get.edge.attribute(test.graph,'connection')
+#Get a list of vertex attribute responses
+names(vertex_test)
+get.vertex.attribute(test.graph,'profession')
+# colrs <- c("gray50", "tomato", "gold","blue")
+# V(test.graph)$color <- colrs[V(test.graph)$profession]
 
 #Can convert to undirected
 test.graph_symmetrized <- as.undirected(test.graph, mode='collapse')
@@ -80,20 +83,35 @@ test.graph_symmetrized <- as.undirected(test.graph, mode='collapse')
 in.degree<-degree(test.graph,mode="in")
 
 plot(test.graph_symmetrized,
-     #edge.color=edge_test$beer_gift,
-     #vertex.color=vertex_test$favorite_beer,
+     #edge.color=edge_test$connection,
      edge.arrow.size=.5,
+     vertex.color=vertex_test$profession,
      vertex.size=((in.degree)*1.5),
-     vertex.label=NA,
-     main='Test Data connections')
+     #vertex.label=NA,
+     vertex.label.cex=0.7,
+     vertex.label.dist=1,
+     vertex.label.degree=-0.6,
+     main='Test Data Connections (color by profession)',
+     #frame=TRUE,
+     margin=0.0001)
 
-# legend(1, 
+legend(x=-1.5, y=-1.1, unique(vertex_test$profession), pch=21,
+       col="#777777", pt.bg=unique(vertex_test$profession), pt.cex=2, cex=.8, bty="n", ncol=1)
+
+
+# We can also plot the communities without relying on their built-in plot:
+    #see more at: http://kateto.net/network-visualization
+V(test.graph_symmetrized)$community <- vertex_test$profession
+colrs <- adjustcolor( c("gray50", "tomato", "gold", "yellowgreen"), alpha=.6)
+plot(test.graph_symmetrized, vertex.color=colrs[V(test.graph_symmetrized)$community])
+
+# legend(1,
 #        1.25,
-#        legend = c('Beer Types'), 
-#        col = vertex_test$favorite_beer, 
+#        legend = c('Profession'),
+#        col = vertex_test$profession,
 #        lty=1,
 #        cex = .7)
-# dev.off() 
+# dev.off()
 
 # icon_beer_none_rm <- delete.edges(icon.graph, 
 #                           E(icon.graph)[get.edge.attribute(icon.graph,
