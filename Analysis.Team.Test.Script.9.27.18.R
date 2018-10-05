@@ -165,17 +165,19 @@ profession.df<-sample(profession,100,replace=TRUE,prob = c(0.53,.20,.15,.12))
 
 ##################
 #Issues question:
-issues.economic<-round(runif(100, min = 0, max=1))
-issues.environmental<-round(runif(100, min = 0, max=1))
-issues.social<-round(runif(100, min = 0, max=1))
-issues.political<-round(runif(100, min = 0, max=1))
-issues.other<-round(runif(100, min = 0, max=1))
-issues.other.txt<-randomNames(100, which.names="first")
+issues.economic.vq<-round(runif(100, min = 0, max=1))
+issues.environmental.vq<-round(runif(100, min = 0, max=1))
+issues.social.vq<-round(runif(100, min = 0, max=1))
+issues.political.vq<-round(runif(100, min = 0, max=1))
+issues.other.vq<-round(runif(100, min = 0, max=1))
+issues.other.txt.vq<-randomNames(100, which.names="first")
 
 
 ls()
+vq<-ls(pattern = ".vq")
 ##################
-vertex.test.df <-as.data.frame(cbind(ego.df,profession,issues.economic,issues.environmental,issues.social,issues.political,issues.other,issues.other.txt))
+vertex.test.df <-as.data.frame(cbind(ego.df,as.data.frame(mget(vq))))
+# vertex.test.df <-as.data.frame(cbind(ego.df,profession,issues.economic,issues.environmental,issues.social,issues.political,issues.other,issues.other.txt))
 names(vertex.test.df)[1]="ego"
 
 write.csv(vertex.test.df,"vertex_test_df.csv")
