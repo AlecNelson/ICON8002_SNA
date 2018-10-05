@@ -3,10 +3,10 @@
 
 ############################
 #basedirectory <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA"
-basedirectory <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA"
+basedirectory <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA"
 
 #inputdata_path <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA\\Data"
-input_datapath <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA/Data"
+input_datapath <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA/Data"
 
 vertex_datapath<-"vertex_test_df.csv"
 edge_datapath<-"edge_test_df.csv"
@@ -154,6 +154,8 @@ write.graph(test.graph, file='test_full.txt', format="edgelist")
 #################################################################
 #################################################################
 
+### Building demo data
+
 #VERTEX ATTRIBUTE GENERATOR
 #Name generator
 ego.df<-randomNames(100, which.names="both",ethnicity = c(3:5),
@@ -165,19 +167,58 @@ profession.df<-sample(profession,100,replace=TRUE,prob = c(0.53,.20,.15,.12))
 
 ##################
 #Issues question:
-issues.economic.vq<-round(runif(100, min = 0, max=1))
-issues.environmental.vq<-round(runif(100, min = 0, max=1))
-issues.social.vq<-round(runif(100, min = 0, max=1))
-issues.political.vq<-round(runif(100, min = 0, max=1))
-issues.other.vq<-round(runif(100, min = 0, max=1))
-issues.other.txt.vq<-randomNames(100, which.names="first")
+
+=======
+#Example of binary response (e.g., check box if answer applies...)
+issues.economic<-round(runif(100, min = 0, max=1))
+issues.environmental<-round(runif(100, min = 0, max=1))
+issues.social<-round(runif(100, min = 0, max=1))
+issues.political<-round(runif(100, min = 0, max=1))
+issues.other<-round(runif(100, min = 0, max=1))
+issues.other.txt<-ifelse(issues.other == 1, "Explanation", "N/A")
+
+#Example of binary qualitative/categorical response
+#Question: Is the GA Shrimp Industry sustainable in present form?
+sustainable.answer <- c("Yes", "No")
+sustainable.industry <- sample(sustainable.answer, 100, replace = T, prob = c(0.9, 0.1))
+sustainable.industry
+##################
+#Satisfaction question (if Issues question formatted in this way):
+#Example of Likert scale response
+satisfaction.economic <- round(runif(100, min = 1, max = 5))
+satisfaction.environmental <- round(runif(100, min = 1, max = 5))
+satisfaction.social <- round(runif(100, min = 1, max = 5))
+satisfaction.political <- round(runif(100, min = 1, max = 5))
+
+##################
+#Examples of qualitative likert scale response
+opinion.options <- c("Very satisfied", "Satisfied", "No opinion", "Unsatisfied", "Very unsatisfied")
+satisfaction.opinion <- sample(opinion.options, 100, replace = T)
+
+#Another example with likert scale response
+agree.options <- c("Strongly agree", "Agree", "Neutral", "Disagree", "Strongly Disagree")
+opinions.valued <- sample(agree.options, 100, replace = T)
+
+##################
+#Working relationship question
+stakeholders <- c("Commercial fisherman","Commercial crabbers or dealer","Dock and fish house", "Shellfish gatherer")
+stakeholder.interactions <- sample(stakeholders, 100, replace = T)
+#Possible to allow for more than one box check without 
+#binary response and separate column for each?
+
+#Frequency of interactions with other stakeholders
+#Similar format as Likert scale ranking response
+stakeholder.interaction.options <- c("> 3 x/week", "2 - 3 x/week", "1 x/week", "Never")
+stakeholder.interaction.frequency <- sample(stakeholder.interaction.options, 100, replace = T)
 
 
-ls()
+
 vq<-ls(pattern = ".vq")
 ##################
+
 vertex.test.df <-as.data.frame(cbind(ego.df,as.data.frame(mget(vq))))
 # vertex.test.df <-as.data.frame(cbind(ego.df,profession,issues.economic,issues.environmental,issues.social,issues.political,issues.other,issues.other.txt))
+
 names(vertex.test.df)[1]="ego"
 
 write.csv(vertex.test.df,"vertex_test_df.csv")
@@ -185,6 +226,12 @@ write.csv(vertex.test.df,"vertex_test_df.csv")
 #################################################################
 
 #EDGE ATTRIBUTE GENERATOR
+
+### for this week
+# look at question team's questions and figure out how to 
+# populate our demonstration data based on those questions
+# consider possible responses to edge questions and how to add those 
+# to csv. file 
 
 #Vertex ego list
 ego.df<-as.vector(vertex.test.df$ego)
