@@ -87,7 +87,7 @@ plot(test.graph_symmetrized,
      edge.arrow.size=.5,
      vertex.color=vertex_test$profession,
      vertex.size=((in.degree)*1.5),
-     #vertex.label=NA,
+     vertex.label=NA,
      vertex.label.cex=0.7,
      vertex.label.dist=1,
      vertex.label.degree=-0.6,
@@ -173,6 +173,7 @@ issues.other<-round(runif(100, min = 0, max=1))
 issues.other.txt<-randomNames(100, which.names="first")
 
 
+ls()
 ##################
 vertex.test.df <-as.data.frame(cbind(ego.df,profession,issues.economic,issues.environmental,issues.social,issues.political,issues.other,issues.other.txt))
 names(vertex.test.df)[1]="ego"
@@ -199,6 +200,14 @@ for(i in 1:length(ego.df)){
 str(alter.test.df)
 
 names(alter.test.df)<-c("ego","alter")
+
+##################
+#Interactions question:
+interaction.freq<-round(runif(nrow(alter.test.df), min = 0, max=3))
+
+
+##################
+alter.test.df <-as.data.frame(cbind(alter.test.df,interaction.freq))
 
 write.csv(alter.test.df,"edge_test_df.csv")
 
