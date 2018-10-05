@@ -146,8 +146,8 @@ issues.other.txt<-ifelse(issues.other == 1, "Explanation", "N/A")
 #Example of binary qualitative/categorical response
 #Question: Is the GA Shrimp Industry sustainable in present form?
 sustainable.answer <- c("Yes", "No")
-sustainable.industry <- sample(sustainable.answer, 100, replace = T)
-
+sustainable.industry <- sample(sustainable.answer, 100, replace = T, prob = c(0.9, 0.1))
+sustainable.industry
 ##################
 #Satisfaction question (if Issues question formatted in this way):
 #Example of Likert scale response
@@ -192,6 +192,12 @@ write.csv(vertex.test.df,"vertex_test_df.csv")
 #################################################################
 
 #EDGE ATTRIBUTE GENERATOR
+
+### for this week
+# look at question team's questions and figure out how to 
+# populate our demonstration data based on those questions
+# consider possible responses to edge questions and how to add those 
+# to csv. file 
 
 #Vertex ego list
 ego.df<-as.vector(vertex.test.df$ego)
