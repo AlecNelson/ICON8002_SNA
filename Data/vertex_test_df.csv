@@ -1,3 +1,4 @@
+
 "","ego","profession","issues.economic","issues.environmental","issues.social","issues.political","issues.other","issues.other.txt","satisfaction.economic","satisfaction.environmental","satisfaction.social","satisfaction.political","sustainable.industry","satisfaction.opinion","opinions.valued","stakeholder.interaction.frequency"
 "1","Smith, Michael","Commercial fisherman","1","1","0","0","1","Explanation","2","4","5","1","Yes","No opinion","Agree","1 x/week"
 "2","Fernandez, Jean","Commercial crabbers or dealer","1","1","1","1","0","N/A","1","3","2","4","Yes","Very unsatisfied","Strongly agree","2 - 3 x/week"
@@ -99,3 +100,4 @@
 "98","Rosales-Huerta, Alexander","Commercial crabbers or dealer","1","0","0","0","1","Explanation","2","2","4","3","Yes","Very unsatisfied","Agree","1 x/week"
 "99","Gorny, Michele","Dock and fish house","0","0","0","0","0","N/A","3","5","2","4","Yes","Very satisfied","Agree","Never"
 "100","Barbee, Avery","Shellfish gatherer","0","0","0","0","0","N/A","1","4","2","4","Yes","No opinion","Neutral","> 3 x/week"
+

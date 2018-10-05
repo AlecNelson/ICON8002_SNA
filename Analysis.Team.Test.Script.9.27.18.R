@@ -71,8 +71,11 @@ summary(test.graph)
 test.graph
 V(test.graph)
 
-#Get a list of edge attribute responses
-get.edge.attribute(test.graph,'connection')
+#Get a list of vertex attribute responses
+names(vertex_test)
+get.vertex.attribute(test.graph,'profession')
+# colrs <- c("gray50", "tomato", "gold","blue")
+# V(test.graph)$color <- colrs[V(test.graph)$profession]
 
 #Can convert to undirected
 test.graph_symmetrized <- as.undirected(test.graph, mode='collapse')
@@ -80,20 +83,35 @@ test.graph_symmetrized <- as.undirected(test.graph, mode='collapse')
 in.degree<-degree(test.graph,mode="in")
 
 plot(test.graph_symmetrized,
-     #edge.color=edge_test$beer_gift,
-     #vertex.color=vertex_test$favorite_beer,
-     edge.arrow.size=.1,
-     #vertex.size=((in.degree)*10),
-     vertex.size=2,
-     main='Test Data connections')
+     #edge.color=edge_test$connection,
+     edge.arrow.size=.5,
+     vertex.color=vertex_test$profession,
+     vertex.size=((in.degree)*1.5),
+     vertex.label=NA,
+     vertex.label.cex=0.7,
+     vertex.label.dist=1,
+     vertex.label.degree=-0.6,
+     main='Test Data Connections (color by profession)',
+     #frame=TRUE,
+     margin=0.0001)
 
-# legend(1, 
+legend(x=-1.5, y=-1.1, unique(vertex_test$profession), pch=21,
+       col="#777777", pt.bg=unique(vertex_test$profession), pt.cex=2, cex=.8, bty="n", ncol=1)
+
+
+# We can also plot the communities without relying on their built-in plot:
+    #see more at: http://kateto.net/network-visualization
+V(test.graph_symmetrized)$community <- vertex_test$profession
+colrs <- adjustcolor( c("gray50", "tomato", "gold", "yellowgreen"), alpha=.6)
+plot(test.graph_symmetrized, vertex.color=colrs[V(test.graph_symmetrized)$community])
+
+# legend(1,
 #        1.25,
-#        legend = c('Beer Types'), 
-#        col = vertex_test$favorite_beer, 
+#        legend = c('Profession'),
+#        col = vertex_test$profession,
 #        lty=1,
 #        cex = .7)
-# dev.off() 
+# dev.off()
 
 # icon_beer_none_rm <- delete.edges(icon.graph, 
 #                           E(icon.graph)[get.edge.attribute(icon.graph,
@@ -119,6 +137,20 @@ edge_density(test.graph)
 #Display information as matrix format
 test.graph[]
 
+# The write.graph() function exports a graph object in various
+# formats readable by other programs. There is no explicit
+# option for a UCINET data type, but you can export the graph
+# as a Pajek object by setting the 'format' parameter to 'pajek.'
+# Note that the file will appear in whichever directory is set 
+# as the default in R's preferences, unless you previously 
+# changed this via setwd().
+write.graph(test.graph, file='test_full.dl', format="pajek")
+
+# For a more general file type (e.g., importable to Excel),
+# use the "edgelist" format. Note that neither of these will
+# write the attributes; only the ties are maintained.
+write.graph(test.graph, file='test_full.txt', format="edgelist")
+
 #################################################################
 #################################################################
 
@@ -135,6 +167,8 @@ profession.df<-sample(profession,100,replace=TRUE,prob = c(0.53,.20,.15,.12))
 
 ##################
 #Issues question:
+
+=======
 #Example of binary response (e.g., check box if answer applies...)
 issues.economic<-round(runif(100, min = 0, max=1))
 issues.environmental<-round(runif(100, min = 0, max=1))
@@ -179,12 +213,12 @@ stakeholder.interaction.frequency <- sample(stakeholder.interaction.options, 100
 
 
 
-
+vq<-ls(pattern = ".vq")
 ##################
-#Putting demonstration response data into single dataframe 
-vertex.test.df <-as.data.frame(cbind(ego.df,profession,issues.economic,issues.environmental,issues.social,issues.political,issues.other,issues.other.txt,
-                                     satisfaction.economic, satisfaction.environmental, satisfaction.social, satisfaction.political,
-                                     sustainable.industry, satisfaction.opinion, opinions.valued, stakeholder.interaction.frequency))
+
+vertex.test.df <-as.data.frame(cbind(ego.df,as.data.frame(mget(vq))))
+# vertex.test.df <-as.data.frame(cbind(ego.df,profession,issues.economic,issues.environmental,issues.social,issues.political,issues.other,issues.other.txt))
+
 names(vertex.test.df)[1]="ego"
 
 write.csv(vertex.test.df,"vertex_test_df.csv")
@@ -215,6 +249,14 @@ for(i in 1:length(ego.df)){
 str(alter.test.df)
 
 names(alter.test.df)<-c("ego","alter")
+
+##################
+#Interactions question:
+interaction.freq<-round(runif(nrow(alter.test.df), min = 0, max=3))
+
+
+##################
+alter.test.df <-as.data.frame(cbind(alter.test.df,interaction.freq))
 
 write.csv(alter.test.df,"edge_test_df.csv")
 
@@ -249,3 +291,45 @@ fabricate(N = 3,
                                  break_labels = c("Not at all concerned",
                                                   "Somewhat concerned",
                                                   "Very concerned")))
+
+
+# Reachability can only be computed on one vertex at a time. To
+# get graph-wide statistics, change the value of "vertex"
+# manually or write a for loop. (Remember that, unlike R objects,
+# igraph objects are numbered from 0.)
+
+reachability <- function(g, m) {
+  reach_mat = matrix(nrow = vcount(g), 
+                     ncol = vcount(g))
+  for (i in 1:vcount(g)) {
+    reach_mat[i,] = 0
+    this_node_reach <- subcomponent(g, (i - 1), mode = m)
+    
+    for (j in 1:(length(this_node_reach))) {
+      alter = this_node_reach[j] + 1
+      reach_mat[i, alter] = 1
+    }
+  }
+  return(reach_mat)
+}
+
+reach_full_in <- reachability(krack_full, 'in')
+reach_full_out <- reachability(krack_full, 'out')
+reach_full_in
+reach_full_out
+
+reach_advice_in <- reachability(krack_advice, 'in')
+reach_advice_out <- reachability(krack_advice, 'out')
+reach_advice_in
+reach_advice_out
+
+reach_friendship_in <- reachability(krack_friendship, 'in')
+reach_friendship_out <- reachability(krack_friendship, 'out')
+reach_friendship_in
+reach_friendship_out
+
+reach_reports_to_in <- reachability(krack_reports_to, 'in')
+reach_reports_to_out <- reachability(krack_reports_to, 'out')
+reach_reports_to_in
+reach_reports_to_out
+
