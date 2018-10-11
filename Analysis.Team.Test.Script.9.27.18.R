@@ -152,6 +152,47 @@ edge_density(test.graph)
 #Display information as matrix format
 test.graph[]
 
+setwd(input_datapath)
+pdf("SNA_Output_test_1200_vertex_nicely.pdf")
+
+test.graph_symmetrized <- as.undirected(test.graph, mode='collapse')
+
+in.degree<-degree(test.graph,mode="in")
+#layout.graph <- layout_(test.graph, with_dh())
+layout.graph <- layout_(test.graph, with_graphopt())
+
+layout.graph <- layout_(test.graph, with_drl())
+layout.graph <- layout_(test.graph, with_fr())
+
+#layout_nicely tries to choose an appropriate layout function for the supplied graph, and uses that
+# to generate the layout. The current implementation works like this:
+#   1. If the graph has a graph attribute called ‘layout’, then this is used. If this attribute is an R
+# function, then it is called, with the graph and any other extra arguments.
+# 2. Otherwise, if the graph has vertex attributes called ‘x’ and ‘y’, then these are used as coordinates
+# If the graph has an additional ‘z’ vertex attribute, that is also used.
+# 3. Otherwise, if the graph is connected and has less than 1000 vertices, the Fruchterman-Reingold
+# layout is used, by calling layout_with_fr.
+# 4. Otherwise the DrL layout (Distributed Recursive (Graph) Layout) is used, layout_with_drl is called.
+layout.graph <- layout_(test.graph, nicely())
+
+plot(test.graph_symmetrized,
+     layout=layout.graph,
+     #edge.color=edge_test$connection,
+     edge.arrow.size=.5,
+     vertex.color=vertex_test$profession,
+     #vertex.size=((in.degree)*1.5),
+     vertex.size=3,
+     vertex.label=NA,
+     vertex.label.cex=0.7,
+     vertex.label.dist=1,
+     vertex.label.degree=-0.6,
+     main='Test Data Connections (color by profession)',
+     #frame=TRUE,
+     margin=0.0001)
+
+dev.off()
+
+
 # The write.graph() function exports a graph object in various
 # formats readable by other programs. There is no explicit
 # option for a UCINET data type, but you can export the graph
@@ -171,8 +212,8 @@ write.graph(test.graph, file='test_full.txt', format="edgelist")
 
 #VERTEX ATTRIBUTE GENERATOR
 #Name generator
-ego.df<-randomNames(100, which.names="both",ethnicity = c(3:5),
-                    name.order="last.first",name.sep=", ")
+ego.df<-randomNames(1200, which.names="both"#,ethnicity = c(3:5)
+                    ,name.order="last.first",name.sep=", ")
 
 #Profession generator
 profession<-c("Commercial fisherman","Commercial crabbers or dealer","Dock and fish house", "Shellfish gatherer")
@@ -204,7 +245,7 @@ write.csv(vertex.test.df,"vertex_test_df.csv")
 #Vertex ego list
 ego.df<-as.vector(vertex.test.df$ego)
 
-max_connections=5
+max_connections=7
 alter.test.df<-data.frame()
 
 for(i in 1:length(ego.df)){

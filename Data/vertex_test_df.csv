@@ -1,101 +1,1201 @@
-"","ego","profession","issues.economic","issues.environmental","issues.social","issues.political","issues.other","issues.other.txt"
-"1","Sena, Danny","Commercial fisherman","0","1","1","1","1","Nawf"
-"2","Gonzalez Aguilar, Klarissa","Commercial crabbers or dealer","0","1","1","0","1","Ashley"
-"3","Considine, Koy","Dock and fish house","1","0","1","0","0","Paige"
-"4","Carpenter, Carl","Shellfish gatherer","0","0","1","0","0","Tyler"
-"5","Fernandez Vargas, Andrea","Commercial fisherman","0","0","0","0","1","Angel"
-"6","Wilson, Amanda","Commercial crabbers or dealer","0","1","1","1","0","Shoshana"
-"7","Moore, Brianna","Dock and fish house","0","0","0","1","0","Trent"
-"8","Duarte, Guillermo","Shellfish gatherer","0","0","0","0","1","Sarina"
-"9","Faoro, Dillon","Commercial fisherman","0","0","0","1","0","Cassidy"
-"10","Herbert, Nicholas","Commercial crabbers or dealer","0","0","1","1","0","Ghaada"
-"11","Delgado, Angelo","Dock and fish house","0","0","1","1","1","Abdut Tawwab"
-"12","Hunt, Shayne","Shellfish gatherer","0","0","0","1","0","Cameron"
-"13","Webster, Courtney","Commercial fisherman","0","1","1","0","0","Sky"
-"14","Macias Borunda, Adriana","Commercial crabbers or dealer","1","0","0","1","0","Marqus"
-"15","Hendricks, Gage","Dock and fish house","0","0","0","1","0","Briana"
-"16","Watkins, Troy","Shellfish gatherer","0","1","0","0","1","Tiana"
-"17","Campos, Rachel","Commercial fisherman","1","1","0","1","0","Gabrielle"
-"18","Sutton, Amed","Commercial crabbers or dealer","0","0","0","1","1","Graham"
-"19","Allen, De'Naje","Dock and fish house","0","0","1","1","1","Shikoni"
-"20","Sais, Jacqueline","Shellfish gatherer","1","1","0","0","0","Fawzaana"
-"21","Ferguson, Brittany","Commercial fisherman","0","0","0","1","0","Cesar"
-"22","Franklin, Paul","Commercial crabbers or dealer","1","1","0","1","1","Adnaan"
-"23","Casias, Zachary","Dock and fish house","0","1","0","0","0","Sarah"
-"24","Crown, Eric","Shellfish gatherer","0","1","0","1","1","Alexis"
-"25","Castillo, Mahlon","Commercial fisherman","0","1","1","1","1","Brittany"
-"26","Chavez-Abeyta, Devon","Commercial crabbers or dealer","1","0","1","0","0","Gonzalo"
-"27","Atkinson, Jessica","Dock and fish house","0","0","0","0","1","Damion"
-"28","Carson, Janaya","Shellfish gatherer","0","0","1","0","0","Michael"
-"29","Gavidia, Analeigh","Commercial fisherman","1","0","0","0","0","Joseph"
-"30","Shryock, Kyle","Commercial crabbers or dealer","1","0","0","1","0","Samantha"
-"31","Bell, Sierra","Dock and fish house","0","1","1","0","0","Terrance"
-"32","Portillo, Dominic","Shellfish gatherer","1","0","1","0","1","Luis"
-"33","Johnson, Evan","Commercial fisherman","1","0","1","0","0","Abdul Wadood"
-"34","Harrison, Chudney","Commercial crabbers or dealer","0","0","1","1","1","Shahlia"
-"35","Gonzales, Jessica","Dock and fish house","0","0","1","1","1","Tristan"
-"36","Thompson, Amanda","Shellfish gatherer","1","1","0","1","1","John"
-"37","Curry, Taylor","Commercial fisherman","1","0","1","1","0","Miranda"
-"38","Govea, Roberto","Commercial crabbers or dealer","1","1","0","0","1","Danielle"
-"39","Hart, Alexis","Dock and fish house","1","0","0","0","0","Ahmed"
-"40","Walters, Kiarra","Shellfish gatherer","1","0","0","0","0","Erika"
-"41","Garcia, Thomas","Commercial fisherman","0","0","1","1","1","Angela"
-"42","Henderson, Amanda","Commercial crabbers or dealer","0","0","1","1","0","Jesus"
-"43","Matt, Tiana","Dock and fish house","0","1","1","1","1","Yvette"
-"44","Sena, Robert","Shellfish gatherer","1","1","1","1","0","Gabriel"
-"45","Krizmanich, Cody","Commercial fisherman","0","0","1","0","0","Mercedes"
-"46","Coward, Kendall","Commercial crabbers or dealer","1","1","0","0","0","Sherelle"
-"47","Gomez, Elizabeth","Dock and fish house","0","1","1","1","1","Sahheeda"
-"48","Emmert, Nicholas","Shellfish gatherer","1","0","0","0","0","Daerius"
-"49","Smith, Narvell","Commercial fisherman","1","0","1","0","0","Charlene"
-"50","Martinez, Jessica","Commercial crabbers or dealer","0","1","1","0","1","Alphonzo"
-"51","Midler, Delia","Dock and fish house","0","1","0","1","0","Johnpaul"
-"52","Hall, Marissa","Shellfish gatherer","0","0","1","0","0","Pashira"
-"53","Herrera, Salvador","Commercial fisherman","1","1","1","1","1","Claudia"
-"54","Vigil, Ryan","Commercial crabbers or dealer","0","1","0","0","0","Lydia"
-"55","Mcwee, Talayshi","Dock and fish house","1","0","1","0","0","Maurice"
-"56","Enriquez Chavarria, Lennon","Shellfish gatherer","1","0","1","0","1","Ethan"
-"57","Mauzy, Benjamin","Commercial fisherman","0","1","0","1","1","Marissa"
-"58","May, Ervin","Commercial crabbers or dealer","1","0","0","0","1","Devan"
-"59","Martinez, Antoinette","Dock and fish house","0","0","1","0","1","Leia"
-"60","Palinckx, Rachel","Shellfish gatherer","1","1","1","1","0","Rory"
-"61","Gordon, Casey","Commercial fisherman","0","1","0","1","0","Jim"
-"62","Romero, Juan","Commercial crabbers or dealer","0","0","1","1","0","Cam"
-"63","Pontious, Destany","Dock and fish house","1","0","0","1","1","Cameron"
-"64","James, Marcellus","Shellfish gatherer","0","1","1","0","1","Randy"
-"65","Rojas, Johnathan","Commercial fisherman","0","0","1","0","1","Tyler"
-"66","Whittington, Sydney","Commercial crabbers or dealer","1","0","0","1","0","Leah"
-"67","Goodlow, Rajaee","Dock and fish house","1","0","1","0","0","Miska"
-"68","Montoya, Diego","Shellfish gatherer","0","1","1","0","1","Kassandra"
-"69","Trekell, Sophia","Commercial fisherman","0","0","1","0","1","John"
-"70","Davis, Donisha","Commercial crabbers or dealer","0","1","1","1","0","Henry"
-"71","Meza, Valeria","Dock and fish house","0","0","1","1","0","Daawood"
-"72","Keys, Lauren","Shellfish gatherer","0","0","1","0","1","Adnaan"
-"73","Aguda, Cayman","Commercial fisherman","0","1","1","1","1","Randy"
-"74","Rubio-Aldana, Ethan","Commercial crabbers or dealer","0","0","0","0","1","Atif"
-"75","Mccullough, Katherine","Dock and fish house","0","1","0","1","0","Kendra"
-"76","Ellis, Cedric","Shellfish gatherer","1","0","1","1","0","Chloe"
-"77","Hester, Eric","Commercial fisherman","1","0","0","1","1","Shakeel"
-"78","Musil, Alisha","Commercial crabbers or dealer","1","0","1","1","1","Ian"
-"79","Lyle, La Daysha","Dock and fish house","0","1","1","1","0","Taju"
-"80","Saucedo Cuevas, Estefani","Shellfish gatherer","1","0","1","1","0","Dalton"
-"81","Poteet, Michaela","Commercial fisherman","1","0","0","0","1","Deaujanae"
-"82","Granger, Klovit","Commercial crabbers or dealer","1","1","1","1","0","Jose"
-"83","Lucero, Abraham","Dock and fish house","1","0","1","0","0","Carson"
-"84","Fein, Ashley","Shellfish gatherer","0","1","1","1","0","Nathan"
-"85","Ratcliff, Nathan","Commercial fisherman","0","1","0","1","0","Anna"
-"86","Anderson, Adrianna","Commercial crabbers or dealer","0","1","0","1","1","Matthew"
-"87","Kramer, Lauren","Dock and fish house","0","1","1","0","0","Huraira"
-"88","Huston, Adedoyin","Shellfish gatherer","1","1","0","1","1","Johnny"
-"89","Sanchez-Munoz, Lissette","Commercial fisherman","0","1","1","1","1","Dustin"
-"90","Carroll, Angela","Commercial crabbers or dealer","1","1","0","1","0","Niyat"
-"91","Bennett, Dalaun","Dock and fish house","0","0","1","1","0","Amos"
-"92","Mccarthy, Maribel","Shellfish gatherer","0","1","0","0","0","Nicholas"
-"93","Brown, Casey","Commercial fisherman","0","1","0","0","1","April"
-"94","Isaac, David","Commercial crabbers or dealer","1","0","1","0","0","Mastoor"
-"95","Cordova, Randi","Dock and fish house","0","1","0","1","0","Corey"
-"96","Smith, Logan","Shellfish gatherer","1","1","0","1","1","Husaam"
-"97","Wright, Dynasty","Commercial fisherman","1","0","1","0","1","Sean"
-"98","Rivera, Karla","Commercial crabbers or dealer","0","1","1","1","0","Zaki"
-"99","Fenn, Danika","Dock and fish house","1","0","1","0","1","Amber"
-"100","Barriteau, Kamry","Shellfish gatherer","1","0","1","1","0","Ramon"
+"","ego","issues.economic.vq","issues.environmental.vq","issues.other.txt.vq","issues.other.vq","issues.political.vq","issues.social.vq"
+"1","Wang, Avishek",0,1,"Shaheera",1,0,1
+"2","al-Minhas, Aabid",0,0,"Jay",0,0,1
+"3","al-Obeid, Mubarak",1,1,"Janei",1,0,0
+"4","el-Salam, Abdul Azeez",1,0,"Lezbeth",0,0,0
+"5","Gaynor, Shawnquelle",0,1,"Matthew",0,1,0
+"6","Haulman, Jana",0,0,"Joselyn",0,1,0
+"7","al-Tabatabai, Ghaada",0,0,"Raashid",1,0,0
+"8","Perez, Andrew",0,0,"Anasthasia",1,1,0
+"9","Langridge, Lucas",0,0,"Siddeeqi",0,1,1
+"10","Hudson, Samantha",1,1,"Salomon",0,1,0
+"11","Barker, Tavien",0,0,"Victoria",1,0,0
+"12","Brabson, Qi",0,1,"Shaamila",1,1,1
+"13","Bailey, Zamen",0,0,"Jordan",1,0,1
+"14","Leffel, Abbey",0,1,"Macella",1,1,1
+"15","el-Beshara, Adnaan",1,1,"Yaasmeena",1,1,0
+"16","Parker, Alexandra",1,1,"Brianna",0,0,0
+"17","al-Rad, Ameer",0,0,"Shina",1,0,0
+"18","Takada, Daniel",1,1,"Amanda",1,1,0
+"19","Wong, Peter",1,0,"Haazima",0,1,1
+"20","Miller, Wendy",1,0,"Elizabeth",0,1,1
+"21","Rabelo, Vanessa",1,1,"Melody",1,0,0
+"22","Calderon, Brian",0,0,"Zeena",0,0,0
+"23","Wilder, Obiajulu",0,0,"Nia",0,0,1
+"24","Tchenawou, Sade",1,1,"Jaideep",0,1,1
+"25","Villa, Noemi",1,1,"Vanessa",0,0,1
+"26","al-Aydin, Zain",1,1,"Mayra",1,0,0
+"27","Thompson, Kierra",0,1,"Jordan",1,1,0
+"28","Jones, Sierra",0,1,"Brandon",1,0,1
+"29","Burnsed, Billye",0,1,"Jennifer",1,1,1
+"30","Pizzo, Adrianna",0,0,"Carmen",1,1,0
+"31","Scott, Marcus",1,0,"Mikayla",0,1,0
+"32","Garden, Dakota",0,0,"Blas",0,0,0
+"33","Bertaud, Richard",1,0,"Colton",0,0,0
+"34","Feseha, Amelia",0,1,"Seth",1,0,1
+"35","Kirby, Joshua",0,1,"Whitney",0,0,0
+"36","Silverston, Olivia",1,1,"Gabriel",1,0,1
+"37","Baca, Allison",0,0,"Gia",0,0,1
+"38","Stines, Hannah",0,0,"Kafui",1,0,0
+"39","Williams, Mohamed",0,1,"Safwa",1,0,0
+"40","Mcdougald, Ivory",1,1,"Alexander",1,1,0
+"41","Walker, Kevron",1,0,"Corissa",0,1,1
+"42","Shahid, Iris",1,0,"Anthaneisha",0,1,1
+"43","Neal, Holly",1,0,"Kiran",0,0,1
+"44","Oskey, Charles",0,1,"Ahmed",0,0,1
+"45","Cloud, Julia",1,0,"Zaamil",1,0,1
+"46","Martinez, Catherine",1,1,"Hysendra",1,1,0
+"47","Ranaldi, Damon",1,0,"Bianca",0,0,1
+"48","John, Taryn",1,1,"Donovan",0,0,1
+"49","Garcia, Beatriz",1,1,"Chauntel",1,0,0
+"50","Brooks, Jaleesa-Lynn",1,0,"Claire",1,1,1
+"51","Kim, Munkhzaya",0,0,"Destiny",1,1,1
+"52","Grabb, Richard",0,1,"Ulysses",1,1,0
+"53","Fante, Jessica",1,0,"Daniel",0,0,0
+"54","Schwab, Casey",1,1,"Ariel",0,0,0
+"55","Lee, Jazmyn",1,1,"David",1,0,0
+"56","Banks, Sydney",0,1,"Justin",0,0,1
+"57","Yeatts, Kelly",0,0,"Selena",1,0,1
+"58","Kielek, Tyler",1,0,"Jordan",1,1,0
+"59","el-Bilal, Nuha",1,1,"Fermin",1,1,1
+"60","Bustos-Campos, Mitchell",0,1,"Matthew",0,1,1
+"61","Perry, Matthew",0,0,"Tiana",0,1,1
+"62","Schmidt, Lindsey",0,0,"Rikk",0,0,0
+"63","Orozco, Gabriel",1,1,"Mahfoodha",0,1,1
+"64","Mathews, Connor",1,1,"Alysse",0,1,0
+"65","Hodge, Ashlee",1,0,"Rachel",1,1,0
+"66","al-Parsa, Sidqi",0,1,"Mimi",1,0,0
+"67","Wu, Tobby",0,1,"Sasha",0,1,1
+"68","Poggi, Joshua",0,1,"Lindsay",1,1,1
+"69","Henderson, Matthew",1,1,"Stephen",1,1,1
+"70","el-Mahmood, Ameena",0,1,"Jasmine",0,1,1
+"71","Tahlo, Mikaela",0,0,"James",0,1,1
+"72","el-Radwan, Mashal",0,0,"Raven",1,1,1
+"73","el-Rahmani, Humaid",1,0,"Xavier",0,1,1
+"74","Bigback, Steven",1,1,"Robert",0,0,0
+"75","Chambers, Nicholas",0,1,"Dontaye",0,0,0
+"76","Pierre-Louis, Angel",1,1,"Paris",1,1,0
+"77","Yang, Joshua",1,1,"Justin",1,0,0
+"78","Anderson, Shedrick",0,0,"Emma",1,0,0
+"79","el-Badour, Jameela",0,0,"Diandra",0,1,1
+"80","Brewer, Jesenia",0,0,"Jaarallah",1,0,1
+"81","Reich, Christopher",1,1,"Brittany",1,1,1
+"82","Perez, Jordyn Andrew",0,1,"Erasmo",1,1,1
+"83","Musick-Occhiuto, Sage",1,1,"Nalye",1,0,0
+"84","Cabanas De La Cruz, Amy",1,1,"Itzel",0,0,1
+"85","Embray, Dexter",0,1,"Thomas",0,0,1
+"86","Martinez, Ruby",0,1,"May",0,0,1
+"87","Murray, Kevin",0,1,"Samuel",1,1,1
+"88","Cannonier, Tessciela",1,0,"Micah",0,1,1
+"89","Stokes, Jacqueline",0,1,"Waseem",0,0,0
+"90","al-Asad, Muaaid",0,0,"Tevin",0,1,1
+"91","Ivie, Cody",1,0,"Jennifer",1,0,1
+"92","Babiker, Joseph",1,0,"Revae",0,0,0
+"93","Yee, Tyler",0,0,"Eric",1,1,0
+"94","Taylor, Hunter",0,1,"Mckenzie",0,0,0
+"95","el-Bashara, Tulaiha",0,0,"Hannah",0,0,1
+"96","Keelick, Kyla",0,1,"James",1,1,0
+"97","Hunt, Lauren",0,0,"Amanda",0,1,1
+"98","Manley, Kesang",0,1,"Ryan",0,0,0
+"99","Hernandez, Alonzo",0,0,"Kathreen",1,1,1
+"100","Ewing, Christopher",1,1,"Demi",1,1,0
+"101","Bryson, Sydney",0,1,"Shaheera",1,0,1
+"102","Woods, Drakkar",0,0,"Jay",0,0,1
+"103","al-Mohiuddin, Ameer",1,1,"Janei",1,0,0
+"104","Archuleta, Antonio",1,0,"Lezbeth",0,0,0
+"105","Archuleta, Yanelli",0,1,"Matthew",0,1,0
+"106","al-Jamail, Muzaina",0,0,"Joselyn",0,1,0
+"107","Grant, Kacey",0,0,"Raashid",1,0,0
+"108","Amin, Charles",0,0,"Anasthasia",1,1,0
+"109","Jackson, Quajhonae",0,0,"Siddeeqi",0,1,1
+"110","Sandoval, Sarah",1,1,"Salomon",0,1,0
+"111","Cantrell, Natalee",0,0,"Victoria",1,0,0
+"112","May, Markangelo",0,1,"Shaamila",1,1,1
+"113","Dizayee, Nohelia",0,0,"Jordan",1,0,1
+"114","Aguilar, Yudith",0,1,"Macella",1,1,1
+"115","Fennell, Anthony",1,1,"Yaasmeena",1,1,0
+"116","Jensen, Barend",1,1,"Brianna",0,0,0
+"117","el-Ahsan, Zaamil",0,0,"Shina",1,0,0
+"118","Ficker, Catherine",1,1,"Amanda",1,1,0
+"119","Brown, Cravaughn",1,0,"Haazima",0,1,1
+"120","Simbo, Shaniya",1,0,"Elizabeth",0,1,1
+"121","Patria, Rafael Paolo",1,1,"Melody",1,0,0
+"122","Batsaihan, Alan",0,0,"Zeena",0,0,0
+"123","Medina, Shanece",0,0,"Nia",0,0,1
+"124","Stuckey, Deon",1,1,"Jaideep",0,1,1
+"125","Cook, Cainan",1,1,"Vanessa",0,0,1
+"126","Smith, Patrick",1,1,"Mayra",1,0,0
+"127","Perkins, Dallas",0,1,"Jordan",1,1,0
+"128","Goldstein, Christina",0,1,"Brandon",1,0,1
+"129","Ryder, Autumn",0,1,"Jennifer",1,1,1
+"130","al-Farah, Lubna",0,0,"Carmen",1,1,0
+"131","Hunn, Cornell",1,0,"Mikayla",0,1,0
+"132","el-Nazir, Haashid",0,0,"Blas",0,0,0
+"133","al-Tabet, Jaasir",1,0,"Colton",0,0,0
+"134","Ramirez, Fabian",0,1,"Seth",1,0,1
+"135","Banuelos-Robles, Skye",0,1,"Whitney",0,0,0
+"136","al-Azam, Abdul Baari",1,1,"Gabriel",1,0,1
+"137","Ironshield, Natalie",0,0,"Gia",0,0,1
+"138","Hensel, Thomas",0,0,"Kafui",1,0,0
+"139","el-Pour, Ghaaliya",0,1,"Safwa",1,0,0
+"140","Martinez, Michael",1,1,"Alexander",1,1,0
+"141","Felix, Adrian",1,0,"Corissa",0,1,1
+"142","Yang, Trevor",1,0,"Anthaneisha",0,1,1
+"143","Graham, Hannah",1,0,"Kiran",0,0,1
+"144","Peters, Christine",0,1,"Ahmed",0,0,1
+"145","Moore, Jesse",1,0,"Zaamil",1,0,1
+"146","al-Fawaz, Mishaari",1,1,"Hysendra",1,1,0
+"147","Austria, Shishan",1,0,"Bianca",0,0,1
+"148","Bowman, Yajahira",1,1,"Donovan",0,0,1
+"149","O'Neill, Aaron",1,1,"Chauntel",1,0,0
+"150","Roberson, Kurt",1,0,"Claire",1,1,1
+"151","Xiong, Tallulah",0,0,"Destiny",1,1,1
+"152","Bertrand, Sara",0,1,"Ulysses",1,1,0
+"153","Kumar Rao, Xee",1,0,"Daniel",0,0,0
+"154","Conklin, Munir",1,1,"Ariel",0,0,0
+"155","Valdez, Edward",1,1,"David",1,0,0
+"156","Cerna, Veronica",0,1,"Justin",0,0,1
+"157","Barnes, Trenae",0,0,"Selena",1,0,1
+"158","Snowhawk, Rito",1,0,"Jordan",1,1,0
+"159","Arfsten, Alexander",1,1,"Fermin",1,1,1
+"160","Penn, Dashawn",0,1,"Matthew",0,1,1
+"161","Thomas, Sabria",0,0,"Tiana",0,1,1
+"162","Sorrell, Elliott",0,0,"Rikk",0,0,0
+"163","Parker, Summer",1,1,"Mahfoodha",0,1,1
+"164","Valenzuela, Anastasia",1,1,"Alysse",0,1,0
+"165","Mcbride, Ahanabah",1,0,"Rachel",1,1,0
+"166","Frost, Talea",0,1,"Mimi",1,0,0
+"167","Bernardus, Nathan",0,1,"Sasha",0,1,1
+"168","Schuckman, Angela",0,1,"Lindsay",1,1,1
+"169","Berg, Randy",1,1,"Stephen",1,1,1
+"170","el-Ghazal, Hawraa",0,1,"Jasmine",0,1,1
+"171","Myers, Joshua",0,0,"James",0,1,1
+"172","Tiley, Luke",0,0,"Raven",1,1,1
+"173","Gayman, Ricardo",1,0,"Xavier",0,1,1
+"174","el-Hussein, Lubaaba",1,1,"Robert",0,0,0
+"175","Scott, Dea Quan",0,1,"Dontaye",0,0,0
+"176","Kordeliski, Daniel",1,1,"Paris",1,1,0
+"177","Mason, Quinten",1,1,"Justin",1,0,0
+"178","Fields, Shayla",0,0,"Emma",1,0,0
+"179","Bergren-Aragon, Matthew",0,0,"Diandra",0,1,1
+"180","Angulo, Debonair",0,0,"Jaarallah",1,0,1
+"181","Vasquez, Rosio",1,1,"Brittany",1,1,1
+"182","Nance, Shakira",0,1,"Erasmo",1,1,1
+"183","Nelson, Shayne",1,1,"Nalye",1,0,0
+"184","Luong, Kevin",1,1,"Itzel",0,0,1
+"185","Grassmick, Mariana",0,1,"Thomas",0,0,1
+"186","Simpson, Quentin",0,1,"May",0,0,1
+"187","Andron, Kelsey",0,1,"Samuel",1,1,1
+"188","Southworth, Nicholas",1,0,"Micah",0,1,1
+"189","Curran, David",0,1,"Waseem",0,0,0
+"190","Bagaporo, Kenny",0,0,"Tevin",0,1,1
+"191","Hill, Jha Nae",1,0,"Jennifer",1,0,1
+"192","Van Zyl, Michael",1,0,"Revae",0,0,0
+"193","Ashworth, Amber",0,0,"Eric",1,1,0
+"194","Garcia, Dominic",0,1,"Mckenzie",0,0,0
+"195","Sheya, Alexis",0,0,"Hannah",0,0,1
+"196","Vergara, Haley",0,1,"James",1,1,0
+"197","Tabor, Anthony",0,0,"Amanda",0,1,1
+"198","Leslie, Jaelynn",0,1,"Ryan",0,0,0
+"199","Stoudt, Brandi",0,0,"Kathreen",1,1,1
+"200","el-Hussein, Haaritha",1,1,"Demi",1,1,0
+"201","Wong, Balkarn",0,1,"Shaheera",1,0,1
+"202","Stelter, William",0,0,"Jay",0,0,1
+"203","Nordloh, Mariah",1,1,"Janei",1,0,0
+"204","Dillingham, Melenaite",1,0,"Lezbeth",0,0,0
+"205","Richards III, Amelia",0,1,"Matthew",0,1,0
+"206","Charles, Ishmael",0,0,"Joselyn",0,1,0
+"207","Ho, Brittany",0,0,"Raashid",1,0,0
+"208","Khatanbaatar, Aaron",0,0,"Anasthasia",1,1,0
+"209","Martin, Christopher",0,0,"Siddeeqi",0,1,1
+"210","al-Zafar, Daamir",1,1,"Salomon",0,1,0
+"211","Ardilla-Patterson, Marcie",0,0,"Victoria",1,0,0
+"212","Schmitt, Chase",0,1,"Shaamila",1,1,1
+"213","Takata, Alison",0,0,"Jordan",1,0,1
+"214","Reinhart, Carlton",0,1,"Macella",1,1,1
+"215","al-Sami, Faseeha",1,1,"Yaasmeena",1,1,0
+"216","el-Haidar, Haala",1,1,"Brianna",0,0,0
+"217","De Leon, Gabrielle",0,0,"Shina",1,0,0
+"218","Tovar-Jimenez, Daniel",1,1,"Amanda",1,1,0
+"219","Clockston, Marissa",1,0,"Haazima",0,1,1
+"220","al-Zaki, Rida",1,0,"Elizabeth",0,1,1
+"221","Cunningham, Brady",1,1,"Melody",1,0,0
+"222","Roots, Jaiden",0,0,"Zeena",0,0,0
+"223","Axtell, Bailey",0,0,"Nia",0,0,1
+"224","Cordova, Javier",1,1,"Jaideep",0,1,1
+"225","Gallegos, Gilberto",1,1,"Vanessa",0,0,1
+"226","Lamping, Jocelin",1,1,"Mayra",1,0,0
+"227","Roda, Bijan",0,1,"Jordan",1,1,0
+"228","Havlik, Sarena",0,1,"Brandon",1,0,1
+"229","Mcgarry, Tyler",0,1,"Jennifer",1,1,1
+"230","Glaspy, Dominic",0,0,"Carmen",1,1,0
+"231","Camack, Aaron",1,0,"Mikayla",0,1,0
+"232","Cordova, Noe",0,0,"Blas",0,0,0
+"233","Henricks, Kaitlyn",1,0,"Colton",0,0,0
+"234","el-Khalil, Tawfeeq",0,1,"Seth",1,0,1
+"235","Fonseca-Soto, Ayla",0,1,"Whitney",0,0,0
+"236","Castillo, Zachery",1,1,"Gabriel",1,0,1
+"237","Jones Embry, Aaliyah",0,0,"Gia",0,0,1
+"238","Roussell, Kylear",0,0,"Kafui",1,0,0
+"239","Briseno, Arlene",0,1,"Safwa",1,0,0
+"240","Khalil, Karthik",1,1,"Alexander",1,1,0
+"241","Choe, Eric",1,0,"Corissa",0,1,1
+"242","Garvin, Bryce",1,0,"Anthaneisha",0,1,1
+"243","Judkins, Tateh",1,0,"Kiran",0,0,1
+"244","Contreras, Raul",0,1,"Ahmed",0,0,1
+"245","al-Abdul, Mahdeeya",1,0,"Zaamil",1,0,1
+"246","el-Bey, Tawheed",1,1,"Hysendra",1,1,0
+"247","el-Ali, Turfa",1,0,"Bianca",0,0,1
+"248","Shah, Joshua",1,1,"Donovan",0,0,1
+"249","Arnold, Keenan",1,1,"Chauntel",1,0,0
+"250","Lorenzo, Natalie",1,0,"Claire",1,1,1
+"251","Vo, Mary Lynn",0,0,"Destiny",1,1,1
+"252","Marchiano, Nathan",0,1,"Ulysses",1,1,0
+"253","Kellem, Isiah",1,0,"Daniel",0,0,0
+"254","Gast, Deja",1,1,"Ariel",0,0,0
+"255","el-Younes, Nazeema",1,1,"David",1,0,0
+"256","Lor, Murtidevi",0,1,"Justin",0,0,1
+"257","al-Abdo, Sidqi",0,0,"Selena",1,0,1
+"258","Mccray, James",1,0,"Jordan",1,1,0
+"259","Neelay, Saisuriya",1,1,"Fermin",1,1,1
+"260","Gay, Tylen",0,1,"Matthew",0,1,1
+"261","Contreras, Logan",0,0,"Tiana",0,1,1
+"262","Yu, Kenny",0,0,"Rikk",0,0,0
+"263","Trujillo, Daniel",1,1,"Mahfoodha",0,1,1
+"264","Carmichael, Shawn",1,1,"Alysse",0,1,0
+"265","Galloway, Jalen",1,0,"Rachel",1,1,0
+"266","al-Rassi, Juhaina",0,1,"Mimi",1,0,0
+"267","Cardenas, Nathan",0,1,"Sasha",0,1,1
+"268","Clark, Kateri",0,1,"Lindsay",1,1,1
+"269","al-Shabazz, Zuhaira",1,1,"Stephen",1,1,1
+"270","Hoffman, Anthony",0,1,"Jasmine",0,1,1
+"271","Shrestha, Saqib",0,0,"James",0,1,1
+"272","Wesley, Michael",0,0,"Raven",1,1,1
+"273","Fujiwara, Cody",1,0,"Xavier",0,1,1
+"274","Loma, Martha",1,1,"Robert",0,0,0
+"275","Perez Puga, Joshua",0,1,"Dontaye",0,0,0
+"276","Clark, Benjamin",1,1,"Paris",1,1,0
+"277","Miera, Sandra",1,1,"Justin",1,0,0
+"278","Sisaye, Bryant",0,0,"Emma",1,0,0
+"279","al-Majid, Najma",0,0,"Diandra",0,1,1
+"280","Quick Bear, Cameron",0,0,"Jaarallah",1,0,1
+"281","el-Rahimi, Atiyya",1,1,"Brittany",1,1,1
+"282","Martinez, Sergio",0,1,"Erasmo",1,1,1
+"283","Kuebler, Lauryn",1,1,"Nalye",1,0,0
+"284","Nguyen-Huynh, Olivia",1,1,"Itzel",0,0,1
+"285","Minor, Michaela",0,1,"Thomas",0,0,1
+"286","Pitts, Zipporah",0,1,"May",0,0,1
+"287","Andrus, Katherine",0,1,"Samuel",1,1,1
+"288","Gallegos, Blanca",1,0,"Micah",0,1,1
+"289","el-Kaba, Kaamil",0,1,"Waseem",0,0,0
+"290","el-Salam, Naafoora",0,0,"Tevin",0,1,1
+"291","Sanchez, Joseph",1,0,"Jennifer",1,0,1
+"292","el-Masih, Wajdiyya",1,0,"Revae",0,0,0
+"293","al-Baccus, Hasan",0,0,"Eric",1,1,0
+"294","Johnson, Michael",0,1,"Mckenzie",0,0,0
+"295","Cabrera, Jessie",0,0,"Hannah",0,0,1
+"296","Lantzy, Kylie",0,1,"James",1,1,0
+"297","el-Jabbour, Rajab",0,0,"Amanda",0,1,1
+"298","Quinonez, Fatima",0,1,"Ryan",0,0,0
+"299","Bingenheimer, Merrell",0,0,"Kathreen",1,1,1
+"300","Magno, Zachary",1,1,"Demi",1,1,0
+"301","Sconiers, Princess Imani",0,1,"Shaheera",1,0,1
+"302","Garcia, Marcus",0,0,"Jay",0,0,1
+"303","Thakur, Samantha",1,1,"Janei",1,0,0
+"304","May, Wing",1,0,"Lezbeth",0,0,0
+"305","Clarke, Chaela",0,1,"Matthew",0,1,0
+"306","el-Hussain, Sanad",0,0,"Joselyn",0,1,0
+"307","Lawson, Dallas",0,0,"Raashid",1,0,0
+"308","Hiraki, Shion",0,0,"Anasthasia",1,1,0
+"309","Lagasca, Joshua",0,0,"Siddeeqi",0,1,1
+"310","Lewis, Cheyenne",1,1,"Salomon",0,1,0
+"311","Sasaki, David",0,0,"Victoria",1,0,0
+"312","al-Hosseini, Musfira",0,1,"Shaamila",1,1,1
+"313","el-Shahidi, Shaddaad",0,0,"Jordan",1,0,1
+"314","al-Assaf, Faadi",0,1,"Macella",1,1,1
+"315","Keen, Jalen",1,1,"Yaasmeena",1,1,0
+"316","Reyes, Eduardo",1,1,"Brianna",0,0,0
+"317","Green, Chelsea",0,0,"Shina",1,0,0
+"318","Rodriguez, Fernando",1,1,"Amanda",1,1,0
+"319","Hill, Maria",1,0,"Haazima",0,1,1
+"320","Davis-Crews, Trae",1,0,"Elizabeth",0,1,1
+"321","Machuca, Alejandra",1,1,"Melody",1,0,0
+"322","Sammons, Jeremy",0,0,"Zeena",0,0,0
+"323","Ramirez Del Villar, Enrique",0,0,"Nia",0,0,1
+"324","el-Vaziri, Zufar",1,1,"Jaideep",0,1,1
+"325","Mounsey, Ian",1,1,"Vanessa",0,0,1
+"326","Dalton, Julian",1,1,"Mayra",1,0,0
+"327","Infante, Jared",0,1,"Jordan",1,1,0
+"328","Carter, Riley",0,1,"Brandon",1,0,1
+"329","Martinez, Deneen",0,1,"Jennifer",1,1,1
+"330","Fitzsimmons, Channing",0,0,"Carmen",1,1,0
+"331","el-Khalil, Daamir",1,0,"Mikayla",0,1,0
+"332","Brown, Sadie",0,0,"Blas",0,0,0
+"333","al-Wali, Hamdaan",1,0,"Colton",0,0,0
+"334","al-Attar, Katheer",0,1,"Seth",1,0,1
+"335","Johnston, Charlene",0,1,"Whitney",0,0,0
+"336","Rodgers, Jonathan",1,1,"Gabriel",1,0,1
+"337","al-Zaidi, Mishaari",0,0,"Gia",0,0,1
+"338","Muhlenbruch Ryan, Jessi",0,0,"Kafui",1,0,0
+"339","Smith, Evan",0,1,"Safwa",1,0,0
+"340","Musick-Occhiuto, Rocky",1,1,"Alexander",1,1,0
+"341","Ruminski, Alexzander",1,0,"Corissa",0,1,1
+"342","al-Demian, Asmar",1,0,"Anthaneisha",0,1,1
+"343","Gawkoski, Tyler",1,0,"Kiran",0,0,1
+"344","Garcia, Antonio",0,1,"Ahmed",0,0,1
+"345","el-Wahab, Haitham",1,0,"Zaamil",1,0,1
+"346","Hoffman, Hana",1,1,"Hysendra",1,1,0
+"347","Brooks, Wesley",1,0,"Bianca",0,0,1
+"348","Contreras, Alego",1,1,"Donovan",0,0,1
+"349","Golden, Dah'Som",1,1,"Chauntel",1,0,0
+"350","el-Hadi, Zaid",1,0,"Claire",1,1,1
+"351","Gaddipati, Kawaileolani",0,0,"Destiny",1,1,1
+"352","Intaratat, Scott",0,1,"Ulysses",1,1,0
+"353","Lu, Joshua",1,0,"Daniel",0,0,0
+"354","Perlas, Karen",1,1,"Ariel",0,0,0
+"355","Burback, Phillip",1,1,"David",1,0,0
+"356","Longbattle, Briana",0,1,"Justin",0,0,1
+"357","Martinez Casas, Ricki",0,0,"Selena",1,0,1
+"358","Wilson, Raquel",1,0,"Jordan",1,1,0
+"359","Caramillo, Auston",1,1,"Fermin",1,1,1
+"360","Williams, Qierra",0,1,"Matthew",0,1,1
+"361","Welt, Andrew",0,0,"Tiana",0,1,1
+"362","el-Siddique, Khulood",0,0,"Rikk",0,0,0
+"363","Rivera, Adrian",1,1,"Mahfoodha",0,1,1
+"364","Carreno, Heriberto",1,1,"Alysse",0,1,0
+"365","al-Hamdan, Zaahid",1,0,"Rachel",1,1,0
+"366","Pevler, Manmeet",0,1,"Mimi",1,0,0
+"367","Dahal, Navajyoti",0,1,"Sasha",0,1,1
+"368","Davis, T'Keya",0,1,"Lindsay",1,1,1
+"369","Olson, Megan",1,1,"Stephen",1,1,1
+"370","Lubar, Kristen",0,1,"Jasmine",0,1,1
+"371","Palacio, Makayla",0,0,"James",0,1,1
+"372","Vinod, Jasmine",0,0,"Raven",1,1,1
+"373","Stepner, Nena",1,0,"Xavier",0,1,1
+"374","Diamond, Drew",1,1,"Robert",0,0,0
+"375","Ghamari, James",0,1,"Dontaye",0,0,0
+"376","Middlebrooks, Elijah",1,1,"Paris",1,1,0
+"377","Allen, Darius",1,1,"Justin",1,0,0
+"378","Gearhart, Joey",0,0,"Emma",1,0,0
+"379","Minor, Darrin",0,0,"Diandra",0,1,1
+"380","al-Hamdan, Sabri",0,0,"Jaarallah",1,0,1
+"381","el-Bacho, Shaahida",1,1,"Brittany",1,1,1
+"382","Mckinley, Michael",0,1,"Erasmo",1,1,1
+"383","Singh, Miya",1,1,"Nalye",1,0,0
+"384","Dubus, Korren",1,1,"Itzel",0,0,1
+"385","Yanito, Evan",0,1,"Thomas",0,0,1
+"386","Blackmore, Keith",0,1,"May",0,0,1
+"387","Kyser, Ciera",0,1,"Samuel",1,1,1
+"388","Chou, Alexander",1,0,"Micah",0,1,1
+"389","al-Shareef, Burhaan",0,1,"Waseem",0,0,0
+"390","Huaman Sanchez, Christopher",0,0,"Tevin",0,1,1
+"391","Root, Gabriell",1,0,"Jennifer",1,0,1
+"392","Gutierrez-Garcia, Brayan",1,0,"Revae",0,0,0
+"393","Sendejas, Hershel",0,0,"Eric",1,1,0
+"394","Simcik, Quinn",0,1,"Mckenzie",0,0,0
+"395","Lovett, Bethany",0,0,"Hannah",0,0,1
+"396","Lopez, Robert",0,1,"James",1,1,0
+"397","St Pierre, Jamie",0,0,"Amanda",0,1,1
+"398","Nguyen, Aleesha",0,1,"Ryan",0,0,0
+"399","Yu, Samani",0,0,"Kathreen",1,1,1
+"400","Byam, Kristopher",1,1,"Demi",1,1,0
+"401","al-Abdoo, Rafeeq",0,1,"Shaheera",1,0,1
+"402","Benjamin, Can'Travious",0,0,"Jay",0,0,1
+"403","Moton, Brandin",1,1,"Janei",1,0,0
+"404","Sharma, Alexandra",1,0,"Lezbeth",0,0,0
+"405","Burnley, Khalia",0,1,"Matthew",0,1,0
+"406","Jones Walton, Eric",0,0,"Joselyn",0,1,0
+"407","al-Amara, Shameema",0,0,"Raashid",1,0,0
+"408","Dilley, Mikaela",0,0,"Anasthasia",1,1,0
+"409","Tolmich, James",0,0,"Siddeeqi",0,1,1
+"410","Mulder, Jessica",1,1,"Salomon",0,1,0
+"411","Willis, Yvenson",0,0,"Victoria",1,0,0
+"412","Entz, Alexa",0,1,"Shaamila",1,1,1
+"413","Balous, Fasika",0,0,"Jordan",1,0,1
+"414","Yang, Jared",0,1,"Macella",1,1,1
+"415","Tang, Valerie",1,1,"Yaasmeena",1,1,0
+"416","Calzada, Deidre",1,1,"Brianna",0,0,0
+"417","Tree, Kevin",0,0,"Shina",1,0,0
+"418","Tan, Alexus",1,1,"Amanda",1,1,0
+"419","Banks, Donita",1,0,"Haazima",0,1,1
+"420","Hrelja, Natalie",1,0,"Elizabeth",0,1,1
+"421","Waltonallen, Kameron",1,1,"Melody",1,0,0
+"422","Phan, Enguun",0,0,"Zeena",0,0,0
+"423","Ellison, Isaiah",0,0,"Nia",0,0,1
+"424","Blueeyes, Alejandro",1,1,"Jaideep",0,1,1
+"425","el-Satter, Sabeeha",1,1,"Vanessa",0,0,1
+"426","el-Rehmann, Tameem",1,1,"Mayra",1,0,0
+"427","Lau, Tammy",0,1,"Jordan",1,1,0
+"428","Ballard, Joshua",0,1,"Brandon",1,0,1
+"429","Xiong, My Tien",0,1,"Jennifer",1,1,1
+"430","al-Samad, Abdul Majeed",0,0,"Carmen",1,1,0
+"431","Le, Thuyvan",1,0,"Mikayla",0,1,0
+"432","Madrid-Gochez, Veronica",0,0,"Blas",0,0,0
+"433","Eagle Horse, Sebastian",1,0,"Colton",0,0,0
+"434","Leon-Duarte, Reannon",0,1,"Seth",1,0,1
+"435","Sissel, Seana",0,1,"Whitney",0,0,0
+"436","Zackery, Rayanna",1,1,"Gabriel",1,0,1
+"437","Mitchell, Jelani",0,0,"Gia",0,0,1
+"438","Gallegos, Patrick",0,0,"Kafui",1,0,0
+"439","Medina, Cory",0,1,"Safwa",1,0,0
+"440","Eleniewski, Teagan",1,1,"Alexander",1,1,0
+"441","Romero, Charles",1,0,"Corissa",0,1,1
+"442","Holiday, Paulina",1,0,"Anthaneisha",0,1,1
+"443","el-Gad, Fikriyya",1,0,"Kiran",0,0,1
+"444","Salazar-Jaquez, Victoria",0,1,"Ahmed",0,0,1
+"445","Compton, Mark",1,0,"Zaamil",1,0,1
+"446","el-Dar, Layaali",1,1,"Hysendra",1,1,0
+"447","al-Shabazz, Aslam",1,0,"Bianca",0,0,1
+"448","Ayles, Sonora",1,1,"Donovan",0,0,1
+"449","Gomez, Cassandra",1,1,"Chauntel",1,0,0
+"450","al-Kazi, Mutlaq",1,0,"Claire",1,1,1
+"451","al-Madani, Hadeel",0,0,"Destiny",1,1,1
+"452","Dettmann, Amanda",0,1,"Ulysses",1,1,0
+"453","Sanchez, Usbaldo",1,0,"Daniel",0,0,0
+"454","el-Kaber, Suhaila",1,1,"Ariel",0,0,0
+"455","Vasquez, Nancy",1,1,"David",1,0,0
+"456","al-Rahman, Hissa",0,1,"Justin",0,0,1
+"457","Brock, Ryan",0,0,"Selena",1,0,1
+"458","Anders, Kayla",1,0,"Jordan",1,1,0
+"459","al-Sulaiman, Riyaal",1,1,"Fermin",1,1,1
+"460","Petersen, Antwuan",0,1,"Matthew",0,1,1
+"461","al-Arif, Shujaa",0,0,"Tiana",0,1,1
+"462","Lovelace, Hayden",0,0,"Rikk",0,0,0
+"463","Solis, Dalene",1,1,"Mahfoodha",0,1,1
+"464","Hunt, Nico",1,1,"Alysse",0,1,0
+"465","al-Gaber, Bilaal",1,0,"Rachel",1,1,0
+"466","Nguyen, Lady",0,1,"Mimi",1,0,0
+"467","San Miguel, Matthew",0,1,"Sasha",0,1,1
+"468","Macoskey, Paige",0,1,"Lindsay",1,1,1
+"469","Mena, Diego",1,1,"Stephen",1,1,1
+"470","Dintaman, Jordan",0,1,"Jasmine",0,1,1
+"471","Washington, Amanda",0,0,"James",0,1,1
+"472","el-Shaer, Ismad",0,0,"Raven",1,1,1
+"473","Richardson, Levi",1,0,"Xavier",0,1,1
+"474","Kang, Joseph",1,1,"Robert",0,0,0
+"475","Salas, Brittany",0,1,"Dontaye",0,0,0
+"476","Ford, Rachel",1,1,"Paris",1,1,0
+"477","Smith, Isiah",1,1,"Justin",1,0,0
+"478","al-Beshara, Adhraaa",0,0,"Emma",1,0,0
+"479","Khaliq, Aimee",0,0,"Diandra",0,1,1
+"480","Burciago, Alejandra",0,0,"Jaarallah",1,0,1
+"481","Lopez, Izac",1,1,"Brittany",1,1,1
+"482","Ortega, Angelica",0,1,"Erasmo",1,1,1
+"483","Bison, Will",1,1,"Nalye",1,0,0
+"484","Kutnicki, Austin",1,1,"Itzel",0,0,1
+"485","Bhatt, Aleena",0,1,"Thomas",0,0,1
+"486","el-Masih, Khaleela",0,1,"May",0,0,1
+"487","Rogers, Armand",0,1,"Samuel",1,1,1
+"488","al-Youssef, Rayyaan",1,0,"Micah",0,1,1
+"489","Lucero, Nicholas",0,1,"Waseem",0,0,0
+"490","Coyhis, Shawn",0,0,"Tevin",0,1,1
+"491","al-Usman, Ramza",1,0,"Jennifer",1,0,1
+"492","Guy-Pace, Kyle",1,0,"Revae",0,0,0
+"493","Her, Timothy",0,0,"Eric",1,1,0
+"494","Collins, Jenelle",0,1,"Mckenzie",0,0,0
+"495","Carey, Aya",0,0,"Hannah",0,0,1
+"496","Lock, Peyton",0,1,"James",1,1,0
+"497","Gamboa, Markie",0,0,"Amanda",0,1,1
+"498","Davis, Mahlet",0,1,"Ryan",0,0,0
+"499","Brittin, John",0,0,"Kathreen",1,1,1
+"500","Runningbear, Audrey",1,1,"Demi",1,1,0
+"501","Jones, Conor",0,1,"Shaheera",1,0,1
+"502","Crosley, Abigail",0,0,"Jay",0,0,1
+"503","Lai Zhou, Addison",1,1,"Janei",1,0,0
+"504","el-Akhtar, Hilmiyya",1,0,"Lezbeth",0,0,0
+"505","Moore, Amanda",0,1,"Matthew",0,1,0
+"506","Abdurahman, Alexandria",0,0,"Joselyn",0,1,0
+"507","Tann, Dave",0,0,"Raashid",1,0,0
+"508","Sulub, Jesse",0,0,"Anasthasia",1,1,0
+"509","al-Huq, Shaamikh",0,0,"Siddeeqi",0,1,1
+"510","Mberwa, Anthony",1,1,"Salomon",0,1,0
+"511","Smith, John",0,0,"Victoria",1,0,0
+"512","el-Zadeh, Zubaida",0,1,"Shaamila",1,1,1
+"513","Haskan, Eric",0,0,"Jordan",1,0,1
+"514","Ryterski, Kathrina",0,1,"Macella",1,1,1
+"515","Gutierrez, Michele",1,1,"Yaasmeena",1,1,0
+"516","House, Rashaina",1,1,"Brianna",0,0,0
+"517","Nunez, Marissa",0,0,"Shina",1,0,0
+"518","Tran, Thieng",1,1,"Amanda",1,1,0
+"519","Lopez-Silerio, Dyanira",1,0,"Haazima",0,1,1
+"520","Wilcox, Zachariah",1,0,"Elizabeth",0,1,1
+"521","Rivera-Borrego, Juan",1,1,"Melody",1,0,0
+"522","Billingsley, Benjamin",0,0,"Zeena",0,0,0
+"523","el-Ullah, Almaasa",0,0,"Nia",0,0,1
+"524","Uveges, Shelby",1,1,"Jaideep",0,1,1
+"525","al-Popal, Reema",1,1,"Vanessa",0,0,1
+"526","Trujillo, Jessica",1,1,"Mayra",1,0,0
+"527","al-Soltani, Faraah",0,1,"Jordan",1,1,0
+"528","Ramos-Meza, Jesus",0,1,"Brandon",1,0,1
+"529","Canty, Adrena",0,1,"Jennifer",1,1,1
+"530","Pettis, Joshua",0,0,"Carmen",1,1,0
+"531","Lansing, Brianna",1,0,"Mikayla",0,1,0
+"532","Galindo-Carrillo, Daniel",0,0,"Blas",0,0,0
+"533","Boxford, Jeremy",1,0,"Colton",0,0,0
+"534","al-Firman, Ruqayya",0,1,"Seth",1,0,1
+"535","Lo, Jung Hoon",0,1,"Whitney",0,0,0
+"536","Santee, Cora",1,1,"Gabriel",1,0,1
+"537","Rentas, Miguel",0,0,"Gia",0,0,1
+"538","Isabelle, Christian",0,0,"Kafui",1,0,0
+"539","Goens, Yonatan",0,1,"Safwa",1,0,0
+"540","Sosa, Christopher",1,1,"Alexander",1,1,0
+"541","Huffstater, Avona",1,0,"Corissa",0,1,1
+"542","Whitelance III, Davena",1,0,"Anthaneisha",0,1,1
+"543","Elliott, Stephanie",1,0,"Kiran",0,0,1
+"544","Newell, Sean",0,1,"Ahmed",0,0,1
+"545","Castor, Gretchen",1,0,"Zaamil",1,0,1
+"546","Steele, Ryan",1,1,"Hysendra",1,1,0
+"547","Jones, Saba",1,0,"Bianca",0,0,1
+"548","Williams, Cartrell",1,1,"Donovan",0,0,1
+"549","Moffitt Lucas, Seddrik",1,1,"Chauntel",1,0,0
+"550","Conde, Brady",1,0,"Claire",1,1,1
+"551","Rains, Taylor",0,0,"Destiny",1,1,1
+"552","Roseboom, Kalyn",0,1,"Ulysses",1,1,0
+"553","Bendiak, Megan",1,0,"Daniel",0,0,0
+"554","Davis, Maliha",1,1,"Ariel",0,0,0
+"555","Suggs, Omar",1,1,"David",1,0,0
+"556","Sadiarin, Jennifer",0,1,"Justin",0,0,1
+"557","Vo, Shelby",0,0,"Selena",1,0,1
+"558","al-Younis, Thanaa",1,0,"Jordan",1,1,0
+"559","Love, Sade",1,1,"Fermin",1,1,1
+"560","Xiong, Amber",0,1,"Matthew",0,1,1
+"561","al-Amen, Ruqayya",0,0,"Tiana",0,1,1
+"562","Burks, Jaelyn",0,0,"Rikk",0,0,0
+"563","Finn, Bryce",1,1,"Mahfoodha",0,1,1
+"564","Powell, Chanthany",1,1,"Alysse",0,1,0
+"565","Watkins, Shruti",1,0,"Rachel",1,1,0
+"566","Lorenzo, Melisa",0,1,"Mimi",1,0,0
+"567","Gomez, Elmer",0,1,"Sasha",0,1,1
+"568","Goodman, Gina",0,1,"Lindsay",1,1,1
+"569","Ramos, Jajaira",1,1,"Stephen",1,1,1
+"570","al-Sulaiman, Haajara",0,1,"Jasmine",0,1,1
+"571","Garcia, Dilan",0,0,"James",0,1,1
+"572","al-Suleiman, Mubeena",0,0,"Raven",1,1,1
+"573","Estrada, Roberto",1,0,"Xavier",0,1,1
+"574","Nguyen, Mario",1,1,"Robert",0,0,0
+"575","Hood, Linton",0,1,"Dontaye",0,0,0
+"576","Zamora, Ibrahima",1,1,"Paris",1,1,0
+"577","el-Greiss, Waail",1,1,"Justin",1,0,0
+"578","Beck, Joshua",0,0,"Emma",1,0,0
+"579","al-Abdelrahman, Marwa",0,0,"Diandra",0,1,1
+"580","Retana, Mariah",0,0,"Jaarallah",1,0,1
+"581","Rogers, Alysha",1,1,"Brittany",1,1,1
+"582","el-Aydin, Marzooqa",0,1,"Erasmo",1,1,1
+"583","Edwards, Eric",1,1,"Nalye",1,0,0
+"584","el-Anwar, Humaina",1,1,"Itzel",0,0,1
+"585","Jones, Ebony",0,1,"Thomas",0,0,1
+"586","al-Farrah, Juwairiya",0,1,"May",0,0,1
+"587","Bobrick, Leanna",0,1,"Samuel",1,1,1
+"588","Lam, Rah Mi",1,0,"Micah",0,1,1
+"589","Mcbride, Joseph",0,1,"Waseem",0,0,0
+"590","Fusilier, Cassidy",0,0,"Tevin",0,1,1
+"591","Loucks, Tanner",1,0,"Jennifer",1,0,1
+"592","True, Amber",1,0,"Revae",0,0,0
+"593","Tann, Lance",0,0,"Eric",1,1,0
+"594","Banuelos, Latoya",0,1,"Mckenzie",0,0,0
+"595","el-Hana, Saajid",0,0,"Hannah",0,0,1
+"596","Fletcher, Tanya",0,1,"James",1,1,0
+"597","Maestas, Kevin",0,0,"Amanda",0,1,1
+"598","Lu, Khameron",0,1,"Ryan",0,0,0
+"599","Rangel, Alejandro",0,0,"Kathreen",1,1,1
+"600","Scott, Jazzmine",1,1,"Demi",1,1,0
+"601","al-Matin, Thaaqib",0,1,"Shaheera",1,0,1
+"602","Vargas, Edward",0,0,"Jay",0,0,1
+"603","Smith, Christa",1,1,"Janei",1,0,0
+"604","Martin, Seth",1,0,"Lezbeth",0,0,0
+"605","Tran, Richard",0,1,"Matthew",0,1,0
+"606","el-Tabatabai, Bishr",0,0,"Joselyn",0,1,0
+"607","Bernardo, Jessy",0,0,"Raashid",1,0,0
+"608","Mullen III, Anita",0,0,"Anasthasia",1,1,0
+"609","Chase, Dede",0,0,"Siddeeqi",0,1,1
+"610","Martinez, Derrick",1,1,"Salomon",0,1,0
+"611","House, Chase",0,0,"Victoria",1,0,0
+"612","Leclaire, Travis",0,1,"Shaamila",1,1,1
+"613","Bui-Nguyen, Victor",0,0,"Jordan",1,0,1
+"614","Miller, Matthew",0,1,"Macella",1,1,1
+"615","Skalla, Samantha",1,1,"Yaasmeena",1,1,0
+"616","al-Sabir, Azeeza",1,1,"Brianna",0,0,0
+"617","Mcdowell, Simone",0,0,"Shina",1,0,0
+"618","Fuller, Chelsea",1,1,"Amanda",1,1,0
+"619","Ramos, Daniella",1,0,"Haazima",0,1,1
+"620","el-Bari, Ubaida",1,0,"Elizabeth",0,1,1
+"621","Morgan, Alexandria",1,1,"Melody",1,0,0
+"622","Walsh, Brielle",0,0,"Zeena",0,0,0
+"623","Sierra Miranda, Sonia",0,0,"Nia",0,0,1
+"624","Retana, Eric",1,1,"Jaideep",0,1,1
+"625","Walser, Shandi",1,1,"Vanessa",0,0,1
+"626","al-Abdou, Husniyya",1,1,"Mayra",1,0,0
+"627","Hunt, Tieran",0,1,"Jordan",1,1,0
+"628","el-Hussain, Farhaan",0,1,"Brandon",1,0,1
+"629","De La Rosa, Nathan",0,1,"Jennifer",1,1,1
+"630","Conley, Gilbert",0,0,"Carmen",1,1,0
+"631","al-Bey, Muthanna",1,0,"Mikayla",0,1,0
+"632","Garcia Lira, Annakaren",0,0,"Blas",0,0,0
+"633","Peluso, Johnson",1,0,"Colton",0,0,0
+"634","Mclaughlin, Taylor",0,1,"Seth",1,0,1
+"635","Brooks, Darius",0,1,"Whitney",0,0,0
+"636","el-Jabbar, Muneera",1,1,"Gabriel",1,0,1
+"637","Kang, Caleb",0,0,"Gia",0,0,1
+"638","Martin, Mckenna",0,0,"Kafui",1,0,0
+"639","Hairston, Jaymie Leigh",0,1,"Safwa",1,0,0
+"640","Santistevan-Minnick, Patrick",1,1,"Alexander",1,1,0
+"641","al-Nasir, Maleeka",1,0,"Corissa",0,1,1
+"642","Hernandez, Laura",1,0,"Anthaneisha",0,1,1
+"643","al-Ghani, Abdul Haleem",1,0,"Kiran",0,0,1
+"644","Valdez, Elijah",0,1,"Ahmed",0,0,1
+"645","Mcclelland, Markus",1,0,"Zaamil",1,0,1
+"646","Duba, Matthew",1,1,"Hysendra",1,1,0
+"647","Miller, Autaum",1,0,"Bianca",0,0,1
+"648","Smith, Ashley",1,1,"Donovan",0,0,1
+"649","Chavez, Danesha",1,1,"Chauntel",1,0,0
+"650","Martinez, Karina",1,0,"Claire",1,1,1
+"651","Clark, Adam",0,0,"Destiny",1,1,1
+"652","al-Afzal, Madeeha",0,1,"Ulysses",1,1,0
+"653","al-Hashim, Abdul Hakeem",1,0,"Daniel",0,0,0
+"654","Chavez, Jonathan",1,1,"Ariel",0,0,0
+"655","Brockman, Alexi",1,1,"David",1,0,0
+"656","Miller, Vaughan",0,1,"Justin",0,0,1
+"657","Wall, Ira",0,0,"Selena",1,0,1
+"658","Bond, Marquis",1,0,"Jordan",1,1,0
+"659","Yowell, Kharis",1,1,"Fermin",1,1,1
+"660","Chaparro, Sarai",0,1,"Matthew",0,1,1
+"661","Nelson, Cherokee",0,0,"Tiana",0,1,1
+"662","Moua, Joshua",0,0,"Rikk",0,0,0
+"663","Machado, Liliana",1,1,"Mahfoodha",0,1,1
+"664","Murray, Shavonte",1,1,"Alysse",0,1,0
+"665","Koskovich, Cheyenne",1,0,"Rachel",1,1,0
+"666","Abeyta, Taju",0,1,"Mimi",1,0,0
+"667","Medina, Michael",0,1,"Sasha",0,1,1
+"668","Merritt, Cody",0,1,"Lindsay",1,1,1
+"669","Maestas, Miles",1,1,"Stephen",1,1,1
+"670","Roberts, Anisa",0,1,"Jasmine",0,1,1
+"671","el-Nazir, Najma",0,0,"James",0,1,1
+"672","Thomas, Latesha",0,0,"Raven",1,1,1
+"673","el-Akram, Mubaaraka",1,0,"Xavier",0,1,1
+"674","Klotzbach, Michael",1,1,"Robert",0,0,0
+"675","Yaromenka, Reid",0,1,"Dontaye",0,0,0
+"676","Talent, Aiden",1,1,"Paris",1,1,0
+"677","Easley, Marquis",1,1,"Justin",1,0,0
+"678","Vazquez, Isaiah",0,0,"Emma",1,0,0
+"679","el-Salama, Saajid",0,0,"Diandra",0,1,1
+"680","Marquez, Isai",0,0,"Jaarallah",1,0,1
+"681","Patel, Monique",1,1,"Brittany",1,1,1
+"682","Mack, Jacob",0,1,"Erasmo",1,1,1
+"683","Carreon, Damian",1,1,"Nalye",1,0,0
+"684","Martinez, Misty",1,1,"Itzel",0,0,1
+"685","Barnes-Johnson, Briana",0,1,"Thomas",0,0,1
+"686","Marshall, Nicholas",0,1,"May",0,0,1
+"687","al-Saah, Zaitoona",0,1,"Samuel",1,1,1
+"688","el-Sawaya, Tareefa",1,0,"Micah",0,1,1
+"689","Morgan, Haley",0,1,"Waseem",0,0,0
+"690","al-Assad, Hasana",0,0,"Tevin",0,1,1
+"691","al-Zakaria, Hamad",1,0,"Jennifer",1,0,1
+"692","Leverette, Dominique",1,0,"Revae",0,0,0
+"693","el-Shafi, Fikri",0,0,"Eric",1,1,0
+"694","West-Brown, Preston",0,1,"Mckenzie",0,0,0
+"695","el-Salim, Suhaib",0,0,"Hannah",0,0,1
+"696","Heneger, Lisa",0,1,"James",1,1,0
+"697","Shaffer, Kapiolani",0,0,"Amanda",0,1,1
+"698","al-Jamil, Sabaaha",0,1,"Ryan",0,0,0
+"699","al-Salman, Jannat",0,0,"Kathreen",1,1,1
+"700","Miller, Evan",1,1,"Demi",1,1,0
+"701","Fernandez, Albert",0,1,"Shaheera",1,0,1
+"702","Uchida, Megan",0,0,"Jay",0,0,1
+"703","Ives, Dominique",1,1,"Janei",1,0,0
+"704","el-Alli, Labeeb",1,0,"Lezbeth",0,0,0
+"705","Lama, Meghan",0,1,"Matthew",0,1,0
+"706","Yousif, Aliyah",0,0,"Joselyn",0,1,0
+"707","Manley, Jakori",0,0,"Raashid",1,0,0
+"708","al-Khalili, Safiyya",0,0,"Anasthasia",1,1,0
+"709","Kawamura, Jason",0,0,"Siddeeqi",0,1,1
+"710","el-Aman, Faadil",1,1,"Salomon",0,1,0
+"711","Gesick, Connor",0,0,"Victoria",1,0,0
+"712","Tuton, Wyatt",0,1,"Shaamila",1,1,1
+"713","Rocha, Christian",0,0,"Jordan",1,0,1
+"714","Keelty, Lacey",0,1,"Macella",1,1,1
+"715","Tolutau, Rubecca",1,1,"Yaasmeena",1,1,0
+"716","Beyale, Ashley",1,1,"Brianna",0,0,0
+"717","Gill, Justice",0,0,"Shina",1,0,0
+"718","Zepeda, Andrew",1,1,"Amanda",1,1,0
+"719","el-Abraham, Luqmaan",1,0,"Haazima",0,1,1
+"720","Rodriguez, Robert",1,0,"Elizabeth",0,1,1
+"721","Enriquez, Andrianna",1,1,"Melody",1,0,0
+"722","Allyn, Drew",0,0,"Zeena",0,0,0
+"723","Castaneda, Joseph",0,0,"Nia",0,0,1
+"724","Vlottes, Lacey",1,1,"Jaideep",0,1,1
+"725","Maldonado, Rachel",1,1,"Vanessa",0,0,1
+"726","John, Mika",1,1,"Mayra",1,0,0
+"727","Coblentz, Harley",0,1,"Jordan",1,1,0
+"728","Garven, Nolan",0,1,"Brandon",1,0,1
+"729","Mccarthy, Sandra",0,1,"Jennifer",1,1,1
+"730","Horne, Haleigh",0,0,"Carmen",1,1,0
+"731","Barideaux, Robert",1,0,"Mikayla",0,1,0
+"732","Cantu, Mariah",0,0,"Blas",0,0,0
+"733","Ortiz, Liukura",1,0,"Colton",0,0,0
+"734","Brior, Laura",0,1,"Seth",1,0,1
+"735","Nesby Jr, Haurouna",0,1,"Whitney",0,0,0
+"736","Rodriguez, Jackie",1,1,"Gabriel",1,0,1
+"737","Wright, Brian",0,0,"Gia",0,0,1
+"738","Burnsed, Gilbert",0,0,"Kafui",1,0,0
+"739","Ross, Mezan",0,1,"Safwa",1,0,0
+"740","Jaques, Kimberly",1,1,"Alexander",1,1,0
+"741","Van Zyl, Kylie",1,0,"Corissa",0,1,1
+"742","Rea, Sherlyn",1,0,"Anthaneisha",0,1,1
+"743","Graham, James",1,0,"Kiran",0,0,1
+"744","Deer, Tyler",0,1,"Ahmed",0,0,1
+"745","al-Munir, Khaleefa",1,0,"Zaamil",1,0,1
+"746","Romero, Alysia",1,1,"Hysendra",1,1,0
+"747","Patchett, Tehya",1,0,"Bianca",0,0,1
+"748","Perez, Cassidy",1,1,"Donovan",0,0,1
+"749","el-Ahmed, Asad",1,1,"Chauntel",1,0,0
+"750","el-Salik, Rafeeq",1,0,"Claire",1,1,1
+"751","Mack, Kamron",0,0,"Destiny",1,1,1
+"752","Scott, Maurice",0,1,"Ulysses",1,1,0
+"753","Ortega, Travis",1,0,"Daniel",0,0,0
+"754","al-Amara, Raaniya",1,1,"Ariel",0,0,0
+"755","al-Zafar, Ghaidaa",1,1,"David",1,0,0
+"756","Boylan, Olivia",0,1,"Justin",0,0,1
+"757","Pino, Jessica",0,0,"Selena",1,0,1
+"758","Lau, Jijo",1,0,"Jordan",1,1,0
+"759","el-Madani, Fidda",1,1,"Fermin",1,1,1
+"760","Werner, Govanni",0,1,"Matthew",0,1,1
+"761","el-Alam, Raaniya",0,0,"Tiana",0,1,1
+"762","Nelson, Ryann",0,0,"Rikk",0,0,0
+"763","al-Salaam, Tayyiba",1,1,"Mahfoodha",0,1,1
+"764","al-Ansari, Shaddaad",1,1,"Alysse",0,1,0
+"765","el-Ghani, Abood",1,0,"Rachel",1,1,0
+"766","Arviso, Almiranda",0,1,"Mimi",1,0,0
+"767","Woolfolk, Zaquala",0,1,"Sasha",0,1,1
+"768","Molina, Fernando",0,1,"Lindsay",1,1,1
+"769","Wright, Shantavia",1,1,"Stephen",1,1,1
+"770","Jamerson, Tonya",0,1,"Jasmine",0,1,1
+"771","Ray, Jazmine",0,0,"James",0,1,1
+"772","Balbuena, Kevin",0,0,"Raven",1,1,1
+"773","Mcdonald, Tyrell",1,0,"Xavier",0,1,1
+"774","Wills, Eva",1,1,"Robert",0,0,0
+"775","el-Alam, Zuraara",0,1,"Dontaye",0,0,0
+"776","Swetman, Hayley",1,1,"Paris",1,1,0
+"777","Tapia, Elijah",1,1,"Justin",1,0,0
+"778","Malone, Summer",0,0,"Emma",1,0,0
+"779","Christinson, Tina",0,0,"Diandra",0,1,1
+"780","Shangreaux, Charneissha",0,0,"Jaarallah",1,0,1
+"781","Chong, Hindav",1,1,"Brittany",1,1,1
+"782","Casillas, Carrie",0,1,"Erasmo",1,1,1
+"783","Deshiro, Kaitlyn",1,1,"Nalye",1,0,0
+"784","Bush, Desjanay",1,1,"Itzel",0,0,1
+"785","al-Maroun, Ahlaam",0,1,"Thomas",0,0,1
+"786","Ramirez, Alexis",0,1,"May",0,0,1
+"787","Hernandez, Ryan",0,1,"Samuel",1,1,1
+"788","Varela, Lenna",1,0,"Micah",0,1,1
+"789","Yang, Travis",0,1,"Waseem",0,0,0
+"790","Galindo Sifuentes, Ricardo",0,0,"Tevin",0,1,1
+"791","al-Basher, Abdur Rasheed",1,0,"Jennifer",1,0,1
+"792","al-Sawaya, Shaamil",1,0,"Revae",0,0,0
+"793","Jackson, Jelani",0,0,"Eric",1,1,0
+"794","Tinner, Ugochukwu",0,1,"Mckenzie",0,0,0
+"795","al-Bacchus, Naseera",0,0,"Hannah",0,0,1
+"796","Mccalman, Na'Im",0,1,"James",1,1,0
+"797","el-Mansouri, Raashid",0,0,"Amanda",0,1,1
+"798","Christiansen, Taylor",0,1,"Ryan",0,0,0
+"799","Paine, Allissia",0,0,"Kathreen",1,1,1
+"800","Peters, Kory",1,1,"Demi",1,1,0
+"801","Bracken, Dawit",0,1,"Shaheera",1,0,1
+"802","al-Shaheen, Shujaa",0,0,"Jay",0,0,1
+"803","Monterrosa, Nykeba",1,1,"Janei",1,0,0
+"804","Mellon, Sarena",1,0,"Lezbeth",0,0,0
+"805","el-Allee, Tayyib",0,1,"Matthew",0,1,0
+"806","el-Jafri, Muna",0,0,"Joselyn",0,1,0
+"807","Bernhardt, Joseph",0,0,"Raashid",1,0,0
+"808","el-Attar, Nuzha",0,0,"Anasthasia",1,1,0
+"809","el-Hashem, Hamna",0,0,"Siddeeqi",0,1,1
+"810","Johnson, Abigail",1,1,"Salomon",0,1,0
+"811","Gonzales, Christopher",0,0,"Victoria",1,0,0
+"812","Nguyen, Alyssa",0,1,"Shaamila",1,1,1
+"813","Westfall, Jordain",0,0,"Jordan",1,0,1
+"814","Brewer, Carli",0,1,"Macella",1,1,1
+"815","Hendricks, Jade",1,1,"Yaasmeena",1,1,0
+"816","el-Firman, Abdul Wadood",1,1,"Brianna",0,0,0
+"817","Madone, Ashley",0,0,"Shina",1,0,0
+"818","Bradley, Jasmine",1,1,"Amanda",1,1,0
+"819","Keime, Joseph",1,0,"Haazima",0,1,1
+"820","Brito, Kayla",1,0,"Elizabeth",0,1,1
+"821","al-Masood, Muhjar",1,1,"Melody",1,0,0
+"822","Stauffer, Sammie",0,0,"Zeena",0,0,0
+"823","Palumbo, Sean",0,0,"Nia",0,0,1
+"824","Jackson, Brian",1,1,"Jaideep",0,1,1
+"825","Sun, Sung",1,1,"Vanessa",0,0,1
+"826","Jefferson, Antonio",1,1,"Mayra",1,0,0
+"827","Abeyta, Jordyn",0,1,"Jordan",1,1,0
+"828","Huguley, Annelicia",0,1,"Brandon",1,0,1
+"829","Baak, Cody",0,1,"Jennifer",1,1,1
+"830","Lopez, Brevin",0,0,"Carmen",1,1,0
+"831","Martinez, Jacob",1,0,"Mikayla",0,1,0
+"832","Rodriguez, Lexcie",0,0,"Blas",0,0,0
+"833","Rodriguez, Louis",1,0,"Colton",0,0,0
+"834","Tolentino, Blake",0,1,"Seth",1,0,1
+"835","al-Salama, Aadila",0,1,"Whitney",0,0,0
+"836","Solorzano, Michelle",1,1,"Gabriel",1,0,1
+"837","el-Abdella, Laila",0,0,"Gia",0,0,1
+"838","Irish, Kylie",0,0,"Kafui",1,0,0
+"839","Van Norman, James",0,1,"Safwa",1,0,0
+"840","Brown, Bailey",1,1,"Alexander",1,1,0
+"841","Lomeli, Adrianna",1,0,"Corissa",0,1,1
+"842","Xiong, Samuel",1,0,"Anthaneisha",0,1,1
+"843","Howard, Jessica",1,0,"Kiran",0,0,1
+"844","al-Mahmood, Mayyaada",0,1,"Ahmed",0,0,1
+"845","Lee, Samantha",1,0,"Zaamil",1,0,1
+"846","Shea, Sammi",1,1,"Hysendra",1,1,0
+"847","Oscars, Jamal",1,0,"Bianca",0,0,1
+"848","Mortel, Juliana",1,1,"Donovan",0,0,1
+"849","al-Nazar, Naadir",1,1,"Chauntel",1,0,0
+"850","el-Din, Noora",1,0,"Claire",1,1,1
+"851","Turner, Robert",0,0,"Destiny",1,1,1
+"852","Barnes, Alicia",0,1,"Ulysses",1,1,0
+"853","Grigsby, Edmond",1,0,"Daniel",0,0,0
+"854","el-Salek,  Sakeena",1,1,"Ariel",0,0,0
+"855","Morales, Alexis",1,1,"David",1,0,0
+"856","Treulieb-Kolostyak, Heena",0,1,"Justin",0,0,1
+"857","Diaz De La Rosa, Lexus",0,0,"Selena",1,0,1
+"858","Cantrell, Ayana",1,0,"Jordan",1,1,0
+"859","Cheung, Lauren",1,1,"Fermin",1,1,1
+"860","Erskine, Daeosionae",0,1,"Matthew",0,1,1
+"861","Heald, Tyler",0,0,"Tiana",0,1,1
+"862","Santiago, Jordan",0,0,"Rikk",0,0,0
+"863","Ayers, Christopher",1,1,"Mahfoodha",0,1,1
+"864","Costello, Tory",1,1,"Alysse",0,1,0
+"865","al-Sharifi,  Huda",1,0,"Rachel",1,1,0
+"866","Valdez, Rocky",0,1,"Mimi",1,0,0
+"867","Le, Cynthia",0,1,"Sasha",0,1,1
+"868","el-Eid, Musfira",0,1,"Lindsay",1,1,1
+"869","Manirikumwenatwe, Christopher",1,1,"Stephen",1,1,1
+"870","el-Kabir, Humaidaan",0,1,"Jasmine",0,1,1
+"871","al-Shakoor, Lubna",0,0,"James",0,1,1
+"872","Welter, Kalon",0,0,"Raven",1,1,1
+"873","al-Tariq, Muhaajir",1,0,"Xavier",0,1,1
+"874","Garcilazo, Megan",1,1,"Robert",0,0,0
+"875","Schmidt, Benjamin",0,1,"Dontaye",0,0,0
+"876","Wilson, Abigail",1,1,"Paris",1,1,0
+"877","el-Gad, Shuraih",1,1,"Justin",1,0,0
+"878","Rea, Megan",0,0,"Emma",1,0,0
+"879","al-Ansari, Masroora",0,0,"Diandra",0,1,1
+"880","Hopkins, Patrick",0,0,"Jaarallah",1,0,1
+"881","al-Samaan, Taahir",1,1,"Brittany",1,1,1
+"882","al-Adel, Shaakir",0,1,"Erasmo",1,1,1
+"883","Salansky, Jennifer",1,1,"Nalye",1,0,0
+"884","Ward, Kaitlin",1,1,"Itzel",0,0,1
+"885","Bashir, Kuneeshah",0,1,"Thomas",0,0,1
+"886","Morton, Suzanna",0,1,"May",0,0,1
+"887","Patterson, Juliana",0,1,"Samuel",1,1,1
+"888","Zamora, Alexandria",1,0,"Micah",0,1,1
+"889","el-Yousef, Nawaal",0,1,"Waseem",0,0,0
+"890","Ahmed, Sarye",0,0,"Tevin",0,1,1
+"891","Rollins-Niblet, Gwynneisha",1,0,"Jennifer",1,0,1
+"892","Benally, Alexandra",1,0,"Revae",0,0,0
+"893","Vial, Kacee",0,0,"Eric",1,1,0
+"894","Doerr, Ariunchimeg",0,1,"Mckenzie",0,0,0
+"895","Ransom, Daniel",0,0,"Hannah",0,0,1
+"896","Waters, Hennessey",0,1,"James",1,1,0
+"897","Adams, Jordan",0,0,"Amanda",0,1,1
+"898","Sintas, Adriana",0,1,"Ryan",0,0,0
+"899","Rodriguez, Briley",0,0,"Kathreen",1,1,1
+"900","Sandoval, Cristian",1,1,"Demi",1,1,0
+"901","al-Dallal, Juwairiya",0,1,"Shaheera",1,0,1
+"902","al-Sarwar, Hasnaa",0,0,"Jay",0,0,1
+"903","Kirby, Rachel",1,1,"Janei",1,0,0
+"904","Pruitt, Diamond",1,0,"Lezbeth",0,0,0
+"905","Barbour, Ashlee",0,1,"Matthew",0,1,0
+"906","Lewis-Wilde, Westen",0,0,"Joselyn",0,1,0
+"907","Morgan, Kimberlee",0,0,"Raashid",1,0,0
+"908","Wise, Arianna",0,0,"Anasthasia",1,1,0
+"909","el-Wahba, Shakoora",0,0,"Siddeeqi",0,1,1
+"910","Roper, Tierra",1,1,"Salomon",0,1,0
+"911","Carlton, Meagan",0,0,"Victoria",1,0,0
+"912","Stratton, Derrick",0,1,"Shaamila",1,1,1
+"913","Durkin, Jesus",0,0,"Jordan",1,0,1
+"914","Conrad-Buckley, Brandon",0,1,"Macella",1,1,1
+"915","Veloz, Hadley",1,1,"Yaasmeena",1,1,0
+"916","Hatchett, Erin",1,1,"Brianna",0,0,0
+"917","al-Kaber, Haitham",0,0,"Shina",1,0,0
+"918","Adams, Daizha",1,1,"Amanda",1,1,0
+"919","Brown, Angelo",1,0,"Haazima",0,1,1
+"920","al-Fares, Adham",1,0,"Elizabeth",0,1,1
+"921","el-Aydin, Shaaheen",1,1,"Melody",1,0,0
+"922","Lovell, Sebastian",0,0,"Zeena",0,0,0
+"923","Anderson, Maria",0,0,"Nia",0,0,1
+"924","al-Matin, Quraish",1,1,"Jaideep",0,1,1
+"925","White, Jamiah",1,1,"Vanessa",0,0,1
+"926","Torres, Jesus",1,1,"Mayra",1,0,0
+"927","Gamel, Ashtyn",0,1,"Jordan",1,1,0
+"928","Waititi, Li",0,1,"Brandon",1,0,1
+"929","O'Neil, Jacob",0,1,"Jennifer",1,1,1
+"930","Reza, Susie",0,0,"Carmen",1,1,0
+"931","Galera, Jane",1,0,"Mikayla",0,1,0
+"932","Arritola, Fernando",0,0,"Blas",0,0,0
+"933","el-Rafiq, Haamid",1,0,"Colton",0,0,0
+"934","el-Saladin, Naseera",0,1,"Seth",1,0,1
+"935","Jefferson, Georgina",0,1,"Whitney",0,0,0
+"936","al-Habibi, Khaalida",1,1,"Gabriel",1,0,1
+"937","Robison, Lexxus",0,0,"Gia",0,0,1
+"938","Montes-Olivas, Chantel",0,0,"Kafui",1,0,0
+"939","Yang, John",0,1,"Safwa",1,0,0
+"940","Leon, Jesus",1,1,"Alexander",1,1,0
+"941","el-Barakat, Almaasa",1,0,"Corissa",0,1,1
+"942","Shirley, Russell",1,0,"Anthaneisha",0,1,1
+"943","Crawford, Eris",1,0,"Kiran",0,0,1
+"944","al-Sharifi, Muaaid",0,1,"Ahmed",0,0,1
+"945","el-Kamel, Lubaaba",1,0,"Zaamil",1,0,1
+"946","Moore, Austin",1,1,"Hysendra",1,1,0
+"947","Hauptli, Aaron",1,0,"Bianca",0,0,1
+"948","Nguyen, Heaven",1,1,"Donovan",0,0,1
+"949","Akhihiero, Danielle",1,1,"Chauntel",1,0,0
+"950","el-Shad, Badri",1,0,"Claire",1,1,1
+"951","el-Shafi, Imraan",0,0,"Destiny",1,1,1
+"952","Nguyen, Brian",0,1,"Ulysses",1,1,0
+"953","Stacy, Christopher",1,0,"Daniel",0,0,0
+"954","Lujan, Nhi",1,1,"Ariel",0,0,0
+"955","Curran, Michelle",1,1,"David",1,0,0
+"956","Navarette, Hayden",0,1,"Justin",0,0,1
+"957","Kingman, Shaneth",0,0,"Selena",1,0,1
+"958","Vargas-Gutierrez, Adilene",1,0,"Jordan",1,1,0
+"959","al-Jalil, Haajid",1,1,"Fermin",1,1,1
+"960","Ironcloud, Alysia",0,1,"Matthew",0,1,1
+"961","Mckenzie, Devin",0,0,"Tiana",0,1,1
+"962","Brave, Brandon",0,0,"Rikk",0,0,0
+"963","Aptidon, Deidre",1,1,"Mahfoodha",0,1,1
+"964","Ramirez, Jasmine",1,1,"Alysse",0,1,0
+"965","Cameron, Naja",1,0,"Rachel",1,1,0
+"966","al-Tawil, Dhaafir",0,1,"Mimi",1,0,0
+"967","Murphy, Sean",0,1,"Sasha",0,1,1
+"968","Koskovich, Jazlyn",0,1,"Lindsay",1,1,1
+"969","Scarborough, Sergio",1,1,"Stephen",1,1,1
+"970","Nguyen, Michael",0,1,"Jasmine",0,1,1
+"971","al-Rauf, Abdul Baari",0,0,"James",0,1,1
+"972","Vasques Villicana, Dustin",0,0,"Raven",1,1,1
+"973","al-Daoud, Ghaali",1,0,"Xavier",0,1,1
+"974","Yoshimiya, Christenia",1,1,"Robert",0,0,0
+"975","Levshakoff Jr, Alma",0,1,"Dontaye",0,0,0
+"976","Jiang, Anthony",1,1,"Paris",1,1,0
+"977","Newsom, Eric",1,1,"Justin",1,0,0
+"978","Flores, Devon",0,0,"Emma",1,0,0
+"979","Bowen, Anna",0,0,"Diandra",0,1,1
+"980","Vang, Cheryl",0,0,"Jaarallah",1,0,1
+"981","Barron, Miranda",1,1,"Brittany",1,1,1
+"982","Malle, Makenzie",0,1,"Erasmo",1,1,1
+"983","Mganga, Jordan",1,1,"Nalye",1,0,0
+"984","Montoya, Rebekah",1,1,"Itzel",0,0,1
+"985","Schek, David",0,1,"Thomas",0,0,1
+"986","Lynn, Alyvia",0,1,"May",0,0,1
+"987","Catholic, Renise",0,1,"Samuel",1,1,1
+"988","Puentes, Selene",1,0,"Micah",0,1,1
+"989","Ross-Gaymon, Haven",0,1,"Waseem",0,0,0
+"990","Begay, Grant",0,0,"Tevin",0,1,1
+"991","Jeon, Jason",1,0,"Jennifer",1,0,1
+"992","Hinton, Brigid",1,0,"Revae",0,0,0
+"993","Do, Jari",0,0,"Eric",1,1,0
+"994","el-Wakim, Raaniya",0,1,"Mckenzie",0,0,0
+"995","Kramer, Madeline",0,0,"Hannah",0,0,1
+"996","Nguyen, Nathaniel",0,1,"James",1,1,0
+"997","al-Sabir, Umar",0,0,"Amanda",0,1,1
+"998","Schultz, Brice",0,1,"Ryan",0,0,0
+"999","Hughes, Nasir",0,0,"Kathreen",1,1,1
+"1000","al-Hoda, Tuhfa",1,1,"Demi",1,1,0
+"1001","al-Zaher, Jaad",0,1,"Shaheera",1,0,1
+"1002","Bishop, Monica",0,0,"Jay",0,0,1
+"1003","Creel, Eli",1,1,"Janei",1,0,0
+"1004","Hays, Oliva",1,0,"Lezbeth",0,0,0
+"1005","Sheafe, Salman",0,1,"Matthew",0,1,0
+"1006","Hoffman, Bhewattie",0,0,"Joselyn",0,1,0
+"1007","Purnell, Nyemia",0,0,"Raashid",1,0,0
+"1008","Nguyen, Anthony",0,0,"Anasthasia",1,1,0
+"1009","Harmon, Todd",0,0,"Siddeeqi",0,1,1
+"1010","Vallie, Loretta",1,1,"Salomon",0,1,0
+"1011","Cordova, Sarahy",0,0,"Victoria",1,0,0
+"1012","Ocampo, Samantha",0,1,"Shaamila",1,1,1
+"1013","Savoy, Wesley",0,0,"Jordan",1,0,1
+"1014","Macias, Jasmin",0,1,"Macella",1,1,1
+"1015","Miller, Ashley",1,1,"Yaasmeena",1,1,0
+"1016","al-Irani, Hameeda",1,1,"Brianna",0,0,0
+"1017","el-Samaan, Nabeel",0,0,"Shina",1,0,0
+"1018","Shaw, Aleyha",1,1,"Amanda",1,1,0
+"1019","Gurreri, Keith",1,0,"Haazima",0,1,1
+"1020","Williams, Patience",1,0,"Elizabeth",0,1,1
+"1021","Chapa, K'Lyn",1,1,"Melody",1,0,0
+"1022","Perez, Shenandoah",0,0,"Zeena",0,0,0
+"1023","Thome, Connor",0,0,"Nia",0,0,1
+"1024","Lawson, Shanta",1,1,"Jaideep",0,1,1
+"1025","Sheehan, Robert",1,1,"Vanessa",0,0,1
+"1026","el-Semaan, Safiyya",1,1,"Mayra",1,0,0
+"1027","Scarborough, Denzel",0,1,"Jordan",1,1,0
+"1028","Diep, Monica",0,1,"Brandon",1,0,1
+"1029","Scott, Mikayla",0,1,"Jennifer",1,1,1
+"1030","Wing, Rose",0,0,"Carmen",1,1,0
+"1031","Vivens, Jasmine",1,0,"Mikayla",0,1,0
+"1032","al-Hammad, Sufyaan",0,0,"Blas",0,0,0
+"1033","Whiteskunk, Stephanie",1,0,"Colton",0,0,0
+"1034","English, Antonio",0,1,"Seth",1,0,1
+"1035","Rios, Vanessa",0,1,"Whitney",0,0,0
+"1036","Barnes, Yvette",1,1,"Gabriel",1,0,1
+"1037","Flores Benitez, Saul",0,0,"Gia",0,0,1
+"1038","Gutierrez, Ivan",0,0,"Kafui",1,0,0
+"1039","Sawyer, Leon Hunter",0,1,"Safwa",1,0,0
+"1040","Xiong, William",1,1,"Alexander",1,1,0
+"1041","Orona, Casey",1,0,"Corissa",0,1,1
+"1042","Angeles-Ortega, Carlita",1,0,"Anthaneisha",0,1,1
+"1043","el-Guler, Naqaa",1,0,"Kiran",0,0,1
+"1044","el-Hariri, Awda",0,1,"Ahmed",0,0,1
+"1045","Thornock, Elijah",1,0,"Zaamil",1,0,1
+"1046","Stillman, Kenisa",1,1,"Hysendra",1,1,0
+"1047","Zarabia, Jazper",1,0,"Bianca",0,0,1
+"1048","el-Jabbar, Jalaal",1,1,"Donovan",0,0,1
+"1049","Addison, Reese",1,1,"Chauntel",1,0,0
+"1050","Rivera, Amanda",1,0,"Claire",1,1,1
+"1051","Taylor, Eli",0,0,"Destiny",1,1,1
+"1052","Chavez, Orson",0,1,"Ulysses",1,1,0
+"1053","Hu, Bijan",1,0,"Daniel",0,0,0
+"1054","el-Shaker, Maaiz",1,1,"Ariel",0,0,0
+"1055","Navarro, Robert",1,1,"David",1,0,0
+"1056","Dart, Ricardo",0,1,"Justin",0,0,1
+"1057","Wheeler, Kelsey",0,0,"Selena",1,0,1
+"1058","Galligan, Tyler",1,0,"Jordan",1,1,0
+"1059","el-Bashir, Labeeb",1,1,"Fermin",1,1,1
+"1060","al-Lodi, Masood",0,1,"Matthew",0,1,1
+"1061","el-Afzal, Naqiyya",0,0,"Tiana",0,1,1
+"1062","Rosas, Stephanie",0,0,"Rikk",0,0,0
+"1063","Zaragoza-Madrid, Tre",1,1,"Mahfoodha",0,1,1
+"1064","Yanez Olivas, Sindy",1,1,"Alysse",0,1,0
+"1065","Martin, Shamari",1,0,"Rachel",1,1,0
+"1066","Ridge, Elisha",0,1,"Mimi",1,0,0
+"1067","al-Attar, Muntasir",0,1,"Sasha",0,1,1
+"1068","Jones, Tyko",0,1,"Lindsay",1,1,1
+"1069","al-Zaidi, Yusri",1,1,"Stephen",1,1,1
+"1070","Feng, Mckylaa",0,1,"Jasmine",0,1,1
+"1071","Kierstead, Morgan",0,0,"James",0,1,1
+"1072","Benage, Lawrence",0,0,"Raven",1,1,1
+"1073","Obrien, Erin",1,0,"Xavier",0,1,1
+"1074","London, Yosief",1,1,"Robert",0,0,0
+"1075","Vasquez, Brandi",0,1,"Dontaye",0,0,0
+"1076","Solis, Alfredo",1,1,"Paris",1,1,0
+"1077","Callahan, Rylee",1,1,"Justin",1,0,0
+"1078","Kleinkopf, Jacinda",0,0,"Emma",1,0,0
+"1079","Nieves, Cassandra",0,0,"Diandra",0,1,1
+"1080","Smith, Jaelun",0,0,"Jaarallah",1,0,1
+"1081","Andrew, Noalani",1,1,"Brittany",1,1,1
+"1082","Cardenas, Kashmiere",0,1,"Erasmo",1,1,1
+"1083","Sanders, Jhane",1,1,"Nalye",1,0,0
+"1084","Rutjes, Shawn",1,1,"Itzel",0,0,1
+"1085","Bohannon Pea, Nora",0,1,"Thomas",0,0,1
+"1086","el-Kamel, Mujaahida",0,1,"May",0,0,1
+"1087","Srinivasan, Sung-Jin",0,1,"Samuel",1,1,1
+"1088","Mizoue, Khrishan",1,0,"Micah",0,1,1
+"1089","el-Hameed, Hawraa",0,1,"Waseem",0,0,0
+"1090","Liang, Elly",0,0,"Tevin",0,1,1
+"1091","Hickey, Silin",1,0,"Jennifer",1,0,1
+"1092","Gibson, Chanelle",1,0,"Revae",0,0,0
+"1093","al-Jabbour, Jubair",0,0,"Eric",1,1,0
+"1094","Archuleta, Robert",0,1,"Mckenzie",0,0,0
+"1095","Johnson, Hayley",0,0,"Hannah",0,0,1
+"1096","al-Salehi, Rayyaan",0,1,"James",1,1,0
+"1097","Bradley, Olivet",0,0,"Amanda",0,1,1
+"1098","Yu, Josiah",0,1,"Ryan",0,0,0
+"1099","Shefelbine, Austin",0,0,"Kathreen",1,1,1
+"1100","al-Munir, Hiwaaya",1,1,"Demi",1,1,0
+"1101","al-Hamdan, Abdul Fattaah",0,1,"Shaheera",1,0,1
+"1102","Toothaker, Chase",0,0,"Jay",0,0,1
+"1103","Hoyt, Benjamin",1,1,"Janei",1,0,0
+"1104","al-Quadri, Muneeb",1,0,"Lezbeth",0,0,0
+"1105","al-Iman, Izza",0,1,"Matthew",0,1,0
+"1106","Bogle, Briana",0,0,"Joselyn",0,1,0
+"1107","Ahn, Joshua",0,0,"Raashid",1,0,0
+"1108","Gonzalez, Enrique",0,0,"Anasthasia",1,1,0
+"1109","Mason, Daniel",0,0,"Siddeeqi",0,1,1
+"1110","Love, Tiera",1,1,"Salomon",0,1,0
+"1111","al-Jafri, Sharaf",0,0,"Victoria",1,0,0
+"1112","Etchells, Jeremy",0,1,"Shaamila",1,1,1
+"1113","Burch, Brittany",0,0,"Jordan",1,0,1
+"1114","el-Amiri, Hanaan",0,1,"Macella",1,1,1
+"1115","Hosseini, Anthony",1,1,"Yaasmeena",1,1,0
+"1116","Martinez, Katherine",1,1,"Brianna",0,0,0
+"1117","Torres, Jacob",0,0,"Shina",1,0,0
+"1118","Israel, Sabrina",1,1,"Amanda",1,1,0
+"1119","Lim, Ze-Hong",1,0,"Haazima",0,1,1
+"1120","Pride, Jasmine",1,0,"Elizabeth",0,1,1
+"1121","Rowley, Courtney",1,1,"Melody",1,0,0
+"1122","Krause, Trenton",0,0,"Zeena",0,0,0
+"1123","Jungbauer, Breanna",0,0,"Nia",0,0,1
+"1124","Montanez, James",1,1,"Jaideep",0,1,1
+"1125","Arnsdorf, Brendan",1,1,"Vanessa",0,0,1
+"1126","Gonzales, Gabriel",1,1,"Mayra",1,0,0
+"1127","Slowman, Aaron",0,1,"Jordan",1,1,0
+"1128","Basak, Davy",0,1,"Brandon",1,0,1
+"1129","Peters Jr, Jordan",0,1,"Jennifer",1,1,1
+"1130","Lewis, Devinn",0,0,"Carmen",1,1,0
+"1131","Correa, Ashley",1,0,"Mikayla",0,1,0
+"1132","el-Azer, Sameera",0,0,"Blas",0,0,0
+"1133","Mendez, Justin",1,0,"Colton",0,0,0
+"1134","Felicia, Jessica",0,1,"Seth",1,0,1
+"1135","Carnahan, Verbal",0,1,"Whitney",0,0,0
+"1136","al-Mowad, Baasim",1,1,"Gabriel",1,0,1
+"1137","Espinoza, Jeremiah",0,0,"Gia",0,0,1
+"1138","Simion, Mai",0,0,"Kafui",1,0,0
+"1139","Nakyanzi, Nathaniel",0,1,"Safwa",1,0,0
+"1140","Hawkins, Shannon",1,1,"Alexander",1,1,0
+"1141","Thompson, Michael",1,0,"Corissa",0,1,1
+"1142","el-Karimi, Haafiza",1,0,"Anthaneisha",0,1,1
+"1143","el-Farrah, Haneef",1,0,"Kiran",0,0,1
+"1144","Dela Cruz, Gia",0,1,"Ahmed",0,0,1
+"1145","Bowman, Dante",1,0,"Zaamil",1,0,1
+"1146","Fleskes, Elizabeth",1,1,"Hysendra",1,1,0
+"1147","Dale, Carl",1,0,"Bianca",0,0,1
+"1148","el-Ghattas, Katheer",1,1,"Donovan",0,0,1
+"1149","Thompson, Danielle",1,1,"Chauntel",1,0,0
+"1150","Mberwa, Dominique",1,0,"Claire",1,1,1
+"1151","Miranda, Meilani",0,0,"Destiny",1,1,1
+"1152","Gardner, Trent",0,1,"Ulysses",1,1,0
+"1153","Mcnear, Lorenzo",1,0,"Daniel",0,0,0
+"1154","Hamilton, Tarah",1,1,"Ariel",0,0,0
+"1155","Steinbach, Kaitlyn",1,1,"David",1,0,0
+"1156","Alarid, Tanisha",0,1,"Justin",0,0,1
+"1157","Nguyen, Kelly",0,0,"Selena",1,0,1
+"1158","Tschudy, Dillon",1,0,"Jordan",1,1,0
+"1159","Virnich, Jace",1,1,"Fermin",1,1,1
+"1160","Ouch, Anna",0,1,"Matthew",0,1,1
+"1161","Gold II, Alyssa",0,0,"Tiana",0,1,1
+"1162","Gifford, Devante",0,0,"Rikk",0,0,0
+"1163","Ordonez, Breann",1,1,"Mahfoodha",0,1,1
+"1164","Ironcloud, Nathaniel",1,1,"Alysse",0,1,0
+"1165","al-Khan, Hiwaaya",1,0,"Rachel",1,1,0
+"1166","Tran, Nicholas",0,1,"Mimi",1,0,0
+"1167","Taylor, Francesca",0,1,"Sasha",0,1,1
+"1168","Vang, Scott",0,1,"Lindsay",1,1,1
+"1169","al-Karimi, Rabi",1,1,"Stephen",1,1,1
+"1170","Ngo, Ginger",0,1,"Jasmine",0,1,1
+"1171","el-Mahdi, Rafeeqa",0,0,"James",0,1,1
+"1172","al-Mousa, Tufail",0,0,"Raven",1,1,1
+"1173","al-Samra, Haakima",1,0,"Xavier",0,1,1
+"1174","Mcgee, Karis",1,1,"Robert",0,0,0
+"1175","el-Kamali, Najlaa",0,1,"Dontaye",0,0,0
+"1176","Guevara, Dario",1,1,"Paris",1,1,0
+"1177","Lacour, Deion",1,1,"Justin",1,0,0
+"1178","Childs, Andrew",0,0,"Emma",1,0,0
+"1179","Evangelista, Katelyn",0,0,"Diandra",0,1,1
+"1180","Mcneil, Camille",0,0,"Jaarallah",1,0,1
+"1181","Lehi, Cheyanne",1,1,"Brittany",1,1,1
+"1182","al-Saab, Nasreen",0,1,"Erasmo",1,1,1
+"1183","el-Ramadan, Ya'eesh",1,1,"Nalye",1,0,0
+"1184","Phillips, Samantha",1,1,"Itzel",0,0,1
+"1185","Nguyen, Mythreyi",0,1,"Thomas",0,0,1
+"1186","Leaf, Jazmine",0,1,"May",0,0,1
+"1187","Bruno, Michelle",0,1,"Samuel",1,1,1
+"1188","Broderick, Emily",1,0,"Micah",0,1,1
+"1189","al-Mahdavi,  Sakeena",0,1,"Waseem",0,0,0
+"1190","Salazar, Fred",0,0,"Tevin",0,1,1
+"1191","Ortiz, Tory",1,0,"Jennifer",1,0,1
+"1192","Elizondo, Anjel",1,0,"Revae",0,0,0
+"1193","Furia, Heather",0,0,"Eric",1,1,0
+"1194","Vanstraten, Jacob",0,1,"Mckenzie",0,0,0
+"1195","Wee, Seth",0,0,"Hannah",0,0,1
+"1196","Ganaway, Andrew",0,1,"James",1,1,0
+"1197","Tang, Beni",0,0,"Amanda",0,1,1
+"1198","James, Briana",0,1,"Ryan",0,0,0
+"1199","Romero, Zachary",0,0,"Kathreen",1,1,1
+"1200","Kocsis, Collin",1,1,"Demi",1,1,0
