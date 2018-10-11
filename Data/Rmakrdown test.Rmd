@@ -1,5 +1,6 @@
 ---
 title: "ICON8002 SNA"
+date: '`r format(Sys.Date())`'
 output: pdf_document
 ---
 
