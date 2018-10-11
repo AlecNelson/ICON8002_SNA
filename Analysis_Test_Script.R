@@ -1,7 +1,7 @@
 # Data Processing for ICON 8002
 # This script serves the purpose of generating data with various input
 # formats for use in developing SNA tool
-# Edited on 10/10/18 - AHN
+# Edited on 10/11/18 - AHN
 
 ### NOTE: Run all code at once and then view output tables. Edge attribute sheets are dependent upon random name generation in Vertex Sheet.
 
