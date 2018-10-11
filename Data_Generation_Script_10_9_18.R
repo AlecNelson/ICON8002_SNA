@@ -1,15 +1,15 @@
 # Data Processing for ICON 8002
 # This script serves the purpose of generating data with various input
 # formats for use in developing SNA tool
-# Edited on 10/9/18 - BBB
+# Edited on 10/10/18 - AHN
 
 ### NOTE: Run all code at once and then view output tables. Edge attribute sheets are dependent upon random name generation in Vertex Sheet.
 
 ############################
-#basedirectory <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA"
+#basedirectory <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA"
 basedirectory <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA"
 
-#inputdata_path <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA\\Data"
+#inputdata_path <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA/Data"
 input_datapath <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA/Data"
 
 vertex_datapath <- "vertex_test_df.csv"
@@ -19,7 +19,7 @@ edge_org_datapath <- "edge_org_test_df.csv"
 setwd(input_datapath)
 
 #List packages used
-list.of.packages <- c("igraph","randomNames","fabricatr")
+list.of.packages <- c("igraph","randomNames","fabricatr","gtools")
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)){install.packages(new.packages)} 
@@ -178,7 +178,7 @@ q9a.black.gill.influence.expl.vq <- ifelse(q9.black.gill.influence.vq == "Strong
 # Answer choices: Yes, No
 # Output: qualitative binary
 
-qX.black.gill.observed.vq <- sample(binary.qual.options, n, replace = T)
+q10.black.gill.observed.vq <- sample(binary.qual.options, n, replace = T)
 
 # 10a. If yes, in which of the following coastal shrimping areas have you caught shrimp with black gill disease?
 # Answer choices: North of Savannah, Between Sapelo Island and Savannah, Between St. Simons Island and Sapelo Island, Between St. Simons Island and Jekyll Island,
@@ -187,18 +187,20 @@ qX.black.gill.observed.vq <- sample(binary.qual.options, n, replace = T)
 
 black.gill.location.options <- c("North of Savannah", "Between Sapelo Island and Savannah", "Between St. Simons Island and Sapelo Island", "Between St. Simons Island and Jekyll Island",
                          "South of Jekyll Island")
-qXa.black.gill.location.vq <- ifelse(qX.black.gill.observed.vq == "Yes", sample(black.gill.location.options, n, replace = T), "N/A")
+q10a.black.gill.location.vq <- ifelse(q10.black.gill.observed.vq == "Yes", sample(black.gill.location.options, n, replace = T), "N/A")
 
 # 10b. If yes, approximately when did you first observe black gill in your catch (how many years ago)?
 # Answer choices: none
 # Output: free response, but likely continuous integer
 
-qXb.black.gill.time.vq <- ifelse(qX.black.gill.observed.vq == "Yes", sample(c(1:15), n, replace = T), "N/A")
+q10b.black.gill.time.vq <- ifelse(q10.black.gill.observed.vq == "Yes", sample(c(1:15), n, replace = T), "N/A")
 
 ########## End Vertex sheet questions. Now time to put it all together into one data frame
 
 # tag for vertex sheet questions = ".vq"
 vq<-ls(pattern = ".vq")
+
+vq<-mixedsort(vq)
 
 vertex.test.df <-as.data.frame(cbind(ego.df, profession.df,as.data.frame(mget(vq))))
 
@@ -310,40 +312,42 @@ q9.personal.interaction.freq.eiq <- sample(interaction.freq.options, n.edge.indi
 # high price of fuel and boat maintenance, dock or regulatory complaints) with this individual?
 # Output: binary qualitative
 
-qXI.hardship.discuss.eiq <- sample(binary.qual.options, n.edge.indiv, replace = T)
+q11.hardship.discuss.eiq <- sample(binary.qual.options, n.edge.indiv, replace = T)
 
 # 12. I have a healthy, productive, pleasant working relationship with this individual
 # Output: qualitative categorical agree options
 
-qXII.positive.wk.relationship.eiq <- sample(agree.options, n.edge.indiv, replace = T)
+q12.positive.wk.relationship.eiq <- sample(agree.options, n.edge.indiv, replace = T)
 
 # 13. Please rate the quality of your working relationship with this individual from 0 (extremely unproductive, unenjoyable)
 # to 10 (extremely productive, enjoyable). 
 # Output: numerical likert scale from 0 (bad) to 10 (good)
 
-qXIII.wk.relationship.quality.eiq <- sample(c(0:10), n.edge.indiv, replace = T)
+q13.wk.relationship.quality.eiq <- sample(c(0:10), n.edge.indiv, replace = T)
 
 # 14. This individual contributes to the well-being and sustainability of the Georgia coastal shrimp industry
 # Output: qualitative categorical with possible explanation
 
-qXIV.sust.industry.contribution.eiq <- sample(agree.options, n.edge.indiv, replace = T)
+q14.sust.industry.contribution.eiq <- sample(agree.options, n.edge.indiv, replace = T)
 
 # 15. Please rank your level of trust of this individual in a professional, work-related context from 0 (I do not trust this person)
 # to 10 (I trust this person completely).
 # Output: numerical likert scale from 0 (bad) to 10 (good)
 
-qXV.trust.level.eiq <- sample(c(0:10), n.edge.indiv, replace = T)
+q15.trust.level.eiq <- sample(c(0:10), n.edge.indiv, replace = T)
 
 # 16. Please rank your willingness to interact with this individual in a professional, work-related context from 0 (I only work with this person because it is absolutely necessary)
 # to 10 (I go out of my way to work with this person).
 # Output: numerical likert scale from 0 (bad) to 10 (good)
 
-qXVI.willingness.to.wk.with.eiq <- sample(c(0:10), n.edge.indiv, replace = T)
+q16.willingness.to.wk.with.eiq <- sample(c(0:10), n.edge.indiv, replace = T)
 
 ########## End Edge (individual to individual) sheet questions. Now time to put it all together into one data frame
 
 # tag for edge individual sheet questions = ".eiq"
 eiq<-ls(pattern = ".eiq")
+
+eiq<-mixedsort(eiq)
 
 edge.indiv.test.df <-as.data.frame(cbind(alter.test.df,as.data.frame(mget(eiq))))
 
@@ -457,15 +461,14 @@ q9.willingness.wk.org.eoq <- sample(c(0:10), n.edge.org, replace=T)
 # tag for edge individual sheet questions = ".eiq"
 eoq<-ls(pattern = ".eoq")
 
+eoq<-mixedsort(eoq)
+
 edge.org.test.df <-as.data.frame(cbind(alter.org.test.df,as.data.frame(mget(eoq))))
 
 names(edge.org.test.df)[1]="ego"
 names(edge.org.test.df)[2]="organization"
 
 write.csv(edge.org.test.df,"edge_org_test_df.csv")
-
-# note that data frame elements are titled "q1..." to designate the question they pertain to and 
-# get around the "mget" function alphabetical ordering. Switch to roman numerals at Q10.  
 
 #### NOTE: need to run all code at once because Sheets 2 and 3 (edge attribute sheets) are dependent on random name generation in vertex sheet
 
