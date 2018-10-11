@@ -134,19 +134,19 @@ q4.opinions.considered.vq <- sample(agree.options, n, replace = T)
 binary.qual.options <- c("Yes", "No")
 q5.DNR.mtg.vq <- sample(binary.qual.options, n, replace = T)
 
-# 6. Which dock do you use?
+# 6a. Which dock do you use?
 # Answer choices: none
 # Output: free response
 
 # creating hypothetical dock list for data generation purposes
 dock.options <- c("Brunswick Dock", "Savannah Dock", "Piedmont Dock", "South GA Dock", "Derrien Dock", "St. Simons Dock", "Jekyll Dock")
-q6.primary.dock.vq <- sample(dock.options, n, replace = T)
+q6a.primary.dock.vq <- sample(dock.options, n, replace = T)
 
-# 6a. If you use multiple docks, list them here
+# 6b. If you use multiple docks, list them here
 # Answer choices: none
 # Output: free response
 
-q6a.additional.dock.vq <- sample(c(dock.options, "N/A"), n, replace = T, p = c(.028571429, .028571429, .028571429, .028571429, .028571429, .028571429, .028571429, 0.8))
+q6b.additional.dock.vq <- sample(c(dock.options, "N/A"), n, replace = T, p = c(.028571429, .028571429, .028571429, .028571429, .028571429, .028571429, .028571429, 0.8))
 
 # 7. Where is your primary dock located?
 # Answer choices: none
@@ -162,38 +162,60 @@ q7.dock.location.vq <- sample(dock.location.options, n, replace = T)
 
 q8.dock.influence.fish.vq <- sample(agree.options, n, replace = T)
 
-# 9. Black gill disease in coastal shrimp has influenced where and how you shrimp
+# 9a. Black gill disease in coastal shrimp has influenced where and how you shrimp
 # Answer choices: Strongly agree, agree, neutral, disagree, strongly disagree
 # Output: likert scale qualitative
 
-q9.black.gill.influence.vq <- sample(agree.options, n, replace = T)
+q9a.black.gill.influence.vq <- sample(agree.options, n, replace = T)
 
-# 9a. If so, how?
+# 9b. If so, how?
 # Output: free response
 
-q9a.black.gill.influence.expl.vq <- ifelse(q9.black.gill.influence.vq == "Strongly agree" | q9.black.gill.influence.vq == "Agree", "Explanation", "N/A")
+q9b.black.gill.influence.expl.vq <- ifelse(q9a.black.gill.influence.vq == "Strongly agree" | q9a.black.gill.influence.vq == "Agree", "Explanation", "N/A")
 
-
-# 10. Have you observed black gill disease in your shrimp catch? 
+# 10a. Have you observed black gill disease in your shrimp catch? 
 # Answer choices: Yes, No
 # Output: qualitative binary
 
-q10.black.gill.observed.vq <- sample(binary.qual.options, n, replace = T)
+q10a.black.gill.observed.vq <- sample(binary.qual.options, n, replace = T)
 
-# 10a. If yes, in which of the following coastal shrimping areas have you caught shrimp with black gill disease?
+# 10b. If yes, in which of the following coastal shrimping areas have you caught shrimp with black gill disease?
 # Answer choices: North of Savannah, Between Sapelo Island and Savannah, Between St. Simons Island and Sapelo Island, Between St. Simons Island and Jekyll Island,
 # South of Jekyll Island
 # Output: qualitative categorical
 
 black.gill.location.options <- c("North of Savannah", "Between Sapelo Island and Savannah", "Between St. Simons Island and Sapelo Island", "Between St. Simons Island and Jekyll Island",
                                  "South of Jekyll Island")
-q10a.black.gill.location.vq <- ifelse(q10.black.gill.observed.vq == "Yes", sample(black.gill.location.options, n, replace = T), "N/A")
+q10b.black.gill.location.vq <- ifelse(q10a.black.gill.observed.vq == "Yes", sample(black.gill.location.options, n, replace = T), "N/A")
 
-# 10b. If yes, approximately when did you first observe black gill in your catch (how many years ago)?
+# 10c. If yes, approximately when did you first observe black gill in your catch (how many years ago)?
 # Answer choices: none
 # Output: free response, but likely continuous integer
 
-q10b.black.gill.time.vq <- ifelse(q10.black.gill.observed.vq == "Yes", sample(c(1:15), n, replace = T), "N/A")
+q10c.black.gill.time.vq <- ifelse(q10a.black.gill.observed.vq == "Yes", sample(c(1:15), n, replace = T), "N/A")
+
+# 11. Describe the current economic condition (ex. available market, pricing, transportation) of the 
+# shrimping/fishing industry on the Georgia coast.
+# Output: qualitative categorical likert
+# Answer choices: Very good, good, fair, poor, very poor
+
+quality.choices <- c("Very good", "Good", "Fair", "Poor", "Very poor")
+q11.econ.condition.vq <- sample(quality.choices, n, replace = T)
+
+# 12. Describe the current political climate (ex. agency involvement/governmental resources) of the shrimping/fishing
+# industry on the Georgia Coast.
+# Output: qualitative categorical likert
+# Answer choices: Very good, good, fair, poor, very poor
+
+q12.political.climate.vq <- sample(quality.choices, n, replace = T)
+
+# 13. How pressing are the current environmental/ecological issues (e.g., black gill disease, changing weather/climatic conditions)
+# of the shrimping/fishing industry on the Georgia coast? 
+# Output: qualitative categorical likert
+# Answer choices: Very pressing, pressing, moderately pressing, slightly pressing, not pressing
+
+pressing.choices <- c("Very pressing", "Pressing", "Moderately pressing", "Slightly pressing", "Not pressing")
+q13.env.eco.issues.vq <- sample(pressing.choices, n, replace = T)
 
 ########## End Vertex sheet questions. Now time to put it all together into one data frame
 
@@ -208,8 +230,7 @@ names(vertex.test.df)[1]="ego"
 
 write.csv(vertex.test.df,"vertex_test_df.csv")
 
-# note that data frame elements are titled "q1..." to designate the question they pertain to and 
-# get around the "mget" function alphabetical ordering. qX... = question 10.  
+# note that data frame elements are titled "q1..." to designate the question they pertain to.  
 
 #################################################################
 
@@ -259,32 +280,32 @@ q2.years.known.eiq <- sample(c(1:30), n.edge.indiv, replace = T)
 
 q3.years.worked.with.eiq <- round(runif(n.edge.indiv, min = 0, max = q2.years.known.eiq))
 
-# 4. Please describe your working relationship to this individual
+# 4a&b. Please describe your working relationship to this individual
 # Output: qualitative categorical, include room for "Explanation" if Other
 
 wk.relationship.options <- c("Employer", "Employee", "Colleague", "Other (please specify)")
-q4.wk.relationship.eiq <- sample(wk.relationship.options, n.edge.indiv, replace = T)
-q4a.wk.relationship.other.eiq <- ifelse(q4.wk.relationship.eiq == "Other (please specify)", "Explanation", "N/A")
+q4a.wk.relationship.eiq <- sample(wk.relationship.options, n.edge.indiv, replace = T)
+q4b.wk.relationship.other.eiq <- ifelse(q4a.wk.relationship.eiq == "Other (please specify)", "Explanation", "N/A")
 
-# 5. What is this individual's role in the Georgia coastal shrimp industry?
+# 5a&b. What is this individual's role in the Georgia coastal shrimp industry?
 # Output: qualitative categorical, include room for "Explanation" if Other
 
 ind.role.options <- c("Shrimper (captain)", "Shrimper (deck hand)", "Fisherman (professional or recreationa)", "Dock owner", "Dock employee", 
                       "Georgia Department of Natural Resources", "Georgia Sea Grant Marine Extention", "Shrimp buyer", "Retired", "Other") 
-q5.ind.role.indiv.eiq <- sample(ind.role.options, n.edge.indiv, replace = T)
-q5a.ind.role.indiv.other.eiq <- ifelse(q5.ind.role.indiv.eiq == "Other", "Explanation", "N/A")
+q5a.ind.role.indiv.eiq <- sample(ind.role.options, n.edge.indiv, replace = T)
+q5b.ind.role.indiv.other.eiq <- ifelse(q5a.ind.role.indiv.eiq == "Other", "Explanation", "N/A")
 
-# 6. Are you related to this individual?
+# 6a. Are you related to this individual?
 # Output: binary qualitative
 
-q6.related.indiv.eiq <- sample(binary.qual.options, n.edge.indiv, replace = T)
+q6a.related.indiv.eiq <- sample(binary.qual.options, n.edge.indiv, replace = T)
 
-# 6a. If yes, how so?
+# 6b&c. If yes, how so?
 # Output: free response
 
 related.options <- c("Parent", "Child", "Spouse or partner", "Cousin", "Other (please specify)")
-q6a.related.descriptor.eiq <- ifelse(q6.related.indiv.eiq == "Yes", sample(related.options, n.edge.indiv, replace = T), "N/A")
-q6b.related.descriptor.other.eiq <- ifelse(q6a.related.descriptor.eiq == "Other (please specify)", "Explain", "N/A")
+q6b.related.descriptor.eiq <- ifelse(q6a.related.indiv.eiq == "Yes", sample(related.options, n.edge.indiv, replace = T), "N/A")
+q6c.related.descriptor.other.eiq <- ifelse(q6b.related.descriptor.eiq == "Other (please specify)", "Explain", "N/A")
 
 # 7. Approximately how frequently do you interact with this individual in a professional, work-related context?
 # Output: categorical qualitative
@@ -448,11 +469,22 @@ q8.trust.level.org.eoq <- sample(c(0:10), n.edge.org, replace=T)
 
 q9.willingness.wk.org.eoq <- sample(c(0:10), n.edge.org, replace=T)
 
-# 10. Please select the group/organization to which you belong, if applicable.
+# 10. How likely are you to discuss issues related to the economic condition of the Georgia coast with this group?
+# Output: qualitative categorical
+# Answer choices: Very likely, somewhat likely, not likely
+
+likelihood.options <- c("Very likely", "Somewhat likely", "Not likely")
+q10.econ.issues.discuss.eoq <- sample(likelihood.options, n.edge.org, replace = T)
+
+# 11. How likely are you to discuss issues related to the political climate of the Georgia coast with this group?
+
+q11.political.climate.discuss.eoq <- sample(likelihood.options, n.edge.org, replace = T)
+
+# 12. Please select the group/organization to which you belong, if applicable.
 # Output: qualitative categorical
 # Self-sorting question
 
-# 11. How long have you been associated/affiliated with this organization in a work-related context?
+# 13. How long have you been associated/affiliated with this organization in a work-related context?
 # Output: continous integer or categorical predetermined year window
 # Self-sorting question
 
