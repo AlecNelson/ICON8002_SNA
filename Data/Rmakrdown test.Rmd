@@ -1,0 +1,107 @@
+---
+title: "ICON8002 SNA"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r, include=F}
+input_datapath <- "C:/Users/solit/Documents/GitHub/ICON8002_SNA/Data"
+
+vertex_datapath<-"vertex_test_df.csv"
+edge_datapath<-"edge_test_df.csv"
+
+setwd(input_datapath)
+
+list.of.packages <- c("igraph","randomNames","fabricatr", "rmarkdown")
+
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)){install.packages(new.packages)} 
+lapply(list.of.packages, require, character.only = TRUE)
+
+vertex<- read.csv(vertex_datapath,header=T, row.names = 1)
+edge<- read.csv(edge_datapath,header=T, row.names = 1)
+
+
+unique(sort(vertex$ego)) == unique(sort(edge$ego))
+
+which(unique(sort(vertex$ego)) != unique(sort(edge$ego)))
+
+network <- graph.data.frame(d = edge, vertices = vertex)
+```
+# Network attributes
+```{r, include=F}
+vertex_degree<-as.data.frame(degree(network))
+diameter<-diameter(network)
+closeness<-closeness(network)
+reciprocity<-reciprocity(network)
+ecount<-ecount(network)
+vcount<-vcount(network)
+edge_density<-edge_density(network)
+in.degree<-degree(network,mode="in")
+```
+
+* Diameter
+```{r echo=F}
+diameter
+```
+
+* Reciprocity
+```{r echo=F}
+reciprocity
+```
+* Number of edges
+```{r echo=F}
+ecount
+```
+* Number of egos
+```{r echo=F}
+vcount
+```
+* Edge density
+```{r echo=F}
+edge_density
+```
+* Closeness
+```{r echo=F}
+as.data.frame(closeness)
+```
+* Degree
+```{r}
+vertex_degree
+```
+
+* In-degree
+```{r echo=F}
+as.data.frame(in.degree)
+```
+
+
+# Network plot
+
+```{r echo=F}
+
+plot(network,
+     edge.arrow.size=.5,
+     vertex.color=vertex$profession,
+     vertex.size=((in.degree)*1.5),
+     vertex.label=NA,
+     vertex.label.cex=0.7,
+     vertex.label.dist=1,
+     vertex.label.degree=-0.6,
+     main='Test Data Connections (color by profession)',
+     margin=0.0001)
+```
+
+
+
+
+
