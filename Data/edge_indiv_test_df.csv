@@ -1,0 +1,388 @@
+"","ego","alter","q2.years.known.eiq","q3.years.worked.with.eiq","q4a.wk.relationship.other.eiq","q4.wk.relationship.eiq","q5a.ind.role.indiv.other.eiq","q5.ind.role.indiv.eiq","q6a.related.descriptor.eiq","q6b.related.descriptor.other.eiq","q6.related.indiv.eiq","q7.work.interaction.freq.eiq","q9.personal.interaction.freq.eiq","q11.hardship.discuss.eiq","q12.positive.wk.relationship.eiq","q13.wk.relationship.quality.eiq","q14.sust.industry.contribution.eiq","q15.trust.level.eiq","q16.willingness.to.wk.with.eiq"
+"1","Jones, Tianna","Kearns, Destinee",18,7,"N/A","Colleague","N/A","Fisherman (professional or recreationa)","N/A","N/A","No","Weekly","A few times per week","Yes","Strongly disagree",7,"Disagree",8,8
+"2","Jones, Tianna","Floyd, Kyndryk",11,3,"N/A","Employee","N/A","Shrimp buyer","Parent","N/A","Yes","Less than once per month","Less than once per month","No","Neutral",5,"Strongly disagree",10,6
+"3","Valdez, Israel","Gonzalez-Panduro, Anreah",4,2,"N/A","Colleague","N/A","Fisherman (professional or recreationa)","Cousin","N/A","Yes","Less than once per month","Monthly","No","Disagree",9,"Strongly disagree",2,2
+"4","Valdez, Israel","Macchietto, Dominika",16,2,"N/A","Colleague","Explanation","Other","Child","N/A","Yes","Bi-weekly (every other week)","Monthly","Yes","Strongly disagree",0,"Agree",2,0
+"5","Williams, Alyssa","Garrett, Jordan",26,10,"N/A","Employer","Explanation","Other","N/A","N/A","No","Weekly","Monthly","No","Strongly agree",5,"Agree",0,9
+"6","Williams, Alyssa","Stepp, Jeromy",27,6,"Explanation","Other (please specify)","N/A","Dock owner","N/A","N/A","No","Weekly","Weekly","No","Strongly disagree",3,"Strongly disagree",2,3
+"7","Williams, Alyssa","Richardson, Helme",10,10,"N/A","Employer","N/A","Shrimp buyer","Child","N/A","Yes","A few times per month","A few times per month","Yes","Neutral",2,"Disagree",0,5
+"8","Gayle, Matiece","Ramirez, Isaiah",16,7,"N/A","Employer","N/A","Shrimper (captain)","N/A","N/A","No","Monthly","Bi-weekly (every other week)","No","Strongly agree",7,"Neutral",0,6
+"9","Gayle, Matiece","Secunda, Gildardo",13,2,"N/A","Employer","Explanation","Other","Cousin","N/A","Yes","Monthly","A few times per week","No","Strongly agree",8,"Agree",8,6
+"10","Gayle, Matiece","Rodriquez, Tania",8,6,"N/A","Colleague","N/A","Shrimper (deck hand)","Cousin","N/A","Yes","Monthly","A few times per week","Yes","Strongly agree",0,"Neutral",10,3
+"11","Gayle, Matiece","Garcia, Francisco",13,8,"N/A","Employer","N/A","Dock owner","Parent","N/A","Yes","Daily","Daily","Yes","Neutral",1,"Disagree",5,0
+"12","Gayle, Matiece","Vandiest, Chandler",3,2,"N/A","Employer","Explanation","Other","N/A","N/A","No","Bi-weekly (every other week)","Monthly","Yes","Disagree",7,"Disagree",1,9
+"13","Gayle, Matiece","Lara, Nathan",3,3,"Explanation","Other (please specify)","N/A","Dock owner","N/A","N/A","No","Weekly","A few times per week","Yes","Strongly disagree",8,"Strongly disagree",10,2
+"14","Gayle, Matiece","Cotten, Garrett",4,0,"N/A","Colleague","N/A","Fisherman (professional or recreationa)","N/A","N/A","No","Daily","Monthly","Yes","Agree",3,"Strongly disagree",3,6
+"15","Campos, Isaiah","Leisegang, Kailyn",5,0,"Explanation","Other (please specify)","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Less than once per month","Daily","Yes","Strongly agree",4,"Strongly agree",3,2
+"16","Campos, Isaiah","Villa, David",21,1,"Explanation","Other (please specify)","N/A","Georgia Department of Natural Resources","Child","N/A","Yes","Bi-weekly (every other week)","A few times per week","Yes","Agree",2,"Strongly disagree",3,1
+"17","Campos, Isaiah","Leedom, Payge",19,2,"N/A","Colleague","N/A","Shrimp buyer","Child","N/A","Yes","Bi-weekly (every other week)","Monthly","No","Strongly disagree",5,"Disagree",0,8
+"18","Campos, Isaiah","Valdez, Sylvia",28,17,"N/A","Colleague","N/A","Shrimper (deck hand)","Child","N/A","Yes","Weekly","Monthly","No","Agree",0,"Strongly agree",4,4
+"19","Campos, Isaiah","Gayle, Matiece",23,9,"N/A","Employer","N/A","Fisherman (professional or recreationa)","Parent","N/A","Yes","Daily","Monthly","No","Agree",3,"Disagree",3,10
+"20","Campos, Isaiah","Dawson, Marcello",15,4,"Explanation","Other (please specify)","N/A","Fisherman (professional or recreationa)","Cousin","N/A","Yes","A few times per week","Less than once per month","No","Strongly disagree",10,"Strongly disagree",8,9
+"21","Campos, Isaiah","Keesling, Ashlie",20,15,"N/A","Employer","N/A","Fisherman (professional or recreationa)","Cousin","N/A","Yes","Weekly","Daily","Yes","Strongly agree",8,"Strongly agree",4,5
+"22","Narracci, Aaron","Lara, Nathan",15,13,"Explanation","Other (please specify)","N/A","Dock owner","Parent","N/A","Yes","Monthly","A few times per week","No","Neutral",5,"Disagree",5,9
+"23","Narracci, Aaron","Rodriguez, John",30,27,"Explanation","Other (please specify)","N/A","Dock owner","Parent","N/A","Yes","A few times per week","Less than once per month","No","Agree",7,"Neutral",7,10
+"24","Narracci, Aaron","Parker, Gregory",5,3,"N/A","Colleague","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Less than once per month","Monthly","Yes","Agree",0,"Strongly disagree",4,8
+"25","Narracci, Aaron","Huff, Michael",16,3,"N/A","Employee","N/A","Shrimp buyer","Parent","N/A","Yes","A few times per week","A few times per week","No","Neutral",4,"Strongly disagree",9,0
+"26","Narracci, Aaron","Orr, Mikaela",6,3,"N/A","Colleague","Explanation","Other","Cousin","N/A","Yes","A few times per month","A few times per month","Yes","Disagree",4,"Neutral",9,1
+"27","Branch, Johnathon","Huff, Michael",17,11,"N/A","Employer","N/A","Retired","Child","N/A","Yes","Less than once per month","A few times per week","Yes","Agree",7,"Disagree",7,8
+"28","Ramos Coronel, Nayeli","Session, Fabian",25,13,"N/A","Employee","N/A","Shrimper (deck hand)","N/A","N/A","No","Daily","Less than once per month","No","Strongly agree",0,"Strongly disagree",0,7
+"29","Ramos Coronel, Nayeli","Scott, Devante",30,5,"N/A","Employer","N/A","Shrimp buyer","N/A","N/A","No","A few times per month","Less than once per month","Yes","Agree",10,"Strongly disagree",0,0
+"30","Ramos Coronel, Nayeli","Vega, Amanda",4,3,"N/A","Employee","N/A","Fisherman (professional or recreationa)","Cousin","N/A","Yes","Monthly","Bi-weekly (every other week)","Yes","Strongly disagree",0,"Agree",3,4
+"31","Leisegang, Kailyn","Ramirez, Isaiah",4,4,"N/A","Employee","N/A","Fisherman (professional or recreationa)","Spouse or partner","N/A","Yes","Monthly","A few times per month","Yes","Strongly disagree",2,"Strongly agree",6,2
+"32","Floyd, Kyndryk","Scott, Devante",6,1,"N/A","Employee","Explanation","Other","Other (please specify)","Explain","Yes","Monthly","A few times per week","No","Strongly disagree",3,"Strongly disagree",9,8
+"33","Floyd, Kyndryk","Kane, Craig",19,12,"Explanation","Other (please specify)","N/A","Shrimper (captain)","Parent","N/A","Yes","A few times per month","Less than once per month","Yes","Disagree",0,"Neutral",1,3
+"34","Floyd, Kyndryk","Colabello, Sara",14,12,"N/A","Employer","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Bi-weekly (every other week)","A few times per month","Yes","Neutral",5,"Strongly disagree",9,6
+"35","Dominguez Madrid, Daniel","Cotten, Garrett",1,0,"Explanation","Other (please specify)","N/A","Dock owner","Cousin","N/A","Yes","A few times per month","Bi-weekly (every other week)","Yes","Disagree",2,"Disagree",6,9
+"36","Dominguez Madrid, Daniel","Mata, Perla",21,2,"N/A","Colleague","N/A","Fisherman (professional or recreationa)","Other (please specify)","Explain","Yes","Bi-weekly (every other week)","Weekly","Yes","Strongly disagree",5,"Strongly agree",0,10
+"37","Dominguez Madrid, Daniel","Holtestaul, Alexander",10,5,"Explanation","Other (please specify)","Explanation","Other","Spouse or partner","N/A","Yes","Monthly","Bi-weekly (every other week)","No","Neutral",6,"Agree",7,6
+"38","Rose, Daneil","Dominguez Madrid, Daniel",24,13,"Explanation","Other (please specify)","N/A","Shrimp buyer","Other (please specify)","Explain","Yes","Weekly","Monthly","No","Agree",1,"Disagree",4,9
+"39","Rose, Daneil","Foster, Heath",25,3,"Explanation","Other (please specify)","N/A","Shrimp buyer","N/A","N/A","No","A few times per month","Daily","No","Strongly agree",8,"Disagree",9,9
+"40","Rose, Daneil","Parker, Gregory",18,5,"N/A","Employee","N/A","Georgia Sea Grant Marine Extention","Cousin","N/A","Yes","Daily","Monthly","Yes","Strongly disagree",10,"Agree",3,8
+"41","Rose, Daneil","Scott, Devante",9,7,"N/A","Colleague","N/A","Retired","Other (please specify)","Explain","Yes","Monthly","A few times per week","No","Strongly agree",0,"Neutral",5,8
+"42","Hope Crichlow, Alexander","Secunda, Gildardo",28,25,"N/A","Employer","Explanation","Other","N/A","N/A","No","Less than once per month","A few times per month","Yes","Disagree",2,"Neutral",9,0
+"43","Hope Crichlow, Alexander","Cordova, Isabel",12,6,"Explanation","Other (please specify)","N/A","Georgia Department of Natural Resources","N/A","N/A","No","Bi-weekly (every other week)","Less than once per month","Yes","Strongly agree",9,"Agree",9,0
+"44","Hope Crichlow, Alexander","Branch, Johnathon",13,2,"N/A","Employee","N/A","Dock employee","N/A","N/A","No","Bi-weekly (every other week)","Monthly","No","Disagree",0,"Agree",10,4
+"45","Hope Crichlow, Alexander","Turner, Ieesha",17,5,"N/A","Employer","N/A","Dock owner","N/A","N/A","No","A few times per week","Daily","No","Disagree",6,"Agree",5,3
+"46","Sandoval, Anissa","Velasquez, Jose",17,14,"N/A","Employer","N/A","Dock employee","Child","N/A","Yes","Daily","Weekly","No","Strongly disagree",2,"Strongly disagree",10,6
+"47","Sandoval, Anissa","Bair, Chandler",2,1,"N/A","Employee","Explanation","Other","N/A","N/A","No","A few times per month","Weekly","No","Strongly agree",7,"Disagree",7,0
+"48","Sandoval, Anissa","Orr, Mikaela",14,2,"N/A","Employee","N/A","Shrimp buyer","N/A","N/A","No","A few times per week","Daily","Yes","Strongly agree",1,"Strongly agree",10,2
+"49","Sandoval, Anissa","Richardson, Helme",8,2,"N/A","Colleague","N/A","Shrimper (captain)","Child","N/A","Yes","Weekly","Monthly","Yes","Agree",7,"Neutral",10,4
+"50","Sandoval, Anissa","Buck, Logan",28,1,"N/A","Colleague","N/A","Fisherman (professional or recreationa)","N/A","N/A","No","Less than once per month","Weekly","Yes","Strongly agree",6,"Agree",3,8
+"51","Sandoval, Anissa","Ford, Michael",1,0,"N/A","Colleague","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Daily","Monthly","Yes","Disagree",8,"Neutral",5,0
+"52","Sandoval, Anissa","Mike IV, Lamar",4,3,"N/A","Employer","N/A","Shrimper (captain)","N/A","N/A","No","Less than once per month","Monthly","No","Strongly disagree",5,"Neutral",6,9
+"53","Bhatti, Lillian","Lujan, Joshua",25,13,"N/A","Colleague","N/A","Dock employee","Other (please specify)","Explain","Yes","Weekly","Bi-weekly (every other week)","No","Agree",10,"Disagree",8,0
+"54","Kemp, Gracelline","Morris, Sydnee",21,16,"Explanation","Other (please specify)","N/A","Dock employee","Cousin","N/A","Yes","Less than once per month","A few times per week","No","Strongly disagree",0,"Strongly agree",3,1
+"55","Kemp, Gracelline","Valdez, Sylvia",15,12,"N/A","Employee","N/A","Shrimper (captain)","Other (please specify)","Explain","Yes","Monthly","Less than once per month","Yes","Agree",1,"Neutral",1,8
+"56","Kemp, Gracelline","Branch, Johnathon",9,8,"Explanation","Other (please specify)","N/A","Shrimper (deck hand)","N/A","N/A","No","Daily","Daily","Yes","Neutral",5,"Disagree",10,1
+"57","Kemp, Gracelline","Gonzalez-Panduro, Anreah",22,19,"N/A","Colleague","N/A","Shrimp buyer","Other (please specify)","Explain","Yes","Weekly","Bi-weekly (every other week)","Yes","Strongly agree",10,"Strongly disagree",2,7
+"58","Kemp, Gracelline","Simpson II, Ryan",17,16,"N/A","Employee","Explanation","Other","N/A","N/A","No","A few times per week","Daily","Yes","Disagree",2,"Strongly agree",10,0
+"59","Kemp, Gracelline","Olukemi, Kaliyah",28,13,"N/A","Employee","N/A","Shrimper (captain)","N/A","N/A","No","A few times per week","Monthly","No","Agree",6,"Disagree",9,4
+"60","Kemp, Gracelline","Valdez, Israel",10,9,"N/A","Employee","N/A","Retired","N/A","N/A","No","Less than once per month","Weekly","Yes","Strongly disagree",4,"Strongly agree",5,8
+"61","Cabral, Martin","Farmer, Brandon",5,3,"N/A","Employee","N/A","Dock employee","N/A","N/A","No","Monthly","Weekly","Yes","Disagree",9,"Strongly disagree",10,8
+"62","Cabral, Martin","Jones, Tianna",20,15,"N/A","Employee","N/A","Dock owner","N/A","N/A","No","Monthly","Monthly","Yes","Strongly agree",4,"Strongly disagree",7,3
+"63","Cabral, Martin","Huff, Michael",28,3,"Explanation","Other (please specify)","N/A","Georgia Department of Natural Resources","Cousin","N/A","Yes","Weekly","Less than once per month","Yes","Agree",9,"Strongly agree",2,4
+"64","Cabral, Martin","Olukemi, Kaliyah",30,17,"N/A","Employer","Explanation","Other","N/A","N/A","No","A few times per month","Bi-weekly (every other week)","No","Strongly disagree",3,"Strongly disagree",10,8
+"65","Cabral, Martin","Ramos Coronel, Nayeli",8,3,"N/A","Employee","N/A","Shrimper (captain)","Other (please specify)","Explain","Yes","Daily","Daily","Yes","Agree",2,"Strongly agree",2,3
+"66","Cabral, Martin","Soto Arvizo, Roberta",14,11,"N/A","Employee","N/A","Retired","N/A","N/A","No","Monthly","Less than once per month","No","Strongly disagree",0,"Neutral",9,5
+"67","Cabral, Martin","Vega, Amanda",6,6,"Explanation","Other (please specify)","N/A","Retired","Parent","N/A","Yes","A few times per week","A few times per week","No","Disagree",5,"Strongly disagree",5,5
+"68","Ives, Hannah","Lowe, Malik",16,9,"Explanation","Other (please specify)","N/A","Georgia Department of Natural Resources","N/A","N/A","No","A few times per week","A few times per month","Yes","Strongly disagree",9,"Strongly disagree",1,0
+"69","Alexander, Thomas","Scott, Devante",12,3,"Explanation","Other (please specify)","N/A","Shrimper (captain)","Cousin","N/A","Yes","Daily","A few times per month","Yes","Strongly disagree",6,"Agree",4,3
+"70","Alexander, Thomas","Parker, Gregory",20,7,"Explanation","Other (please specify)","N/A","Georgia Department of Natural Resources","Child","N/A","Yes","Daily","Monthly","No","Disagree",10,"Agree",0,9
+"71","Alexander, Thomas","Trinkaus, Austin",3,1,"N/A","Employee","N/A","Dock employee","Cousin","N/A","Yes","Weekly","A few times per week","No","Neutral",3,"Neutral",6,8
+"72","Alexander, Thomas","Simpson II, Ryan",5,4,"Explanation","Other (please specify)","N/A","Georgia Department of Natural Resources","Other (please specify)","Explain","Yes","Monthly","A few times per month","No","Agree",5,"Agree",8,9
+"73","Alexander, Thomas","Leisegang, Kailyn",23,14,"Explanation","Other (please specify)","N/A","Shrimper (deck hand)","N/A","N/A","No","Bi-weekly (every other week)","Weekly","Yes","Strongly agree",1,"Disagree",8,1
+"74","Alexander, Thomas","Lang, Hunter",21,1,"N/A","Employee","N/A","Retired","N/A","N/A","No","Daily","Less than once per month","Yes","Neutral",9,"Strongly disagree",7,6
+"75","Alexander, Thomas","Bhatti, Lillian",20,5,"N/A","Employee","N/A","Shrimp buyer","Spouse or partner","N/A","Yes","Weekly","Bi-weekly (every other week)","No","Strongly agree",9,"Strongly disagree",8,0
+"76","Ramirez, Isaiah","Godoy-Vera, Jesus",20,8,"N/A","Employee","N/A","Dock owner","N/A","N/A","No","Daily","Weekly","Yes","Disagree",1,"Disagree",4,10
+"77","Snow, Madison","Simpson II, Ryan",9,7,"N/A","Colleague","N/A","Shrimper (deck hand)","Parent","N/A","Yes","Bi-weekly (every other week)","Bi-weekly (every other week)","No","Strongly agree",6,"Neutral",2,7
+"78","Snow, Madison","Martinez, Bryanne",22,9,"Explanation","Other (please specify)","N/A","Georgia Department of Natural Resources","Spouse or partner","N/A","Yes","Daily","Weekly","Yes","Agree",7,"Strongly disagree",9,1
+"79","Snow, Madison","Dejac, Jessica",27,7,"N/A","Employer","N/A","Georgia Department of Natural Resources","N/A","N/A","No","A few times per week","Weekly","Yes","Agree",6,"Strongly agree",4,7
+"80","Snow, Madison","Farmer, Brandon",8,2,"N/A","Employee","N/A","Shrimp buyer","Spouse or partner","N/A","Yes","Bi-weekly (every other week)","Weekly","No","Strongly disagree",9,"Disagree",9,0
+"81","Snow, Madison","Cordova, Isabel",9,8,"Explanation","Other (please specify)","N/A","Retired","Cousin","N/A","Yes","A few times per week","Bi-weekly (every other week)","Yes","Strongly disagree",6,"Disagree",2,5
+"82","Snow, Madison","Campos, Isaiah",1,0,"N/A","Employer","N/A","Shrimper (captain)","N/A","N/A","No","Weekly","Daily","Yes","Agree",7,"Neutral",3,5
+"83","Snow, Madison","Kane, Craig",23,6,"N/A","Employer","N/A","Retired","N/A","N/A","No","Weekly","Less than once per month","Yes","Strongly disagree",8,"Agree",4,2
+"84","Session, Fabian","Kane, Craig",6,5,"N/A","Colleague","Explanation","Other","Child","N/A","Yes","Weekly","Monthly","Yes","Agree",1,"Disagree",1,7
+"85","Session, Fabian","Alexander, Thomas",10,7,"N/A","Colleague","N/A","Shrimper (captain)","N/A","N/A","No","Daily","Monthly","No","Strongly agree",1,"Strongly agree",1,8
+"86","Session, Fabian","Lobato, Nathan",23,1,"Explanation","Other (please specify)","N/A","Shrimper (deck hand)","N/A","N/A","No","A few times per month","Daily","Yes","Agree",8,"Agree",6,4
+"87","Session, Fabian","Ford, Michael",1,1,"Explanation","Other (please specify)","N/A","Georgia Department of Natural Resources","Spouse or partner","N/A","Yes","A few times per month","Bi-weekly (every other week)","No","Disagree",2,"Agree",9,3
+"88","Session, Fabian","Martinez, Haley",21,7,"Explanation","Other (please specify)","N/A","Fisherman (professional or recreationa)","Other (please specify)","Explain","Yes","A few times per week","Bi-weekly (every other week)","Yes","Strongly disagree",4,"Agree",7,4
+"89","Session, Fabian","Green, Zormene",6,3,"N/A","Employer","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Less than once per month","Daily","No","Neutral",0,"Neutral",4,9
+"90","Session, Fabian","Ives, Hannah",21,15,"N/A","Employer","N/A","Dock employee","N/A","N/A","No","A few times per week","Daily","Yes","Neutral",8,"Strongly disagree",9,8
+"91","Cordova, Isabel","Cabral, Martin",29,21,"N/A","Employee","N/A","Shrimper (deck hand)","N/A","N/A","No","Less than once per month","Weekly","No","Disagree",5,"Strongly disagree",2,6
+"92","Cordova, Isabel","Mata, Perla",14,3,"Explanation","Other (please specify)","N/A","Retired","Child","N/A","Yes","Weekly","Bi-weekly (every other week)","No","Disagree",3,"Strongly disagree",8,5
+"93","Cordova, Isabel","Huff, Michael",14,6,"N/A","Employee","N/A","Dock employee","Other (please specify)","Explain","Yes","A few times per month","Bi-weekly (every other week)","No","Strongly disagree",3,"Strongly agree",2,5
+"94","Cordova, Isabel","Martinez, Bryanne",6,3,"Explanation","Other (please specify)","Explanation","Other","N/A","N/A","No","Weekly","Bi-weekly (every other week)","Yes","Disagree",8,"Neutral",0,9
+"95","Cordova, Isabel","Carpenter, Isaac",10,7,"N/A","Employee","N/A","Georgia Department of Natural Resources","Child","N/A","Yes","A few times per month","Less than once per month","No","Disagree",6,"Neutral",9,10
+"96","Cordova, Isabel","Lowe, Malik",29,2,"Explanation","Other (please specify)","N/A","Shrimp buyer","N/A","N/A","No","Monthly","Bi-weekly (every other week)","No","Strongly agree",5,"Neutral",10,9
+"97","Cordova, Isabel","Jones, Tianna",26,19,"N/A","Employee","Explanation","Other","Cousin","N/A","Yes","A few times per week","Weekly","No","Agree",7,"Neutral",4,9
+"98","Leedom, Payge","Colabello, Sara",25,3,"N/A","Employee","N/A","Georgia Department of Natural Resources","Child","N/A","Yes","Monthly","Weekly","No","Strongly agree",8,"Agree",7,8
+"99","Leedom, Payge","Vega, Amanda",3,1,"Explanation","Other (please specify)","N/A","Dock employee","Parent","N/A","Yes","A few times per week","Weekly","No","Neutral",10,"Strongly disagree",3,3
+"100","Leedom, Payge","Valdez, Sylvia",2,1,"N/A","Employer","N/A","Retired","N/A","N/A","No","Bi-weekly (every other week)","Bi-weekly (every other week)","No","Neutral",9,"Strongly agree",4,10
+"101","Leedom, Payge","Martinez, Bryanne",25,3,"N/A","Employer","N/A","Fisherman (professional or recreationa)","Cousin","N/A","Yes","Less than once per month","Bi-weekly (every other week)","No","Neutral",8,"Strongly disagree",3,10
+"102","Leedom, Payge","Cabral, Martin",3,2,"Explanation","Other (please specify)","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","A few times per week","A few times per month","No","Neutral",4,"Neutral",8,3
+"103","Leedom, Payge","Piehl, Martha",3,1,"N/A","Employee","N/A","Retired","Parent","N/A","Yes","Less than once per month","A few times per week","Yes","Neutral",5,"Strongly agree",0,5
+"104","Thompson, Lee","Cotten, Garrett",9,6,"N/A","Employer","Explanation","Other","Cousin","N/A","Yes","Weekly","Daily","No","Strongly disagree",1,"Strongly disagree",10,7
+"105","Garcia, Francisco","Farmer, Brandon",11,4,"N/A","Colleague","N/A","Georgia Department of Natural Resources","Parent","N/A","Yes","Less than once per month","Daily","Yes","Agree",8,"Agree",7,2
+"106","Garcia, Francisco","Leisegang, Kailyn",7,6,"N/A","Employer","N/A","Dock employee","N/A","N/A","No","Monthly","A few times per week","Yes","Strongly disagree",0,"Disagree",5,0
+"107","Garcia, Francisco","Giner, Ramiro",9,8,"N/A","Employer","N/A","Shrimper (captain)","Child","N/A","Yes","Daily","Monthly","Yes","Neutral",2,"Strongly agree",5,4
+"108","Garcia, Francisco","Keesling, Ashlie",15,15,"N/A","Colleague","N/A","Shrimp buyer","N/A","N/A","No","Bi-weekly (every other week)","Less than once per month","Yes","Disagree",9,"Disagree",10,7
+"109","Garcia, Francisco","Narracci, Aaron",16,14,"Explanation","Other (please specify)","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Weekly","A few times per month","Yes","Neutral",8,"Strongly agree",10,2
+"110","Waller, Summer","Lara, Alejandro",1,0,"N/A","Employer","N/A","Shrimp buyer","Parent","N/A","Yes","Weekly","Weekly","No","Disagree",3,"Agree",7,1
+"111","Huff, Michael","Thompson, Lee",3,1,"Explanation","Other (please specify)","N/A","Fisherman (professional or recreationa)","N/A","N/A","No","Daily","Daily","No","Agree",8,"Agree",8,2
+"112","Huff, Michael","Coleman, Janette",30,27,"Explanation","Other (please specify)","N/A","Shrimper (deck hand)","Parent","N/A","Yes","Less than once per month","Monthly","Yes","Disagree",4,"Strongly agree",10,1
+"113","Huff, Michael","Fabela-Reyes, Jacob",13,2,"N/A","Employer","N/A","Dock employee","N/A","N/A","No","A few times per week","Weekly","No","Neutral",3,"Agree",9,9
+"114","Huff, Michael","Lujan, Joshua",28,4,"N/A","Employer","N/A","Retired","N/A","N/A","No","A few times per week","Weekly","Yes","Agree",3,"Neutral",9,2
+"115","Huff, Michael","Lang, Hunter",24,1,"Explanation","Other (please specify)","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Monthly","Monthly","No","Strongly disagree",2,"Agree",6,1
+"116","Huff, Michael","Donegan, Chase",21,7,"N/A","Employee","N/A","Shrimper (deck hand)","Cousin","N/A","Yes","Weekly","Daily","No","Strongly disagree",8,"Neutral",10,7
+"117","Esparza, Estevan","Pullman, Donato",2,0,"N/A","Employee","N/A","Shrimp buyer","Parent","N/A","Yes","Daily","Less than once per month","No","Strongly agree",10,"Agree",9,10
+"118","Esparza, Estevan","Ramirez, Isaiah",21,11,"N/A","Employer","N/A","Retired","Cousin","N/A","Yes","A few times per week","Daily","Yes","Strongly disagree",10,"Disagree",10,8
+"119","Esparza, Estevan","Mike IV, Lamar",26,16,"Explanation","Other (please specify)","N/A","Shrimper (deck hand)","Child","N/A","Yes","Less than once per month","Weekly","No","Strongly agree",4,"Strongly disagree",9,7
+"120","Esparza, Estevan","Jones, Tianna",5,3,"Explanation","Other (please specify)","N/A","Georgia Department of Natural Resources","N/A","N/A","No","Less than once per month","Daily","No","Neutral",1,"Neutral",6,10
+"121","Esparza, Estevan","Soto Arvizo, Roberta",9,4,"N/A","Employee","N/A","Retired","N/A","N/A","No","Weekly","Weekly","No","Agree",0,"Strongly agree",5,6
+"122","Esparza, Estevan","Tinsley, Katrina",18,11,"Explanation","Other (please specify)","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Less than once per month","A few times per month","No","Strongly agree",9,"Neutral",10,8
+"123","Hankins, Rachael","Shongolo, Benjamin",14,2,"N/A","Employee","N/A","Fisherman (professional or recreationa)","Spouse or partner","N/A","Yes","Weekly","Monthly","Yes","Agree",4,"Disagree",0,2
+"124","Hankins, Rachael","Holtestaul, Alexander",15,0,"N/A","Employer","N/A","Retired","Spouse or partner","N/A","Yes","A few times per month","A few times per week","Yes","Strongly agree",2,"Disagree",5,3
+"125","Farmer, Brandon","Huff, Michael",18,4,"Explanation","Other (please specify)","N/A","Georgia Sea Grant Marine Extention","Parent","N/A","Yes","Weekly","Weekly","No","Neutral",5,"Strongly disagree",6,2
+"126","Martinez, Bryanne","Nunez Jr, Tylerisha",25,9,"N/A","Employer","N/A","Shrimper (captain)","N/A","N/A","No","A few times per week","Bi-weekly (every other week)","Yes","Neutral",10,"Strongly disagree",7,3
+"127","Keesling, Ashlie","Campos, Isaiah",28,24,"N/A","Employer","N/A","Georgia Department of Natural Resources","Other (please specify)","Explain","Yes","Monthly","A few times per week","Yes","Neutral",1,"Strongly disagree",9,3
+"128","Keesling, Ashlie","Valdez, Israel",3,0,"N/A","Employee","N/A","Fisherman (professional or recreationa)","Child","N/A","Yes","Bi-weekly (every other week)","Bi-weekly (every other week)","No","Strongly disagree",1,"Neutral",7,6
+"129","Keesling, Ashlie","Torres, Doneisha",22,2,"Explanation","Other (please specify)","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Daily","A few times per week","No","Strongly agree",7,"Strongly agree",7,9
+"130","Keesling, Ashlie","Kane, Craig",20,17,"N/A","Employee","N/A","Georgia Sea Grant Marine Extention","Other (please specify)","Explain","Yes","Bi-weekly (every other week)","Bi-weekly (every other week)","Yes","Disagree",3,"Neutral",8,1
+"131","Keesling, Ashlie","Bell, Tiara",6,6,"N/A","Employee","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Daily","A few times per month","No","Disagree",1,"Agree",1,4
+"132","Lowe, Malik","Piehl, Martha",14,1,"Explanation","Other (please specify)","N/A","Dock owner","Spouse or partner","N/A","Yes","Bi-weekly (every other week)","Bi-weekly (every other week)","No","Agree",1,"Agree",3,4
+"133","Lowe, Malik","Rodriguez, John",21,9,"N/A","Employee","N/A","Shrimper (deck hand)","Spouse or partner","N/A","Yes","A few times per month","Daily","No","Disagree",0,"Disagree",5,3
+"134","Lowe, Malik","Donegan, Chase",24,15,"N/A","Employee","Explanation","Other","N/A","N/A","No","A few times per month","Daily","Yes","Strongly disagree",4,"Disagree",8,6
+"135","Lowe, Malik","Vandiest, Chandler",28,22,"N/A","Colleague","N/A","Dock employee","N/A","N/A","No","A few times per month","Daily","Yes","Strongly disagree",9,"Agree",9,7
+"136","Lowe, Malik","Ives, Hannah",5,2,"N/A","Employer","N/A","Shrimper (captain)","N/A","N/A","No","Weekly","Bi-weekly (every other week)","No","Agree",10,"Disagree",9,3
+"137","Lowe, Malik","Branch, Johnathon",26,4,"N/A","Colleague","N/A","Dock owner","Parent","N/A","Yes","Bi-weekly (every other week)","Weekly","Yes","Strongly disagree",7,"Disagree",5,8
+"138","Lowe, Malik","Farmer, Brandon",12,4,"N/A","Employee","N/A","Shrimper (deck hand)","Other (please specify)","Explain","Yes","A few times per month","Monthly","Yes","Neutral",0,"Strongly disagree",3,0
+"139","Godoy-Vera, Jesus","Martinez, Bryanne",15,1,"N/A","Employee","N/A","Shrimp buyer","Child","N/A","Yes","Bi-weekly (every other week)","A few times per week","Yes","Disagree",7,"Agree",5,1
+"140","Godoy-Vera, Jesus","Kearns, Destinee",23,12,"N/A","Colleague","Explanation","Other","Parent","N/A","Yes","Bi-weekly (every other week)","A few times per month","No","Disagree",4,"Neutral",4,4
+"141","Godoy-Vera, Jesus","Buck, Logan",14,6,"Explanation","Other (please specify)","N/A","Fisherman (professional or recreationa)","N/A","N/A","No","Monthly","Monthly","No","Agree",7,"Disagree",5,5
+"142","Godoy-Vera, Jesus","Lobato, Nathan",10,9,"Explanation","Other (please specify)","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Bi-weekly (every other week)","Monthly","Yes","Neutral",1,"Strongly agree",10,9
+"143","Colabello, Sara","Rose, Daneil",10,8,"N/A","Employee","N/A","Fisherman (professional or recreationa)","N/A","N/A","No","Weekly","Monthly","No","Disagree",6,"Strongly disagree",9,1
+"144","Colabello, Sara","Rodriguez, John",20,13,"N/A","Colleague","N/A","Georgia Department of Natural Resources","Cousin","N/A","Yes","Daily","A few times per week","Yes","Strongly agree",4,"Strongly disagree",3,8
+"145","Monroe, Joshua","Santos, Jerrod",16,12,"Explanation","Other (please specify)","N/A","Retired","Cousin","N/A","Yes","A few times per week","Weekly","No","Disagree",0,"Disagree",1,1
+"146","Monroe, Joshua","Jones, Tianna",7,1,"N/A","Employee","N/A","Dock employee","Child","N/A","Yes","A few times per week","Weekly","Yes","Strongly agree",0,"Strongly agree",3,3
+"147","Monroe, Joshua","Cotten, Garrett",4,1,"N/A","Employee","N/A","Shrimper (deck hand)","N/A","N/A","No","Weekly","Daily","No","Strongly agree",3,"Strongly disagree",7,1
+"148","Monroe, Joshua","Lobato, Nathan",22,16,"N/A","Employer","N/A","Dock owner","Child","N/A","Yes","Weekly","Bi-weekly (every other week)","Yes","Disagree",3,"Disagree",2,3
+"149","Monroe, Joshua","Parker, Gregory",11,2,"N/A","Employer","N/A","Georgia Department of Natural Resources","N/A","N/A","No","A few times per month","Monthly","Yes","Agree",4,"Strongly disagree",7,1
+"150","Monroe, Joshua","Farmer, Brandon",3,3,"Explanation","Other (please specify)","N/A","Dock owner","Other (please specify)","Explain","Yes","Bi-weekly (every other week)","A few times per month","Yes","Strongly disagree",8,"Agree",10,6
+"151","Rodriguez, John","Martinez, Haley",4,3,"N/A","Employee","N/A","Retired","N/A","N/A","No","Daily","A few times per week","No","Neutral",1,"Strongly agree",5,7
+"152","Rodriguez, John","Rodriquez, Tania",23,8,"N/A","Employer","N/A","Retired","N/A","N/A","No","Less than once per month","A few times per week","Yes","Strongly agree",1,"Neutral",7,10
+"153","Rodriguez, John","Holtestaul, Alexander",21,8,"Explanation","Other (please specify)","N/A","Shrimper (deck hand)","N/A","N/A","No","Bi-weekly (every other week)","A few times per month","Yes","Neutral",4,"Neutral",4,4
+"154","Orr, Mikaela","Carpenter, Isaac",26,5,"N/A","Colleague","N/A","Georgia Sea Grant Marine Extention","Spouse or partner","N/A","Yes","A few times per month","Daily","No","Strongly disagree",0,"Neutral",7,6
+"155","Orr, Mikaela","Jones, Tianna",9,1,"Explanation","Other (please specify)","N/A","Shrimp buyer","Other (please specify)","Explain","Yes","Bi-weekly (every other week)","A few times per week","Yes","Strongly agree",1,"Neutral",10,0
+"156","Orr, Mikaela","Morris, Sydnee",15,11,"Explanation","Other (please specify)","N/A","Retired","N/A","N/A","No","A few times per week","Daily","Yes","Disagree",1,"Neutral",8,9
+"157","Orr, Mikaela","Davis, Maxwell",5,1,"N/A","Colleague","Explanation","Other","Parent","N/A","Yes","A few times per month","A few times per month","Yes","Neutral",7,"Agree",7,1
+"158","Orr, Mikaela","Cabral, Martin",22,19,"N/A","Colleague","N/A","Fisherman (professional or recreationa)","N/A","N/A","No","Daily","A few times per week","Yes","Neutral",1,"Agree",3,8
+"159","Orr, Mikaela","Moore, Tyler",12,11,"N/A","Employee","N/A","Retired","N/A","N/A","No","Monthly","Monthly","No","Strongly disagree",8,"Agree",2,6
+"160","Torres, Doneisha","Soto Arvizo, Roberta",25,20,"Explanation","Other (please specify)","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Monthly","Bi-weekly (every other week)","Yes","Agree",7,"Disagree",10,8
+"161","Torres, Doneisha","Hankins, Rachael",18,18,"N/A","Employee","N/A","Fisherman (professional or recreationa)","Cousin","N/A","Yes","A few times per week","A few times per week","No","Strongly agree",4,"Strongly agree",1,3
+"162","Torres, Doneisha","Hope Crichlow, Alexander",16,16,"N/A","Employer","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","A few times per week","Bi-weekly (every other week)","No","Disagree",7,"Strongly agree",3,1
+"163","Velasquez, Jose","Green, Zormene",15,6,"N/A","Employer","Explanation","Other","N/A","N/A","No","A few times per month","A few times per month","No","Strongly disagree",9,"Agree",2,4
+"164","Velasquez, Jose","Lowe, Malik",2,1,"N/A","Colleague","N/A","Shrimper (deck hand)","Other (please specify)","Explain","Yes","Monthly","A few times per month","No","Agree",6,"Strongly disagree",10,8
+"165","Velasquez, Jose","Mata, Perla",18,10,"N/A","Colleague","N/A","Dock employee","N/A","N/A","No","A few times per month","Less than once per month","No","Strongly disagree",6,"Strongly agree",7,3
+"166","Tinsley, Katrina","Rodriguez, John",5,1,"N/A","Employee","N/A","Dock employee","Other (please specify)","Explain","Yes","Monthly","Bi-weekly (every other week)","Yes","Disagree",3,"Neutral",4,10
+"167","Tinsley, Katrina","Keesling, Ashlie",4,2,"N/A","Employee","Explanation","Other","Parent","N/A","Yes","Monthly","Weekly","No","Strongly agree",4,"Neutral",7,5
+"168","Tinsley, Katrina","Valdez, Israel",1,0,"N/A","Colleague","N/A","Retired","Cousin","N/A","Yes","A few times per month","Bi-weekly (every other week)","Yes","Neutral",5,"Strongly disagree",5,3
+"169","Tinsley, Katrina","Mendoza Guigon, Jeremiah",10,0,"Explanation","Other (please specify)","N/A","Shrimp buyer","N/A","N/A","No","Bi-weekly (every other week)","Less than once per month","Yes","Agree",1,"Strongly disagree",5,0
+"170","Tinsley, Katrina","Lujan, Joshua",3,2,"N/A","Colleague","N/A","Shrimper (captain)","Child","N/A","Yes","A few times per month","Monthly","No","Strongly agree",9,"Strongly disagree",7,7
+"171","Tinsley, Katrina","Martinez, Jocelyne",30,25,"N/A","Employer","N/A","Retired","N/A","N/A","No","Daily","Weekly","Yes","Strongly agree",0,"Strongly disagree",1,7
+"172","Martin, Ama Soma","Lara, Nathan",9,7,"Explanation","Other (please specify)","N/A","Dock owner","Other (please specify)","Explain","Yes","Monthly","A few times per week","No","Neutral",9,"Strongly disagree",7,1
+"173","Martin, Ama Soma","Kemp, Gracelline",7,1,"Explanation","Other (please specify)","N/A","Shrimp buyer","N/A","N/A","No","Less than once per month","Monthly","Yes","Disagree",0,"Strongly agree",9,2
+"174","Martin, Ama Soma","Olukemi, Kaliyah",22,14,"N/A","Employee","N/A","Shrimper (captain)","N/A","N/A","No","Less than once per month","A few times per month","No","Neutral",4,"Neutral",9,8
+"175","Martin, Ama Soma","Morris, Sydnee",9,6,"N/A","Employee","Explanation","Other","Spouse or partner","N/A","Yes","Bi-weekly (every other week)","Bi-weekly (every other week)","No","Agree",2,"Strongly disagree",2,2
+"176","Fabela-Reyes, Jacob","Martinez, Bryanne",5,3,"N/A","Employer","N/A","Georgia Department of Natural Resources","N/A","N/A","No","A few times per month","A few times per month","No","Strongly agree",10,"Agree",6,3
+"177","Fabela-Reyes, Jacob","Alexander, Thomas",1,0,"N/A","Employer","N/A","Retired","N/A","N/A","No","A few times per month","Monthly","No","Strongly disagree",3,"Disagree",10,8
+"178","Macchietto, Dominika","Lujan, Joshua",20,13,"N/A","Colleague","N/A","Fisherman (professional or recreationa)","N/A","N/A","No","Less than once per month","Daily","Yes","Strongly agree",1,"Agree",8,7
+"179","Macchietto, Dominika","Monroe, Joshua",19,11,"N/A","Employer","N/A","Retired","Other (please specify)","Explain","Yes","A few times per month","Weekly","Yes","Disagree",0,"Disagree",5,7
+"180","Macchietto, Dominika","Rodriquez, Tania",29,6,"Explanation","Other (please specify)","N/A","Shrimp buyer","N/A","N/A","No","A few times per week","Weekly","No","Strongly agree",10,"Disagree",3,1
+"181","Macchietto, Dominika","Valdez, Sylvia",7,7,"N/A","Employee","N/A","Shrimper (captain)","N/A","N/A","No","Bi-weekly (every other week)","A few times per week","No","Agree",9,"Strongly disagree",9,5
+"182","Macchietto, Dominika","Hale, Quentin",30,7,"Explanation","Other (please specify)","N/A","Dock owner","Parent","N/A","Yes","Bi-weekly (every other week)","Bi-weekly (every other week)","Yes","Strongly disagree",0,"Strongly agree",10,7
+"183","Simpson II, Ryan","Martinez, Haley",11,5,"N/A","Employer","N/A","Fisherman (professional or recreationa)","Parent","N/A","Yes","A few times per month","Bi-weekly (every other week)","Yes","Strongly agree",6,"Disagree",9,2
+"184","Mata, Perla","Simpson II, Ryan",30,28,"N/A","Employee","N/A","Shrimper (captain)","Other (please specify)","Explain","Yes","Weekly","A few times per month","No","Neutral",8,"Strongly disagree",10,0
+"185","Mata, Perla","Dejac, Jessica",16,9,"N/A","Employee","N/A","Retired","Child","N/A","Yes","A few times per week","A few times per week","No","Strongly agree",9,"Disagree",0,4
+"186","Mata, Perla","Campos, Isaiah",15,8,"Explanation","Other (please specify)","N/A","Shrimper (deck hand)","N/A","N/A","No","Weekly","A few times per week","Yes","Strongly agree",10,"Agree",10,1
+"187","Mata, Perla","Session, Fabian",12,10,"N/A","Colleague","N/A","Georgia Department of Natural Resources","N/A","N/A","No","Monthly","A few times per week","Yes","Disagree",7,"Agree",2,0
+"188","Holtestaul, Alexander","Dominguez Madrid, Daniel",30,23,"Explanation","Other (please specify)","N/A","Shrimper (captain)","N/A","N/A","No","Less than once per month","Daily","No","Strongly disagree",8,"Disagree",10,10
+"189","Holtestaul, Alexander","Kane, Craig",11,8,"Explanation","Other (please specify)","N/A","Shrimper (deck hand)","Other (please specify)","Explain","Yes","Weekly","Daily","No","Agree",3,"Strongly disagree",7,0
+"190","Holtestaul, Alexander","Pullman, Donato",5,3,"N/A","Employee","N/A","Shrimper (deck hand)","Other (please specify)","Explain","Yes","Less than once per month","Bi-weekly (every other week)","Yes","Agree",10,"Strongly agree",7,6
+"191","Holtestaul, Alexander","Tinsley, Katrina",14,3,"N/A","Employee","N/A","Dock employee","Parent","N/A","Yes","Bi-weekly (every other week)","A few times per month","No","Strongly agree",2,"Neutral",9,1
+"192","Holtestaul, Alexander","Shongolo, Benjamin",11,7,"N/A","Colleague","N/A","Shrimp buyer","Child","N/A","Yes","Daily","A few times per month","Yes","Agree",6,"Strongly disagree",0,8
+"193","Holtestaul, Alexander","Bhatti, Lillian",30,29,"Explanation","Other (please specify)","N/A","Shrimper (captain)","N/A","N/A","No","Weekly","Daily","No","Disagree",2,"Strongly agree",10,10
+"194","Pullman, Donato","Holtestaul, Alexander",15,12,"Explanation","Other (please specify)","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Bi-weekly (every other week)","A few times per month","No","Neutral",2,"Strongly disagree",6,0
+"195","Pullman, Donato","Moore, Tyler",6,6,"N/A","Employer","N/A","Retired","N/A","N/A","No","A few times per month","A few times per month","No","Agree",10,"Strongly agree",1,2
+"196","Pullman, Donato","Riley, Lemarcus",5,5,"N/A","Employer","N/A","Georgia Department of Natural Resources","N/A","N/A","No","Monthly","Monthly","No","Agree",9,"Agree",6,7
+"197","Pullman, Donato","Farmer, Brandon",2,1,"N/A","Colleague","Explanation","Other","Spouse or partner","N/A","Yes","A few times per month","A few times per week","Yes","Disagree",3,"Strongly agree",1,0
+"198","Lujan, Joshua","Scott, Devante",2,0,"Explanation","Other (please specify)","N/A","Shrimper (deck hand)","N/A","N/A","No","Less than once per month","Bi-weekly (every other week)","Yes","Agree",2,"Neutral",8,3
+"199","Lujan, Joshua","Pullman, Donato",8,7,"Explanation","Other (please specify)","Explanation","Other","N/A","N/A","No","Less than once per month","Monthly","No","Neutral",8,"Strongly disagree",6,4
+"200","Lujan, Joshua","Godoy-Vera, Jesus",4,2,"N/A","Colleague","N/A","Shrimper (captain)","N/A","N/A","No","Daily","A few times per week","No","Neutral",0,"Disagree",10,3
+"201","Lujan, Joshua","Leisegang, Kailyn",8,1,"Explanation","Other (please specify)","N/A","Dock employee","Spouse or partner","N/A","Yes","A few times per month","Monthly","No","Agree",0,"Strongly agree",10,8
+"202","Donegan, Chase","Session, Fabian",2,2,"N/A","Employer","N/A","Shrimper (deck hand)","Cousin","N/A","Yes","Bi-weekly (every other week)","Monthly","No","Agree",2,"Strongly disagree",10,7
+"203","Donegan, Chase","Scott, Devante",6,2,"N/A","Employer","N/A","Retired","N/A","N/A","No","A few times per month","Weekly","Yes","Strongly agree",2,"Disagree",2,6
+"204","Donegan, Chase","Morris, Sydnee",25,13,"Explanation","Other (please specify)","N/A","Shrimper (captain)","N/A","N/A","No","Monthly","A few times per month","Yes","Strongly agree",9,"Disagree",8,2
+"205","Dawson, Marcello","Rodriquez, Tania",4,2,"Explanation","Other (please specify)","N/A","Dock employee","N/A","N/A","No","Bi-weekly (every other week)","A few times per month","Yes","Disagree",5,"Agree",0,8
+"206","Dawson, Marcello","Branch, Johnathon",6,0,"N/A","Employer","N/A","Shrimp buyer","Cousin","N/A","Yes","Monthly","Monthly","No","Neutral",5,"Disagree",9,0
+"207","Dawson, Marcello","Cotten, Garrett",29,8,"N/A","Employee","N/A","Shrimper (deck hand)","Cousin","N/A","Yes","Less than once per month","Monthly","No","Agree",2,"Strongly disagree",9,5
+"208","Dawson, Marcello","Trinkaus, Austin",11,4,"N/A","Employer","N/A","Shrimper (captain)","Parent","N/A","Yes","Monthly","A few times per month","Yes","Disagree",7,"Strongly agree",5,9
+"209","Dawson, Marcello","Torres, Doneisha",24,21,"Explanation","Other (please specify)","Explanation","Other","N/A","N/A","No","Weekly","A few times per week","Yes","Strongly disagree",5,"Disagree",10,1
+"210","Dawson, Marcello","Dejac, Jessica",17,4,"N/A","Employer","N/A","Dock owner","Spouse or partner","N/A","Yes","Daily","Bi-weekly (every other week)","Yes","Strongly disagree",0,"Neutral",8,10
+"211","Lobato, Nathan","Leisegang, Kailyn",22,12,"N/A","Employee","N/A","Dock owner","N/A","N/A","No","A few times per month","Monthly","No","Disagree",9,"Strongly agree",8,8
+"212","Vandiest, Chandler","Godoy-Vera, Jesus",11,6,"Explanation","Other (please specify)","N/A","Fisherman (professional or recreationa)","Other (please specify)","Explain","Yes","Daily","Daily","No","Strongly agree",2,"Strongly disagree",6,8
+"213","Vandiest, Chandler","Valdez, Sylvia",25,8,"Explanation","Other (please specify)","N/A","Shrimper (deck hand)","Child","N/A","Yes","Daily","Bi-weekly (every other week)","No","Strongly agree",9,"Agree",1,9
+"214","Vandiest, Chandler","Vega, Amanda",20,11,"N/A","Employee","N/A","Georgia Department of Natural Resources","Parent","N/A","Yes","A few times per month","Daily","Yes","Disagree",1,"Disagree",5,0
+"215","Vandiest, Chandler","Brown, Amber",7,3,"N/A","Employer","N/A","Dock employee","N/A","N/A","No","A few times per month","Weekly","No","Strongly disagree",7,"Disagree",8,1
+"216","Green, Zormene","Macchietto, Dominika",15,14,"N/A","Colleague","N/A","Retired","Cousin","N/A","Yes","Weekly","Monthly","No","Strongly agree",6,"Agree",5,10
+"217","Green, Zormene","Davis, Maxwell",12,12,"N/A","Employer","N/A","Shrimper (captain)","Spouse or partner","N/A","Yes","Monthly","A few times per month","Yes","Neutral",5,"Strongly disagree",1,2
+"218","Martinez, Jocelyne","Hankins, Rachael",2,0,"N/A","Colleague","N/A","Shrimper (deck hand)","N/A","N/A","No","Monthly","A few times per month","No","Strongly agree",3,"Agree",4,6
+"219","Martinez, Jocelyne","Mendoza Guigon, Jeremiah",17,11,"N/A","Colleague","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Monthly","Monthly","Yes","Strongly disagree",8,"Neutral",7,0
+"220","Martinez, Jocelyne","Turner, Ieesha",21,13,"N/A","Employee","N/A","Dock employee","Child","N/A","Yes","Bi-weekly (every other week)","Monthly","No","Strongly agree",2,"Agree",2,9
+"221","Martinez, Jocelyne","Campos, Isaiah",23,20,"N/A","Colleague","N/A","Shrimp buyer","N/A","N/A","No","Weekly","Less than once per month","Yes","Agree",5,"Disagree",10,6
+"222","Martinez, Jocelyne","Rose, Daneil",7,3,"N/A","Employer","N/A","Shrimper (captain)","N/A","N/A","No","Bi-weekly (every other week)","Bi-weekly (every other week)","No","Strongly disagree",7,"Agree",3,0
+"223","Bair, Chandler","Villa, David",4,0,"Explanation","Other (please specify)","N/A","Fisherman (professional or recreationa)","Spouse or partner","N/A","Yes","Monthly","Less than once per month","No","Strongly disagree",1,"Disagree",5,6
+"224","Bair, Chandler","Piehl, Martha",8,1,"N/A","Colleague","N/A","Shrimp buyer","N/A","N/A","No","Less than once per month","Daily","Yes","Agree",10,"Strongly agree",10,5
+"225","Bair, Chandler","Dawson, Marcello",13,10,"N/A","Colleague","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Less than once per month","Bi-weekly (every other week)","Yes","Strongly agree",8,"Disagree",5,9
+"226","Riley, Lemarcus","Dawson, Marcello",9,7,"N/A","Colleague","N/A","Shrimper (deck hand)","N/A","N/A","No","Daily","Daily","Yes","Disagree",3,"Strongly disagree",4,8
+"227","Riley, Lemarcus","Villa, David",5,3,"N/A","Employer","N/A","Fisherman (professional or recreationa)","Other (please specify)","Explain","Yes","Daily","Monthly","No","Disagree",10,"Strongly agree",8,10
+"228","Soto Arvizo, Roberta","Williams, Alyssa",21,1,"N/A","Employer","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Daily","Weekly","No","Agree",6,"Disagree",1,1
+"229","Soto Arvizo, Roberta","Torres, Doneisha",11,8,"N/A","Employer","N/A","Georgia Department of Natural Resources","N/A","N/A","No","Daily","A few times per month","No","Strongly agree",1,"Neutral",8,9
+"230","Stepp, Jeromy","Lara, Alejandro",28,2,"N/A","Employer","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Monthly","Bi-weekly (every other week)","Yes","Neutral",5,"Strongly agree",3,8
+"231","Stepp, Jeromy","Ford, Michael",20,3,"N/A","Employee","N/A","Shrimp buyer","N/A","N/A","No","Bi-weekly (every other week)","A few times per month","Yes","Disagree",2,"Strongly disagree",0,9
+"232","Stepp, Jeromy","Ramirez, Isaiah",11,5,"N/A","Colleague","N/A","Shrimp buyer","Parent","N/A","Yes","Bi-weekly (every other week)","A few times per week","No","Agree",5,"Strongly agree",3,10
+"233","Stepp, Jeromy","Ives, Hannah",24,17,"N/A","Employer","N/A","Dock owner","N/A","N/A","No","Less than once per month","Less than once per month","Yes","Strongly agree",1,"Neutral",10,1
+"234","Stepp, Jeromy","Parker, Gregory",21,8,"N/A","Employer","Explanation","Other","Other (please specify)","Explain","Yes","Daily","A few times per week","Yes","Strongly agree",3,"Neutral",10,0
+"235","Stepp, Jeromy","Lang, Hunter",11,5,"N/A","Colleague","N/A","Dock owner","Cousin","N/A","Yes","Bi-weekly (every other week)","Daily","No","Strongly disagree",3,"Strongly agree",0,1
+"236","Stepp, Jeromy","Kemp, Gracelline",2,1,"N/A","Employer","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Less than once per month","A few times per week","Yes","Neutral",0,"Disagree",7,1
+"237","Ford, Michael","Hope Crichlow, Alexander",20,7,"N/A","Employee","N/A","Retired","Other (please specify)","Explain","Yes","Less than once per month","Less than once per month","Yes","Strongly agree",10,"Neutral",3,3
+"238","Ford, Michael","Esparza, Estevan",24,15,"N/A","Employer","N/A","Georgia Department of Natural Resources","N/A","N/A","No","Weekly","Less than once per month","Yes","Agree",0,"Disagree",9,3
+"239","Ford, Michael","Lara, Alejandro",25,9,"Explanation","Other (please specify)","N/A","Shrimp buyer","Cousin","N/A","Yes","Less than once per month","Less than once per month","Yes","Disagree",3,"Strongly disagree",8,7
+"240","Secunda, Gildardo","Richardson, Helme",6,3,"N/A","Colleague","N/A","Shrimper (deck hand)","N/A","N/A","No","A few times per month","Less than once per month","Yes","Neutral",1,"Agree",6,7
+"241","Secunda, Gildardo","Ives, Hannah",8,7,"N/A","Employer","N/A","Shrimper (captain)","Spouse or partner","N/A","Yes","Bi-weekly (every other week)","A few times per week","No","Neutral",0,"Agree",3,9
+"242","Secunda, Gildardo","Vandiest, Chandler",9,7,"N/A","Colleague","N/A","Dock employee","N/A","N/A","No","A few times per month","Less than once per month","No","Neutral",3,"Strongly agree",9,6
+"243","Cotten, Garrett","Richardson, Helme",8,5,"Explanation","Other (please specify)","N/A","Shrimp buyer","Cousin","N/A","Yes","Monthly","A few times per month","No","Disagree",4,"Strongly agree",6,4
+"244","Cotten, Garrett","Garrett, Jordan",29,20,"N/A","Employer","N/A","Georgia Sea Grant Marine Extention","Cousin","N/A","Yes","Monthly","Daily","No","Agree",6,"Disagree",0,5
+"245","Cotten, Garrett","Monroe, Joshua",19,16,"N/A","Employee","N/A","Retired","Other (please specify)","Explain","Yes","Bi-weekly (every other week)","Daily","Yes","Strongly disagree",8,"Disagree",8,2
+"246","Cotten, Garrett","Simpson II, Ryan",19,14,"N/A","Employer","N/A","Dock employee","N/A","N/A","No","Less than once per month","Weekly","No","Disagree",5,"Agree",9,7
+"247","Woods, Christina","Soto Arvizo, Roberta",1,0,"N/A","Employer","N/A","Georgia Department of Natural Resources","N/A","N/A","No","Weekly","A few times per week","Yes","Disagree",6,"Strongly disagree",7,1
+"248","Woods, Christina","Valdez, Israel",5,4,"N/A","Employee","N/A","Fisherman (professional or recreationa)","N/A","N/A","No","Daily","Bi-weekly (every other week)","No","Agree",7,"Strongly agree",10,10
+"249","Woods, Christina","Campos, Isaiah",2,2,"N/A","Colleague","N/A","Shrimp buyer","Cousin","N/A","Yes","Bi-weekly (every other week)","A few times per month","No","Neutral",1,"Strongly agree",5,10
+"250","Woods, Christina","Mendoza Guigon, Jeremiah",18,13,"N/A","Employer","N/A","Shrimper (deck hand)","N/A","N/A","No","A few times per week","Less than once per month","Yes","Neutral",8,"Neutral",7,4
+"251","Giner, Ramiro","Lobato, Nathan",21,7,"N/A","Employee","N/A","Georgia Department of Natural Resources","N/A","N/A","No","Daily","Weekly","Yes","Strongly agree",6,"Disagree",0,0
+"252","Giner, Ramiro","Waller, Summer",24,1,"N/A","Employer","N/A","Fisherman (professional or recreationa)","N/A","N/A","No","A few times per month","A few times per week","Yes","Agree",5,"Strongly disagree",1,3
+"253","Giner, Ramiro","Torres, Doneisha",14,8,"N/A","Colleague","N/A","Retired","Parent","N/A","Yes","Weekly","A few times per week","No","Disagree",0,"Agree",4,0
+"254","Giner, Ramiro","Carpenter, Isaac",19,1,"Explanation","Other (please specify)","N/A","Retired","N/A","N/A","No","Daily","Less than once per month","Yes","Strongly disagree",1,"Agree",5,3
+"255","Giner, Ramiro","Macchietto, Dominika",14,10,"N/A","Colleague","N/A","Georgia Sea Grant Marine Extention","Other (please specify)","Explain","Yes","A few times per week","A few times per month","No","Disagree",1,"Disagree",1,10
+"256","Giner, Ramiro","Mata, Perla",30,9,"N/A","Colleague","N/A","Retired","Spouse or partner","N/A","Yes","Weekly","A few times per month","No","Strongly agree",3,"Neutral",10,3
+"257","Martinez, Haley","Soto Arvizo, Roberta",7,4,"N/A","Employer","Explanation","Other","N/A","N/A","No","Monthly","Daily","No","Strongly agree",2,"Strongly agree",2,10
+"258","Martinez, Haley","Lowe, Malik",24,9,"N/A","Employer","N/A","Shrimper (captain)","Spouse or partner","N/A","Yes","Monthly","Monthly","No","Disagree",8,"Neutral",1,2
+"259","Martinez, Haley","Santos, Jerrod",26,18,"N/A","Employee","N/A","Dock owner","Cousin","N/A","Yes","Bi-weekly (every other week)","Monthly","Yes","Strongly agree",10,"Agree",2,5
+"260","Martinez, Haley","Ives, Hannah",17,17,"N/A","Employer","N/A","Shrimper (captain)","Parent","N/A","Yes","Daily","Bi-weekly (every other week)","No","Strongly agree",2,"Disagree",4,7
+"261","Scott, Devante","Leedom, Payge",11,4,"N/A","Employer","N/A","Shrimper (captain)","N/A","N/A","No","Less than once per month","Less than once per month","Yes","Agree",6,"Agree",4,9
+"262","Villa, David","Lobato, Nathan",7,3,"N/A","Employee","N/A","Dock employee","N/A","N/A","No","A few times per month","Bi-weekly (every other week)","Yes","Neutral",9,"Neutral",9,2
+"263","Villa, David","Martinez, Jocelyne",7,2,"Explanation","Other (please specify)","N/A","Fisherman (professional or recreationa)","Child","N/A","Yes","A few times per week","Monthly","Yes","Agree",6,"Strongly disagree",10,2
+"264","Lang, Hunter","Leedom, Payge",20,19,"N/A","Colleague","N/A","Georgia Sea Grant Marine Extention","Parent","N/A","Yes","Bi-weekly (every other week)","Daily","Yes","Disagree",0,"Agree",2,5
+"265","Lang, Hunter","Bair, Chandler",10,4,"N/A","Colleague","N/A","Georgia Department of Natural Resources","N/A","N/A","No","Less than once per month","Bi-weekly (every other week)","No","Agree",0,"Disagree",4,9
+"266","Lang, Hunter","Richardson, Helme",5,2,"N/A","Employee","N/A","Dock employee","N/A","N/A","No","Daily","Monthly","No","Agree",9,"Strongly agree",7,3
+"267","Lang, Hunter","Torres, Doneisha",10,6,"N/A","Colleague","N/A","Fisherman (professional or recreationa)","N/A","N/A","No","A few times per month","A few times per month","No","Agree",9,"Neutral",4,10
+"268","Lang, Hunter","Valdez, Sylvia",5,5,"N/A","Employer","N/A","Shrimp buyer","N/A","N/A","No","Bi-weekly (every other week)","Bi-weekly (every other week)","Yes","Agree",2,"Agree",6,3
+"269","Olukemi, Kaliyah","Ives, Hannah",21,14,"N/A","Colleague","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","A few times per month","Less than once per month","No","Strongly agree",9,"Disagree",1,1
+"270","Olukemi, Kaliyah","Martinez, Haley",18,15,"N/A","Colleague","N/A","Shrimper (captain)","Parent","N/A","Yes","A few times per month","Bi-weekly (every other week)","Yes","Disagree",10,"Strongly disagree",6,10
+"271","Olukemi, Kaliyah","Waller, Summer",23,3,"Explanation","Other (please specify)","N/A","Dock employee","N/A","N/A","No","Weekly","A few times per month","Yes","Strongly disagree",3,"Neutral",4,1
+"272","Olukemi, Kaliyah","Leisegang, Kailyn",1,1,"N/A","Colleague","Explanation","Other","Child","N/A","Yes","Daily","Daily","No","Neutral",1,"Neutral",10,9
+"273","Lara, Alejandro","Woods, Christina",27,0,"Explanation","Other (please specify)","N/A","Shrimper (deck hand)","Other (please specify)","Explain","Yes","Weekly","Bi-weekly (every other week)","No","Disagree",3,"Strongly disagree",3,9
+"274","Foster, Heath","Valdez, Israel",21,3,"N/A","Employee","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Bi-weekly (every other week)","Monthly","No","Neutral",3,"Neutral",5,10
+"275","Foster, Heath","Ives, Hannah",2,0,"N/A","Employer","Explanation","Other","Spouse or partner","N/A","Yes","Weekly","Monthly","No","Disagree",4,"Disagree",5,9
+"276","Foster, Heath","Hope Crichlow, Alexander",28,5,"N/A","Employee","N/A","Shrimper (deck hand)","Parent","N/A","Yes","Less than once per month","A few times per week","No","Neutral",5,"Agree",6,8
+"277","Foster, Heath","Lang, Hunter",18,5,"N/A","Colleague","N/A","Georgia Department of Natural Resources","Child","N/A","Yes","Daily","A few times per month","Yes","Neutral",0,"Strongly disagree",9,4
+"278","Moore, Tyler","Gayle, Matiece",7,0,"Explanation","Other (please specify)","N/A","Shrimper (captain)","N/A","N/A","No","A few times per month","Bi-weekly (every other week)","No","Neutral",6,"Disagree",10,4
+"279","Mendoza Guigon, Jeremiah","Dawson, Marcello",4,2,"Explanation","Other (please specify)","N/A","Shrimper (deck hand)","N/A","N/A","No","Less than once per month","Monthly","Yes","Neutral",2,"Agree",1,4
+"280","Mendoza Guigon, Jeremiah","Snow, Madison",20,9,"N/A","Employee","N/A","Retired","N/A","N/A","No","Weekly","Daily","No","Disagree",6,"Strongly agree",5,4
+"281","Kearns, Destinee","Narracci, Aaron",27,18,"N/A","Employer","N/A","Shrimp buyer","N/A","N/A","No","Monthly","A few times per week","No","Agree",0,"Strongly agree",3,8
+"282","Kearns, Destinee","Moore, Tyler",1,1,"N/A","Employer","N/A","Retired","N/A","N/A","No","Less than once per month","Bi-weekly (every other week)","Yes","Strongly disagree",4,"Neutral",5,2
+"283","Kearns, Destinee","Piehl, Martha",3,2,"Explanation","Other (please specify)","N/A","Fisherman (professional or recreationa)","Child","N/A","Yes","A few times per week","Daily","Yes","Strongly agree",9,"Strongly disagree",9,5
+"284","Parker, Gregory","Huff, Michael",9,5,"N/A","Employer","N/A","Retired","Child","N/A","Yes","Less than once per month","Bi-weekly (every other week)","Yes","Agree",6,"Agree",4,9
+"285","Parker, Gregory","Secunda, Gildardo",1,0,"Explanation","Other (please specify)","N/A","Dock owner","N/A","N/A","No","Monthly","A few times per month","Yes","Strongly disagree",0,"Agree",3,4
+"286","Parker, Gregory","Branch, Johnathon",17,10,"Explanation","Other (please specify)","N/A","Georgia Department of Natural Resources","Parent","N/A","Yes","Bi-weekly (every other week)","Monthly","Yes","Agree",3,"Disagree",2,0
+"287","Parker, Gregory","Valdez, Israel",22,15,"Explanation","Other (please specify)","N/A","Fisherman (professional or recreationa)","N/A","N/A","No","Daily","Monthly","No","Strongly agree",0,"Disagree",1,6
+"288","Parker, Gregory","Lara, Nathan",9,1,"N/A","Employee","N/A","Georgia Department of Natural Resources","Parent","N/A","Yes","Bi-weekly (every other week)","A few times per week","No","Strongly agree",9,"Agree",5,5
+"289","Parker, Gregory","Morris, Sydnee",1,1,"N/A","Colleague","N/A","Shrimp buyer","N/A","N/A","No","Daily","Monthly","Yes","Strongly agree",7,"Strongly disagree",3,4
+"290","Parker, Gregory","Cotten, Garrett",6,4,"N/A","Employer","N/A","Shrimper (deck hand)","N/A","N/A","No","A few times per week","Daily","No","Strongly agree",7,"Strongly disagree",7,5
+"291","Valdez, Sylvia","Ramos Coronel, Nayeli",11,3,"Explanation","Other (please specify)","N/A","Dock employee","N/A","N/A","No","Bi-weekly (every other week)","Daily","No","Strongly agree",2,"Strongly disagree",4,2
+"292","Valdez, Sylvia","Lang, Hunter",17,15,"N/A","Colleague","N/A","Georgia Department of Natural Resources","N/A","N/A","No","A few times per month","Bi-weekly (every other week)","Yes","Agree",1,"Strongly disagree",7,2
+"293","Valdez, Sylvia","Campos, Isaiah",2,1,"N/A","Colleague","N/A","Fisherman (professional or recreationa)","N/A","N/A","No","Weekly","Bi-weekly (every other week)","No","Strongly disagree",9,"Strongly agree",0,8
+"294","Valdez, Sylvia","Valdez, Israel",28,22,"N/A","Employee","N/A","Dock owner","N/A","N/A","No","A few times per month","Less than once per month","Yes","Disagree",7,"Strongly disagree",8,10
+"295","Carpenter, Isaac","Mendoza Guigon, Jeremiah",23,12,"N/A","Employer","N/A","Shrimper (deck hand)","N/A","N/A","No","Monthly","Less than once per month","Yes","Neutral",9,"Strongly disagree",9,3
+"296","Shongolo, Benjamin","Session, Fabian",20,15,"N/A","Employee","N/A","Retired","Other (please specify)","Explain","Yes","Weekly","Less than once per month","No","Disagree",1,"Strongly disagree",4,4
+"297","Shongolo, Benjamin","Donegan, Chase",6,2,"Explanation","Other (please specify)","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Bi-weekly (every other week)","A few times per month","Yes","Strongly agree",3,"Agree",1,3
+"298","Lara, Nathan","Ford, Michael",20,17,"N/A","Employee","N/A","Shrimper (captain)","N/A","N/A","No","Less than once per month","Monthly","No","Neutral",7,"Agree",2,8
+"299","Lara, Nathan","Martinez, Bryanne",9,7,"Explanation","Other (please specify)","N/A","Dock owner","N/A","N/A","No","A few times per week","Bi-weekly (every other week)","No","Disagree",9,"Strongly disagree",2,6
+"300","Dejac, Jessica","Foster, Heath",27,17,"N/A","Colleague","N/A","Shrimp buyer","Parent","N/A","Yes","Daily","Monthly","Yes","Strongly disagree",3,"Strongly disagree",4,9
+"301","Bell, Tiara","Cotten, Garrett",8,4,"N/A","Colleague","N/A","Dock employee","N/A","N/A","No","Monthly","Less than once per month","No","Neutral",10,"Agree",9,2
+"302","Bell, Tiara","Alexander, Thomas",19,16,"N/A","Employee","Explanation","Other","N/A","N/A","No","A few times per week","Less than once per month","Yes","Neutral",8,"Neutral",8,8
+"303","Bell, Tiara","Shongolo, Benjamin",4,3,"N/A","Employee","N/A","Shrimper (captain)","N/A","N/A","No","Less than once per month","Less than once per month","Yes","Strongly disagree",3,"Agree",4,6
+"304","Bell, Tiara","Bhatti, Lillian",29,23,"N/A","Employer","N/A","Retired","Child","N/A","Yes","A few times per week","Monthly","No","Disagree",2,"Strongly agree",10,2
+"305","Bell, Tiara","Valdez, Sylvia",29,14,"N/A","Employee","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Less than once per month","A few times per week","No","Strongly agree",4,"Disagree",8,9
+"306","Bell, Tiara","Vandiest, Chandler",8,7,"N/A","Employer","Explanation","Other","N/A","N/A","No","Weekly","Daily","No","Disagree",4,"Neutral",9,7
+"307","Bell, Tiara","Dejac, Jessica",20,14,"N/A","Employer","N/A","Fisherman (professional or recreationa)","Other (please specify)","Explain","Yes","Bi-weekly (every other week)","Bi-weekly (every other week)","No","Strongly agree",2,"Strongly agree",5,6
+"308","Vega, Amanda","Hope Crichlow, Alexander",6,4,"N/A","Employee","N/A","Shrimp buyer","Other (please specify)","Explain","Yes","A few times per week","Daily","No","Strongly disagree",4,"Neutral",8,3
+"309","Vega, Amanda","Vandiest, Chandler",6,4,"N/A","Colleague","N/A","Fisherman (professional or recreationa)","N/A","N/A","No","Less than once per month","Monthly","Yes","Disagree",4,"Strongly disagree",9,6
+"310","Vega, Amanda","Garcia, Francisco",19,16,"N/A","Employee","N/A","Shrimper (captain)","Cousin","N/A","Yes","Less than once per month","A few times per month","Yes","Strongly agree",10,"Neutral",8,9
+"311","Coleman, Janette","Esparza, Estevan",2,1,"N/A","Employee","N/A","Shrimper (deck hand)","N/A","N/A","No","Monthly","Monthly","Yes","Neutral",5,"Strongly disagree",6,5
+"312","Coleman, Janette","Secunda, Gildardo",29,3,"N/A","Employee","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Monthly","Weekly","Yes","Strongly agree",0,"Strongly disagree",7,10
+"313","Coleman, Janette","Godoy-Vera, Jesus",2,1,"N/A","Employee","N/A","Shrimp buyer","N/A","N/A","No","Daily","A few times per month","No","Disagree",9,"Strongly agree",6,3
+"314","Coleman, Janette","Ramirez, Isaiah",27,18,"N/A","Employer","N/A","Fisherman (professional or recreationa)","Parent","N/A","Yes","A few times per week","Bi-weekly (every other week)","Yes","Strongly agree",7,"Agree",6,1
+"315","Coleman, Janette","Keesling, Ashlie",13,2,"N/A","Colleague","N/A","Retired","Parent","N/A","Yes","Daily","A few times per month","Yes","Neutral",10,"Agree",2,8
+"316","Coleman, Janette","Gayle, Matiece",28,8,"N/A","Employer","N/A","Retired","N/A","N/A","No","Bi-weekly (every other week)","Bi-weekly (every other week)","No","Disagree",0,"Disagree",0,2
+"317","Garrett, Jordan","Brown, Amber",8,2,"N/A","Employee","N/A","Fisherman (professional or recreationa)","Other (please specify)","Explain","Yes","Daily","Less than once per month","Yes","Neutral",10,"Strongly disagree",9,4
+"318","Garrett, Jordan","Kane, Craig",4,4,"N/A","Employee","N/A","Retired","N/A","N/A","No","Less than once per month","A few times per week","Yes","Disagree",5,"Strongly agree",4,6
+"319","Garrett, Jordan","Lang, Hunter",19,18,"N/A","Employer","N/A","Shrimper (deck hand)","N/A","N/A","No","Weekly","Monthly","Yes","Neutral",7,"Agree",8,5
+"320","Garrett, Jordan","Olukemi, Kaliyah",21,16,"N/A","Employer","N/A","Retired","Spouse or partner","N/A","Yes","Less than once per month","Bi-weekly (every other week)","Yes","Agree",8,"Strongly disagree",4,3
+"321","Davis, Maxwell","Ford, Michael",24,13,"N/A","Colleague","N/A","Dock employee","Other (please specify)","Explain","Yes","Daily","Weekly","Yes","Disagree",3,"Agree",8,6
+"322","Hale, Quentin","Nunez Jr, Tylerisha",22,19,"N/A","Employer","Explanation","Other","N/A","N/A","No","Less than once per month","Monthly","No","Disagree",7,"Neutral",3,5
+"323","Hale, Quentin","Esparza, Estevan",17,7,"N/A","Colleague","Explanation","Other","Cousin","N/A","Yes","A few times per week","A few times per week","No","Neutral",9,"Agree",5,1
+"324","Hale, Quentin","Riley, Lemarcus",1,1,"N/A","Employee","N/A","Shrimper (captain)","N/A","N/A","No","Less than once per month","Weekly","Yes","Strongly disagree",4,"Strongly disagree",4,2
+"325","Hale, Quentin","Ramirez, Isaiah",6,5,"N/A","Employer","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","A few times per week","A few times per week","No","Neutral",2,"Disagree",0,4
+"326","Turner, Ieesha","Olukemi, Kaliyah",29,8,"N/A","Employer","N/A","Shrimper (deck hand)","N/A","N/A","No","Bi-weekly (every other week)","Less than once per month","Yes","Neutral",0,"Neutral",2,4
+"327","Nunez Jr, Tylerisha","Martinez, Jocelyne",13,7,"N/A","Colleague","N/A","Retired","Spouse or partner","N/A","Yes","A few times per month","Weekly","Yes","Strongly disagree",10,"Disagree",9,3
+"328","Nunez Jr, Tylerisha","Macchietto, Dominika",11,11,"N/A","Colleague","N/A","Dock owner","Other (please specify)","Explain","Yes","Less than once per month","A few times per week","Yes","Strongly disagree",8,"Disagree",9,7
+"329","Nunez Jr, Tylerisha","Vega, Amanda",5,3,"Explanation","Other (please specify)","N/A","Shrimp buyer","Other (please specify)","Explain","Yes","A few times per week","Bi-weekly (every other week)","Yes","Neutral",4,"Disagree",0,2
+"330","Nunez Jr, Tylerisha","Mata, Perla",22,14,"N/A","Colleague","Explanation","Other","Other (please specify)","Explain","Yes","Monthly","Less than once per month","Yes","Disagree",2,"Strongly agree",5,10
+"331","Nunez Jr, Tylerisha","Lujan, Joshua",22,16,"N/A","Employer","N/A","Shrimper (captain)","N/A","N/A","No","Weekly","Monthly","Yes","Strongly disagree",8,"Neutral",6,7
+"332","Nunez Jr, Tylerisha","Thompson, Lee",30,29,"N/A","Employee","Explanation","Other","Cousin","N/A","Yes","Bi-weekly (every other week)","Bi-weekly (every other week)","Yes","Strongly agree",2,"Strongly disagree",10,7
+"333","Buck, Logan","Pullman, Donato",15,12,"N/A","Colleague","Explanation","Other","N/A","N/A","No","Daily","A few times per month","No","Strongly agree",10,"Agree",9,2
+"334","Buck, Logan","Mendoza Guigon, Jeremiah",24,18,"N/A","Colleague","Explanation","Other","Parent","N/A","Yes","Less than once per month","Monthly","Yes","Agree",1,"Strongly agree",8,4
+"335","Mike IV, Lamar","Esparza, Estevan",7,4,"N/A","Employer","N/A","Dock employee","N/A","N/A","No","A few times per month","A few times per month","Yes","Neutral",1,"Strongly agree",0,8
+"336","Mike IV, Lamar","Scott, Devante",7,2,"N/A","Colleague","N/A","Shrimper (deck hand)","Other (please specify)","Explain","Yes","A few times per week","Less than once per month","No","Agree",0,"Strongly disagree",2,2
+"337","Mike IV, Lamar","Cordova, Isabel",20,1,"N/A","Colleague","N/A","Fisherman (professional or recreationa)","N/A","N/A","No","A few times per month","Weekly","No","Neutral",5,"Disagree",7,8
+"338","Mike IV, Lamar","Garcia, Francisco",7,4,"N/A","Employee","N/A","Retired","N/A","N/A","No","Daily","Less than once per month","No","Neutral",10,"Disagree",10,10
+"339","Mike IV, Lamar","Cotten, Garrett",11,11,"Explanation","Other (please specify)","N/A","Georgia Department of Natural Resources","Other (please specify)","Explain","Yes","Weekly","Monthly","No","Neutral",5,"Agree",1,1
+"340","Mike IV, Lamar","Keesling, Ashlie",19,17,"Explanation","Other (please specify)","N/A","Retired","Cousin","N/A","Yes","A few times per week","Weekly","Yes","Agree",2,"Neutral",3,5
+"341","Mike IV, Lamar","Rose, Daneil",11,3,"N/A","Employer","Explanation","Other","Child","N/A","Yes","Less than once per month","A few times per week","No","Strongly agree",5,"Disagree",7,5
+"342","Rodriquez, Tania","Carpenter, Isaac",22,1,"Explanation","Other (please specify)","N/A","Dock owner","N/A","N/A","No","Monthly","Less than once per month","Yes","Agree",8,"Strongly disagree",8,6
+"343","Rodriquez, Tania","Rodriguez, John",12,0,"N/A","Employer","N/A","Georgia Department of Natural Resources","Cousin","N/A","Yes","Weekly","Daily","Yes","Disagree",4,"Strongly agree",1,3
+"344","Rodriquez, Tania","Tinsley, Katrina",25,13,"N/A","Employer","N/A","Shrimper (deck hand)","Cousin","N/A","Yes","Less than once per month","A few times per month","No","Strongly agree",6,"Strongly agree",4,0
+"345","Rodriquez, Tania","Keesling, Ashlie",14,8,"N/A","Employer","N/A","Retired","N/A","N/A","No","A few times per week","Monthly","No","Disagree",1,"Disagree",8,0
+"346","Kane, Craig","Scott, Devante",22,16,"Explanation","Other (please specify)","N/A","Dock employee","Parent","N/A","Yes","Weekly","A few times per week","Yes","Neutral",3,"Neutral",9,8
+"347","Kane, Craig","Waller, Summer",28,21,"N/A","Colleague","N/A","Shrimper (captain)","N/A","N/A","No","A few times per month","A few times per week","No","Agree",2,"Agree",9,5
+"348","Kane, Craig","Farmer, Brandon",29,11,"N/A","Employer","N/A","Shrimper (captain)","N/A","N/A","No","A few times per week","Weekly","Yes","Strongly disagree",8,"Strongly disagree",1,7
+"349","Kane, Craig","Torres, Doneisha",18,16,"N/A","Employee","N/A","Dock employee","Spouse or partner","N/A","Yes","A few times per week","Weekly","No","Agree",2,"Strongly agree",3,9
+"350","Kane, Craig","Narracci, Aaron",29,20,"N/A","Employer","N/A","Shrimper (deck hand)","N/A","N/A","No","Daily","Bi-weekly (every other week)","No","Strongly disagree",5,"Strongly agree",6,2
+"351","Kane, Craig","Alexander, Thomas",26,21,"Explanation","Other (please specify)","N/A","Shrimp buyer","N/A","N/A","No","A few times per month","Less than once per month","Yes","Agree",0,"Strongly disagree",0,5
+"352","Richardson, Helme","Gayle, Matiece",9,6,"N/A","Employer","Explanation","Other","Other (please specify)","Explain","Yes","A few times per month","Daily","Yes","Disagree",2,"Agree",1,7
+"353","Richardson, Helme","Godoy-Vera, Jesus",14,12,"Explanation","Other (please specify)","N/A","Shrimp buyer","Spouse or partner","N/A","Yes","A few times per week","A few times per week","No","Agree",3,"Strongly disagree",9,3
+"354","Richardson, Helme","Cotten, Garrett",4,1,"N/A","Employer","Explanation","Other","Child","N/A","Yes","Less than once per month","Daily","Yes","Disagree",2,"Strongly disagree",10,10
+"355","Richardson, Helme","Ives, Hannah",14,13,"N/A","Employee","N/A","Dock employee","N/A","N/A","No","A few times per week","Daily","Yes","Strongly agree",10,"Strongly disagree",4,6
+"356","Richardson, Helme","Rose, Daneil",11,4,"N/A","Colleague","N/A","Shrimper (captain)","Cousin","N/A","Yes","A few times per week","A few times per week","No","Neutral",8,"Disagree",10,2
+"357","Richardson, Helme","Bhatti, Lillian",11,7,"N/A","Employee","N/A","Fisherman (professional or recreationa)","N/A","N/A","No","Daily","Bi-weekly (every other week)","No","Strongly disagree",9,"Disagree",2,1
+"358","Richardson, Helme","Leedom, Payge",30,1,"N/A","Employee","N/A","Shrimper (captain)","N/A","N/A","No","Less than once per month","A few times per week","No","Disagree",0,"Strongly disagree",0,3
+"359","Santos, Jerrod","Garcia, Francisco",23,11,"N/A","Colleague","N/A","Shrimp buyer","Spouse or partner","N/A","Yes","Less than once per month","A few times per month","No","Agree",0,"Neutral",3,9
+"360","Santos, Jerrod","Woods, Christina",21,19,"N/A","Employer","N/A","Fisherman (professional or recreationa)","Child","N/A","Yes","A few times per week","A few times per month","Yes","Disagree",3,"Agree",5,1
+"361","Santos, Jerrod","Leisegang, Kailyn",30,9,"N/A","Employer","N/A","Shrimper (captain)","Cousin","N/A","Yes","Bi-weekly (every other week)","Monthly","No","Strongly disagree",1,"Agree",1,7
+"362","Santos, Jerrod","Morris, Sydnee",27,13,"N/A","Employer","N/A","Georgia Department of Natural Resources","Cousin","N/A","Yes","Bi-weekly (every other week)","Daily","No","Agree",7,"Strongly agree",9,3
+"363","Santos, Jerrod","Carpenter, Isaac",23,5,"N/A","Employee","N/A","Shrimp buyer","N/A","N/A","No","Less than once per month","Bi-weekly (every other week)","No","Agree",1,"Strongly agree",7,2
+"364","Santos, Jerrod","Thompson, Lee",16,2,"N/A","Employer","N/A","Dock employee","N/A","N/A","No","Less than once per month","Daily","Yes","Agree",4,"Neutral",8,0
+"365","Santos, Jerrod","Moore, Tyler",30,6,"N/A","Employee","N/A","Georgia Sea Grant Marine Extention","Child","N/A","Yes","Daily","Bi-weekly (every other week)","Yes","Strongly agree",1,"Strongly disagree",8,7
+"366","Trinkaus, Austin","Ramos Coronel, Nayeli",17,6,"N/A","Colleague","Explanation","Other","N/A","N/A","No","Daily","A few times per month","Yes","Disagree",3,"Strongly disagree",3,10
+"367","Trinkaus, Austin","Brown, Amber",8,5,"Explanation","Other (please specify)","N/A","Dock owner","Other (please specify)","Explain","Yes","A few times per month","A few times per month","No","Disagree",7,"Disagree",9,2
+"368","Brown, Amber","Lang, Hunter",26,16,"N/A","Employee","N/A","Shrimper (deck hand)","N/A","N/A","No","Weekly","Monthly","No","Strongly agree",7,"Disagree",4,1
+"369","Brown, Amber","Bhatti, Lillian",6,4,"N/A","Employee","N/A","Shrimper (deck hand)","N/A","N/A","No","A few times per week","A few times per week","Yes","Agree",2,"Strongly agree",9,8
+"370","Brown, Amber","Snow, Madison",14,4,"N/A","Employer","Explanation","Other","Child","N/A","Yes","A few times per month","Monthly","No","Strongly disagree",8,"Strongly disagree",4,2
+"371","Gonzalez-Panduro, Anreah","Fabela-Reyes, Jacob",28,27,"N/A","Colleague","N/A","Dock employee","Parent","N/A","Yes","Less than once per month","Monthly","No","Strongly agree",4,"Strongly disagree",8,3
+"372","Gonzalez-Panduro, Anreah","Moore, Tyler",27,5,"N/A","Employee","N/A","Dock owner","N/A","N/A","No","Monthly","Weekly","Yes","Neutral",8,"Neutral",3,7
+"373","Gonzalez-Panduro, Anreah","Mata, Perla",3,3,"Explanation","Other (please specify)","Explanation","Other","Other (please specify)","Explain","Yes","A few times per month","A few times per week","No","Neutral",6,"Strongly agree",9,2
+"374","Gonzalez-Panduro, Anreah","Farmer, Brandon",8,5,"N/A","Employer","Explanation","Other","N/A","N/A","No","Bi-weekly (every other week)","A few times per week","No","Strongly agree",0,"Agree",6,10
+"375","Gonzalez-Panduro, Anreah","Coleman, Janette",23,7,"N/A","Employer","N/A","Dock owner","N/A","N/A","No","A few times per week","A few times per week","Yes","Neutral",5,"Disagree",4,9
+"376","Gonzalez-Panduro, Anreah","Carpenter, Isaac",9,6,"N/A","Employer","Explanation","Other","Other (please specify)","Explain","Yes","A few times per month","Bi-weekly (every other week)","No","Disagree",9,"Disagree",3,5
+"377","Piehl, Martha","Snow, Madison",18,15,"Explanation","Other (please specify)","N/A","Dock employee","Cousin","N/A","Yes","Less than once per month","A few times per week","No","Agree",1,"Strongly disagree",5,3
+"378","Piehl, Martha","Garrett, Jordan",27,11,"N/A","Colleague","N/A","Retired","N/A","N/A","No","Monthly","Weekly","Yes","Disagree",0,"Strongly disagree",1,8
+"379","Piehl, Martha","Lujan, Joshua",15,2,"N/A","Employee","N/A","Dock owner","N/A","N/A","No","A few times per month","Daily","No","Strongly agree",10,"Agree",3,9
+"380","Piehl, Martha","Godoy-Vera, Jesus",27,15,"N/A","Employer","N/A","Shrimper (captain)","Other (please specify)","Explain","Yes","A few times per week","Less than once per month","No","Strongly disagree",9,"Neutral",2,7
+"381","Piehl, Martha","Vandiest, Chandler",4,4,"N/A","Employee","N/A","Retired","Spouse or partner","N/A","Yes","Less than once per month","Bi-weekly (every other week)","No","Neutral",8,"Agree",1,1
+"382","Piehl, Martha","Woods, Christina",11,10,"N/A","Employee","N/A","Georgia Sea Grant Marine Extention","N/A","N/A","No","Daily","Monthly","Yes","Agree",5,"Strongly agree",1,5
+"383","Morris, Sydnee","Leedom, Payge",7,1,"Explanation","Other (please specify)","N/A","Georgia Department of Natural Resources","N/A","N/A","No","Weekly","A few times per week","Yes","Strongly agree",2,"Disagree",3,7
+"384","Morris, Sydnee","Snow, Madison",28,18,"N/A","Colleague","N/A","Dock employee","N/A","N/A","No","A few times per month","Weekly","No","Strongly agree",10,"Neutral",7,1
+"385","Morris, Sydnee","Valdez, Israel",8,2,"N/A","Colleague","Explanation","Other","N/A","N/A","No","Weekly","Daily","No","Disagree",3,"Disagree",8,4
+"386","Morris, Sydnee","Shongolo, Benjamin",6,2,"Explanation","Other (please specify)","N/A","Retired","Cousin","N/A","Yes","Monthly","Daily","Yes","Neutral",0,"Disagree",8,6
+"387","Morris, Sydnee","Lara, Nathan",3,2,"N/A","Colleague","N/A","Georgia Department of Natural Resources","Spouse or partner","N/A","Yes","Bi-weekly (every other week)","Daily","Yes","Disagree",5,"Strongly disagree",8,6

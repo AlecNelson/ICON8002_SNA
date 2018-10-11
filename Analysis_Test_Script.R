@@ -6,11 +6,11 @@
 ### NOTE: Run all code at once and then view output tables. Edge attribute sheets are dependent upon random name generation in Vertex Sheet.
 
 ############################
-#basedirectory <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA"
-basedirectory <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA"
+basedirectory <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA"
+#basedirectory <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA"
 
-#inputdata_path <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA/Data"
-input_datapath <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA/Data"
+inputdata_path <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA/Data"
+#input_datapath <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA/Data"
 
 vertex_datapath <- "vertex_test_df.csv"
 edge_indiv_datapath <- "edge_indiv_test_df.csv"
