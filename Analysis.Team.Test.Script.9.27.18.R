@@ -8,8 +8,9 @@ basedirectory <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA"
 #inputdata_path <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA\\Data"
 input_datapath <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA/Data"
 
-vertex_datapath<-"vertex_test_df.csv"
-edge_datapath<-"edge_test_df.csv"
+vertex_datapath <- "vertex_test_df.csv"
+edge_indiv_datapath <- "edge_indiv_test_df.csv"
+edge_org_datapath <- "edge_org_test_df.csv"
 
 setwd(input_datapath)
 
@@ -35,27 +36,31 @@ lapply(list.of.packages, require, character.only = TRUE)
 # header=T, which tells R that the first row of data contains
 # column names.
 
-vertex_test<- read.csv(vertex_datapath,header=T, row.names = 1)
-edge_test<- read.csv(edge_datapath,header=T, row.names = 1)
+vertex_test <- read.csv(vertex_datapath, header=T, row.names = 1)
+edge_indiv_test <- read.csv(edge_indiv_datapath, header=T, row.names = 1)
+edge_org_test <- read.csv(edge_org_datapath, header=T, row.names = 1)
 
 str(vertex_test)
 summary(vertex_test)
 head(vertex_test)
 colnames(vertex_test)
 
-str(edge_test)
-summary(edge_test)
-head(edge_test)
-colnames(edge_test)
+str(edge_indiv_test)
+summary(edge_indiv_test)
+head(edge_indiv_test)
+colnames(edge_indiv_test)
 
 # Before we merge these data, we need to make sure 'ego' and 'alter' are the
 # same across data sets. We can compare each row using the == syntax. 
 # The command below should return TRUE for every row if all ego rows
 # are the same :
-unique(sort(vertex_test$ego)) == unique(sort(edge_test$ego))
+unique(sort(vertex_test$ego)) == unique(sort(edge_indiv_test$ego))
+unique(sort(vertex_test$ego)) == unique(sort(edge_org_test$ego))
 
 # We can just have R return which row entries are not equal using the syntax below:
-which(unique(sort(vertex_test$ego)) != unique(sort(edge_test$ego)))
+which(unique(sort(vertex_test$ego)) != unique(sort(edge_indiv_test$ego)))
+which(unique(sort(vertex_test$ego)) != unique(sort(edge_org_test$ego)))
+
 
 #Check names and ensure consistent with question inputs
 #names(edge_test)[3:5] <- c("friendship_tie", "reports_to_tie") 
@@ -66,16 +71,26 @@ which(unique(sort(vertex_test$ego)) != unique(sort(edge_test$ego)))
 # head(edge_test_subset)
 
 #Combine edge and vertex attribute information into igraph format
-test.graph <- graph.data.frame(d = edge_test, vertices = vertex_test)
+test.graph <- graph.data.frame(d = edge_indiv_test, vertices = vertex_test)
 summary(test.graph)
 test.graph
 V(test.graph)
 
 #Get a list of vertex attribute responses
 names(vertex_test)
-get.vertex.attribute(test.graph,'profession')
+get.vertex.attribute(test.graph,'profession.df')
+unique(get.vertex.attribute(test.graph,'profession.df'))
 # colrs <- c("gray50", "tomato", "gold","blue")
 # V(test.graph)$color <- colrs[V(test.graph)$profession]
+
+# Get an edge list or a matrix:
+as_edgelist(test.graph, names=T)
+as_adjacency_matrix(test.graph, attr="q3.years.worked.with.eiq")
+
+# Or data frames describing nodes and edges:
+as_data_frame(test.graph, what="edges")
+as_data_frame(test.graph, what="vertices")
+
 
 #Can convert to undirected
 test.graph_symmetrized <- as.undirected(test.graph, mode='collapse')
@@ -85,7 +100,7 @@ in.degree<-degree(test.graph,mode="in")
 plot(test.graph_symmetrized,
      #edge.color=edge_test$connection,
      edge.arrow.size=.5,
-     vertex.color=vertex_test$profession,
+     vertex.color=vertex_test$profession.df,
      vertex.size=((in.degree)*1.5),
      vertex.label=NA,
      vertex.label.cex=0.7,
@@ -101,8 +116,8 @@ legend(x=-1.5, y=-1.1, unique(vertex_test$profession), pch=21,
 
 # We can also plot the communities without relying on their built-in plot:
     #see more at: http://kateto.net/network-visualization
-V(test.graph_symmetrized)$community <- vertex_test$profession
-colrs <- adjustcolor( c("gray50", "tomato", "gold", "yellowgreen"), alpha=.6)
+V(test.graph_symmetrized)$community <- vertex_test$profession.df
+colrs <- adjustcolor( c("gray50", "tomato", "gold", "yellowgreen","blue","pink","green","purple"), alpha=.6)
 plot(test.graph_symmetrized, vertex.color=colrs[V(test.graph_symmetrized)$community])
 
 plot(test.graph_symmetrized,
@@ -110,7 +125,7 @@ plot(test.graph_symmetrized,
      edge.arrow.size=.5,
      vertex.color=colrs[V(test.graph_symmetrized)$community],
      vertex.size=((in.degree)*1.5),
-     vertex.label=NA,
+     vertex.label=vertex_test$profession.df,
      vertex.label.cex=0.7,
      vertex.label.dist=1,
      vertex.label.degree=-0.6,
@@ -174,14 +189,17 @@ layout.graph <- layout_(test.graph, with_fr())
 # layout is used, by calling layout_with_fr.
 # 4. Otherwise the DrL layout (Distributed Recursive (Graph) Layout) is used, layout_with_drl is called.
 layout.graph <- layout_(test.graph, nicely())
+layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
 
 plot(test.graph_symmetrized,
-     layout=layout.graph,
+     layout=(layout.graph*1.1),
+     rescale=F, 
      #edge.color=edge_test$connection,
      edge.arrow.size=.5,
      vertex.color=vertex_test$profession,
      #vertex.size=((in.degree)*1.5),
      vertex.size=3,
+     #vertex.label=vertex_test$profession.df,
      vertex.label=NA,
      vertex.label.cex=0.7,
      vertex.label.dist=1,
@@ -191,6 +209,39 @@ plot(test.graph_symmetrized,
      margin=0.0001)
 
 dev.off()
+
+
+hist(edge_indiv_test$q3.years.worked.with.eiq)
+mean(edge_indiv_test$q3.years.worked.with.eiq)
+sd(edge_indiv_test$q3.years.worked.with.eiq)
+
+cut.off <- round(mean(edge_indiv_test$q3.years.worked.with.eiq))
+test.graph.years <- delete_edges(test.graph, E(test.graph)[q3.years.worked.with.eiq<cut.off])
+
+layout.graph <- layout_(test.graph.years, nicely())
+layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
+
+plot(test.graph.years,
+     layout=(layout.graph*1.1),
+     rescale=F, 
+     #edge.color=edge_test$connection,
+     edge.arrow.size=.01,
+     vertex.color=vertex_test$profession,
+     vertex.size=((in.degree)*0.9),
+     #vertex.size=3,
+     #vertex.label=vertex_test$profession.df,
+     vertex.label=NA,
+     vertex.label.cex=0.6,
+     vertex.label.dist=1,
+     vertex.label.degree=-0.6,
+     main=paste0('Network of worked-together-with ',cut.off,' years connection'),
+     #frame=TRUE,
+     margin=0.0001)
+
+# Community detection (by optimizing modularity over partitions):
+clp <- cluster_optimal(test.graph)
+class(clp)
+
 
 
 # The write.graph() function exports a graph object in various
