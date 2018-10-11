@@ -1,4 +1,5 @@
 "","ego","alter","interaction.freq"
+<<<<<<< HEAD
 "1","Wang, Avishek","el-Yousef, Nawaal",2
 "2","Wang, Avishek","Galera, Jane",3
 "3","Wang, Avishek","Roberson, Kurt",1
@@ -4731,3 +4732,320 @@
 "4730","Kocsis, Collin","Balous, Fasika",1
 "4731","Kocsis, Collin","Havlik, Sarena",3
 "4732","Kocsis, Collin","al-Maroun, Ahlaam",1
+=======
+"1","Solomon, Jason","Suits, Brian",1
+"2","Solomon, Jason","Dunlap, Sarah",2
+"3","Gonzales, Cesar","Bautista, Maria",0
+"4","Gonzales, Cesar","Wickware, Deshaun",1
+"5","Chinburg, Jacob","Woodard, Zoe",2
+"6","Chinburg, Jacob","Soto, Joseph",2
+"7","Suits, Brian","Gonzalez, Kimberly",0
+"8","Porcelli, Isaac","Woodward, Kyle",2
+"9","Porcelli, Isaac","Gonzales, Cesar",2
+"10","Porcelli, Isaac","Dunlap, Sarah",2
+"11","Ammon, Garret","Boland, Samuel",2
+"12","Ammon, Garret","Barrera, Jorion",1
+"13","Ammon, Garret","Sandoval, Angelique",2
+"14","Peterson, Jeanrei","Blankenbeckler, Brock",3
+"15","Peterson, Jeanrei","Fierro, Nicolas",2
+"16","Peterson, Jeanrei","Lobato, Marco",1
+"17","Lobato, Marco","Cruz, Dominic",1
+"18","Lobato, Marco","Suits, Brian",2
+"19","Lobato, Marco","Lambert, Michael",2
+"20","Lobato, Marco","Enkuselasse, Mica",0
+"21","Lobato, Marco","D Alessandro, Cassidy",0
+"22","Steele, William","Apodaca, Sydni",1
+"23","Steele, William","Combs, Treasure",0
+"24","Steele, William","Garvin, Christian",1
+"25","Steele, William","Mebane, Jeremy",0
+"26","Steele, William","Drakeford, Jasmine",1
+"27","Baker, Phaezon","Hodgson, Spencer",2
+"28","Baker, Phaezon","Young, Wilfried",1
+"29","Baker, Phaezon","Patton, Micholette",1
+"30","Chia, Marco","Saenz, Suheily",3
+"31","Chia, Marco","Glenn, Morgan",2
+"32","Chia, Marco","Woodward, Kyle",2
+"33","Ryan, Derek","Steele, William",1
+"34","Ryan, Derek","Garcia, Juanmanuel",2
+"35","Tesfai, Henry","Butler-Stowers, Exaviah",2
+"36","Tesfai, Henry","Bellinger, Nicholas",1
+"37","Cruz, Dominic","Krabach, Nicholas",2
+"38","Cruz, Dominic","Hood, Joshua",2
+"39","Gomez, Senna","Mannon, Ishmyla",2
+"40","Gomez, Senna","Fierro, Nicolas",2
+"41","Gomez, Senna","Lobato, Marco",0
+"42","Gomez, Senna","Woodard, Zoe",0
+"43","Gomez, Senna","Tesfai, Henry",3
+"44","Molalegne, Tevyn","Partee, Catherine",2
+"45","Molalegne, Tevyn","Trujillo, Corinna",0
+"46","Molalegne, Tevyn","Combs, Treasure",3
+"47","Molalegne, Tevyn","Boland, Samuel",1
+"48","Ontiveros, Cheridan","Garcia, Juanmanuel",3
+"49","Ontiveros, Cheridan","Florian, Sarah",0
+"50","Ontiveros, Cheridan","Mebane, Jeremy",2
+"51","Ontiveros, Cheridan","Trujillo, Corinna",0
+"52","Ontiveros, Cheridan","Chia, Marco",3
+"53","Pucherelli, Dominic","Hooks, Terrence",3
+"54","Pucherelli, Dominic","Coleman, Kimberly",1
+"55","Pucherelli, Dominic","Hamilton, Seekret",2
+"56","Pucherelli, Dominic","Combs, Treasure",1
+"57","Pucherelli, Dominic","Bautista, Maria",0
+"58","Seeley, Marcus","Baker, Logan",1
+"59","Seeley, Marcus","Rice, Chelsi",1
+"60","Seeley, Marcus","Mcelroy, Jose",2
+"61","Bautista, Maria","Florian, Sarah",2
+"62","Bautista, Maria","Johnson, Unikka",1
+"63","Bautista, Maria","Gomez, Senna",1
+"64","Bautista, Maria","Mannon, Ishmyla",1
+"65","Bautista, Maria","Chia, Marco",2
+"66","Trujillo, Corinna","Amaro Sandoval, Nicolas",2
+"67","Trujillo, Corinna","Johnson, Unikka",1
+"68","Mebane, Jeremy","Amaro Sandoval, Nicolas",1
+"69","Mebane, Jeremy","Garcia, Juanmanuel",3
+"70","Gracia-Cazares, John","Trujillo, Corinna",1
+"71","Gracia-Cazares, John","Gonzalez, Kimberly",0
+"72","Gracia-Cazares, John","Garcia, Maria",2
+"73","Gracia-Cazares, John","Scholten, Kitiara",1
+"74","Gracia-Cazares, John","Baker, Logan",1
+"75","Jones, Tricia","Hodgson, Spencer",2
+"76","Jones, Tricia","Salazar, Gabrielle",0
+"77","Jones, Tricia","Mejia-Bernal, Jairo",2
+"78","King, Gabriel","D Alessandro, Cassidy",3
+"79","King, Gabriel","Amaro Sandoval, Nicolas",3
+"80","Martinez, Alejandra","Soto, Joseph",3
+"81","Martinez, Alejandra","Molalegne, Tevyn",1
+"82","Martinez, Alejandra","Steele, William",2
+"83","Martinez, Alejandra","De La Rosa, Joseph",1
+"84","Martinez, Alejandra","Pucherelli, Dominic",1
+"85","Blankenbeckler, Brock","Mcelroy, Jose",2
+"86","Blankenbeckler, Brock","Tesfai, Henry",2
+"87","Rice, Chelsi","Osborn, Joshua",1
+"88","Rice, Chelsi","Ledonne, Lnay",1
+"89","Rice, Chelsi","Seeley, Marcus",1
+"90","Vigil, Fabian","Rice, Chelsi",3
+"91","Vigil, Fabian","Lambert, Michael",1
+"92","Vigil, Fabian","Billat, Levi",0
+"93","Vigil, Fabian","Johnson, Unikka",2
+"94","D Alessandro, Cassidy","Gracia-Cazares, John",0
+"95","Bellinger, Nicholas","Vigil, Fabian",1
+"96","Bellinger, Nicholas","Dunlap, Sarah",1
+"97","Bellinger, Nicholas","Streib, Holly",0
+"98","Bellinger, Nicholas","Drakeford, Jasmine",1
+"99","Mejia-Bernal, Jairo","Mebane, Jeremy",2
+"100","Mejia-Bernal, Jairo","Skublickas, Cody",2
+"101","Mejia-Bernal, Jairo","Salazar, Gabrielle",1
+"102","Mejia-Bernal, Jairo","Woodward, Kyle",0
+"103","Mejia-Bernal, Jairo","Tesfai, Henry",0
+"104","Rosenblatt, Mollie","Ryan, Derek",1
+"105","Rosenblatt, Mollie","Wilson, Bailie",2
+"106","Rosenblatt, Mollie","Mejia-Bernal, Jairo",3
+"107","Rosenblatt, Mollie","Chia, Marco",1
+"108","Rosenblatt, Mollie","Enkuselasse, Mica",0
+"109","Butler-Stowers, Exaviah","Seeley, Marcus",2
+"110","Butler-Stowers, Exaviah","Hooks, Terrence",3
+"111","Butler-Stowers, Exaviah","Lobato, Marco",1
+"112","Butler-Stowers, Exaviah","Hernandez, Adrieanna",1
+"113","Mcelroy, Jose","Porcelli, Isaac",2
+"114","Mcelroy, Jose","Rosenblatt, Mollie",3
+"115","Mcelroy, Jose","Wilson, Bailie",3
+"116","Mcelroy, Jose","Rivera, Fernando",0
+"117","Mcelroy, Jose","Woodward, Kyle",2
+"118","Lambert, Michael","Hernandez, Adrieanna",3
+"119","Lambert, Michael","Johnson, Unikka",3
+"120","Lambert, Michael","Mejia-Bernal, Jairo",1
+"121","Lambert, Michael","Blankenbeckler, Brock",2
+"122","Ham, Marsean","Jones, Traevena",0
+"123","Ham, Marsean","Johnson, Unikka",1
+"124","Ham, Marsean","Ledonne, Lnay",1
+"125","Ham, Marsean","Soto, Joseph",2
+"126","Ham, Marsean","Patton, Micholette",2
+"127","De La Rosa, Joseph","Fierro, Nicolas",0
+"128","De La Rosa, Joseph","Pucherelli, Dominic",2
+"129","Glenn, Morgan","Garcia, Juanmanuel",3
+"130","Wickware, Deshaun","Skublickas, Cody",2
+"131","Wickware, Deshaun","Russell, Cecelia",3
+"132","Wickware, Deshaun","Ledonne, Lnay",1
+"133","Hernandez, Adrieanna","Gonzalez Vargas, Issac",2
+"134","Hernandez, Adrieanna","Mcelroy, Jose",2
+"135","Hernandez, Adrieanna","Tesfai, Henry",3
+"136","Hernandez, Adrieanna","Streib, Holly",1
+"137","Hernandez, Adrieanna","Bellinger, Nicholas",2
+"138","Streib, Holly","Pucherelli, Dominic",2
+"139","Streib, Holly","Enkuselasse, Mica",3
+"140","Streib, Holly","Rivera, Fernando",1
+"141","Streib, Holly","Ryan, Derek",3
+"142","Combs, Treasure","Williams, Kason",1
+"143","Amaro Sandoval, Nicolas","Lobato, Marco",3
+"144","Amaro Sandoval, Nicolas","Williams, Kason",3
+"145","Amaro Sandoval, Nicolas","Bautista, Maria",3
+"146","Garvin, Christian","Enkuselasse, Mica",0
+"147","Garvin, Christian","Fania, John",0
+"148","Garvin, Christian","Wilson, Bailie",1
+"149","Garvin, Christian","Hooks, Terrence",2
+"150","Partee, Catherine","Mejia-Bernal, Jairo",2
+"151","Partee, Catherine","Woodward, Kyle",2
+"152","Muniz, Matthew","Patton, Micholette",3
+"153","Muniz, Matthew","Drakeford, Jasmine",1
+"154","Muniz, Matthew","Bellinger, Nicholas",3
+"155","Florian, Sarah","Suits, Brian",1
+"156","Williams, Kason","Osborn, Joshua",0
+"157","Williams, Kason","Martinez, Alejandra",0
+"158","Williams, Kason","Fierro, Nicolas",1
+"159","Williams, Kason","Bautista, Maria",1
+"160","Apodaca, Sydni","Schneider, Justin",2
+"161","Apodaca, Sydni","Ham, Marsean",1
+"162","Osborn, Joshua","Baker, Logan",1
+"163","Osborn, Joshua","Lobato, Marco",1
+"164","Smolarek, Eiman","Mondragon, Malcolm",2
+"165","Barrera, Jorion","Tesfai, Henry",1
+"166","Barrera, Jorion","Hernandez, Adrieanna",2
+"167","Barrera, Jorion","Baker, Logan",0
+"168","Krabach, Nicholas","Navarro, Michael",2
+"169","Krabach, Nicholas","Ryan, Derek",2
+"170","Krabach, Nicholas","Alvarado Nava, Alyssa",0
+"171","Krabach, Nicholas","Ellwein, Jacob-Allen",1
+"172","Woodard, Zoe","Rice, Chelsi",0
+"173","Woodard, Zoe","Enkuselasse, Mica",1
+"174","Woodard, Zoe","Wilson, Bailie",2
+"175","Savedra-Gonzales, Laura","Jones, Traevena",0
+"176","Savedra-Gonzales, Laura","Barrientos, Luis",1
+"177","Savedra-Gonzales, Laura","Gonzalez Vargas, Issac",1
+"178","Savedra-Gonzales, Laura","Woodward, Kyle",0
+"179","Savedra-Gonzales, Laura","Ellwein, Jacob-Allen",0
+"180","Boland, Samuel","Partee, Catherine",1
+"181","Mannon, Ishmyla","Muniz, Matthew",2
+"182","Mannon, Ishmyla","Chinburg, Jacob",1
+"183","Mannon, Ishmyla","Rice, Chelsi",2
+"184","Mannon, Ishmyla","Lobato, Marco",1
+"185","Mannon, Ishmyla","Molalegne, Tevyn",1
+"186","Montanez, Erick","Mcelroy, Jose",0
+"187","Montanez, Erick","Rosechild, Juan",2
+"188","Montanez, Erick","Fania, John",3
+"189","Montanez, Erick","Hernandez, Adrieanna",1
+"190","Hodgson, Spencer","Rice, Chelsi",3
+"191","Hodgson, Spencer","Rosechild, Juan",1
+"192","Hodgson, Spencer","Jones, Traevena",2
+"193","Hodgson, Spencer","Baker, Logan",1
+"194","Hodgson, Spencer","Enkuselasse, Mica",0
+"195","Mondragon, Malcolm","Mejia-Bernal, Jairo",1
+"196","Mondragon, Malcolm","Garcia, Juanmanuel",1
+"197","Mondragon, Malcolm","Saenz, Suheily",2
+"198","Mondragon, Malcolm","Cruz, Dominic",1
+"199","Mondragon, Malcolm","Gomez, Senna",1
+"200","Soto, Joseph","Mondragon, Malcolm",2
+"201","Billat, Levi","Seeley, Marcus",2
+"202","Scott, Joel","Suits, Brian",3
+"203","Scott, Joel","Streib, Holly",0
+"204","Scott, Joel","Garcia, Maria",2
+"205","Garcia, Juanmanuel","Garvin, Christian",2
+"206","Woodward, Kyle","D Alessandro, Cassidy",2
+"207","Woodward, Kyle","Partee, Catherine",1
+"208","Woodward, Kyle","Molalegne, Tevyn",2
+"209","Woodward, Kyle","Mcelroy, Jose",2
+"210","Woodward, Kyle","Bellinger, Nicholas",1
+"211","Drakeford, Jasmine","Salazar, Gabrielle",2
+"212","Drakeford, Jasmine","Hodgson, Spencer",1
+"213","Resendez, Jacob","Ryan, Derek",2
+"214","Resendez, Jacob","Bellinger, Nicholas",1
+"215","Resendez, Jacob","Apodaca, Sydni",1
+"216","Resendez, Jacob","Dunlap, Sarah",3
+"217","Schneider, Justin","Rosechild, Juan",1
+"218","Schneider, Justin","Coleman, Kimberly",1
+"219","Johnson, Unikka","Muniz, Matthew",2
+"220","Alvarado Nava, Alyssa","Gonzalez Vargas, Issac",1
+"221","Alvarado Nava, Alyssa","Wilson, Bailie",2
+"222","Alvarado Nava, Alyssa","Gomez, Senna",1
+"223","Alvarado Nava, Alyssa","Batz, Katelyn",1
+"224","Alvarado Nava, Alyssa","Steele, William",2
+"225","Ellwein, Jacob-Allen","Gonzalez Vargas, Issac",1
+"226","Ellwein, Jacob-Allen","Woodard, Zoe",1
+"227","Ellwein, Jacob-Allen","Resendez, Jacob",1
+"228","Ellwein, Jacob-Allen","Coleman, Kimberly",1
+"229","Ellwein, Jacob-Allen","Chinburg, Jacob",0
+"230","Navarro, Michael","Glenn, Morgan",2
+"231","Navarro, Michael","Smolarek, Eiman",1
+"232","Rivera, Fernando","Hood, Joshua",1
+"233","Rivera, Fernando","Rosechild, Juan",2
+"234","Fania, John","Hernandez, Adrieanna",2
+"235","Fania, John","Rosechild, Juan",1
+"236","Fania, John","Mcelroy, Jose",3
+"237","Fania, John","Ham, Marsean",1
+"238","Fania, John","Baker, Phaezon",3
+"239","Jones, Traevena","Blankenbeckler, Brock",0
+"240","Jones, Traevena","Hodgson, Spencer",0
+"241","Saenz, Suheily","Combs, Treasure",2
+"242","Saenz, Suheily","Gonzales, Cesar",1
+"243","Saenz, Suheily","Navarro, Michael",0
+"244","Saenz, Suheily","Rivera, Fernando",1
+"245","Ledonne, Lnay","Savedra-Gonzales, Laura",0
+"246","Ledonne, Lnay","Montanez, Erick",0
+"247","Ledonne, Lnay","Steele, William",1
+"248","Ledonne, Lnay","Fierro, Nicolas",0
+"249","Young, Wilfried","Chinburg, Jacob",3
+"250","Young, Wilfried","Chia, Marco",0
+"251","Young, Wilfried","Tesfai, Henry",0
+"252","Salazar, Gabrielle","Cruz, Dominic",3
+"253","Salazar, Gabrielle","Krabach, Nicholas",1
+"254","Scholten, Kitiara","De La Rosa, Joseph",0
+"255","Scholten, Kitiara","Pucherelli, Dominic",0
+"256","Wilson, Bailie","Smolarek, Eiman",2
+"257","Wilson, Bailie","Rivera, Fernando",3
+"258","Wilson, Bailie","Gonzales, Cesar",3
+"259","Wilson, Bailie","D Alessandro, Cassidy",0
+"260","Gonzalez Vargas, Issac","Lobato, Marco",1
+"261","Gonzalez Vargas, Issac","Billat, Levi",0
+"262","Gonzalez Vargas, Issac","Gonzales, Cesar",0
+"263","Dunlap, Sarah","Porcelli, Isaac",2
+"264","Dunlap, Sarah","Barrientos, Luis",3
+"265","Dunlap, Sarah","Rivera, Fernando",0
+"266","Dunlap, Sarah","Enkuselasse, Mica",1
+"267","Patton, Micholette","Fierro, Nicolas",2
+"268","Patton, Micholette","Schneider, Justin",1
+"269","Patton, Micholette","Peterson, Jeanrei",1
+"270","Patton, Micholette","Mebane, Jeremy",2
+"271","Sandoval, Angelique","Rice, Chelsi",1
+"272","Sandoval, Angelique","Hamilton, Seekret",0
+"273","Sandoval, Angelique","Resendez, Jacob",0
+"274","Sandoval, Angelique","Butler-Stowers, Exaviah",2
+"275","Coleman, Kimberly","Jones, Tricia",0
+"276","Rosechild, Juan","Saenz, Suheily",0
+"277","Rosechild, Juan","Gomez, Senna",3
+"278","Barrientos, Luis","Ellwein, Jacob-Allen",0
+"279","Barrientos, Luis","Vigil, Fabian",2
+"280","Barrientos, Luis","Lobato, Marco",1
+"281","Barrientos, Luis","Partee, Catherine",2
+"282","Skublickas, Cody","Hernandez, Adrieanna",1
+"283","Skublickas, Cody","Barrera, Jorion",2
+"284","Hooks, Terrence","Young, Wilfried",2
+"285","Hooks, Terrence","Ammon, Garret",1
+"286","Hooks, Terrence","Enkuselasse, Mica",1
+"287","Hooks, Terrence","Hamilton, Seekret",1
+"288","Hooks, Terrence","Chinburg, Jacob",2
+"289","Fierro, Nicolas","Ellwein, Jacob-Allen",3
+"290","Fierro, Nicolas","Mebane, Jeremy",0
+"291","Fierro, Nicolas","Molalegne, Tevyn",2
+"292","Fierro, Nicolas","Garcia, Maria",0
+"293","Fierro, Nicolas","Cruz, Dominic",2
+"294","Baker, Logan","Garcia, Juanmanuel",2
+"295","Baker, Logan","Woodward, Kyle",1
+"296","Hamilton, Seekret","Suits, Brian",1
+"297","Hamilton, Seekret","Batz, Katelyn",2
+"298","Hamilton, Seekret","Resendez, Jacob",0
+"299","Gonzalez, Kimberly","Ontiveros, Cheridan",2
+"300","Gonzalez, Kimberly","Streib, Holly",1
+"301","Gonzalez, Kimberly","Chia, Marco",2
+"302","Gonzalez, Kimberly","Suits, Brian",2
+"303","Hood, Joshua","King, Gabriel",3
+"304","Hood, Joshua","Molalegne, Tevyn",2
+"305","Hood, Joshua","Pucherelli, Dominic",1
+"306","Russell, Cecelia","Gonzalez Vargas, Issac",1
+"307","Garcia, Maria","Barrera, Jorion",1
+"308","Garcia, Maria","Smolarek, Eiman",1
+"309","Garcia, Maria","Woodward, Kyle",3
+"310","Batz, Katelyn","Jones, Traevena",2
+"311","Batz, Katelyn","Wilson, Bailie",2
+"312","Batz, Katelyn","Dunlap, Sarah",2
+"313","Enkuselasse, Mica","Jones, Traevena",1
+"314","Enkuselasse, Mica","Drakeford, Jasmine",0
+"315","Enkuselasse, Mica","Florian, Sarah",2
+>>>>>>> master
