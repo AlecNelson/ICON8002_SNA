@@ -105,10 +105,23 @@ V(test.graph_symmetrized)$community <- vertex_test$profession
 colrs <- adjustcolor( c("gray50", "tomato", "gold", "yellowgreen"), alpha=.6)
 plot(test.graph_symmetrized, vertex.color=colrs[V(test.graph_symmetrized)$community])
 
+plot(test.graph_symmetrized,
+     #edge.color=edge_test$connection,
+     edge.arrow.size=.5,
+     vertex.color=colrs[V(test.graph_symmetrized)$community],
+     vertex.size=((in.degree)*1.5),
+     vertex.label=NA,
+     vertex.label.cex=0.7,
+     vertex.label.dist=1,
+     vertex.label.degree=-0.6,
+     main='Test Data Connections (color by profession/community)',
+     #frame=TRUE,
+     margin=0.0001)
+
 # legend(1,
 #        1.25,
 #        legend = c('Profession'),
-#        col = vertex_test$profession,
+#        col = colrs[V(test.graph_symmetrized)$community],
 #        lty=1,
 #        cex = .7)
 # dev.off()
@@ -127,6 +140,8 @@ plot(test.graph_symmetrized, vertex.color=colrs[V(test.graph_symmetrized)$commun
 
 ## network metrics
 degree(test.graph)
+which.max(degree(test.graph))
+which.min(degree(test.graph))
 diameter(test.graph)
 closeness(test.graph)
 reciprocity(test.graph)
