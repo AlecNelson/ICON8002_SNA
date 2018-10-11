@@ -5,14 +5,11 @@ output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = F)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+# Social Network Analysis
+This is a report generated from social netowkr analysis of the actors within the shrimping industry on the Georgia Coast. The resulting output of the analysis demonstrates the relationships between shrimpers, dockers, and other agencies/organizations. 
 
 ```{r, include=F}
 input_datapath <- "C:/Users/solit/Documents/GitHub/ICON8002_SNA/Data"
@@ -38,7 +35,7 @@ which(unique(sort(vertex$ego)) != unique(sort(edge$ego)))
 
 network <- graph.data.frame(d = edge, vertices = vertex)
 ```
-# Network attributes
+## Network attributes
 ```{r, include=F}
 vertex_degree<-as.data.frame(degree(network))
 diameter<-diameter(network)
@@ -51,28 +48,28 @@ in.degree<-degree(network,mode="in")
 ```
 
 * Diameter
-```{r echo=F}
+```{r}
 diameter
 ```
 
 * Reciprocity
-```{r echo=F}
+```{r}
 reciprocity
 ```
 * Number of edges
-```{r echo=F}
+```{r}
 ecount
 ```
 * Number of egos
-```{r echo=F}
+```{r}
 vcount
 ```
 * Edge density
-```{r echo=F}
+```{r}
 edge_density
 ```
 * Closeness
-```{r echo=F}
+```{r}
 as.data.frame(closeness)
 ```
 * Degree
@@ -81,14 +78,14 @@ vertex_degree
 ```
 
 * In-degree
-```{r echo=F}
+```{r}
 as.data.frame(in.degree)
 ```
 
 
-# Network plot
+## Network plot
 
-```{r echo=F}
+```{r}
 
 plot(network,
      edge.arrow.size=.5,
