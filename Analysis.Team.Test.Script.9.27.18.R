@@ -15,7 +15,7 @@ edge_org_datapath <- "edge_org_test_df.csv"
 setwd(input_datapath)
 
 #List packages used
-list.of.packages <- c("igraph","randomNames","fabricatr")
+list.of.packages <- c("igraph","randomNames","fabricatr","plyr","RColorBrewer")
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)){install.packages(new.packages)} 
@@ -91,13 +91,19 @@ as_adjacency_matrix(test.graph, attr="q3.years.worked.with.eiq")
 as_data_frame(test.graph, what="edges")
 as_data_frame(test.graph, what="vertices")
 
+#Simplify graph?
+test.graph_simpl <- simplify(test.graph)
+test.graph_simpl_symm <- as.undirected(test.graph_simpl, mode='collapse')
 
 #Can convert to undirected
 test.graph_symmetrized <- as.undirected(test.graph, mode='collapse')
+get.edge.attribute(test.graph,'q2.years.known.eiq')
+get.edge.attribute(test.graph_symmetrized,'q2.years.known.eiq')
+
 
 in.degree<-degree(test.graph,mode="in")
 
-plot(test.graph_symmetrized,
+plot(test.graph_simpl_symm,
      #edge.color=edge_test$connection,
      edge.arrow.size=.5,
      vertex.color=vertex_test$profession.df,
@@ -285,9 +291,71 @@ dev.off()
 
 #Add graph of strong/weak connections between professional groups
 
+V(test.graph_symmetrized)$profession.df
+E(test.graph_symmetrized)$profession.df
+
+strength(test.graph_symmetrized)
+graph_attr(test.graph_symmetrized)
+
+E(test.graph)[inc(V(test.graph)[profession.df==professions.list[1]])]
+g2 <- subgraph.edges(test.graph, E(test.graph)[inc(V(test.graph)[profession.df==professions.list[1]])])
+
+plot(g2,
+     layout=layout_in_circle,
+     rescale=T, 
+     edge.color=adjustcolor("black", 0.1),
+     edge.arrow.size=0.1,
+     vertex.color=vertex_test$profession.df,
+     vertex.size=((in.degree)*0.7),
+     #vertex.size=3,
+     vertex.label=vertex_test$profession.df,
+     #vertex.label=NA,
+     vertex.label.cex=0.7,
+     vertex.label.color= adjustcolor("black", 0.5),
+     vertex.label.dist=1,
+     vertex.label.degree=-0.6,
+     main='Test Data Connections (color by profession)',
+     #frame=TRUE,
+     margin=0.0001)
+
+#Contract verticies to professional interactions
+professions_interactions <- contract(test.graph, mapping = as.numeric(mapvalues(vertex_test$profession.df, from = professions.list, to = 1:length(professions.list))))
+#Simplify to remove loops and self-connections within-group
+professions_interactions<-simplify(professions_interactions)
+#Remove directedness
+professions_interactions <- as.undirected(professions_interactions)
+#Add in updated attributes
+V(professions_interactions)$title <- professions.list
+V(professions_interactions)$label <- professions.list
+V(professions_interactions)$name <- professions.list
+V(professions_interactions)$color <- brewer.pal(9,"Paired")
+E(professions_interactions)$color <- "lightblue"
+
+setwd(input_datapath)
+pdf("SNA_Output_professions_contract.pdf")
+
+plot(professions_interactions,
+     #layout=layout_in_circle,
+     rescale=T, 
+     edge.color=adjustcolor("blue", 0.3),
+     edge.arrow.size=0.8,
+     #vertex.color=vertex_test$profession.df,
+     #vertex.size=((in.degree)*0.7),
+     vertex.size=3,
+     #vertex.label=vertex_test$profession.df,
+     #vertex.label=NA,
+     vertex.label.cex=0.9,
+     vertex.label.color= adjustcolor("black", 0.9),
+     vertex.label.dist=1,
+     vertex.label.degree=-0.6,
+     main='Directed Professions Connections',
+     #frame=TRUE,
+     margin=0.0001)
+
+dev.off()
 
 
-
+degree(professions_interactions,mode="all")
 
 
 # The write.graph() function exports a graph object in various
