@@ -175,6 +175,7 @@ test.graph_symmetrized <- as.undirected(test.graph, mode='collapse')
 in.degree<-degree(test.graph,mode="in")
 #layout.graph <- layout_(test.graph, with_dh())
 layout.graph <- layout_(test.graph, with_graphopt())
+layout.graph <- layout_(test.graph, with_lgl())
 
 layout.graph <- layout_(test.graph, with_drl())
 layout.graph <- layout_(test.graph, with_fr())
@@ -189,6 +190,7 @@ layout.graph <- layout_(test.graph, with_fr())
 # layout is used, by calling layout_with_fr.
 # 4. Otherwise the DrL layout (Distributed Recursive (Graph) Layout) is used, layout_with_drl is called.
 layout.graph <- layout_(test.graph, nicely())
+layout.graph <- layout_(test.graph_symmetrized, nicely())
 layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
 
 plot(test.graph_symmetrized,
@@ -196,7 +198,7 @@ plot(test.graph_symmetrized,
      rescale=F, 
      #edge.color=edge_test$connection,
      edge.arrow.size=.5,
-     vertex.color=vertex_test$profession,
+     vertex.color=vertex_test$profession.df,
      #vertex.size=((in.degree)*1.5),
      vertex.size=3,
      #vertex.label=vertex_test$profession.df,
@@ -221,6 +223,8 @@ test.graph.years <- delete_edges(test.graph, E(test.graph)[q3.years.worked.with.
 layout.graph <- layout_(test.graph.years, nicely())
 layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
 
+pdf("SNA_Output_work_years.pdf")
+
 plot(test.graph.years,
      layout=(layout.graph*1.1),
      rescale=F, 
@@ -238,9 +242,51 @@ plot(test.graph.years,
      #frame=TRUE,
      margin=0.0001)
 
-# Community detection (by optimizing modularity over partitions):
-clp <- cluster_optimal(test.graph)
-class(clp)
+dev.off()
+
+#Clustering function to add weights to edges with shared profession
+G_Grouped = test.graph_symmetrized
+E(G_Grouped)$weight = 1
+professions.list<-unique(V(G_Grouped)$profession.df)
+## Add edges with high weight between all nodes in the same group
+for(i in 1:length(professions.list)) {
+  GroupV = which(V(G_Grouped)$profession.df == professions.list[i])
+  G_Grouped = add_edges(G_Grouped, combn(GroupV, 2), attr=list(weight=5))
+  print(paste0("Ran loop for profession ",professions.list[i]))
+} 
+
+## Now create a layout based on G_Grouped
+LO = layout_with_fr(G_Grouped)
+LO<-norm_coords(LO, ymin=-1, ymax=1, xmin=-1, xmax=1)
+
+
+setwd(input_datapath)
+pdf("SNA_Output_group_layout.pdf")
+
+plot(test.graph_symmetrized,
+     layout=(LO*1.0),
+     rescale=F, 
+     #edge.color=edge_test$connection,
+     edge.arrow.size=.5,
+     vertex.color=vertex_test$profession.df,
+     vertex.size=((in.degree)*0.7),
+     vertex.size=3,
+     vertex.label=vertex_test$profession.df,
+     #vertex.label=NA,
+     vertex.label.cex=0.7,
+     vertex.label.color= adjustcolor("black", 0.6),
+     vertex.label.dist=1,
+     vertex.label.degree=-0.6,
+     main='Test Data Connections (color by profession)',
+     #frame=TRUE,
+     margin=0.0001)
+
+dev.off()
+
+#Add graph of strong/weak connections between professional groups
+
+
+
 
 
 
@@ -392,4 +438,160 @@ reach_reports_to_in <- reachability(krack_reports_to, 'in')
 reach_reports_to_out <- reachability(krack_reports_to, 'out')
 reach_reports_to_in
 reach_reports_to_out
+
+
+
+# Community detection (by optimizing modularity over partitions):
+
+clp <-cluster_fast_greedy(test.graph_symmetrized)
+V(test.graph_symmetrized)$community <- clp$membership
+class(clp)
+plot(clp, test.graph_symmetrized)
+
+
+plot(clp,test.graph_symmetrized,
+     layout=(layout.graph*1.1),
+     rescale=F, 
+     #edge.color=edge_test$connection,
+     edge.arrow.size=.5,
+     vertex.color=vertex_test$profession,
+     #vertex.size=((in.degree)*1.5),
+     vertex.size=3,
+     #vertex.label=vertex_test$profession.df,
+     vertex.label=NA,
+     vertex.label.cex=0.7,
+     vertex.label.dist=1,
+     vertex.label.degree=-0.6,
+     main='Test Data Connections (color by profession)',
+     #frame=TRUE,
+     margin=0.0001)
+
+
+layoutVertexByAttr <- function(graph, wc, cluster.strength=1,layout=layout.auto) {  
+  g <- graph.edgelist(get.edgelist(graph))
+  E(g)$weight <- 1
+  attr <- cbind(id=1:vcount(g), val=wc)
+  g <- g + vertices(unique(attr[,2])) + igraph::edges(unlist(t(attr)), weight=cluster.strength)
+  l <- layout(g, weights=E(g)$weight)[1:vcount(graph),]
+  return(l)
+}
+
+l = layoutVertexByAttr(test.graph_symmetrized, vertex_test$profession.df, cluster.strength=1, layout=layout.kamada.kawai)
+
+plot.igraph(test.graph_symmetrized, vertex.color=vertex_test$profession.df, layout=l)
+
+GroupByVertex01 = function(Groups, spacing = 5) {
+  Position = (order(Groups) + spacing*Groups)
+  Angle    = Position * 2 * pi / max(Position)
+  matrix(c(cos(Angle), sin(Angle)), ncol=2)
+}
+
+GBV1 = GroupByVertex01(V(test.graph_symmetrized)$community)
+#plot(g2, vertex.color=rainbow(3)[V(test.graph_symmetrized)$community], layout=GBV1)
+
+GroupByVertex02 = function(Groups) {
+  numGroups = length(unique(Groups))
+  GAngle    = (1:numGroups) * 2 * pi / numGroups
+  Centers   = matrix(c(cos(GAngle), sin(GAngle)), ncol=2)
+  x = y = c()
+  for(i in 1:numGroups) {
+    curGroup = which(Groups == unique(Groups)[i])
+    VAngle = (1:length(curGroup)) * 2 * pi / length(curGroup)
+    x = c(x, Centers[i,1] + cos(VAngle) / numGroups )
+    y = c(y, Centers[i,2] + sin(VAngle) / numGroups)
+  }
+  matrix(c(x, y), ncol=2)
+}
+
+GBV2 = GroupByVertex02(V(test.graph_symmetrized)$community)
+plot(test.graph_symmetrized, vertex.color=rainbow(3)[V(test.graph_symmetrized)$community], layout=GBV2)
+
+plot(test.graph_symmetrized,
+     layout=(GBV2*1.0),
+     rescale=F, 
+     #edge.color=edge_test$connection,
+     edge.arrow.size=.5,
+     #vertex.color=get.vertex.attribute(test.graph,'profession.df'),
+     #vertex.size=((in.degree)*1.5),
+     vertex.size=3,
+     vertex.label=get.vertex.attribute(test.graph,'profession.df'),
+     #vertex.label=NA,
+     vertex.label.cex=0.7,
+     vertex.label.dist=1,
+     vertex.label.degree=-0.6,
+     main='Test Data Connections (color by profession)',
+     #frame=TRUE,
+     margin=0.0001)
+
+
+
+
+EL = structure(c(1, 5, 4, 2, 7, 4, 7, 6, 6, 2, 9, 6, 3, 10,
+                 7, 8, 3, 9, 8, 5, 3, 4, 10, 13, 12, 12, 13, 12, 13, 15, 15,
+                 11, 11, 14, 14, 11, 11, 11, 15, 15, 11, 11, 13, 13, 11, 13),
+               .Dim = c(23L, 2L))
+
+g2 = graph_from_edgelist(EL, directed = FALSE)
+
+V(g2)
+
+Groups = c(rep(1, 10), 2,2,3,3,3)
+Groups = c(3,4,3,5,5,5,3,4,4,2,3,4,5,2,2)
+Groups = sort(Groups)
+plot(g2, vertex.color=rainbow(3)[Groups])
+
+
+
+GBV1 = GroupByVertex01(Groups)
+plot(g2, vertex.color=rainbow(3)[Groups], layout=GBV1)
+
+GBV2 = GroupByVertex02(Groups)
+plot(g2, vertex.color=rainbow(3)[Groups], layout=GBV2)
+
+
+set.seed(1234)
+G = erdos.renyi.game(20, 0.25)
+V(G)$Group1 = sample(3,20, replace=TRUE)
+plot(G, vertex.color=rainbow(3, alpha=0.4)[V(G)$Group1])
+
+G_Grouped = G
+E(G_Grouped)$weight = 1
+
+## Add edges with high weight between all nodes in the same group
+for(i in unique(V(G)$Group1)) {
+  GroupV = which(V(G)$Group1 == i)
+  G_Grouped = add_edges(G_Grouped, combn(GroupV, 2), attr=list(weight=5))
+} 
+
+## Now create a layout based on G_Grouped
+set.seed(567)
+LO = layout_with_fr(G_Grouped)
+
+## Use the layout to plot the original graph
+plot(G, vertex.color=rainbow(3, alpha=0.4)[V(G)$Group1], layout=LO)
+
+##################
+#G = erdos.renyi.game(20, 0.25)
+#V(G)$Group1 = sample(3,20, replace=TRUE)
+G<-test.graph_symmetrized
+#V(G)$profession.df
+G_Grouped = test.graph_symmetrized
+E(G_Grouped)$weight = 1
+professions.list<-unique(V(G_Grouped)$profession.df)
+## Add edges with high weight between all nodes in the same group
+for(i in 1:length(professions.list)) {
+  GroupV = which(V(G_Grouped)$profession.df == professions.list[i])
+  G_Grouped = add_edges(G_Grouped, combn(GroupV, 2), attr=list(weight=5))
+  print(paste0("Ran loop for profession ",professions.list[i]))
+} 
+
+## Now create a layout based on G_Grouped
+LO = layout_with_fr(G_Grouped)
+
+
+plot(G, vertex.color=rainbow(3)[V(G)$profession.df])
+## Use the layout to plot the original graph
+plot(G, vertex.color=rainbow(3, alpha=0.4)[V(G)$profession.df], layout=LO)
+
+
 
