@@ -93,7 +93,7 @@ profession.df <- sample(industry.role.options, n, replace=TRUE, prob = c(0.265, 
 
 # Prospective survey questions and answers
 
-# 1. In your opinion, what issues are currently impacting the fishing/shrimping industry on the
+# 1. In your opinion, what, if any, issues are currently impacting the fishing/shrimping industry on the
 # Georgia coast? 
 # Answer choices: Economic, environmental/ecological, social, political, other (Explain)
 # Output: check all that apply, so binary response for each issue (1 = yes, 0 = no)
@@ -362,6 +362,12 @@ q15.trust.level.eiq <- sample(c(0:10), n.edge.indiv, replace = T)
 # Output: numerical likert scale from 0 (bad) to 10 (good)
 
 q16.willingness.to.wk.with.eiq <- sample(c(0:10), n.edge.indiv, replace = T)
+
+# 17. Rank the professonal associates you listed based on willingness to work for positive change in the Georgia shrimp industry 
+# on a scale from 0 (not willing at all) to 10 (very willing). 
+# Output: continuous integer scale from 0 (bad) to 10 (good)
+
+q17.willingness.to.lead.eiq <- sample(c(0:10), n.edge.indiv, replace = T)
 
 ########## End Edge (individual to individual) sheet questions. Now time to put it all together into one data frame
 
