@@ -2,16 +2,17 @@
 # 10/4/18
 
 ############################
-#basedirectory <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA"
-basedirectory <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA"
+basedirectory <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA"
+#basedirectory <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA"
 
-#inputdata_path <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA\\Data"
-input_datapath <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA/Data"
+inputdata_path <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA\\Data"
+inputdata_path <- "C:\Users\ahn11803\Documents\GitHub\ICON8002_SNA\Data"
+#inputdata_path <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA/Data"
 
 vertex_datapath<-"vertex_test_df.csv"
 edge_datapath<-"edge_test_df.csv"
 
-setwd(input_datapath)
+setwd(inputdata_path)
 
 #List packages used
 list.of.packages <- c("igraph","randomNames","fabricatr")
