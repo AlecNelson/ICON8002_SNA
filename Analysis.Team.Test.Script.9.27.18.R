@@ -15,7 +15,7 @@ edge_org_datapath <- "edge_org_test_df.csv"
 setwd(input_datapath)
 
 #List packages used
-list.of.packages <- c("igraph","randomNames","fabricatr","plyr","RColorBrewer")
+list.of.packages <- c("igraph","randomNames","fabricatr","plyr","RColorBrewer","keyplayer","sna")
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)){install.packages(new.packages)} 
@@ -100,7 +100,6 @@ test.graph_symmetrized <- as.undirected(test.graph, mode='collapse')
 get.edge.attribute(test.graph,'q2.years.known.eiq')
 get.edge.attribute(test.graph_symmetrized,'q2.years.known.eiq')
 
-
 in.degree<-degree(test.graph,mode="in")
 
 plot(test.graph_simpl_symm,
@@ -160,7 +159,9 @@ plot(test.graph_symmetrized,
 # plot(icon.graph,edge.color=edge_test$high_five,edge.width=edge_test$high_fives,edge.arrow.size=.2,main='ICON High-Fives (weighted)')
 
 ## network metrics
-degree(test.graph)
+sna::degree(test.graph)
+igraph::degree(test.graph)
+
 which.max(degree(test.graph))
 which.min(degree(test.graph))
 diameter(test.graph)
@@ -170,9 +171,107 @@ ecount(test.graph)
 vcount(test.graph)
 edge_density(test.graph)
 
+#Keyplayer functions:
+
+test.matrix<-as.matrix(as_adjacency_matrix(test.graph))
+W<-test.matrix
+
+W <- matrix(c(0, 1, 3, 0, 0, 0, 0, 0, 4, 0, 1, 1, 0, 2, 0, 0, 0, 0, 0, 3,
+              + 0, 2, 0, 0, 0), nrow = 5, ncol = 5, byrow = TRUE)
+A <- W
+A[W != 0] <- 1 / W[W != 0] # Inverse the non-zero tie status
+
+evcent(A, gmode = "digraph", ignore.eval = FALSE, use.eigen = TRUE)
+
+B <- symmetrize(W)
+evcent(B)
+
+mreach.degree(W, M = 1)
+which.max(mreach.degree(W, M = 1)[,3])[1]
+mreach.closeness(A)
+which.max(mreach.closeness(A)[,3])[1]
+
+fragment(A)
+
+g <- W
+g[W != 0] <- 1
+q <- matrix(c(0, .2, .6, 0, 0, .1, 0, 0, .4, 0, .1, .1, 0, .4, 0, 0, .5, 0, 0, .3,
+              + 0, .4, 0, 0, 0), nrow = 5, ncol = 5, byrow = TRUE)
+P <- q * g
+diffusion(P, T = 5)
+
+contract(W, c(2, 3), method = "max")
+contract(P, c(2, 3), method = "union")
+
+kpcent(W, c(2, 18), type = "degree", cmode = "total", method = "max")
+kpcent(W, c(2, 67), type = "degree", cmode = "total", method = "min")
+kpcent(W, c(2, 3), type = "degree", cmode = "total", method = "min", binary = TRUE)
+kpcent(W, c(2, 3), type = "mreach.degree", cmode = "total", M = 1, binary = TRUE)
+kpcent(W, c(2, 3), type = "mreach.closeness", cmode = "total", M = 1, binary = TRUE)
+
+kpset(W, size = 3, type = "degree", cmode = "indegree", method = "max")
+kpset(W, size = 3, type = "degree", cmode = "indegree", binary = TRUE, method = "max")
+kpset(W, size = 3, type = "mreach.degree", cmode = "indegree", M = 1,binary = TRUE)
+kpset(A, size = 3, type = "mreach.closeness", cmode = "indegree", M = 1)
+kpset(W, size = 3, type = "degree", cmode = "indegree", parallel = TRUE,cluster = 2)
+
+kpset(W, size = 3, type = "degree", cmode = "outdegree", method = "max")
+kpset(W, size = 3, type = "degree", cmode = "outdegree", binary = TRUE, method = "max")
+kpset(W, size = 3, type = "mreach.degree", cmode = "outdegree", M = 1,binary = TRUE)
+kpset(A, size = 3, type = "mreach.closeness", cmode = "outdegree", M = 1)
+kpset(W, size = 3, type = "degree", cmode = "outdegree", parallel = TRUE,cluster = 2)
+
+kpset(W, size = 3, type = "degree", cmode = "total", method = "max")
+kpset(W, size = 3, type = "degree", cmode = "total", binary = TRUE, method = "max")
+kpset(W, size = 3, type = "mreach.degree", cmode = "total", M = 1,binary = TRUE)
+kpset(A, size = 3, type = "mreach.closeness", cmode = "total", M = 1)
+kpset(W, size = 3, type = "degree", cmode = "total", parallel = TRUE,cluster = 2)
+
+rownames(W)[4]
+
+layout.graph <- layout_(test.graph_symmetrized, nicely())
+layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
+
+plot(test.graph_symmetrized,
+     layout=(layout.graph*1.1),
+     rescale=F, 
+     #edge.color=edge_test$connection,
+     edge.arrow.size=.5,
+     vertex.color=vertex_test$profession.df,
+     #vertex.size=((in.degree)*1.5),
+     vertex.size=3,
+     vertex.label= ifelse(vertex_test$ego == as.character(vertex_test$ego[4]), as.character(vertex_test$ego), NA),
+     #vertex.label=NA,
+     vertex.label.cex=1.0,
+     vertex.label.dist=0,
+     vertex.label.degree=0,
+     main='Test Data Connections (color by profession)',
+     #frame=TRUE,
+     margin=0.0001)
+
 #Display information as matrix format
 test.graph[]
+test.matrix<-as.matrix(as_adjacency_matrix(test.graph))
 
+Keyplayer.list<-c(2,4,5,9,14,16,17,18,28,63,67)
+
+data_logistic_test<-vertex_test
+
+Keyplay.bool=ifelse(rownames(data_logistic_test) %in% Keyplayer.list,1,0)
+data_logistic_test<-cbind(Keyplay.bool,data_logistic_test)
+colnames(data_logistic_test)
+
+data_logistic_test <- subset(data_logistic_test,
+                             select=c(1,3,10,11,12,13,14,15))
+
+# data_logistic_test$ego<-NULL
+# data_logistic_test$issues.other.txt.vq<-NULL
+# data_logistic_test$q1f.issues.other.txt.vq<-NULL
+
+model <- glm(Keyplay.bool ~.,family=binomial(link='logit'),data=data_logistic_test)
+summary(model)
+
+#############################################
 setwd(input_datapath)
 pdf("SNA_Output_test_1200_vertex_nicely.pdf")
 
