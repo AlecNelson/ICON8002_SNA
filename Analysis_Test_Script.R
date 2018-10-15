@@ -69,7 +69,7 @@ colnames(edge_org_test)
 
 ## setting parameters
 # generated data sample size
-n <- 100
+n <- 500
 
 # This code uses the "sample" function throughout, so various hypothesized scenarios can
 # easily be constructed by altering the probabilities ("prob = ...") within each line of code
@@ -225,12 +225,38 @@ write.csv(vertex.test.df,"vertex_test_df.csv")
 ego.df <- as.vector(vertex.test.df$ego)
 
 # Setting connections
-max_connections = 7
+max_connections = 10
 alter.test.df<-data.frame()
+conn_types<-c("In-Network","Out-of-Network","Professional-Link")
+
+alter.outnetwork.num<-100
+alter.outnetwork.df <- randomNames(alter.outnetwork.num, which.names="both",ethnicity = c(1:2),name.order="last.first",name.sep=", ")
+
+# sample_connections<-sample(1:max_connections, 1, replace=FALSE)
+# sample_prob<-sample(conn_types, sample_connections, replace = T, p = c(0.3,0.3,0.4))
+# sample.In_Network<-count(sample_prob==conn_types[1])$freq[2]
+# sample.Out_Network<-count(sample_prob==conn_types[2])$freq[2]
+# sample.Profess_Link<-count(sample_prob==conn_types[3])$freq[2]
 
 for(i in 1:length(ego.df)){
   ego.df.rm <- ego.df[!ego.df == ego.df[i]]
-  alter.i <- sample(ego.df.rm,sample(1:max_connections,1),replace = FALSE)
+  #alter.outnetwork.df
+  professional.names<-ego.df[which(vertex.test.df[,2]==as.character(vertex.test.df[i,2]))]
+  professional.names.rm<- professional.names[!professional.names == ego.df[i]]
+  #names.sample.list<-c(ego.df.rm,alter.outnetwork.df,professional.names.rm)
+  
+  sample_connections<-sample(1:max_connections, 1, replace=FALSE)
+  sample_prob<-sample(conn_types, sample_connections, replace = T, p = c(0.1,0.1,0.8))
+  sample.In_Network<-(sample_connections-(count(sample_prob==conn_types[1])$freq[1]))
+  sample.Out_Network<-(sample_connections-(count(sample_prob==conn_types[2])$freq[1]))
+  sample.Profess_Link<-(sample_connections-(count(sample_prob==conn_types[3])$freq[1]))
+  
+  alter.innetwork.i <- sample(ego.df.rm,sample.In_Network,replace = FALSE)
+  alter.outnetwork.i <- sample(alter.outnetwork.df,sample.Out_Network,replace = FALSE)
+  alter.profession.i <- sample(professional.names.rm,sample.Profess_Link,replace = FALSE)
+  
+  #alter.i <- sample(names.sample.list,sample(1:max_connections,1),replace = FALSE)
+  alter.i<-c(alter.innetwork.i,alter.outnetwork.i,alter.profession.i)
   alter.df.i <- cbind(rep(ego.df[i],length(alter.i)),alter.i)
   alter.test.df <- rbind(alter.test.df,alter.df.i)
 }

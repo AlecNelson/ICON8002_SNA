@@ -9,7 +9,9 @@ basedirectory <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA"
 input_datapath <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA/Data"
 
 vertex_datapath <- "vertex_test_df.csv"
+#vertex_datapath <- "vertex_test_df_10_15.csv"
 edge_indiv_datapath <- "edge_indiv_test_df.csv"
+#edge_indiv_datapath <- "edge_indiv_test_df_10_15.csv"
 edge_org_datapath <- "edge_org_test_df.csv"
 
 setwd(input_datapath)
@@ -66,12 +68,12 @@ which(unique(sort(vertex_test$ego)) != unique(sort(edge_org_test$ego)))
 #names(edge_test)[3:5] <- c("friendship_tie", "reports_to_tie") 
 
 #Consider subsetting to just certain types of connections or categories
-# edge_test_subset <- subset(edge_test, 
-#                                    (high_fives > 0 & beer_gift != "none"))
+# edge_test_subset <- subset(edge_test, (high_fives > 0 & beer_gift != "none"))
 # head(edge_test_subset)
 
 #Combine edge and vertex attribute information into igraph format
 test.graph <- graph.data.frame(d = edge_indiv_test, vertices = vertex_test)
+#test.graph <- graph.data.frame(d = edge_indiv_test)
 summary(test.graph)
 test.graph
 V(test.graph)
@@ -106,7 +108,8 @@ plot(test.graph_simpl_symm,
      #edge.color=edge_test$connection,
      edge.arrow.size=.5,
      vertex.color=vertex_test$profession.df,
-     vertex.size=((in.degree)*1.5),
+     #vertex.size=((in.degree)*1.5),
+     vertex.size=5,
      vertex.label=NA,
      vertex.label.cex=0.7,
      vertex.label.dist=1,
@@ -159,9 +162,8 @@ plot(test.graph_symmetrized,
 # plot(icon.graph,edge.color=edge_test$high_five,edge.width=edge_test$high_fives,edge.arrow.size=.2,main='ICON High-Fives (weighted)')
 
 ## network metrics
-sna::degree(test.graph)
-igraph::degree(test.graph)
 
+igraph::degree(test.graph)
 which.max(degree(test.graph))
 which.min(degree(test.graph))
 diameter(test.graph)
@@ -174,6 +176,8 @@ edge_density(test.graph)
 #Keyplayer functions:
 
 test.matrix<-as.matrix(as_adjacency_matrix(test.graph))
+sna::degree(test.matrix)
+
 W<-test.matrix
 
 W <- matrix(c(0, 1, 3, 0, 0, 0, 0, 0, 4, 0, 1, 1, 0, 2, 0, 0, 0, 0, 0, 3,
@@ -240,8 +244,8 @@ plot(test.graph_symmetrized,
      vertex.color=vertex_test$profession.df,
      #vertex.size=((in.degree)*1.5),
      vertex.size=3,
-     vertex.label= ifelse(vertex_test$ego == as.character(vertex_test$ego[4]), as.character(vertex_test$ego), NA),
-     #vertex.label=NA,
+     #vertex.label= ifelse(vertex_test$ego == as.character(vertex_test$ego[4]), as.character(vertex_test$ego), NA),
+     vertex.label=NA,
      vertex.label.cex=1.0,
      vertex.label.dist=0,
      vertex.label.degree=0,
@@ -374,10 +378,10 @@ plot(test.graph_symmetrized,
      #edge.color=edge_test$connection,
      edge.arrow.size=.5,
      vertex.color=vertex_test$profession.df,
-     vertex.size=((in.degree)*0.7),
+     #vertex.size=((in.degree)*0.7),
      vertex.size=3,
-     vertex.label=vertex_test$profession.df,
-     #vertex.label=NA,
+     #vertex.label=vertex_test$profession.df,
+     vertex.label=NA,
      vertex.label.cex=0.7,
      vertex.label.color= adjustcolor("black", 0.6),
      vertex.label.dist=1,
@@ -405,10 +409,10 @@ plot(g2,
      edge.color=adjustcolor("black", 0.1),
      edge.arrow.size=0.1,
      vertex.color=vertex_test$profession.df,
-     vertex.size=((in.degree)*0.7),
-     #vertex.size=3,
-     vertex.label=vertex_test$profession.df,
-     #vertex.label=NA,
+     #vertex.size=((in.degree)*0.7),
+     vertex.size=3,
+     #vertex.label=vertex_test$profession.df,
+     vertex.label=NA,
      vertex.label.cex=0.7,
      vertex.label.color= adjustcolor("black", 0.5),
      vertex.label.dist=1,
