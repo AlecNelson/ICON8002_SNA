@@ -277,7 +277,7 @@ summary(model)
 
 #############################################
 setwd(input_datapath)
-pdf("SNA_Output_test_1200_vertex_nicely.pdf")
+pdf("SNA_Output_alter_test_10_15_nicely.pdf")
 
 test.graph_symmetrized <- as.undirected(test.graph, mode='collapse')
 
@@ -303,7 +303,7 @@ layout.graph <- layout_(test.graph_symmetrized, nicely())
 layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
 
 plot(test.graph_symmetrized,
-     layout=(layout.graph*1.1),
+     layout=(layout.graph*1.0),
      rescale=F, 
      #edge.color=edge_test$connection,
      edge.arrow.size=.5,

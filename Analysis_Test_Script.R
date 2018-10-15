@@ -19,7 +19,7 @@ edge_org_datapath <- "edge_org_test_df.csv"
 setwd(input_datapath)
 
 #List packages used
-list.of.packages <- c("igraph","randomNames","fabricatr","gtools")
+list.of.packages <- c("igraph","randomNames","fabricatr","plyr","RColorBrewer","keyplayer","sna")
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)){install.packages(new.packages)} 
@@ -257,6 +257,10 @@ for(i in 1:length(ego.df)){
   
   #alter.i <- sample(names.sample.list,sample(1:max_connections,1),replace = FALSE)
   alter.i<-c(alter.innetwork.i,alter.outnetwork.i,alter.profession.i)
+  
+  #Check to make sure names are not repeated in vector
+  alter.i<-union(alter.i,alter.i)
+  
   alter.df.i <- cbind(rep(ego.df[i],length(alter.i)),alter.i)
   alter.test.df <- rbind(alter.test.df,alter.df.i)
 }
