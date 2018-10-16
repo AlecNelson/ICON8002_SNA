@@ -7,19 +7,25 @@
 
 ############################
 basedirectory <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA"
+basedirectory <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA"
 #basedirectory <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA"
 
 inputdata_path <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA/Data"
+inputdata_path <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA\\Data"
 #input_datapath <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA/Data"
 
 vertex_datapath <- "vertex_test_df.csv"
+vertex_datapath <- "vertex_test_df_10_15.csv"
+
 edge_indiv_datapath <- "edge_indiv_test_df.csv"
+edge_indiv_datapath <- "edge_indiv_test_df_10_15.csv"
+
 edge_org_datapath <- "edge_org_test_df.csv"
 
-setwd(input_datapath)
+setwd(inputdata_path)
 
 #List packages used
-list.of.packages <- c("igraph","randomNames","fabricatr","plyr","RColorBrewer","keyplayer","sna")
+list.of.packages <- c("igraph","randomNames","fabricatr","plyr","RColorBrewer","keyplayer","sna","mixedsort")
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)){install.packages(new.packages)} 
@@ -227,7 +233,7 @@ ego.df <- as.vector(vertex.test.df$ego)
 # Setting connections
 max_connections = 10
 alter.test.df<-data.frame()
-conn_types<-c("In-Network","Out-of-Network","Professional-Link")
+conn_types<-c("In-Network","Out-of-Network","Shared-Profession")
 
 alter.outnetwork.num<-100
 alter.outnetwork.df <- randomNames(alter.outnetwork.num, which.names="both",ethnicity = c(1:2),name.order="last.first",name.sep=", ")
@@ -237,6 +243,10 @@ alter.outnetwork.df <- randomNames(alter.outnetwork.num, which.names="both",ethn
 # sample.In_Network<-count(sample_prob==conn_types[1])$freq[2]
 # sample.Out_Network<-count(sample_prob==conn_types[2])$freq[2]
 # sample.Profess_Link<-count(sample_prob==conn_types[3])$freq[2]
+
+#Add probability of ego listing other ego that listed them!!! Reciprocity
+
+
 
 for(i in 1:length(ego.df)){
   ego.df.rm <- ego.df[!ego.df == ego.df[i]]

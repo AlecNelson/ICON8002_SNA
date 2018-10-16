@@ -104,17 +104,17 @@ get.edge.attribute(test.graph_symmetrized,'q2.years.known.eiq')
 
 in.degree<-degree(test.graph,mode="in")
 
-plot(test.graph_simpl_symm,
+plot(test.graph_simpl,
      #edge.color=edge_test$connection,
-     edge.arrow.size=.5,
-     vertex.color=vertex_test$profession.df,
+     edge.arrow.size=.1,
+     #vertex.color=vertex_test$profession.df,
      #vertex.size=((in.degree)*1.5),
      vertex.size=5,
      vertex.label=NA,
      vertex.label.cex=0.7,
      vertex.label.dist=1,
      vertex.label.degree=-0.6,
-     main='Test Data Connections (color by profession)',
+     main='Test Data Connections',
      #frame=TRUE,
      margin=0.0001)
 
@@ -180,8 +180,8 @@ sna::degree(test.matrix)
 
 W<-test.matrix
 
-W <- matrix(c(0, 1, 3, 0, 0, 0, 0, 0, 4, 0, 1, 1, 0, 2, 0, 0, 0, 0, 0, 3,
-              + 0, 2, 0, 0, 0), nrow = 5, ncol = 5, byrow = TRUE)
+# W <- matrix(c(0, 1, 3, 0, 0, 0, 0, 0, 4, 0, 1, 1, 0, 2, 0, 0, 0, 0, 0, 3,
+#               + 0, 2, 0, 0, 0), nrow = 5, ncol = 5, byrow = TRUE)
 A <- W
 A[W != 0] <- 1 / W[W != 0] # Inverse the non-zero tie status
 
@@ -207,49 +207,52 @@ diffusion(P, T = 5)
 contract(W, c(2, 3), method = "max")
 contract(P, c(2, 3), method = "union")
 
+#Determine Centrality between specific nodes
 kpcent(W, c(2, 18), type = "degree", cmode = "total", method = "max")
 kpcent(W, c(2, 67), type = "degree", cmode = "total", method = "min")
 kpcent(W, c(2, 3), type = "degree", cmode = "total", method = "min", binary = TRUE)
 kpcent(W, c(2, 3), type = "mreach.degree", cmode = "total", M = 1, binary = TRUE)
 kpcent(W, c(2, 3), type = "mreach.closeness", cmode = "total", M = 1, binary = TRUE)
 
+#Determine Keyplayers
 kpset(W, size = 3, type = "degree", cmode = "indegree", method = "max")
-kpset(W, size = 3, type = "degree", cmode = "indegree", binary = TRUE, method = "max")
-kpset(W, size = 3, type = "mreach.degree", cmode = "indegree", M = 1,binary = TRUE)
-kpset(A, size = 3, type = "mreach.closeness", cmode = "indegree", M = 1)
-kpset(W, size = 3, type = "degree", cmode = "indegree", parallel = TRUE,cluster = 2)
+kpset(W, size = 1, type = "degree", cmode = "indegree", binary = TRUE, method = "max")
+kpset(W, size = 1, type = "mreach.degree", cmode = "indegree", M = 1,binary = TRUE)
+kpset(A, size = 1, type = "mreach.closeness", cmode = "indegree", M = 1)
+kpset(W, size = 1, type = "degree", cmode = "indegree", parallel = TRUE,cluster = 2)
 
-kpset(W, size = 3, type = "degree", cmode = "outdegree", method = "max")
-kpset(W, size = 3, type = "degree", cmode = "outdegree", binary = TRUE, method = "max")
-kpset(W, size = 3, type = "mreach.degree", cmode = "outdegree", M = 1,binary = TRUE)
-kpset(A, size = 3, type = "mreach.closeness", cmode = "outdegree", M = 1)
-kpset(W, size = 3, type = "degree", cmode = "outdegree", parallel = TRUE,cluster = 2)
+kpset(W, size = 1, type = "degree", cmode = "outdegree", method = "max")
+kpset(W, size = 1, type = "degree", cmode = "outdegree", binary = TRUE, method = "max")
+kpset(W, size = 1, type = "mreach.degree", cmode = "outdegree", M = 1,binary = TRUE)
+kpset(A, size = 1, type = "mreach.closeness", cmode = "outdegree", M = 1)
+kpset(W, size = 1, type = "degree", cmode = "outdegree", parallel = TRUE,cluster = 2)
 
-kpset(W, size = 3, type = "degree", cmode = "total", method = "max")
-kpset(W, size = 3, type = "degree", cmode = "total", binary = TRUE, method = "max")
-kpset(W, size = 3, type = "mreach.degree", cmode = "total", M = 1,binary = TRUE)
-kpset(A, size = 3, type = "mreach.closeness", cmode = "total", M = 1)
-kpset(W, size = 3, type = "degree", cmode = "total", parallel = TRUE,cluster = 2)
+kpset(W, size = 1, type = "degree", cmode = "total", method = "max")
+kpset(W, size = 1, type = "degree", cmode = "total", binary = TRUE, method = "max")
+kpset(W, size = 1, type = "mreach.degree", cmode = "total", M = 1,binary = TRUE)
+kpset(A, size = 1, type = "mreach.closeness", cmode = "total", M = 1)
+kpset(W, size = 2, type = "degree", cmode = "total", parallel = TRUE,cluster = 2)
 
-rownames(W)[4]
+rownames(W)[183]
 
-layout.graph <- layout_(test.graph_symmetrized, nicely())
+layout.graph <- layout_(test.graph_simpl, nicely())
 layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
 
-plot(test.graph_symmetrized,
-     layout=(layout.graph*1.1),
+plot(test.graph_simpl,
+     layout=(layout.graph*1.0),
      rescale=F, 
      #edge.color=edge_test$connection,
-     edge.arrow.size=.5,
-     vertex.color=vertex_test$profession.df,
+     edge.arrow.size=.1,
+     #vertex.color=vertex_test$profession.df,
      #vertex.size=((in.degree)*1.5),
+     #vertex.size=(igraph::degree(test.graph)*0.5),
      vertex.size=3,
-     #vertex.label= ifelse(vertex_test$ego == as.character(vertex_test$ego[4]), as.character(vertex_test$ego), NA),
+     vertex.label= ifelse(vertex_test$ego == as.character(vertex_test$ego[27]), as.character(vertex_test$ego), NA),
      vertex.label=NA,
-     vertex.label.cex=1.0,
+     vertex.label.cex=0.7,
      vertex.label.dist=0,
      vertex.label.degree=0,
-     main='Test Data Connections (color by profession)',
+     main='Test Data Connections',
      #frame=TRUE,
      margin=0.0001)
 
@@ -291,10 +294,10 @@ layout.graph <- layout_(test.graph, with_fr())
 
 #layout_nicely tries to choose an appropriate layout function for the supplied graph, and uses that
 # to generate the layout. The current implementation works like this:
-#   1. If the graph has a graph attribute called ‘layout’, then this is used. If this attribute is an R
+#   1. If the graph has a graph attribute called layout, then this is used. If this attribute is an R
 # function, then it is called, with the graph and any other extra arguments.
-# 2. Otherwise, if the graph has vertex attributes called ‘x’ and ‘y’, then these are used as coordinates
-# If the graph has an additional ‘z’ vertex attribute, that is also used.
+# 2. Otherwise, if the graph has vertex attributes called, then these are used as coordinates
+# If the graph has an additional vertex attribute, that is also used.
 # 3. Otherwise, if the graph is connected and has less than 1000 vertices, the Fruchterman-Reingold
 # layout is used, by calling layout_with_fr.
 # 4. Otherwise the DrL layout (Distributed Recursive (Graph) Layout) is used, layout_with_drl is called.
@@ -340,8 +343,8 @@ plot(test.graph.years,
      #edge.color=edge_test$connection,
      edge.arrow.size=.01,
      vertex.color=vertex_test$profession,
-     vertex.size=((in.degree)*0.9),
-     #vertex.size=3,
+     #vertex.size=((in.degree)*0.9),
+     vertex.size=3,
      #vertex.label=vertex_test$profession.df,
      vertex.label=NA,
      vertex.label.cex=0.6,
