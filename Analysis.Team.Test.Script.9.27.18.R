@@ -52,6 +52,12 @@ summary(edge_indiv_test)
 head(edge_indiv_test)
 colnames(edge_indiv_test)
 
+length(vertex_test$ego)
+length(unique(vertex_test$ego))
+
+duplicated(vertex_test$ego)
+vertex_test$ego[duplicated(vertex_test$ego)]
+
 # Before we merge these data, we need to make sure 'ego' and 'alter' are the
 # same across data sets. We can compare each row using the == syntax. 
 # The command below should return TRUE for every row if all ego rows

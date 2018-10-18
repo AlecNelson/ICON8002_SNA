@@ -212,7 +212,7 @@ vertex.test.df <-as.data.frame(cbind(ego.df, profession.df,as.data.frame(mget(vq
 
 names(vertex.test.df)[1]="ego"
 
-write.csv(vertex.test.df,"vertex_test_df.csv")
+# write.csv(vertex.test.df,"vertex_test_df.csv")
 
 # note that data frame elements are titled "q1..." to designate the question they pertain to and 
 # get around the "mget" function alphabetical ordering. qX... = question 10.  
@@ -237,7 +237,15 @@ conn_types<-c("In-Network","Out-of-Network","Shared-Profession")
 
 alter.outnetwork.num<-100
 alter.outnetwork.df <- randomNames(alter.outnetwork.num, which.names="both",ethnicity = c(1:2),name.order="last.first",name.sep=", ")
+alter.outnetwork.df <- alter.outnetwork.df[!alter.outnetwork.df %in% ego.df]
 
+
+# for(j in 1:length(alter.outnetwork.df)){
+#   
+#   ifelse(alter.outnetwork.df[j] %in% ego.df,
+# 
+# }
+  
 # sample_connections<-sample(1:max_connections, 1, replace=FALSE)
 # sample_prob<-sample(conn_types, sample_connections, replace = T, p = c(0.3,0.3,0.4))
 # sample.In_Network<-count(sample_prob==conn_types[1])$freq[2]
@@ -255,8 +263,9 @@ for(i in 1:length(ego.df)){
   professional.names.rm<- professional.names[!professional.names == ego.df[i]]
   #names.sample.list<-c(ego.df.rm,alter.outnetwork.df,professional.names.rm)
   
-  sample_connections<-sample(1:max_connections, 1, replace=FALSE)
+  sample_connections<-sample(2:max_connections, 1, replace=FALSE)
   sample_prob<-sample(conn_types, sample_connections, replace = T, p = c(0.1,0.1,0.8))
+  
   sample.In_Network<-(sample_connections-(count(sample_prob==conn_types[1])$freq[1]))
   sample.Out_Network<-(sample_connections-(count(sample_prob==conn_types[2])$freq[1]))
   sample.Profess_Link<-(sample_connections-(count(sample_prob==conn_types[3])$freq[1]))
@@ -267,17 +276,56 @@ for(i in 1:length(ego.df)){
   
   #alter.i <- sample(names.sample.list,sample(1:max_connections,1),replace = FALSE)
   alter.i<-c(alter.innetwork.i,alter.outnetwork.i,alter.profession.i)
+  alter.type<-c(rep("In-Network",sample.In_Network),rep("Out-Network",sample.Out_Network),rep("Shared-Profession",sample.Profess_Link))
   
   #Check to make sure names are not repeated in vector
   alter.i<-union(alter.i,alter.i)
   
-  alter.df.i <- cbind(rep(ego.df[i],length(alter.i)),alter.i)
+  alter.df.i <- cbind(rep(ego.df[i],length(alter.i)),alter.i,alter.type)
+  
   alter.test.df <- rbind(alter.test.df,alter.df.i)
 }
 
 str(alter.test.df)
 
-names(alter.test.df)<-c("ego","alter")
+names(alter.test.df)<-c("ego","alter","alter_type")
+
+
+
+# tag for vertex sheet questions = ".vq"
+vq<-ls(pattern = ".vq")
+
+vq<-mixedsort(vq)
+
+vertex.test.df <-as.data.frame(cbind(ego.df, profession.df,as.data.frame(mget(vq))))
+
+names(vertex.test.df)[1]="ego"
+
+Out_Network_Names<-unique(alter.test.df[which(alter.test.df$alter_type=="Out-Network"),2])
+
+for(k in 1:length(Out_Network_Names)){
+  
+  Name.k<-as.character(Out_Network_Names[k])
+  Out_Network<-as.character("Out-Network")
+  
+  Out.row.k<-c(Name.k,Out_Network,rep("N/A",(length(colnames(vertex.test.df))-2)))
+  
+  Out.row.k<-as.data.frame(t(Out.row.k))
+  colnames(Out.row.k)<-colnames(vertex.test.df)
+  
+  vertex.test.df<-rbind(vertex.test.df,Out.row.k)
+}
+
+tail(vertex.test.df)
+
+duplicated(vertex.test.df$ego)
+vertex_test$ego[duplicated(vertex.test.df$ego)]
+
+
+write.csv(vertex.test.df,"vertex_test_df.csv")
+
+
+
 
 # Sample size for generated data
 n.edge.indiv <- length(alter.test.df$alter)
