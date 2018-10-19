@@ -1,39 +1,5 @@
-#Social Network Analysis Tool Script (ICON 8002)
-# 10/19/18
-
-########################################################
-########################################################
-basedirectory <- "C:/Users/solit/Documents/GitHub/ICON8002_SNA"
-input_datapath <- "C:/Users/solit/Documents/GitHub/ICON8002_SNA/Data" # folder where data and outputs are stored
-
-vertex_datapath<-"vertex_test_df.csv" # vertex (ego) data frame with attributes
-edge_datapath<-"edge_indiv_test_df.csv" # edge-related data/attributes
-
-setwd(input_datapath) # set working directory to the data folder
-
-#List packages used
-list.of.packages <- c("igraph","fabricatr", "gtool", "keyplayer", "rmarkdown", "knitr")
-new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-# Install new packages
-if(length(new.packages)){install.packages(new.packages)} 
-
-#Load all packages
-lapply(list.of.packages, require, character.only = TRUE)
-
-#Load SNA function
-source("SNAfunction.R")
-
-# Run SNA function
-
-sna(input_datapath=input_datapath, vertex_datapath=vertex_datapath, edge_datapath=edge_datapath)
-
-
-
-
-
-######################################## Creating SNA function ####################################################
-
-sna<-function(input_datapath, vertex_datapath, edge_datapath){
+sna <-
+function(input_datapath, vertex_datapath, edge_datapath){
   
   ##############################################
   ########## Import and checking data ##########
@@ -105,9 +71,3 @@ sna<-function(input_datapath, vertex_datapath, edge_datapath){
   rmarkdown::render("Rmarkdown_test.Rmd","pdf_document")
  
 }
-
-# saving SNA function
-dump("sna", file="SNAfunction.R")
-
-############################################ End SNA function ####################################################
-
