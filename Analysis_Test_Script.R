@@ -250,7 +250,15 @@ for(i in 1:length(ego.df)){
   professional.names.rm<- professional.names[!professional.names == ego.df[i]]
   #names.sample.list<-c(ego.df.rm,alter.outnetwork.df,professional.names.rm)
   
-  sample_connections<-sample(2:max_connections, 1, replace=FALSE)
+  #sample_connections<-sample(2:max_connections, 1, replace=FALSE)
+  
+  ######################
+  #ADD IN A POISSON OR NEGATIVE BINOMIAL DISTRIBITION TO SAMPLE NUMBER OF CONNECTION
+  
+  #e.g. rpois() or dnbinom()
+  ######################
+  
+  
   sample_prob<-sample(conn_types, sample_connections, replace = T, p = c(0.1,0.1,0.8))
   # 
   
