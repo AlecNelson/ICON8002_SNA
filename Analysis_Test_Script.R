@@ -6,23 +6,23 @@
 ### NOTE: Run all code at once and then view output tables. Edge attribute sheets are dependent upon random name generation in Vertex Sheet.
 
 ############################
-basedirectory <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA"
-basedirectory <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA"
-#basedirectory <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA"
+#basedirectory <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA"
+#basedirectory <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA"
+basedirectory <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA"
 
-inputdata_path <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA/Data"
-inputdata_path <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA\\Data"
-#input_datapath <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA/Data"
+#inputdata_path <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA/Data"
+#inputdata_path <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA\\Data"
+input_datapath <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA/Data"
 
 vertex_datapath <- "vertex_test_df.csv"
-vertex_datapath <- "vertex_test_df_10_15.csv"
+#vertex_datapath <- "vertex_test_df_10_15.csv"
 
 edge_indiv_datapath <- "edge_indiv_test_df.csv"
-edge_indiv_datapath <- "edge_indiv_test_df_10_15.csv"
+#edge_indiv_datapath <- "edge_indiv_test_df_10_15.csv"
 
 edge_org_datapath <- "edge_org_test_df.csv"
 
-setwd(inputdata_path)
+setwd(input_datapath)
 
 #List packages used
 list.of.packages <- c("igraph","randomNames","fabricatr","plyr","RColorBrewer","keyplayer","sna","mixedsort")

@@ -1,12 +1,16 @@
 #Data Processing for ICON 8002
 # 10/4/18
 
+### Some plots updated by BBB on 10.18.18
+
 ############################
 #basedirectory <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA"
-basedirectory <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA"
+#basedirectory <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA"
+basedirectory <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA"
 
 #inputdata_path <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA\\Data"
-input_datapath <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA/Data"
+#input_datapath <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA/Data"
+input_datapath <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA/Data"
 
 vertex_datapath <- "vertex_test_df.csv"
 #vertex_datapath <- "vertex_test_df_10_15.csv"
@@ -45,11 +49,13 @@ edge_org_test <- read.csv(edge_org_datapath, header=T, row.names = 1)
 str(vertex_test)
 summary(vertex_test)
 head(vertex_test)
+tail(vertex_test)
 colnames(vertex_test)
 
 str(edge_indiv_test)
 summary(edge_indiv_test)
 head(edge_indiv_test)
+tail(edge_indiv_test)
 colnames(edge_indiv_test)
 
 length(vertex_test$ego)
@@ -82,12 +88,12 @@ test.graph <- graph.data.frame(d = edge_indiv_test, vertices = vertex_test)
 #test.graph <- graph.data.frame(d = edge_indiv_test)
 summary(test.graph)
 test.graph
-V(test.graph)
+V(test.graph)$profession.df
 
 #Get a list of vertex attribute responses
 names(vertex_test)
-get.vertex.attribute(test.graph,'profession.df')
-unique(get.vertex.attribute(test.graph,'profession.df'))
+igraph::get.vertex.attribute(test.graph,'profession.df')
+unique(igraph::get.vertex.attribute(test.graph,'profession.df'))
 # colrs <- c("gray50", "tomato", "gold","blue")
 # V(test.graph)$color <- colrs[V(test.graph)$profession]
 
@@ -99,53 +105,151 @@ as_adjacency_matrix(test.graph, attr="q3.years.worked.with.eiq")
 as_data_frame(test.graph, what="edges")
 as_data_frame(test.graph, what="vertices")
 
-#Simplify graph?
+# Simplify graph to remove loops
 test.graph_simpl <- simplify(test.graph)
 test.graph_simpl_symm <- as.undirected(test.graph_simpl, mode='collapse')
 
-#Can convert to undirected
+# Can convert to undirected
 test.graph_symmetrized <- as.undirected(test.graph, mode='collapse')
-get.edge.attribute(test.graph,'q2.years.known.eiq')
-get.edge.attribute(test.graph_symmetrized,'q2.years.known.eiq')
 
-in.degree<-degree(test.graph,mode="in")
+# Comparing normal and symmetrized (undirected, collapsed) graph objects
+igraph::get.edge.attribute(test.graph,'q2.years.known.eiq')
+igraph::get.edge.attribute(test.graph_symmetrized,'q2.years.known.eiq')
 
-plot(test.graph_simpl,
+in.degree <- igraph::degree(test.graph,mode="in")
+sort(in.degree)
+out.degree <- igraph::degree(test.graph, mode = "out")
+sort(out.degree)
+
+##########################################
+#########################
+#######
+## Plots as coded by B. Bozeman on 10.18.18
+#######
+#########################
+##########################################
+
+## Playing around with colors
+#display.brewer.all()
+#profession.colors <- brewer.pal(n = 9, name = "Spectral")
+
+### Plot network with no alterations
+### Fruchterman.reingold fault layout, simplified (i.e., no loops), directed
+setwd("/Users/BryanBozeman/Desktop")
+pdf("SNA_Output_Original.pdf")
+plot.network.original <- plot(test.graph_simpl,
+    layout = layout.fruchterman.reingold,
      #edge.color=edge_test$connection,
      edge.arrow.size=.1,
-     #vertex.color=vertex_test$profession.df,
+     #vertex.color=profession.colors,
      #vertex.size=((in.degree)*1.5),
      vertex.size=5,
      vertex.label=NA,
      vertex.label.cex=0.7,
      vertex.label.dist=1,
      vertex.label.degree=-0.6,
-     main='Test Data Connections',
+     main="Network Plot (Generated Data)",
      #frame=TRUE,
      margin=0.0001)
+dev.off()
 
-legend(x=-1.5, y=-1.1, unique(vertex_test$profession), pch=21,
-       col="#777777", pt.bg=unique(vertex_test$profession), pt.cex=2, cex=.8, bty="n", ncol=1)
+### Plot network with no alterations
+### Nicely layout, simplified (i.e., no loops), directed
+setwd("/Users/BryanBozeman/Desktop")
+pdf("SNA_Output_Oringinal_Nicely.pdf")
+plot(test.graph_simpl,
+     #edge.color=edge_test$connection,
+     edge.arrow.size=.1,
+     #vertex.color=profession.colors,
+     #vertex.size=((in.degree)*1.5),
+     vertex.size=5,
+     vertex.label=NA,
+     vertex.label.cex=0.7,
+     vertex.label.dist=1,
+     vertex.label.degree=-0.6,
+     main="Network Plot_Nicely",
+     #frame=TRUE,
+     margin=0.0001,
+     layout = layout_nicely)
+dev.off()
 
+### Plot network by Profession (colors)
+### Nicely layout, simplified (i.e., no loops), directed, vertices colored by profession
+layout.graph <- layout_(test.graph_simpl, nicely())
+layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
+
+## Playing around with colors
+display.brewer.all()
+colr.palette <- brewer.pal(n = 9, name = "Spectral")
+profession.colors <- colr.palette[vertex.test.df$profession.df]
+unique(profession.colors)
+
+setwd("/Users/BryanBozeman/Desktop")
+pdf("SNA_Output_Professions.pdf")
+plot(test.graph_simpl,
+     layout = layout.graph,
+     rescale = F,
+     #edge.color=edge_test$connection,
+     edge.arrow.size=.1,
+     vertex.color=profession.colors,
+     #vertex.size=((in.degree)*1.5),
+     vertex.size=5,
+     vertex.label=NA,
+     vertex.label.cex=0.5,
+     vertex.label.dist=1,
+     vertex.label.degree=-0.6,
+     main="SNA by Profession",
+     #frame=TRUE,
+     margin = 0.0001)
+
+legend(x=-1.5, y = -0.85, legend = levels(vertex_test$profession), 
+       col = profession.colors, pch=19, pt.cex=0.8, cex=0.8, bty="n", ncol=1)
+
+dev.off()
+
+#### NOTE: Need to figure out colors between vertices and legend. Don't currently match - BB 10.18.18 
 
 # We can also plot the communities without relying on their built-in plot:
     #see more at: http://kateto.net/network-visualization
 V(test.graph_symmetrized)$community <- vertex_test$profession.df
 colrs <- adjustcolor( c("gray50", "tomato", "gold", "yellowgreen","blue","pink","green","purple"), alpha=.6)
-plot(test.graph_symmetrized, vertex.color=colrs[V(test.graph_symmetrized)$community])
+plot(test.graph_symmetrized, vertex.color=colrs[V(test.graph_symmetrized)$community], vertex.label)
 
+### Plotting by community/profession with vertices weighted by in.degree
+V(test.graph_symmetrized)$community <- vertex_test$profession.df
+colrs <- adjustcolor( c("gray50", "tomato", "gold", "yellowgreen","blue","pink","green","purple"), alpha=.6)
+setwd("/Users/BryanBozeman/Desktop")
+pdf("SNA_Output_Community_Professions_InDegree.pdf")
 plot(test.graph_symmetrized,
      #edge.color=edge_test$connection,
      edge.arrow.size=.5,
      vertex.color=colrs[V(test.graph_symmetrized)$community],
      vertex.size=((in.degree)*1.5),
-     vertex.label=vertex_test$profession.df,
+     vertex.label=NA,
      vertex.label.cex=0.7,
      vertex.label.dist=1,
      vertex.label.degree=-0.6,
      main='Test Data Connections (color by profession/community)',
      #frame=TRUE,
      margin=0.0001)
+
+legend(x=-1.5, y = -0.85, unique(vertex_test$profession), pch=19,
+       col= colrs[V(test.graph_symmetrized)$community], pt.cex=0.8, cex=0.8, bty="n", ncol=1)
+
+dev.off()
+
+#plot(test.graph_symmetrized,
+     #edge.color=edge_test$connection,
+     #edge.arrow.size=.5,
+     #vertex.color=colrs[V(test.graph_symmetrized)$community],
+     #vertex.size=((in.degree)*1.5),
+     #vertex.label=vertex_test$profession.df,
+     #vertex.label.cex=0.7,
+     #vertex.label.dist=1,
+     #vertex.label.degree=-0.6,
+     #main='Test Data Connections (color by profession/community)',
+     #frame=TRUE,
+     #margin=0.0001)
 
 # legend(1,
 #        1.25,
@@ -170,14 +274,40 @@ plot(test.graph_symmetrized,
 ## network metrics
 
 igraph::degree(test.graph)
-which.max(degree(test.graph))
-which.min(degree(test.graph))
+which.max(igraph::degree(test.graph))
+which.min(igraph::degree(test.graph))
 diameter(test.graph)
-closeness(test.graph)
+igraph::closeness(test.graph)
 reciprocity(test.graph)
 ecount(test.graph)
 vcount(test.graph)
 edge_density(test.graph)
+
+##### Plot of Vertices weighted by total degree
+setwd("/Users/BryanBozeman/Desktop")
+pdf("SNA_Output_Professions_Vertex_TotalDegree.pdf")
+plot(test.graph_simpl,
+     layout = layout.graph,
+     rescale = F,
+     #edge.color=edge_test$connection,
+     edge.arrow.size=.1,
+     vertex.color=vertex.test.df$profession.df,
+     #vertex.size=((in.degree)*1.5),
+     vertex.size=igraph::degree(test.graph_simpl),
+     vertex.label=NA,
+     vertex.label.cex=0.5,
+     vertex.label.dist=1,
+     vertex.label.degree=-0.6,
+     main="SNA Vertices Weighted by Degree",
+     #frame=TRUE,
+     margin = 0.0001)
+
+legend(x=-1.5, y = -0.85, unique(vertex_test$profession), pch=19,
+       col= categorical_pal(9), pt.cex=0.8, cex=0.8, bty="n", ncol=1)
+
+dev.off()
+
+### NOTE: Check legend. Legend colors do not match profession colors in network. Can check by adding vertex labels. 
 
 #Keyplayer functions:
 
@@ -222,7 +352,7 @@ kpcent(W, c(2, 3), type = "mreach.closeness", cmode = "total", M = 1, binary = T
 
 #Determine Keyplayers
 kpset(W, size = 3, type = "degree", cmode = "indegree", method = "max")
-kpset(W, size = 1, type = "degree", cmode = "indegree", binary = TRUE, method = "max")
+kpset(W, size = 1, type = "degree", cmode = "indegree", binary = TRUE, method = "max") #### Model for below graph #177 Calvin Barnes
 kpset(W, size = 1, type = "mreach.degree", cmode = "indegree", M = 1,binary = TRUE)
 kpset(A, size = 1, type = "mreach.closeness", cmode = "indegree", M = 1)
 kpset(W, size = 1, type = "degree", cmode = "indegree", parallel = TRUE,cluster = 2)
@@ -239,28 +369,39 @@ kpset(W, size = 1, type = "mreach.degree", cmode = "total", M = 1,binary = TRUE)
 kpset(A, size = 1, type = "mreach.closeness", cmode = "total", M = 1)
 kpset(W, size = 2, type = "degree", cmode = "total", parallel = TRUE,cluster = 2)
 
-rownames(W)[183]
+rownames(W)[177] #from second model in first group above. 
 
+##### Plotting network with key player as identified by above model.
 layout.graph <- layout_(test.graph_simpl, nicely())
 layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
-
+setwd("/Users/BryanBozeman/Desktop")
+pdf("SNA_Output_KeyPlayer.pdf")
 plot(test.graph_simpl,
-     layout=(layout.graph*1.0),
-     rescale=F, 
+     layout=layout.graph,
+     rescale=T,
      #edge.color=edge_test$connection,
      edge.arrow.size=.1,
-     #vertex.color=vertex_test$profession.df,
+     vertex.color=ifelse(vertex_test$ego == as.character(vertex_test$ego[177]), "Firebrick1", "Gray60"),
      #vertex.size=((in.degree)*1.5),
      #vertex.size=(igraph::degree(test.graph)*0.5),
-     vertex.size=3,
-     vertex.label= ifelse(vertex_test$ego == as.character(vertex_test$ego[27]), as.character(vertex_test$ego), NA),
+     vertex.size=ifelse(vertex_test$ego == as.character(vertex_test$ego[177]), 8, 4),
+     vertex.label= ifelse(vertex_test$ego == as.character(vertex_test$ego[177]), as.character(vertex_test$ego), NA),
+     #label.color = "Firebrick1",
      vertex.label=NA,
-     vertex.label.cex=0.7,
+     vertex.label.cex=ifelse(vertex_test$ego == as.character(vertex_test$ego[177]), .5, NA),
      vertex.label.dist=0,
      vertex.label.degree=0,
-     main='Test Data Connections',
+     main='SNA with Key Player',
      #frame=TRUE,
      margin=0.0001)
+
+legend(x=-1.5, y = -0.85, "Key Player: Calvin Barnes", pch=19,
+       col= "Firebrick1", pt.cex=0.8, cex=0.8, bty="n", ncol=1)
+
+dev.off()
+
+## Need to figure out how to separate/spread overlapping vertices so that key players show up. 
+## Also need to figure out how to add multiple key players
 
 #Display information as matrix format
 test.graph[]
@@ -290,7 +431,11 @@ pdf("SNA_Output_alter_test_10_15_nicely.pdf")
 
 test.graph_symmetrized <- as.undirected(test.graph, mode='collapse')
 
-in.degree<-degree(test.graph,mode="in")
+in.degree<-igraph::degree(test.graph,mode="in")
+in.degree
+max(in.degree)
+sort(in.degree) # test for max and ID name
+
 #layout.graph <- layout_(test.graph, with_dh())
 layout.graph <- layout_(test.graph, with_graphopt())
 layout.graph <- layout_(test.graph, with_lgl())
