@@ -68,8 +68,8 @@ vertex_test$ego[duplicated(vertex_test$ego)]
 # same across data sets. We can compare each row using the == syntax. 
 # The command below should return TRUE for every row if all ego rows
 # are the same :
-unique(sort(vertex_test$ego)) == unique(sort(edge_indiv_test$ego))
-unique(sort(vertex_test$ego)) == unique(sort(edge_org_test$ego))
+unique(as.character(vertex_test$ego)) == unique(c(as.character(edge_indiv_test$ego),as.character(edge_indiv_test$alter)))
+#unique(sort(vertex_test$ego)) == unique(sort(edge_org_test$ego))
 
 # We can just have R return which row entries are not equal using the syntax below:
 which(unique(sort(vertex_test$ego)) != unique(sort(edge_indiv_test$ego)))
@@ -93,7 +93,11 @@ V(test.graph)$profession.df
 #Get a list of vertex attribute responses
 names(vertex_test)
 igraph::get.vertex.attribute(test.graph,'profession.df')
+<<<<<<< HEAD
 unique(igraph::get.vertex.attribute(test.graph,'profession.df'))
+=======
+unique(igraph::get.vertex.attribute(test.graph,"profession.df"))
+>>>>>>> 648158e4c9149d4a76b6af246cd45c8b44a6017a
 # colrs <- c("gray50", "tomato", "gold","blue")
 # V(test.graph)$color <- colrs[V(test.graph)$profession]
 
@@ -111,6 +115,7 @@ test.graph_simpl_symm <- as.undirected(test.graph_simpl, mode='collapse')
 
 # Can convert to undirected
 test.graph_symmetrized <- as.undirected(test.graph, mode='collapse')
+<<<<<<< HEAD
 
 # Comparing normal and symmetrized (undirected, collapsed) graph objects
 igraph::get.edge.attribute(test.graph,'q2.years.known.eiq')
@@ -152,6 +157,12 @@ plot.network.original <- plot(test.graph_simpl,
      #frame=TRUE,
      margin=0.0001)
 dev.off()
+=======
+igraph::get.edge.attribute(test.graph,'q2.years.known.eiq')
+igraph::get.edge.attribute(test.graph_symmetrized,'q2.years.known.eiq')
+
+in.degree<-igraph::degree(test.graph,mode="in")
+>>>>>>> 648158e4c9149d4a76b6af246cd45c8b44a6017a
 
 ### Plot network with no alterations
 ### Nicely layout, simplified (i.e., no loops), directed
@@ -211,9 +222,15 @@ dev.off()
 
 # We can also plot the communities without relying on their built-in plot:
     #see more at: http://kateto.net/network-visualization
+<<<<<<< HEAD
 V(test.graph_symmetrized)$community <- vertex_test$profession.df
 colrs <- adjustcolor( c("gray50", "tomato", "gold", "yellowgreen","blue","pink","green","purple"), alpha=.6)
 plot(test.graph_symmetrized, vertex.color=colrs[V(test.graph_symmetrized)$community], vertex.label)
+=======
+V(test.graph_symmetrized)$community <- V(test.graph)$profession.df
+colrs <- adjustcolor( c("red", "tomato", "gold", "yellowgreen","blue","pink","green","purple","grey50"), alpha=.6)
+plot(test.graph_symmetrized, vertex.color=colrs[V(test.graph_symmetrized)$community])
+>>>>>>> 648158e4c9149d4a76b6af246cd45c8b44a6017a
 
 ### Plotting by community/profession with vertices weighted by in.degree
 V(test.graph_symmetrized)$community <- vertex_test$profession.df
@@ -223,8 +240,15 @@ pdf("SNA_Output_Community_Professions_InDegree.pdf")
 plot(test.graph_symmetrized,
      #edge.color=edge_test$connection,
      edge.arrow.size=.5,
+<<<<<<< HEAD
      vertex.color=colrs[V(test.graph_symmetrized)$community],
      vertex.size=((in.degree)*1.5),
+=======
+     vertex.color=colrs,
+     #vertex.size=((in.degree)*1.5),
+     vertex.size=3,
+     #vertex.label=vertex_test$profession.df,
+>>>>>>> 648158e4c9149d4a76b6af246cd45c8b44a6017a
      vertex.label=NA,
      vertex.label.cex=0.7,
      vertex.label.dist=1,
@@ -275,7 +299,11 @@ dev.off()
 
 igraph::degree(test.graph)
 which.max(igraph::degree(test.graph))
+<<<<<<< HEAD
 which.min(igraph::degree(test.graph))
+=======
+which.min(degree(test.graph))
+>>>>>>> 648158e4c9149d4a76b6af246cd45c8b44a6017a
 diameter(test.graph)
 igraph::closeness(test.graph)
 reciprocity(test.graph)

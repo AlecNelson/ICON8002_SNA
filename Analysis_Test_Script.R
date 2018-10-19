@@ -240,20 +240,7 @@ alter.outnetwork.df <- randomNames(alter.outnetwork.num, which.names="both",ethn
 alter.outnetwork.df <- alter.outnetwork.df[!alter.outnetwork.df %in% ego.df]
 
 
-# for(j in 1:length(alter.outnetwork.df)){
-#   
-#   ifelse(alter.outnetwork.df[j] %in% ego.df,
-# 
-# }
-  
-# sample_connections<-sample(1:max_connections, 1, replace=FALSE)
-# sample_prob<-sample(conn_types, sample_connections, replace = T, p = c(0.3,0.3,0.4))
-# sample.In_Network<-count(sample_prob==conn_types[1])$freq[2]
-# sample.Out_Network<-count(sample_prob==conn_types[2])$freq[2]
-# sample.Profess_Link<-count(sample_prob==conn_types[3])$freq[2]
-
 #Add probability of ego listing other ego that listed them!!! Reciprocity
-
 
 
 for(i in 1:length(ego.df)){
@@ -265,10 +252,11 @@ for(i in 1:length(ego.df)){
   
   sample_connections<-sample(2:max_connections, 1, replace=FALSE)
   sample_prob<-sample(conn_types, sample_connections, replace = T, p = c(0.1,0.1,0.8))
+  # 
   
-  sample.In_Network<-(sample_connections-(count(sample_prob==conn_types[1])$freq[1]))
-  sample.Out_Network<-(sample_connections-(count(sample_prob==conn_types[2])$freq[1]))
-  sample.Profess_Link<-(sample_connections-(count(sample_prob==conn_types[3])$freq[1]))
+  sample.In_Network<-length(which(sample_prob == conn_types[1]))
+  sample.Out_Network<-length(which(sample_prob == conn_types[2]))
+  sample.Profess_Link<-length(which(sample_prob == conn_types[3]))
   
   alter.innetwork.i <- sample(ego.df.rm,sample.In_Network,replace = FALSE)
   alter.outnetwork.i <- sample(alter.outnetwork.df,sample.Out_Network,replace = FALSE)
@@ -279,18 +267,33 @@ for(i in 1:length(ego.df)){
   alter.type<-c(rep("In-Network",sample.In_Network),rep("Out-Network",sample.Out_Network),rep("Shared-Profession",sample.Profess_Link))
   
   #Check to make sure names are not repeated in vector
-  alter.i<-union(alter.i,alter.i)
+  # alter.i<-union(alter.i,alter.i)
+  # which(duplicated(alter.i)==TRUE)
+  # alter.i<-alter.i[-c(which(duplicated(alter.i)==TRUE))]
+  # alter.type<-alter.type[-c(which(duplicated(alter.i)==TRUE))]
   
-  alter.df.i <- cbind(rep(ego.df[i],length(alter.i)),alter.i,alter.type)
+  if(length(which(duplicated(alter.i)==TRUE))>0){
+    
+    Rm.num<-which(duplicated(alter.i)==TRUE)
+    alter.i.check<-alter.i[-c(Rm.num)]
+    alter.type.check<-alter.type[-c(Rm.num)]
+  
+    print(paste0("Removed duplicate elemements # ",Rm.num," from ", ego.df[i]," (ego number ",i," out of ",length(ego.df),")"))
+  }else{
+    alter.i.check<-alter.i
+    alter.type.check<-alter.type
+    }
+  
+  alter.df.i <- cbind(rep(ego.df[i],length(alter.i.check)),alter.i.check,alter.type.check)
   
   alter.test.df <- rbind(alter.test.df,alter.df.i)
+  
+  #print(paste0("Alter generated for ",ego.df[i]," (ego number ",i," out of ",length(ego.df),")"))
 }
 
 str(alter.test.df)
 
 names(alter.test.df)<-c("ego","alter","alter_type")
-
-
 
 # tag for vertex sheet questions = ".vq"
 vq<-ls(pattern = ".vq")
