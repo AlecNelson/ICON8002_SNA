@@ -1,0 +1,82 @@
+---
+title: "ICON8002 SNA"
+date: '`r format(Sys.Date())`'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F)
+```
+
+# Social Network Analysis
+This is a report generated from social netowkr analysis of the actors within the shrimping industry on the Georgia Coast. The resulting output of the analysis demonstrates the relationships between shrimpers, dockers, and other agencies/organizations. 
+
+
+## Network attributes
+```{r, include=F}
+# vertex_degree<-degree(network)
+# diameter<-diameter(network)
+# closeness<-closeness(network)
+# reciprocity<-reciprocity(network)
+# ecount<-ecount(network)
+# vcount<-vcount(network)
+# edge_density<-edge_density(network)
+# in.degree<-degree(network,mode="in")
+```
+
+* Diameter
+```{r}
+diameter
+```
+
+* Reciprocity
+```{r}
+reciprocity
+```
+* Number of edges
+```{r}
+ecount
+```
+* Number of egos
+```{r}
+vcount
+```
+* Edge density
+```{r}
+edge_density
+```
+* Closeness
+```{r}
+as.data.frame(closeness)
+```
+* Degree
+```{r}
+vertex_degree
+```
+
+* In-degree
+```{r}
+as.data.frame(in.degree)
+```
+
+
+## Network plot
+
+```{r}
+
+plot(network,
+     edge.arrow.size=.5,
+     vertex.color=vertex$profession,
+     vertex.size=((in.degree)*1.5),
+     vertex.label=NA,
+     vertex.label.cex=0.7,
+     vertex.label.dist=1,
+     vertex.label.degree=-0.6,
+     main='Test Data Connections (color by profession)',
+     margin=0.0001)
+```
+
+
+
+
+

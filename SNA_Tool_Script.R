@@ -1,18 +1,18 @@
 #Social Network Analysis Tool Script (ICON 8002)
-# 10/10/18
+# 10/19/18
 
 ########################################################
 ########################################################
-basedirectory <- 
-input_datapath <- 
+basedirectory <- "C:/Users/solit/Documents/GitHub/ICON8002_SNA"
+input_datapath <- "C:/Users/solit/Documents/GitHub/ICON8002_SNA/Data"
 
-vertex_datapath<-"vertex_test_df.csv"
-edge_datapath<-"edge_test_df.csv"
+vertex_datapath<-"vertex_test_df.csv" # vertex (ego) data frame with attributes
+edge_datapath<-"edge_indiv_test_df.csv" # edge-related data/attributes
 
 setwd(input_datapath)
 
 #List packages used
-list.of.packages <- c("igraph","randomNames","fabricatr")
+list.of.packages <- c("igraph","fabricatr", "gtool", "keyplayer", "rmarkdown")
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)){install.packages(new.packages)} 
@@ -28,10 +28,6 @@ source("SNAfunction.R")
 ##############################################
 
 sna(input_datapath=input_datapath, vertex_datapath=vertex_datapath, edge_datapath=edge_datapath)
-
-
-
-
 
 ######################################## Creating SNA function ####################################################
 
@@ -79,32 +75,30 @@ sna<-function(input_datapath, vertex_datapath, edge_datapath){
   # We can just have R return which row entries are not equal using the syntax below:
   which(unique(sort(vertex$ego)) != unique(sort(edge$ego)))
   
-  ##### Edge and vertex dataframes contain different sets of names #####
+  #######################################
+  ######### Network Analysis ############
+  #######################################
   
-  #### Isn't it possible that egos and alters lists are not the same between datasets? #####
-  
-  ###########################################
-  ############ Graphing network #############
-  ###########################################
-  
+  # Constructing network and check network structure
   network <- graph.data.frame(d = edge, vertices = vertex)
   summary(network)
-  in.degree<-degree(network,mode="in")
-  # Network graph output in pdf
-  pdf("Social Network Output Graph.pdf", width=8, height=8)
-  par(mai=c(1,1,1,1))
-  plot(network,
-       edge.arrow.size=.5,
-       vertex.color=vertex$profession,
-       vertex.size=((in.degree)*1.5),
-       vertex.label=NA,
-       vertex.label.cex=0.7,
-       vertex.label.dist=1,
-       vertex.label.degree=-0.6,
-       main='Test Data Connections (color by profession)',
-       margin=0.0001)
-  dev.off()
   
+  # Calculating network attributes
+  vertex_degree<-degree(network)
+  diameter<-diameter(network)
+  closeness<-closeness(network)
+  reciprocity<-reciprocity(network)
+  ecount<-ecount(network)
+  vcount<-vcount(network)
+  edge_density<-edge_density(network)
+  in.degree<-degree(network,mode="in")
+  
+  #########################################
+  ############ Network Output #############
+  #########################################
+
+  rmarkdown::render("Rmarkdown_test.Rmd","pdf_document")
+ 
 }
 
 # saving SNA function
