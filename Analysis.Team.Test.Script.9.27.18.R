@@ -93,11 +93,8 @@ V(test.graph)$profession.df
 #Get a list of vertex attribute responses
 names(vertex_test)
 igraph::get.vertex.attribute(test.graph,'profession.df')
-<<<<<<< HEAD
 unique(igraph::get.vertex.attribute(test.graph,'profession.df'))
-=======
-unique(igraph::get.vertex.attribute(test.graph,"profession.df"))
->>>>>>> 648158e4c9149d4a76b6af246cd45c8b44a6017a
+
 # colrs <- c("gray50", "tomato", "gold","blue")
 # V(test.graph)$color <- colrs[V(test.graph)$profession]
 
