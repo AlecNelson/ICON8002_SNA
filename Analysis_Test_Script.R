@@ -1,7 +1,7 @@
 # Data Processing for ICON 8002
 # This script serves the purpose of generating data with various input
 # formats for use in developing SNA tool
-# 10/27/18
+# 10/28/18
 
 ### NOTE: Run all code at once and then view output tables. Edge attribute sheets are dependent upon random name generation in Vertex Sheet.
 
@@ -10,12 +10,15 @@ basedirectory <-
 
 ## setting parameters
 # generated data sample size
-n <- 500
+n = 500
+# Setting connections
+#max_connections = 10
+mean_connections = 5
 
 setwd(basedirectory)
 
 #List packages used
-list.of.packages <- c("igraph","randomNames","fabricatr","plyr","RColorBrewer","keyplayer","sna","mixedsort")
+list.of.packages <- c("igraph","randomNames","fabricatr","plyr","RColorBrewer","keyplayer","sna","MASS","naturalsort")
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)){install.packages(new.packages)} 
@@ -160,7 +163,7 @@ q10b.black.gill.time.vq <- ifelse(q10.black.gill.observed.vq == "Yes", sample(c(
 # tag for vertex sheet questions = ".vq"
 vq<-ls(pattern = ".vq")
 
-vq<-mixedsort(vq)
+vq<-naturalsort(vq)
 
 vertex.test.df <-as.data.frame(cbind(ego.df, profession.df,as.data.frame(mget(vq))))
 
@@ -185,7 +188,7 @@ names(vertex.test.df)[1]="ego"
 ego.df <- as.vector(vertex.test.df$ego)
 
 # Setting connections
-max_connections = 10
+#max_connections = 10
 alter.test.df<-data.frame()
 conn_types<-c("In-Network","Out-of-Network","Shared-Profession")
 
@@ -202,14 +205,7 @@ for(i in 1:length(ego.df)){
   professional.names.rm<- professional.names[!professional.names == ego.df[i]]
   #names.sample.list<-c(ego.df.rm,alter.outnetwork.df,professional.names.rm)
   
-  #sample_connections<-sample(2:max_connections, 1, replace=FALSE)
-  
-########################################################
-#### TASK: ADD IN A POISSON OR NEGATIVE BINOMIAL DISTRIBITION TO SAMPLE NUMBER OF CONNECTION
-  
-#e.g. rpois() or dnbinom()
-########################################################  
-
+  sample_connections<-rnegbin(1,mean_connections, theta = 10)
   sample_prob<-sample(conn_types, sample_connections, replace = T, p = c(0.1,0.1,0.8))
   
   sample.In_Network<-length(which(sample_prob == conn_types[1]))
@@ -235,7 +231,6 @@ for(i in 1:length(ego.df)){
     }
   
   alter.df.i <- cbind(rep(ego.df[i],length(alter.i.check)),alter.i.check,alter.type.check)
-  
   alter.test.df <- rbind(alter.test.df,alter.df.i)
   
   #print(paste0("Alter generated for ",ego.df[i]," (ego number ",i," out of ",length(ego.df),")"))
@@ -248,7 +243,7 @@ names(alter.test.df)<-c("ego","alter","alter_type")
 
 # tag for vertex sheet questions = ".vq"
 vq<-ls(pattern = ".vq")
-vq<-mixedsort(vq)
+vq<-naturalsort(vq)
 vertex.test.df <-as.data.frame(cbind(ego.df, profession.df,as.data.frame(mget(vq))))
 names(vertex.test.df)[1]="ego"
 
@@ -262,12 +257,11 @@ for(k in 1:length(Out_Network_Names)){
   vertex.test.df<-rbind(vertex.test.df,Out.row.k)
 }
 
-########################################################
-#### TASK: Perhaps add in today's date into character string
-# of output name, just to create unique dataframes
-########################################################  
+#################################################################
+filename.vertex<-paste0("vertex_test_df_",
+                        format(Sys.time(), "%m_%d_%y"),".csv")
 
-write.csv(vertex.test.df,"vertex_test_df.csv")
+write.csv(vertex.test.df,filename.vertex)
 
 #################################################################
 # Sample size for generated data
@@ -378,14 +372,17 @@ q16.willingness.to.wk.with.eiq <- sample(c(0:10), n.edge.indiv, replace = T)
 # tag for edge individual sheet questions = ".eiq"
 eiq<-ls(pattern = ".eiq")
 
-eiq<-mixedsort(eiq)
+eiq<-naturalsort(eiq)
 
 edge.indiv.test.df <-as.data.frame(cbind(alter.test.df,as.data.frame(mget(eiq))))
 
 names(edge.indiv.test.df)[1]="ego"
 names(edge.indiv.test.df)[2]="alter"
 
-write.csv(edge.indiv.test.df,"edge_indiv_test_df.csv")
+filename.edge.indiv<-paste0("edge_indiv_test_df_",
+                        format(Sys.time(), "%m_%d_%y"),".csv")
+
+write.csv(edge.indiv.test.df,filename.edge.indiv)
 
 # note that data frame elements are titled "q1..." to designate the question they pertain to and 
 # get around the "mget" function alphabetical ordering. Switch to roman numerals at Q10.  
@@ -490,14 +487,16 @@ q9.willingness.wk.org.eoq <- sample(c(0:10), n.edge.org, replace=T)
 # tag for edge individual sheet questions = ".eiq"
 eoq<-ls(pattern = ".eoq")
 
-eoq<-mixedsort(eoq)
+eoq<-naturalsort(eoq)
 
 edge.org.test.df <-as.data.frame(cbind(alter.org.test.df,as.data.frame(mget(eoq))))
 
 names(edge.org.test.df)[1]="ego"
 names(edge.org.test.df)[2]="organization"
 
-write.csv(edge.org.test.df,"edge_org_test_df.csv")
+filename.edge.org<-paste0("edge_org_test_df_",
+                            format(Sys.time(), "%m_%d_%y"),".csv")
+write.csv(edge.org.test.df,filename.edge.org)
 
 #### NOTE: need to run all code at once because Sheets 2 and 3 (edge attribute sheets) are dependent on random name generation in vertex sheet
 
