@@ -1,28 +1,18 @@
 # Data Processing for ICON 8002
 # This script serves the purpose of generating data with various input
 # formats for use in developing SNA tool
-# Edited on 10/11/18 - AHN
+# 10/27/18
 
 ### NOTE: Run all code at once and then view output tables. Edge attribute sheets are dependent upon random name generation in Vertex Sheet.
 
 ############################
-#basedirectory <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA"
-#basedirectory <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA"
-basedirectory <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA"
+basedirectory <- 
 
-#inputdata_path <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA/Data"
-#inputdata_path <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA\\Data"
-input_datapath <- "/Users/BryanBozeman/Documents/GitHub/ICON8002_SNA/Data"
+## setting parameters
+# generated data sample size
+n <- 500
 
-vertex_datapath <- "vertex_test_df.csv"
-#vertex_datapath <- "vertex_test_df_10_15.csv"
-
-edge_indiv_datapath <- "edge_indiv_test_df.csv"
-#edge_indiv_datapath <- "edge_indiv_test_df_10_15.csv"
-
-edge_org_datapath <- "edge_org_test_df.csv"
-
-setwd(input_datapath)
+setwd(basedirectory)
 
 #List packages used
 list.of.packages <- c("igraph","randomNames","fabricatr","plyr","RColorBrewer","keyplayer","sna","mixedsort")
@@ -35,36 +25,6 @@ lapply(list.of.packages, require, character.only = TRUE)
 ########################################################
 ########################################################
 
-## input data structure
-## 3 data sheets (csv files), 1 for vertices, 1 for connections/edges between individuals,
-## 1 for connections/edges between individuals and groups/organizations
-## attributes can be numeric and characters, continuous and categorical, or open response
-
-# The attribute data for this script is in a comma-separated-value
-# (CSV) file. read.csv() loads a CSV file into a data frame
-# object. In this case, we do have a header row, so we set
-# header=T, which tells R that the first row of data contains
-# column names.
-
-vertex_test <- read.csv(vertex_datapath, header=T, row.names = 1)
-edge_indiv_test <- read.csv(edge_indiv_datapath, header=T, row.names = 1)
-edge_org_test <- read.csv(edge_org_datapath, header=T, row.names = 1)
-
-str(vertex_test)
-summary(vertex_test)
-head(vertex_test)
-colnames(vertex_test)
-
-str(edge_indiv_test)
-summary(edge_indiv_test)
-head(edge_indiv_test)
-colnames(edge_indiv_test)
-
-str(edge_org_test)
-summary(edge_org_test)
-head(edge_org_test)
-colnames(edge_org_test)
-
 ###########################################
 ################################
 ###############
@@ -72,10 +32,6 @@ colnames(edge_org_test)
 ###############
 ################################
 ###########################################
-
-## setting parameters
-# generated data sample size
-n <- 500
 
 # This code uses the "sample" function throughout, so various hypothesized scenarios can
 # easily be constructed by altering the probabilities ("prob = ...") within each line of code
@@ -90,7 +46,7 @@ n <- 500
 # Name generator
 ego.df <- randomNames(n, which.names="both",ethnicity = c(3:5),
                       name.order="last.first",name.sep=", ")
-ego.df
+#ego.df
 
 # Profession generator based on professions and proportions from Tookes IRB (industry role)
 industry.role.options <-c ("Commercial fisherman (current)", "Commercial fisherman (former)", "Commercial crabbers or dealer (current)", "Commercial crabbers or dealer (former)",
@@ -110,7 +66,6 @@ q1c.issues.social.vq <- sample(c(0, 1), n, replace = T)
 q1d.issues.political.vq <- sample(c(0, 1), n, replace = T)
 q1e.issues.other.vq <- sample(c(0, 1), n, replace = T)
 q1f.issues.other.txt.vq <- ifelse(q1e.issues.other.vq == 1, "Explanation", "N/A")
-
 
 # 2. How satisfied are you with the current economic state (e.g., available market, pricing, transportation)
 # of the shrimping/fishing industry on the Georgia coast?
@@ -179,7 +134,6 @@ q9.black.gill.influence.vq <- sample(agree.options, n, replace = T)
 
 q9a.black.gill.influence.expl.vq <- ifelse(q9.black.gill.influence.vq == "Strongly agree" | q9.black.gill.influence.vq == "Agree", "Explanation", "N/A")
 
-
 # 10. Have you observed black gill disease in your shrimp catch? 
 # Answer choices: Yes, No
 # Output: qualitative binary
@@ -239,9 +193,7 @@ alter.outnetwork.num<-100
 alter.outnetwork.df <- randomNames(alter.outnetwork.num, which.names="both",ethnicity = c(1:2),name.order="last.first",name.sep=", ")
 alter.outnetwork.df <- alter.outnetwork.df[!alter.outnetwork.df %in% ego.df]
 
-
 #Add probability of ego listing other ego that listed them!!! Reciprocity
-
 
 for(i in 1:length(ego.df)){
   ego.df.rm <- ego.df[!ego.df == ego.df[i]]
@@ -252,15 +204,13 @@ for(i in 1:length(ego.df)){
   
   #sample_connections<-sample(2:max_connections, 1, replace=FALSE)
   
-  ######################
-  #ADD IN A POISSON OR NEGATIVE BINOMIAL DISTRIBITION TO SAMPLE NUMBER OF CONNECTION
+########################################################
+#### TASK: ADD IN A POISSON OR NEGATIVE BINOMIAL DISTRIBITION TO SAMPLE NUMBER OF CONNECTION
   
-  #e.g. rpois() or dnbinom()
-  ######################
-  
-  
+#e.g. rpois() or dnbinom()
+########################################################  
+
   sample_prob<-sample(conn_types, sample_connections, replace = T, p = c(0.1,0.1,0.8))
-  # 
   
   sample.In_Network<-length(which(sample_prob == conn_types[1]))
   sample.Out_Network<-length(which(sample_prob == conn_types[2]))
@@ -269,23 +219,15 @@ for(i in 1:length(ego.df)){
   alter.innetwork.i <- sample(ego.df.rm,sample.In_Network,replace = FALSE)
   alter.outnetwork.i <- sample(alter.outnetwork.df,sample.Out_Network,replace = FALSE)
   alter.profession.i <- sample(professional.names.rm,sample.Profess_Link,replace = FALSE)
-  
-  #alter.i <- sample(names.sample.list,sample(1:max_connections,1),replace = FALSE)
+
   alter.i<-c(alter.innetwork.i,alter.outnetwork.i,alter.profession.i)
   alter.type<-c(rep("In-Network",sample.In_Network),rep("Out-Network",sample.Out_Network),rep("Shared-Profession",sample.Profess_Link))
-  
-  #Check to make sure names are not repeated in vector
-  # alter.i<-union(alter.i,alter.i)
-  # which(duplicated(alter.i)==TRUE)
-  # alter.i<-alter.i[-c(which(duplicated(alter.i)==TRUE))]
-  # alter.type<-alter.type[-c(which(duplicated(alter.i)==TRUE))]
-  
+
   if(length(which(duplicated(alter.i)==TRUE))>0){
     
     Rm.num<-which(duplicated(alter.i)==TRUE)
     alter.i.check<-alter.i[-c(Rm.num)]
     alter.type.check<-alter.type[-c(Rm.num)]
-  
     print(paste0("Removed duplicate elemements # ",Rm.num," from ", ego.df[i]," (ego number ",i," out of ",length(ego.df),")"))
   }else{
     alter.i.check<-alter.i
@@ -299,45 +241,35 @@ for(i in 1:length(ego.df)){
   #print(paste0("Alter generated for ",ego.df[i]," (ego number ",i," out of ",length(ego.df),")"))
 }
 
-str(alter.test.df)
-
 names(alter.test.df)<-c("ego","alter","alter_type")
+
+#################################################################
+#Only once new alter verticies added to dataframe is vertex.test exported
 
 # tag for vertex sheet questions = ".vq"
 vq<-ls(pattern = ".vq")
-
 vq<-mixedsort(vq)
-
 vertex.test.df <-as.data.frame(cbind(ego.df, profession.df,as.data.frame(mget(vq))))
-
 names(vertex.test.df)[1]="ego"
 
 Out_Network_Names<-unique(alter.test.df[which(alter.test.df$alter_type=="Out-Network"),2])
-
 for(k in 1:length(Out_Network_Names)){
-  
   Name.k<-as.character(Out_Network_Names[k])
   Out_Network<-as.character("Out-Network")
-  
   Out.row.k<-c(Name.k,Out_Network,rep("N/A",(length(colnames(vertex.test.df))-2)))
-  
   Out.row.k<-as.data.frame(t(Out.row.k))
   colnames(Out.row.k)<-colnames(vertex.test.df)
-  
   vertex.test.df<-rbind(vertex.test.df,Out.row.k)
 }
 
-tail(vertex.test.df)
-
-duplicated(vertex.test.df$ego)
-vertex_test$ego[duplicated(vertex.test.df$ego)]
-
+########################################################
+#### TASK: Perhaps add in today's date into character string
+# of output name, just to create unique dataframes
+########################################################  
 
 write.csv(vertex.test.df,"vertex_test_df.csv")
 
-
-
-
+#################################################################
 # Sample size for generated data
 n.edge.indiv <- length(alter.test.df$alter)
 
@@ -485,8 +417,6 @@ for(i in 1:length(ego.df)){
   alter.org.df.i <- cbind(rep(ego.df[i],length(alter.org.i)),alter.org.i)
   alter.org.test.df <- rbind(alter.org.test.df,alter.org.df.i)
 }
-
-str(alter.org.test.df)
 
 names(alter.org.test.df)<-c("ego","organization")
 
