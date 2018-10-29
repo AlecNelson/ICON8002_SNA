@@ -1,5 +1,5 @@
 #Key Data Processing Functions for ICON 8002
-# 10/27/18
+# 10/29/18
 
 ############################
 #Type in the base directory and input datapaths below
@@ -332,32 +332,46 @@ print(paste0("The network has a transitivity of ",Transitivity_stat_complete,". 
 #sp_full_in <- shortest.paths(graph_complete, mode='in')
 #sp_full_out <- shortest.paths(graph_complete, mode='out')
 
-# stats_overall_graph<-ls(pattern = "_stat_")
-# stat_overall_names<-vector()
-# 
-# for(k in 1:length(stats_overall_graph)){
-#   stat_overall_names<-c(stat_overall_names,strsplit(stats_overall_graph[k],"_")[[1]][1])
-# }
-# 
+stats_overall_graph<-ls(pattern = "_stat_complete")
+stat_overall_names<-vector()
+
+for(k in 1:length(stats_overall_graph)){
+  stat_overall_names<-c(stat_overall_names,strsplit(stats_overall_graph[k],"_")[[1]][1])
+}
+
+Stat_overall_table<-as.data.frame(cbind(as.vector(stat_overall_names),as.vector(mget(stats_overall_graph))),row.names = FALSE)
+names(Stat_overall_table)<-c("Statistic Name","Value")
 
 #Individual statistics
 #degree_complete<-igraph::degree(graph_complete)
-degree_max<-which.max(igraph::degree(graph_complete))
-print(paste0("The vertex with the greatest degree is ",as.character(vertex_df$ego[degree_max])," (number: ",degree_max,"). This measure is the number of its adjacent edges."))
+Degree_max_stat_indiv<-which.max(igraph::degree(graph_complete))
+print(paste0("The vertex with the greatest degree is ",as.character(vertex_df$ego[Degree_max_stat_indiv])," (number: ",Degree_max_stat_indiv,"). This measure is the number of its adjacent edges."))
 
-degree_min<-which.min(igraph::degree(graph_complete))
-print(paste0("The vertex with the fewest degree is ",as.character(vertex_df$ego[degree_min])," (number: ",degree_min,"). This measure is the number of its adjacent edges."))
+Degree_min_stat_indiv<-which.min(igraph::degree(graph_complete))
+print(paste0("The vertex with the fewest degree is ",as.character(vertex_df$ego[Degree_min_stat_indiv])," (number: ",Degree_min_stat_indiv,"). This measure is the number of its adjacent edges."))
 
 #closeness_complete<-igraph::closeness(graph_complete)
-closeness_max<-which.max(igraph::closeness(graph_complete))
-print(paste0("The vertex with the greatest closeness is ",as.character(vertex_df$ego[closeness_max])," (number: ",closeness_max,"). This measures how many steps is required to access every other vertex from a given vertex."))
+Closeness_max_stat_indiv<-which.max(igraph::closeness(graph_complete))
+print(paste0("The vertex with the greatest closeness is ",as.character(vertex_df$ego[Closeness_max_stat_indiv])," (number: ",Closeness_max_stat_indiv,"). This measures how many steps is required to access every other vertex from a given vertex."))
 
-closeness_min<-which.min(igraph::closeness(graph_complete))
-print(paste0("The vertex with the least closeness is ",as.character(vertex_df$ego[closeness_min])," (number: ",closeness_min,"). This measures how many steps is required to access every other vertex from a given vertex."))
+Closeness_min_stat_indiv<-which.min(igraph::closeness(graph_complete))
+print(paste0("The vertex with the least closeness is ",as.character(vertex_df$ego[Closeness_min_stat_indiv])," (number: ",Closeness_min_stat_indiv,"). This measures how many steps is required to access every other vertex from a given vertex."))
 
-########################################################
-###Create nice table output of these statistics - AHN 10/27 #########
-########################################################
+stats_indiv_graph<-ls(pattern = "_stat_indiv")
+stat_indiv_names<-vector()
+
+for(k in 1:length(stats_indiv_graph)){
+  stat_indiv_names<-c(stat_indiv_names,substr(stats_indiv_graph[k],1,(nchar(stats_indiv_graph[k])-11)))}
+
+indiv_vals<-as.numeric(as.vector(mget(stats_indiv_graph)))
+
+stat_indiv_vertices<-vector()
+for(j in 1:length(indiv_vals)){
+  stat_indiv_vertices<-c(stat_indiv_vertices,as.character(vertex_df$ego[indiv_vals[j]]))}
+
+Stat_indiv_table<-as.data.frame(cbind(as.vector(stat_indiv_names),stat_indiv_vertices,indiv_vals),row.names = FALSE)
+names(Stat_indiv_table)<-c("Statistic Name","Vertex Name","Value")
+
 
 # Reachability can only be computed on one vertex at a time. To
 # get graph-wide statistics, change the value of "vertex"
