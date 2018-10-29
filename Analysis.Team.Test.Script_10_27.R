@@ -6,14 +6,14 @@
 basedirectory <- 
 input_datapath <- 
 
-vertex_datapath <- "vertex_test_df.csv"
-edge_indiv_datapath <- "edge_indiv_test_df.csv"
+vertex_datapath <- "vertex_test_df_10_28_18.csv"
+edge_indiv_datapath <- "edge_indiv_test_df_10_28_18.csv"
 edge_org_datapath <- "edge_org_test_df.csv"
 
 setwd(input_datapath)
 
 #List packages used
-list.of.packages <- c("igraph","randomNames","fabricatr","plyr","RColorBrewer","keyplayer","sna","mixedsort")
+list.of.packages <- c("igraph","randomNames","fabricatr","plyr","RColorBrewer","keyplayer","sna","MASS","naturalsort")
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)){install.packages(new.packages)} 
@@ -42,7 +42,7 @@ edge_org_df <- read.csv(edge_org_datapath, header=T, row.names = 1)
 # same across data sets. We can compare each row using the == syntax. 
 # The command below should return TRUE for every row if all ego rows
 # are the same :
-unique(as.character(vertex_df$ego)) == unique(c(as.character(edge_indiv_df$ego),as.character(edge_indiv_df$alter)))
+sort(unique(as.character(vertex_df$ego))) == sort(unique(c(as.character(edge_indiv_df$ego),as.character(edge_indiv_df$alter))))
 ########################################################
 
 #Combine edge and vertex attribute information into igraph format
@@ -313,16 +313,47 @@ plot(g2,
 ########################################################
 ########################################################
 
-degree_complete<-igraph::degree(graph_complete)
-degree_max<-which.max(igraph::degree(graph_complete))
-degree_min<-which.min(igraph::degree(graph_complete))
+#Graph-wide statistics
+Diameter_stat_complete<-diameter(graph_complete)
+print(paste0("The network has a diameter of ",Diameter_stat_complete,". This measure is the length of the longest geodesic (the largest distance between any two vertices in a connected graph)."))
 
-diameter_complete<-diameter(graph_complete)
-closeness_complete<-igraph::closeness(graph_complete)
-reciprocity_complete<-reciprocity(graph_complete)
-ecount_complete<-ecount(graph_complete)
-vcount_complete<-vcount(graph_complete)
-density_complete<-edge_density(graph_complete)
+Reciprocity_stat_complete<-reciprocity(graph_complete)
+print(paste0("The network has a reciprocity of ",Reciprocity_stat_complete,". The measure of reciprocity defines the proportion of mutual connections, in a directed graph."))
+
+Density_stat_complete<-edge_density(graph_complete)
+print(paste0("The network has a density of ",Density_stat_complete,". This measure is the ratio of the number of edges and the number of possible edges."))
+
+Transitivity_stat_complete<-transitivity(graph_complete)
+print(paste0("The network has a transitivity of ",Transitivity_stat_complete,". This measure is the probability that the adjacent vertices of a vertex are connected. This is sometimes also called the clustering coefficient."))
+
+# ecount_complete<-ecount(graph_complete)
+# vcount_complete<-vcount(graph_complete)
+#Shortest path between nodes
+#sp_full_in <- shortest.paths(graph_complete, mode='in')
+#sp_full_out <- shortest.paths(graph_complete, mode='out')
+
+# stats_overall_graph<-ls(pattern = "_stat_")
+# stat_overall_names<-vector()
+# 
+# for(k in 1:length(stats_overall_graph)){
+#   stat_overall_names<-c(stat_overall_names,strsplit(stats_overall_graph[k],"_")[[1]][1])
+# }
+# 
+
+#Individual statistics
+#degree_complete<-igraph::degree(graph_complete)
+degree_max<-which.max(igraph::degree(graph_complete))
+print(paste0("The vertex with the greatest degree is ",as.character(vertex_df$ego[degree_max])," (number: ",degree_max,"). This measure is the number of its adjacent edges."))
+
+degree_min<-which.min(igraph::degree(graph_complete))
+print(paste0("The vertex with the fewest degree is ",as.character(vertex_df$ego[degree_min])," (number: ",degree_min,"). This measure is the number of its adjacent edges."))
+
+#closeness_complete<-igraph::closeness(graph_complete)
+closeness_max<-which.max(igraph::closeness(graph_complete))
+print(paste0("The vertex with the greatest closeness is ",as.character(vertex_df$ego[closeness_max])," (number: ",closeness_max,"). This measures how many steps is required to access every other vertex from a given vertex."))
+
+closeness_min<-which.min(igraph::closeness(graph_complete))
+print(paste0("The vertex with the least closeness is ",as.character(vertex_df$ego[closeness_min])," (number: ",closeness_min,"). This measures how many steps is required to access every other vertex from a given vertex."))
 
 ########################################################
 ###Create nice table output of these statistics - AHN 10/27 #########
@@ -333,19 +364,23 @@ density_complete<-edge_density(graph_complete)
 # manually or write a for loop. (Remember that, unlike R objects,
 # igraph objects are numbered from 0.)
 
-reachability <- function(g, m) {
-  reach_mat = matrix(nrow = vcount(g), ncol = vcount(g))
-  for (i in 1:vcount(g)) {
-    reach_mat[i,] = 0
-    this_node_reach <- subcomponent(g, (i - 1), mode = m)
-    for (j in 1:(length(this_node_reach))) {
-      alter = this_node_reach[j] + 1
-      reach_mat[i, alter] = 1}}
-  return(reach_mat)
-}
+# reachability <- function(g, m) {
+#   reach_mat = matrix(nrow = vcount(g),ncol = vcount(g))
+#   for (i in 1:vcount(g)) {
+#     reach_mat[i,] = 0
+#     this_node_reach <- subcomponent(g, (i), mode = m)
+#     for (j in 1:(length(this_node_reach))) {
+#       alter = this_node_reach[j]
+#       reach_mat[i, alter] = 1}}
+#   return(reach_mat)
+# }
 
-#reach_full_in <- reachability(graph_complete_symmetrized, 'in')
-#reach_full_out <- reachability(graph_complete, 'out')
+# reach_full_in <- reachability(graph_complete, 'in')
+# reach_full_out <- reachability(graph_complete, 'out')
+
+# for(i in 1:length(V(graph_complete))){
+#   print(length(subcomponent(graph_edge, i, mode = "in")))
+# }
 
 ########################################################
 #Keyplayer functions:
@@ -360,38 +395,39 @@ matrix_complete_symm <- symmetrize(matrix_complete)
 matrix_non_zero_one <- matrix_complete
 matrix_non_zero_one[matrix_complete != 0] <- 1
 
-
 evcent(matrix_inv_non_zero, gmode = "digraph", ignore.eval = FALSE, use.eigen = TRUE)
 evcent(matrix_complete_symm)
 #Fragmentation centrality measures the extent to which a network is fragmented after a node is removed from the network 
 #fragment(matrix_inv_non_zero)
 
-mreach.degree(matrix_complete, M = 1)
-which.max(mreach.degree(matrix_complete, M = 1)[,3])[1]
-mreach.closeness(matrix_inv_non_zero)
-which.max(mreach.closeness(matrix_inv_non_zero)[,3])[1]
+# mreach.degree(matrix_complete, M = 1)
+# which.max(mreach.degree(matrix_complete, M = 1)[,3])[1]
+# mreach.closeness(matrix_inv_non_zero)
+# which.max(mreach.closeness(matrix_inv_non_zero)[,3])[1]
 
 #Determine Keyplayers via different statistical mesurements
 ## Set size of set group to number of keyplayers wanted per metric
-kpset(matrix_complete, size = 1, type = "degree", cmode = "indegree", method = "max")
-kpset(matrix_complete, size = 1, type = "degree", cmode = "indegree", binary = TRUE, method = "max") 
-kpset(matrix_complete, size = 1, type = "mreach.degree", cmode = "indegree", M = 1,binary = TRUE)
-kpset(matrix_inv_non_zero, size = 1, type = "mreach.closeness", cmode = "indegree", M = 1)
-kpset(matrix_complete, size = 1, type = "degree", cmode = "indegree", parallel = TRUE,cluster = 2)
+keyplayer_num<-1
 
-kpset(matrix_complete, size = 1, type = "degree", cmode = "outdegree", method = "max")
-kpset(matrix_complete, size = 1, type = "degree", cmode = "outdegree", binary = TRUE, method = "max")
-kpset(matrix_complete, size = 1, type = "mreach.degree", cmode = "outdegree", M = 1,binary = TRUE)
-kpset(matrix_inv_non_zero, size = 1, type = "mreach.closeness", cmode = "outdegree", M = 1)
-kpset(matrix_complete, size = 1, type = "degree", cmode = "outdegree", parallel = TRUE,cluster = 2)
+kp_in_degree_max<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "indegree", method = "max")
+kp_in_degree_max_bin<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "indegree", binary = TRUE, method = "max") 
+kp_in_mreach<-kpset(matrix_complete, size = keyplayer_num, type = "mreach.degree", cmode = "indegree", M = 1,binary = TRUE)
+kp_in_mreach_close<-kpset(matrix_inv_non_zero, size = keyplayer_num, type = "mreach.closeness", cmode = "indegree", M = 1)
+kp_in_degree_parallel<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "indegree", parallel = TRUE,cluster = 2)
 
-kpset(matrix_complete, size = 1, type = "degree", cmode = "total", method = "max")
-kpset(matrix_complete, size = 1, type = "degree", cmode = "total", binary = TRUE, method = "max")
-kpset(matrix_complete, size = 1, type = "mreach.degree", cmode = "total", M = 1,binary = TRUE)
-kpset(matrix_inv_non_zero, size = 1, type = "mreach.closeness", cmode = "total", M = 1)
-kpset(matrix_complete, size = 1, type = "degree", cmode = "total", parallel = TRUE,cluster = 2)
+kp_out_degree_max<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "outdegree", method = "max")
+kp_out_degree_max_bin<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "outdegree", binary = TRUE, method = "max")
+kp_out_mreach<-kpset(matrix_complete, size = keyplayer_num, type = "mreach.degree", cmode = "outdegree", M = 1,binary = TRUE)
+kp_out_mreach_close<-kpset(matrix_inv_non_zero, size = keyplayer_num, type = "mreach.closeness", cmode = "outdegree", M = 1)
+kp_out_degree_parallel<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "outdegree", parallel = TRUE,cluster = 2)
 
-rownames(matrix_complete)[177] #from second model in first group above. 
+kp_total_degree_max<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "total", method = "max")
+kp_total_degree_max_bin<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "total", binary = TRUE, method = "max")
+kp_total_mreach<-kpset(matrix_complete, size = keyplayer_num, type = "mreach.degree", cmode = "total", M = 1,binary = TRUE)
+kp_total_mreach_close<-kpset(matrix_inv_non_zero, size = keyplayer_num, type = "mreach.closeness", cmode = "total", M = 1)
+kp_total_degree_parallel<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "total", parallel = TRUE,cluster = 2)
+
+rownames(matrix_complete)[kp_in_degree_parallel$keyplayers[1:keyplayer_num]] 
 
 #Determine Centrality between specific nodes
 # kpcent(matrix_complete, c(2, 18), type = "degree", cmode = "total", method = "max")
@@ -446,7 +482,7 @@ data_logistic_df<-cbind(Keyplay.bool,data_logistic_df)
 colnames(data_logistic_df)
 
 data_logistic_df <- subset(data_logistic_df,
-                             select=c(1,3,10,11,12,13,14,15))
+                             select=c(1,3,11,14))
 
 model <- glm(Keyplay.bool ~.,family=binomial(link='logit'),data=data_logistic_df)
 summary(model)
