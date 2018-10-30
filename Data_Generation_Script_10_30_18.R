@@ -1,7 +1,7 @@
 # Data Processing for ICON 8002
 # This script serves the purpose of generating data with various input
 # formats for use in developing SNA tool
-# Edited on 10/10/18 - AHN
+# Edited on 10/30/18 by BBB
 
 ### NOTE: Run all code at once and then view output tables. Edge attribute sheets are dependent upon random name generation in Vertex Sheet.
 
@@ -63,6 +63,9 @@ colnames(edge_org_test)
 ################################
 ###############
 ### Generating demonstration data
+### This code uses the questions and logical output from the Survey Team's 
+### prospective SNA survey questions, found in "Survey_Questions_V3" doc on 
+### ICON 8002 google drive. - BBB, 10/30/18
 ###############
 ################################
 ###########################################
@@ -86,12 +89,25 @@ ego.df <- randomNames(n, which.names="both",ethnicity = c(3:5),
                     name.order="last.first",name.sep=", ")
 ego.df
 
+# Prospective survey questions and answers
+
+# Question 1: What is your occupation in/relationship to the Georgia Coastal Fishery?
 # Profession generator based on professions and proportions from Tookes IRB (industry role)
 industry.role.options <-c ("Commercial fisherman (current)", "Commercial fisherman (former)", "Commercial crabbers or dealer (current)", "Commercial crabbers or dealer (former)",
                    "Dock and fish house (current)", "Dock and fish house (former)", "Shellfish gatherer (current)", "Shellfish gatherer (former)")
-profession.df <- sample(industry.role.options, n, replace=TRUE, prob = c(0.265, 0.265,.10, 0.10, 0.075, 0.075, 0.06,.06))
+q1.profession.df <- sample(industry.role.options, n, replace=TRUE, prob = c(0.265, 0.265,.10, 0.10, 0.075, 0.075, 0.06,.06))
 
-# Prospective survey questions and answers
+# Question 2a: Are you currently working in the above industry?
+binary.qual.options <- c("Yes", "No")
+q2a.currently.working.vq <- sample(binary.qual.options, n, replace = T)
+
+# Question 2b: If yes, how long?
+q2b.how.long.work.vq <- ifelse(q2a.currently.working.vq == "Yes", sample(c(0:40)), "N/A")
+
+# Question 2c: If no, when and why did you leave this industry?
+q2c.when.leave.work.vq <- ifelse(q2a.currently.working.vq == "No", "Open Response", "N/A")
+
+
 
 # 1. In your opinion, what issues are currently impacting the fishing/shrimping industry on the
 # Georgia coast? 
