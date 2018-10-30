@@ -3,8 +3,8 @@
 
 ############################
 #Type in the base directory and input datapaths below
-basedirectory <- 
-input_datapath <- 
+basedirectory <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA"
+input_datapath <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA\\Data"
 
 vertex_datapath <- "vertex_test_df_10_28_18.csv"
 edge_indiv_datapath <- "edge_indiv_test_df_10_28_18.csv"
@@ -154,13 +154,13 @@ dev.off()
 #### NOTE: Need to figure out colors between vertices and legend. Don't currently match - BB 10.18.18 
 ########################################################
 
-V(graph_complete_symmetrized)$community <- vertex_df$profession.df
-colrs <- adjustcolor( c("gray50", "tomato", "gold", "yellowgreen","blue","pink","green","purple"), alpha=.6)
-plot(graph_complete_symmetrized, vertex.color=colrs[V(graph_complete_symmetrized)$community], vertex.label=vertex_df$profession.df)
-
-V(graph_complete_symmetrized)$community <- V(graph_complete)$profession.df
-colrs <- adjustcolor( c("red", "tomato", "gold", "yellowgreen","blue","pink","green","purple","grey50"), alpha=.6)
-plot(graph_complete_symmetrized, vertex.color=colrs[V(graph_complete_symmetrized)$community])
+# V(graph_complete_symmetrized)$community <- vertex_df$profession.df
+# colrs <- adjustcolor( c("gray50", "tomato", "gold", "yellowgreen","blue","pink","green","purple"), alpha=.6)
+# plot(graph_complete_symmetrized, vertex.color=colrs[V(graph_complete_symmetrized)$community], vertex.label=vertex_df$profession.df)
+# 
+# V(graph_complete_symmetrized)$community <- V(graph_complete)$profession.df
+# colrs <- adjustcolor( c("red", "tomato", "gold", "yellowgreen","blue","pink","green","purple","grey50"), alpha=.6)
+# plot(graph_complete_symmetrized, vertex.color=colrs[V(graph_complete_symmetrized)$community])
 
 ### Plotting by community/profession with vertices weighted by in.degree
 V(graph_complete_symmetrized)$community <- vertex_df$profession.df
@@ -421,27 +421,47 @@ evcent(matrix_complete_symm)
 
 #Determine Keyplayers via different statistical mesurements
 ## Set size of set group to number of keyplayers wanted per metric
-keyplayer_num<-1
+keyplayer_num<-3
 
-kp_in_degree_max<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "indegree", method = "max")
-kp_in_degree_max_bin<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "indegree", binary = TRUE, method = "max") 
-kp_in_mreach<-kpset(matrix_complete, size = keyplayer_num, type = "mreach.degree", cmode = "indegree", M = 1,binary = TRUE)
-kp_in_mreach_close<-kpset(matrix_inv_non_zero, size = keyplayer_num, type = "mreach.closeness", cmode = "indegree", M = 1)
-kp_in_degree_parallel<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "indegree", parallel = TRUE,cluster = 2)
+##################
+# Start the clock!
+ptm <- proc.time()
+##################
 
-kp_out_degree_max<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "outdegree", method = "max")
-kp_out_degree_max_bin<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "outdegree", binary = TRUE, method = "max")
-kp_out_mreach<-kpset(matrix_complete, size = keyplayer_num, type = "mreach.degree", cmode = "outdegree", M = 1,binary = TRUE)
-kp_out_mreach_close<-kpset(matrix_inv_non_zero, size = keyplayer_num, type = "mreach.closeness", cmode = "outdegree", M = 1)
-kp_out_degree_parallel<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "outdegree", parallel = TRUE,cluster = 2)
+kp_closeness<-kpset(matrix_complete,size=keyplayer_num,type="closeness",parallel=TRUE,cluster=2,method="min")
+kp_betweenness<-kpset(matrix_complete,size=keyplayer_num,type="betweenness",parallel=TRUE,cluster=2,method="min")
+kp_degree<-kpset(matrix_complete,size=keyplayer_num,type="degree",cmode="total",parallel=TRUE,cluster=2,method="max")
+kp_eigenvector<-kpset(matrix_complete,size=keyplayer_num,type="evcent",parallel=TRUE,cluster=2,method="max")
 
-kp_total_degree_max<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "total", method = "max")
-kp_total_degree_max_bin<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "total", binary = TRUE, method = "max")
-kp_total_mreach<-kpset(matrix_complete, size = keyplayer_num, type = "mreach.degree", cmode = "total", M = 1,binary = TRUE)
-kp_total_mreach_close<-kpset(matrix_inv_non_zero, size = keyplayer_num, type = "mreach.closeness", cmode = "total", M = 1)
-kp_total_degree_parallel<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "total", parallel = TRUE,cluster = 2)
+##################
+#Check the time elapsed
+proc.time() - ptm
+##################
 
-rownames(matrix_complete)[kp_in_degree_parallel$keyplayers[1:keyplayer_num]] 
+rownames(matrix_complete)[kp_closeness$keyplayers[1:keyplayer_num]] 
+
+
+########################################################
+###### NOTE: Edge values can be included in this calculation in the "binary" option 
+########################################################
+
+# kp_in_degree_max<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "indegree", method = "max")
+# kp_in_degree_max_bin<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "indegree", binary = TRUE, method = "max") 
+# kp_in_mreach<-kpset(matrix_complete, size = keyplayer_num, type = "mreach.degree", cmode = "indegree", M = 1,binary = TRUE)
+# kp_in_mreach_close<-kpset(matrix_inv_non_zero, size = keyplayer_num, type = "mreach.closeness", cmode = "indegree", M = 1)
+# kp_in_degree_parallel<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "indegree", parallel = TRUE,cluster = 2)
+# 
+# kp_out_degree_max<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "outdegree", method = "max")
+# kp_out_degree_max_bin<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "outdegree", binary = TRUE, method = "max")
+# kp_out_mreach<-kpset(matrix_complete, size = keyplayer_num, type = "mreach.degree", cmode = "outdegree", M = 1,binary = TRUE)
+# kp_out_mreach_close<-kpset(matrix_inv_non_zero, size = keyplayer_num, type = "mreach.closeness", cmode = "outdegree", M = 1)
+# kp_out_degree_parallel<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "outdegree", parallel = TRUE,cluster = 2)
+# 
+# kp_total_degree_max<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "total", method = "max")
+# kp_total_degree_max_bin<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "total", binary = TRUE, method = "max")
+# kp_total_mreach<-kpset(matrix_complete, size = keyplayer_num, type = "mreach.degree", cmode = "total", M = 1,binary = TRUE)
+# kp_total_mreach_close<-kpset(matrix_inv_non_zero, size = keyplayer_num, type = "mreach.closeness", cmode = "total", M = 1)
+# kp_total_degree_parallel<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "total", parallel = TRUE,cluster = 2)
 
 #Determine Centrality between specific nodes
 # kpcent(matrix_complete, c(2, 18), type = "degree", cmode = "total", method = "max")
