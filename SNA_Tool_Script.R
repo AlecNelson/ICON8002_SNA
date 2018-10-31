@@ -15,21 +15,24 @@ edge_org_datapath <- "edge_org_test_df.csv" # edge between individuals and organ
 # set working directory to the data folder
 setwd(input_datapath) 
 
-#List packages used for the analysis
-list.of.packages <- c("igraph","fabricatr", "gtool", "keyplayer", "rmarkdown", "knitr", "RColorBrewer","sna","MASS","naturalsort")
+# Install and load packages needed for the analysis
+
+list.of.packages <- c("igraph","fabricatr", "keyplayer", "rmarkdown", "knitr", "RColorBrewer","sna","MASS","naturalsort", "pander") # List packages used for the analysis
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])] # new packages that were not already installed
 
 # Install new packages
 if(length(new.packages)){install.packages(new.packages)} 
 
-#Load all packages for analysis
+# Load all packages for analysis
 lapply(list.of.packages, require, character.only = TRUE)
 
 #Load SNA function
+# This is the function that will run the social network analysis, calculate relevant statistics, and produce figures
+# that are helpful in visualizing the network (e.g. types of relationships between vertices, vertex attributes, etc.)
 source("SNAfunction.R")
 
 # Run SNA function
-sna(input_datapath=input_datapath, vertex_datapath=vertex_datapath, edge_datapath=edge_datapath)
+sna(input_datapath=input_datapath, vertex_datapath=vertex_datapath, edge_indiv_datapath=edge_indiv_datapath, edge_org_datapath=edge_org_datapath)
 
 
 
@@ -37,7 +40,7 @@ sna(input_datapath=input_datapath, vertex_datapath=vertex_datapath, edge_datapat
 
 ######################################## Creating SNA function ####################################################
 
-sna<-function(input_datapath, vertex_datapath, edge_datapath){
+sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath, edge_org_datapath){
   
   ##############################################
   ########## Import and checking data ##########
@@ -59,23 +62,27 @@ sna<-function(input_datapath, vertex_datapath, edge_datapath){
   # same across data sets. We can compare each row using the == syntax. 
   # The command below should return TRUE for every row if all ego rows
   # are the same :
-  sort(unique(as.character(vertex_df$ego))) == sort(unique(c(as.character(edge_indiv_df$ego),as.character(edge_indiv_df$alter))))
-
+  data.check<-sort(unique(as.character(vertex_df$ego))) == sort(unique(c(as.character(edge_indiv_df$ego),as.character(edge_indiv_df$alter))))
+  
+if(any(data.check==FALSE))
+  stop("Please double check your data to make sure the egos and alters match") # Adding error message to tell users that ego/alter names do not match
+  
   # We can just have R return which row entries are not equal using the syntax below:
-  which(unique(sort(vertex$ego)) != unique(sort(edge$ego)))
+  which(unique(sort(as.character(vertex_df$ego))) != sort(unique(c(as.character(edge_indiv_df$ego),as.character(edge_indiv_df$alter)))))
+
   
   ######################################
   ########## Network Analysis ##########
   ######################################
   
   # Constructing network and check network structure
-  #Combine edge and vertex attribute information into igraph format
+  # Combine edge and vertex attribute information into igraph format
   graph_complete <- graph.data.frame(d = edge_indiv_df, vertices = vertex_df)
   
-  #Symmetrize graph to remove directed edges
+  #Symmetrize graph (network) to remove directed edges
   graph_complete_symmetrized <- as.undirected(graph_complete, mode='collapse')
   
-  # Simplify graph to remove loops and prepare variables
+  # Simplify graph (network) to remove loops and prepare variables
   graph_complete_simpl <- simplify(graph_complete)
   graph_complete_simpl_symm <- as.undirected(graph_complete_simpl, mode='collapse')
 
@@ -84,21 +91,52 @@ sna<-function(input_datapath, vertex_datapath, edge_datapath){
   
   # Exporting edge list
   
-  setwd(basedirectory)
-  write.graph(graph_complete, file='graph_sna_full.txt', format="edgelist")
+  #setwd(basedirectory)
+  #write.graph(graph_complete, file='graph_sna_full.txt', format="edgelist")
   
-  # Calculating network attributes
-  vertex_degree<-as.data.frame(degree(network))
+  
+  ####################################################
+  ########## Calculating network attributes ##########
+  ####################################################
+  
+  # Vertex-related network attributes
+  
+  ## Degree centrality
+  vertex_degree<-as.data.frame(igraph::degree(graph_complete))
   colnames(vertex_degree)<-"Degree"
-  diameter<-diameter(network)
-  closeness<-as.data.frame(closeness(network))
-  colnames(closeness)<-"Closeness"
-  reciprocity<-reciprocity(network)
-  ecount<-ecount(network)
-  vcount<-vcount(network)
-  edge_density<-edge_density(network)
-  in.degree<-as.data.frame(degree(network,mode="in"))
+  Degree_max_stat_indiv<-which.max(igraph::degree(graph_complete)) # individual with most degrees
+  Degree_min_stat_indiv<-which.min(igraph::degree(graph_complete)) # individual with fewest degrees
+  write.csv(vertex_degree, file="SNA_Total_Degree.csv")
+  
+  in.degree<-as.data.frame(igraph::degree(graph_complete,mode="in"))
   colnames(in.degree)<-"In Degree"
+  write.csv(in.degree, file="SNA_In_Degree.csv")
+  
+  
+  ## Closeness centrality
+  closeness<-as.data.frame(igraph::closeness(graph_complete))
+  colnames(closeness)<-"Closeness"
+  write.csv(closeness, file="SNA_Closeness.csv")
+  Closeness_max_stat_indiv<-which.max(igraph::closeness(graph_complete)) # individual with highest closeness measure
+  Closeness_min_stat_indiv<-which.min(igraph::closeness(graph_complete)) # indidivudal with lowest closeness measure
+
+  # Network attributes
+  
+  ## Diameter
+  diameter<-diameter(graph_complete)
+  
+  ## reciprocity
+  reciprocity<-reciprocity(graph_complete)
+  
+  ## edge count
+  ecount<-ecount(graph_complete)
+  
+  ## vertex count
+  vcount<-vcount(graph_complete)
+  
+  ## edge density
+  edge_density<-edge_density(graph_complete)
+
 
   
   ######################################
@@ -118,7 +156,7 @@ sna<-function(input_datapath, vertex_datapath, edge_datapath){
                                 vertex.label.cex=0.7,
                                 vertex.label.dist=1,
                                 vertex.label.degree=-0.6,
-                                main="Network Plot (Generated Data)",
+                                main="Network Plot",
                                 #frame=TRUE,
                                 margin=0.0001)
   
@@ -145,7 +183,7 @@ sna<-function(input_datapath, vertex_datapath, edge_datapath){
   layout.graph <- layout_(graph_complete_simpl, nicely())
   layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
   
-  colr.palette <- brewer.pal(n = 9, name = "Spectral") # picking color palette to graph with
+  colr.palette <- brewer.pal(n = length(unique(sort(vertex_df$profession.df))), name = "Spectral") # picking color palette to graph with
   profession.colors <- colr.palette[vertex_df$profession.df] # Assigning colors to professions
   
   plot(graph_complete_simpl,
@@ -164,38 +202,38 @@ sna<-function(input_datapath, vertex_datapath, edge_datapath){
        #frame=TRUE,
        margin = 0.0001)
   
-  legend(x=-1.5, y = -0.85, legend = levels(vertex_df$profession), 
-         col = profession.colors, pch=19, pt.cex=0.8, cex=0.8, bty="n", ncol=1) # Adding legend to figure
+  legend(x=-1.5, y = -0.85, legend = levels(vertex_df$profession.df), 
+         col = colr.palette, pch=19, pt.cex=0.8, cex=0.8, bty="n", ncol=1) # Adding legend to figure
   
+  ###### Need to double check if colors match professions! #######
   
   
   # Plotting by community/profession with vertices weighted by in.degree
   V(graph_complete_symmetrized)$community <- vertex_df$profession.df
   colrs <- adjustcolor( c("gray50", "tomato", "gold", "yellowgreen","blue","pink","green","purple"), alpha=.6)
   
-  plot(graph_complete_symmetrized,
-       #edge.color=edge_test$connection,
-       edge.arrow.size=.5,
-       vertex.color=colrs[V(graph_complete_symmetrized)$community],
-       vertex.size=((in.degree)*1.5),
-       vertex.color=colrs,
-       #vertex.size=((in.degree)*1.5),
-       vertex.size=3,
-       #vertex.label=vertex_df$profession.df,
-       vertex.label=NA,
-       vertex.label.cex=0.7,
-       vertex.label.dist=1,
-       vertex.label.degree=-0.6,
-       main='SNA with vertices grouped by profession (color) and weighted by in-degree',
-       #frame=TRUE,
-       margin=0.0001)
-  
-  legend(x=-1.5, y = -0.85, unique(vertex_df$profession), pch=19,
-         col= colrs[V(graph_complete_symmetrized)$community], pt.cex=0.8, cex=0.8, bty="n", ncol=1) # Add legend to figure
+  # plot(graph_complete_symmetrized,
+  #      #edge.color=edge_test$connection,
+  #      edge.arrow.size=.5,
+  #      vertex.color=colrs[V(graph_complete_symmetrized)$community],
+  #      vertex.size=((in.degree)*1.5),
+  #      vertex.color=colrs,
+  #      #vertex.size=((in.degree)*1.5),
+  #      vertex.size=3,
+  #      #vertex.label=vertex_df$profession.df,
+  #      vertex.label=NA,
+  #      vertex.label.cex=0.7,
+  #      vertex.label.dist=1,
+  #      vertex.label.degree=-0.6,
+  #      main='SNA with vertices grouped by profession (color) and weighted by in-degree',
+  #      #frame=TRUE,
+  #      margin=0.0001)
+  # 
+  # legend(x=-1.5, y = -0.85, unique(vertex_df$profession), pch=19,
+  #        col= colrs[V(graph_complete_symmetrized)$community], pt.cex=0.8, cex=0.8, bty="n", ncol=1) # Add legend to figure
   
   # Plot with vertices weighted by total degree
-  setwd(basedirectory)
-  pdf("SNA_Output_Professions_Vertex_TotalDegree.pdf")
+
   plot(graph_complete_simpl,
        layout = layout.graph,
        rescale = F,
