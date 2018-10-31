@@ -422,23 +422,39 @@ evcent(matrix_complete_symm)
 #Determine Keyplayers via different statistical mesurements
 ## Set size of set group to number of keyplayers wanted per metric
 keyplayer_num<-3
+processer_cores<-4
 
 ##################
 # Start the clock!
 ptm <- proc.time()
 ##################
 
-kp_closeness<-kpset(matrix_complete,size=keyplayer_num,type="closeness",parallel=TRUE,cluster=2,method="min")
-kp_betweenness<-kpset(matrix_complete,size=keyplayer_num,type="betweenness",parallel=TRUE,cluster=2,method="min")
-kp_degree<-kpset(matrix_complete,size=keyplayer_num,type="degree",cmode="total",parallel=TRUE,cluster=2,method="max")
-kp_eigenvector<-kpset(matrix_complete,size=keyplayer_num,type="evcent",parallel=TRUE,cluster=2,method="max")
+kp_closeness<-kpset(matrix_complete,size=keyplayer_num,type="closeness",parallel=TRUE,cluster=processer_cores,method="min")
+kp_betweenness<-kpset(matrix_complete,size=keyplayer_num,type="betweenness",parallel=TRUE,cluster=processer_cores,method="min")
+kp_degree<-kpset(matrix_complete,size=keyplayer_num,type="degree",cmode="total",parallel=TRUE,cluster=processer_cores,method="max")
+kp_eigenvector<-kpset(matrix_complete,size=keyplayer_num,type="evcent",parallel=TRUE,cluster=processer_cores,method="max")
 
 ##################
 #Check the time elapsed
 proc.time() - ptm
 ##################
 
-rownames(matrix_complete)[kp_closeness$keyplayers[1:keyplayer_num]] 
+closeness_kp_names<-rownames(matrix_complete)[kp_closeness$keyplayers[1:keyplayer_num]] 
+betweenness_kp_names<-rownames(matrix_complete)[kp_betweenness$keyplayers[1:keyplayer_num]]
+degree_kp_names<-rownames(matrix_complete)[kp_degree$keyplayers[1:keyplayer_num]]
+eigenvector_kp_names<-rownames(matrix_complete)[kp_eigenvector$keyplayers[1:keyplayer_num]]
+
+Overlap_vec<-c(closeness_kp_names,betweenness_kp_names,degree_kp_names,eigenvector_kp_names)
+Overlap_vec<-Overlap_vec[duplicated(Overlap_vec)]
+
+Closeness_vec<-c("Closeness",closeness_kp_names)
+Betweenness_vec<-c("Betweenness",betweenness_kp_names)
+Degree_vec<-c("Degree",degree_kp_names)
+Eigenvector_vec<-c("Eigenvector",eigenvector_kp_names)
+#Overlap_vec<-c("Overlap",Overlap_vec)
+
+Keyplayer_df<-as.data.frame(rbind(Closeness_vec,Betweenness_vec,Degree_vec,Eigenvector_vec),row.names = F)
+names(Keyplayer_df)<-c("Statistic",seq(1:keyplayer_num))
 
 
 ########################################################
