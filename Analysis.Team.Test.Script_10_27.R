@@ -82,8 +82,8 @@ summary(graph_complete)
 
 ### Plot network with no alterations
 ### Fruchterman.reingold fault layout, simplified (i.e., no loops), directed
-setwd(basedirectory)
-pdf("SNA_Output_Original.pdf")
+#setwd(basedirectory)
+#pdf("SNA_Output_Original.pdf")
 plot.network.original <- plot(graph_complete_simpl,
     layout = layout.fruchterman.reingold,
      #edge.color=edge_test$connection,
@@ -98,12 +98,12 @@ plot.network.original <- plot(graph_complete_simpl,
      main="Network Plot (Generated Data)",
      #frame=TRUE,
      margin=0.0001)
-dev.off()
+#dev.off()
 
 ### Plot network with no alterations
 ### Nicely layout, simplified (i.e., no loops), directed
-setwd(basedirectory)
-pdf("SNA_Output_Oringinal_Nicely.pdf")
+#setwd(basedirectory)
+#pdf("SNA_Output_Oringinal_Nicely.pdf")
 plot(graph_complete_simpl,
      #edge.color=edge_test$connection,
      edge.arrow.size=.1,
@@ -118,7 +118,7 @@ plot(graph_complete_simpl,
      #frame=TRUE,
      margin=0.0001,
      layout = layout_nicely)
-dev.off()
+#dev.off()
 
 ### Plot network by Profession (colors)
 ### Nicely layout, simplified (i.e., no loops), directed, vertices colored by profession
@@ -129,8 +129,8 @@ layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
 colr.palette <- brewer.pal(n = 9, name = "Spectral")
 profession.colors <- colr.palette[vertex_df$profession.df]
 
-setwd(basedirectory)
-pdf("SNA_Output_Professions.pdf")
+#setwd(basedirectory)
+#pdf("SNA_Output_Professions.pdf")
 plot(graph_complete_simpl,
      layout = layout.graph,
      rescale = F,
@@ -148,7 +148,7 @@ plot(graph_complete_simpl,
      margin = 0.0001)
 legend(x=-1.5, y = -0.85, legend = levels(vertex_df$profession), 
        col = profession.colors, pch=19, pt.cex=0.8, cex=0.8, bty="n", ncol=1)
-dev.off()
+#dev.off()
 
 ########################################################
 #### NOTE: Need to figure out colors between vertices and legend. Don't currently match - BB 10.18.18 
@@ -166,8 +166,8 @@ dev.off()
 V(graph_complete_symmetrized)$community <- vertex_df$profession.df
 colrs <- adjustcolor( c("gray50", "tomato", "gold", "yellowgreen","blue","pink","green","purple"), alpha=.6)
 
-setwd(basedirectory)
-pdf("SNA_Output_Community_Professions_InDegree.pdf")
+#setwd(basedirectory)
+#pdf("SNA_Output_Community_Professions_InDegree.pdf")
 plot(graph_complete_symmetrized,
      #edge.color=edge_test$connection,
      edge.arrow.size=.5,
@@ -188,11 +188,11 @@ plot(graph_complete_symmetrized,
 legend(x=-1.5, y = -0.85, unique(vertex_df$profession), pch=19,
        col= colrs[V(graph_complete_symmetrized)$community], pt.cex=0.8, cex=0.8, bty="n", ncol=1)
 
-dev.off()
+#dev.off()
 
 ##### Plot of Vertices weighted by total degree
-setwd(basedirectory)
-pdf("SNA_Output_Professions_Vertex_TotalDegree.pdf")
+#setwd(basedirectory)
+#pdf("SNA_Output_Professions_Vertex_TotalDegree.pdf")
 plot(graph_complete_simpl,
      layout = layout.graph,
      rescale = F,
@@ -210,7 +210,7 @@ plot(graph_complete_simpl,
      margin = 0.0001)
 legend(x=-1.5, y = -0.85, unique(vertex_df$profession), pch=19,
        col= categorical_pal(9), pt.cex=0.8, cex=0.8, bty="n", ncol=1)
-dev.off()
+#dev.off()
 
 
 ########################################################
@@ -223,8 +223,8 @@ graph_complete.years <- delete_edges(graph_complete, E(graph_complete)[q3.years.
 layout.graph <- layout_(graph_complete.years, nicely())
 layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
 
-setwd(basedirectory)
-pdf("SNA_Output_work_years.pdf")
+#setwd(basedirectory)
+#pdf("SNA_Output_work_years.pdf")
 plot(graph_complete.years,
      layout=(layout.graph*1.1),
      rescale=F, 
@@ -241,7 +241,7 @@ plot(graph_complete.years,
      main=paste0('Network of worked-together-with ',cut.off,' years connection'),
      #frame=TRUE,
      margin=0.0001)
-dev.off()
+#dev.off()
 
 #Clustering function to add weights to edges with shared profession
 G_Grouped = graph_complete_symmetrized
@@ -258,8 +258,8 @@ for(i in 1:length(professions.list)) {
 LO = layout_with_fr(G_Grouped)
 LO<-norm_coords(LO, ymin=-1, ymax=1, xmin=-1, xmax=1)
 
-setwd(basedirectory)
-pdf("SNA_Output_group_layout.pdf")
+#setwd(basedirectory)
+#pdf("SNA_Output_group_layout.pdf")
 plot(graph_complete_symmetrized,
      layout=(LO*1.0),
      rescale=F, 
@@ -277,7 +277,7 @@ plot(graph_complete_symmetrized,
      main='Test Data Connections (color by profession)',
      #frame=TRUE,
      margin=0.0001)
-dev.off()
+#dev.off()
 
 #Add graph of strong/weak connections between professional groups
 V(graph_complete_symmetrized)$profession.df
@@ -439,6 +439,14 @@ kp_eigenvector<-kpset(matrix_complete,size=keyplayer_num,type="evcent",parallel=
 proc.time() - ptm
 ##################
 
+closeness_kp_num<-kp_closeness$keyplayers[1:keyplayer_num]
+betweenness_kp_num<-kp_betweenness$keyplayers[1:keyplayer_num]
+degree_kp_num<-kp_degree$keyplayers[1:keyplayer_num]
+eigenvector_kp_num<-kp_eigenvector$keyplayers[1:keyplayer_num]
+
+Keyplayer.list<-c(closeness_kp_num,betweenness_kp_num,degree_kp_num,eigenvector_kp_num)
+Keyplayer.list<-unique(Keyplayer.list)
+
 closeness_kp_names<-rownames(matrix_complete)[kp_closeness$keyplayers[1:keyplayer_num]] 
 betweenness_kp_names<-rownames(matrix_complete)[kp_betweenness$keyplayers[1:keyplayer_num]]
 degree_kp_names<-rownames(matrix_complete)[kp_degree$keyplayers[1:keyplayer_num]]
@@ -456,65 +464,40 @@ Eigenvector_vec<-c("Eigenvector",eigenvector_kp_names)
 Keyplayer_df<-as.data.frame(rbind(Closeness_vec,Betweenness_vec,Degree_vec,Eigenvector_vec),row.names = F)
 names(Keyplayer_df)<-c("Statistic",seq(1:keyplayer_num))
 
-
 ########################################################
 ###### NOTE: Edge values can be included in this calculation in the "binary" option 
 ########################################################
 
-# kp_in_degree_max<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "indegree", method = "max")
-# kp_in_degree_max_bin<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "indegree", binary = TRUE, method = "max") 
-# kp_in_mreach<-kpset(matrix_complete, size = keyplayer_num, type = "mreach.degree", cmode = "indegree", M = 1,binary = TRUE)
-# kp_in_mreach_close<-kpset(matrix_inv_non_zero, size = keyplayer_num, type = "mreach.closeness", cmode = "indegree", M = 1)
-# kp_in_degree_parallel<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "indegree", parallel = TRUE,cluster = 2)
-# 
-# kp_out_degree_max<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "outdegree", method = "max")
-# kp_out_degree_max_bin<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "outdegree", binary = TRUE, method = "max")
-# kp_out_mreach<-kpset(matrix_complete, size = keyplayer_num, type = "mreach.degree", cmode = "outdegree", M = 1,binary = TRUE)
-# kp_out_mreach_close<-kpset(matrix_inv_non_zero, size = keyplayer_num, type = "mreach.closeness", cmode = "outdegree", M = 1)
-# kp_out_degree_parallel<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "outdegree", parallel = TRUE,cluster = 2)
-# 
-# kp_total_degree_max<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "total", method = "max")
-# kp_total_degree_max_bin<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "total", binary = TRUE, method = "max")
-# kp_total_mreach<-kpset(matrix_complete, size = keyplayer_num, type = "mreach.degree", cmode = "total", M = 1,binary = TRUE)
-# kp_total_mreach_close<-kpset(matrix_inv_non_zero, size = keyplayer_num, type = "mreach.closeness", cmode = "total", M = 1)
-# kp_total_degree_parallel<-kpset(matrix_complete, size = keyplayer_num, type = "degree", cmode = "total", parallel = TRUE,cluster = 2)
-
-#Determine Centrality between specific nodes
-# kpcent(matrix_complete, c(2, 18), type = "degree", cmode = "total", method = "max")
-# kpcent(matrix_complete, c(2, 67), type = "degree", cmode = "total", method = "min")
-# kpcent(matrix_complete, c(2, 3), type = "degree", cmode = "total", method = "min", binary = TRUE)
-# kpcent(matrix_complete, c(2, 3), type = "mreach.degree", cmode = "total", M = 1, binary = TRUE)
-# kpcent(W, c(2, 3), type = "mreach.closeness", cmode = "total", M = 1, binary = TRUE)
-
+Keyplayer_names<-igraph::get.vertex.attribute(graph_complete_simpl)$name[Keyplayer.list]
 
 ##### Plotting network with key player as identified by above model.
 layout.graph <- layout_(graph_complete_simpl, nicely())
 layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
-setwd(basedirectory)
-pdf("SNA_Output_KeyPlayer.pdf")
+#setwd(basedirectory)
+#pdf("SNA_Output_KeyPlayer.pdf")
 plot(graph_complete_simpl,
      layout=layout.graph,
      rescale=T,
-     #edge.color=edge_test$connection,
+     edge.color="Gray80",
      edge.arrow.size=.1,
-     vertex.color=ifelse(vertex_df$ego == as.character(vertex_df$ego[177]), "Firebrick1", "Gray60"),
+     vertex.color=ifelse((igraph::get.vertex.attribute(graph_complete_simpl)$name %in% Keyplayer_names), "Firebrick1", adjustcolor("Gray60", alpha=.2)),
      #vertex.size=((in.degree)*1.5),
      #vertex.size=(igraph::degree(graph_complete)*0.5),
-     vertex.size=ifelse(vertex_df$ego == as.character(vertex_df$ego[177]), 8, 4),
-     vertex.label= ifelse(vertex_df$ego == as.character(vertex_df$ego[177]), as.character(vertex_df$ego), NA),
-     #label.color = "Firebrick1",
+     vertex.size=ifelse((igraph::get.vertex.attribute(graph_complete_simpl)$name %in% Keyplayer_names), 8, 4),
+     vertex.label= ifelse((igraph::get.vertex.attribute(graph_complete_simpl)$name %in% Keyplayer_names), as.character(igraph::get.vertex.attribute(graph_complete_simpl)$name), NA),
+     vertex.label.color = "blue",
      vertex.label=NA,
      vertex.label.cex=ifelse(vertex_df$ego == as.character(vertex_df$ego[177]), .5, NA),
      vertex.label.dist=0,
      vertex.label.degree=0,
-     main='SNA with Key Player',
+     main='Network with highlighted Key Players',
      #frame=TRUE,
      margin=0.0001)
 
-legend(x=-1.5, y = -0.85, "Key Player: Calvin Barnes", pch=19,
-       col= "Firebrick1", pt.cex=0.8, cex=0.8, bty="n", ncol=1)
+legend(x=-1.5, y = -0.85, "Key Players", pch=19,
+       col= "Firebrick1", pt.cex=1.8, cex=1.8, bty="n", ncol=1)
 
-dev.off()
+#dev.off()
 
 ## Need to figure out how to separate/spread overlapping vertices so that key players show up. 
 ## Also need to figure out how to add multiple key players
@@ -522,8 +505,6 @@ dev.off()
 #Display information as matrix format
 #graph_complete[]
 matrix_complete<-as.matrix(as_adjacency_matrix(graph_complete))
-
-Keyplayer.list<-c(2,4,5,9,14,16,17,18,28,63,67)
 
 data_logistic_df<-vertex_df
 
