@@ -1,10 +1,10 @@
 #Key Data Processing Functions for ICON 8002
-# 10/29/18
+# 10/31/18
 
 ############################
 #Type in the base directory and input datapaths below
-basedirectory <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA"
-input_datapath <- "C:\\Users\\ahn11803\\Documents\\GitHub\\ICON8002_SNA\\Data"
+basedirectory <-  
+input_datapath <-
 
 vertex_datapath <- "vertex_test_df_10_28_18.csv"
 edge_indiv_datapath <- "edge_indiv_test_df_10_28_18.csv"
@@ -13,7 +13,7 @@ edge_org_datapath <- "edge_org_test_df.csv"
 setwd(input_datapath)
 
 #List packages used
-list.of.packages <- c("igraph","randomNames","fabricatr","plyr","RColorBrewer","keyplayer","sna","MASS","naturalsort")
+list.of.packages <- c("igraph","randomNames","fabricatr","plyr","RColorBrewer","keyplayer","sna","MASS","naturalsort","stringr","Rmisc")
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)){install.packages(new.packages)} 
@@ -414,15 +414,10 @@ evcent(matrix_complete_symm)
 #Fragmentation centrality measures the extent to which a network is fragmented after a node is removed from the network 
 #fragment(matrix_inv_non_zero)
 
-# mreach.degree(matrix_complete, M = 1)
-# which.max(mreach.degree(matrix_complete, M = 1)[,3])[1]
-# mreach.closeness(matrix_inv_non_zero)
-# which.max(mreach.closeness(matrix_inv_non_zero)[,3])[1]
-
 #Determine Keyplayers via different statistical mesurements
 ## Set size of set group to number of keyplayers wanted per metric
 keyplayer_num<-3
-processer_cores<-4
+processer_cores<-2
 
 ##################
 # Start the clock!
@@ -447,13 +442,23 @@ eigenvector_kp_num<-kp_eigenvector$keyplayers[1:keyplayer_num]
 Keyplayer.list<-c(closeness_kp_num,betweenness_kp_num,degree_kp_num,eigenvector_kp_num)
 Keyplayer.list<-unique(Keyplayer.list)
 
-closeness_kp_names<-rownames(matrix_complete)[kp_closeness$keyplayers[1:keyplayer_num]] 
+closeness_kp_names<-rownames(matrix_complete)[kp_closeness$keyplayers[1:keyplayer_num]]
+print(sprintf("The egos identified as keyplayers via the Closeness metric are: %s. This metric suggests a rapid diffusion of information.",paste(closeness_kp_names,collapse="; ")))
+
 betweenness_kp_names<-rownames(matrix_complete)[kp_betweenness$keyplayers[1:keyplayer_num]]
+print(sprintf("The egos identified as keyplayers via the Betweenness metric are: %s. This metric suggests a brokering of information or initiatives between disconnected groups.",paste(betweenness_kp_names,collapse="; ")))
+
 degree_kp_names<-rownames(matrix_complete)[kp_degree$keyplayers[1:keyplayer_num]]
+print(sprintf("The egos identified as keyplayers via the Degree metric are: %s. This metric suggests a direct connection to complex knowledge and initiatives.",paste(degree_kp_names,collapse="; ")))
+
 eigenvector_kp_names<-rownames(matrix_complete)[kp_eigenvector$keyplayers[1:keyplayer_num]]
+print(sprintf("The egos identified as keyplayers via the Eigenvector metric are: %s. This metric suggests a facilitation of widespread diffusion of information to important others.",paste(eigenvector_kp_names,collapse="; ")))
 
 Overlap_vec<-c(closeness_kp_names,betweenness_kp_names,degree_kp_names,eigenvector_kp_names)
 Overlap_vec<-Overlap_vec[duplicated(Overlap_vec)]
+print(sprintf("The egos identified as keyplayers via multiple Overlapping metrics are: %s. This suggests the role of a keyplayer through multiple functions.",paste(Overlap_vec,collapse="; ")))
+
+Metrics_list<-list(closeness_kp_names,betweenness_kp_names,degree_kp_names,eigenvector_kp_names,Overlap_vec)
 
 Closeness_vec<-c("Closeness",closeness_kp_names)
 Betweenness_vec<-c("Betweenness",betweenness_kp_names)
@@ -473,6 +478,16 @@ Keyplayer_names<-igraph::get.vertex.attribute(graph_complete_simpl)$name[Keyplay
 ##### Plotting network with key player as identified by above model.
 layout.graph <- layout_(graph_complete_simpl, nicely())
 layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
+
+colrs <- c("blue", "green", "red","yellow","purple",adjustcolor("Gray60", alpha=.2))
+ego_names<-igraph::get.vertex.attribute(graph_complete_simpl)$name
+ego_col<-rep(colrs[length(colrs)],length(ego_names))
+
+for(m in 1:length(Metrics_list)){
+  colr_set_m<-which(ego_names %in% Metrics_list[[m]])
+  ego_col[colr_set_m]<-colrs[m]
+}
+
 #setwd(basedirectory)
 #pdf("SNA_Output_KeyPlayer.pdf")
 plot(graph_complete_simpl,
@@ -480,7 +495,7 @@ plot(graph_complete_simpl,
      rescale=T,
      edge.color="Gray80",
      edge.arrow.size=.1,
-     vertex.color=ifelse((igraph::get.vertex.attribute(graph_complete_simpl)$name %in% Keyplayer_names), "Firebrick1", adjustcolor("Gray60", alpha=.2)),
+     vertex.color=ego_col,
      #vertex.size=((in.degree)*1.5),
      #vertex.size=(igraph::degree(graph_complete)*0.5),
      vertex.size=ifelse((igraph::get.vertex.attribute(graph_complete_simpl)$name %in% Keyplayer_names), 8, 4),
@@ -494,13 +509,14 @@ plot(graph_complete_simpl,
      #frame=TRUE,
      margin=0.0001)
 
-legend(x=-1.5, y = -0.85, "Key Players", pch=19,
-       col= "Firebrick1", pt.cex=1.8, cex=1.8, bty="n", ncol=1)
+legend(x=-1.5, y = 0, c("Closeness","Betweenness","Degree","Eigenvector","Overlap"), pch=19,
+       col= c("blue", "green", "red","yellow","purple"), pt.cex=1.5, cex=0.8, bty="n", ncol=1)
 
 #dev.off()
 
+########################################################
 ## Need to figure out how to separate/spread overlapping vertices so that key players show up. 
-## Also need to figure out how to add multiple key players
+########################################################
 
 #Display information as matrix format
 #graph_complete[]
@@ -517,6 +533,47 @@ data_logistic_df <- subset(data_logistic_df,
 
 model <- glm(Keyplay.bool ~.,family=binomial(link='logit'),data=data_logistic_df)
 summary(model)
+
+########################################################
+###### TASK: Determine useful statistical measures and graph
+###### TASK: Figure out how to aggregate edge attribute information into single vertex characteristic
+########################################################
+
+Closeness.bool=ifelse((data_logistic_df$ego) %in% Metrics_list[[1]],1,0)
+Betweenness.bool=ifelse((data_logistic_df$ego) %in% Metrics_list[[2]],1,0)
+Degree.bool=ifelse((data_logistic_df$ego) %in% Metrics_list[[3]],1,0)
+Eigenvector.bool=ifelse((data_logistic_df$ego) %in% Metrics_list[[4]],1,0)
+Overlap.bool=ifelse((data_logistic_df$ego) %in% Metrics_list[[5]],1,0)
+
+Metrics_logistic_df<-cbind(Closeness.bool,Betweenness.bool,Degree.bool,Eigenvector.bool,Overlap.bool,data_logistic_df)
+colnames(Metrics_logistic_df)
+
+Attribute_test<-c(7,14,15)
+
+Closeness_logistic_df <- subset(Metrics_logistic_df,select=c(1,Attribute_test))
+Betweenness_logistic_df <- subset(Metrics_logistic_df,select=c(2,Attribute_test))
+Degree_logistic_df <- subset(Metrics_logistic_df,select=c(3,Attribute_test))
+Eigenvector_logistic_df <- subset(Metrics_logistic_df,select=c(4,Attribute_test))
+Overlap_logistic_df <- subset(Metrics_logistic_df,select=c(5,Attribute_test))
+
+Closeness_model <- glm(Closeness.bool ~.,family=binomial(link='logit'),data=Closeness_logistic_df)
+summary(Closeness_model)
+Betweenness_model <- glm(Betweenness.bool ~.,family=binomial(link='logit'),data=Betweenness_logistic_df)
+summary(Betweenness_model)
+Degree_model <- glm(Degree.bool ~.,family=binomial(link='logit'),data=Degree_logistic_df)
+summary(Degree_model)
+Eigenvector_model <- glm(Eigenvector.bool ~.,family=binomial(link='logit'),data=Eigenvector_logistic_df)
+summary(Eigenvector_model)
+Overlap_model <- glm(Overlap.bool ~.,family=binomial(link='logit'),data=Overlap_logistic_df)
+summary(Overlap_model)
+
+# Use 95% confidence interval for Estimated effect size ( ± 95% confidence intervals) of attributes
+str(Closeness_model)
+Closeness_model$coefficients
+Closeness_model$residuals
+Closeness_model$fitted.values
+
+closeness_CI<-CI(Closeness_model$effects,ci=0.95)
 
 #################################################################
 #################################################################
