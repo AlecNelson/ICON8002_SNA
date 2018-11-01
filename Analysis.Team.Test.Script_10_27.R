@@ -3,11 +3,11 @@
 
 ############################
 #Type in the base directory and input datapaths below
-basedirectory <-  
-input_datapath <-
+basedirectory <-  "/Users/alecnelson/Documents/GitHub/ICON8002_SNA"
+input_datapath <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA/Data"
 
-vertex_datapath <- "vertex_test_df_10_28_18.csv"
-edge_indiv_datapath <- "edge_indiv_test_df_10_28_18.csv"
+vertex_datapath <- "vertex_test_df_11_01_18.csv"
+edge_indiv_datapath <- "edge_individual_test_df_11_01_18.csv"
 edge_org_datapath <- "edge_org_test_df.csv"
 
 setwd(input_datapath)
@@ -417,7 +417,7 @@ evcent(matrix_complete_symm)
 #Determine Keyplayers via different statistical mesurements
 ## Set size of set group to number of keyplayers wanted per metric
 keyplayer_num<-3
-processer_cores<-2
+processer_cores<-4
 
 ##################
 # Start the clock!
@@ -439,19 +439,27 @@ betweenness_kp_num<-kp_betweenness$keyplayers[1:keyplayer_num]
 degree_kp_num<-kp_degree$keyplayers[1:keyplayer_num]
 eigenvector_kp_num<-kp_eigenvector$keyplayers[1:keyplayer_num]
 
+####################################
+### Example Keyplayers - 11/1/18
+closeness_kp_num<-c(97,126,186)
+betweenness_kp_num<-c(31,153,196)
+degree_kp_num<-c(141,153,168)
+eigenvector_kp_num<-c(92,153,173)
+####################################
+
 Keyplayer.list<-c(closeness_kp_num,betweenness_kp_num,degree_kp_num,eigenvector_kp_num)
 Keyplayer.list<-unique(Keyplayer.list)
 
-closeness_kp_names<-rownames(matrix_complete)[kp_closeness$keyplayers[1:keyplayer_num]]
+closeness_kp_names<-rownames(matrix_complete)[closeness_kp_num]
 print(sprintf("The egos identified as keyplayers via the Closeness metric are: %s. This metric suggests a rapid diffusion of information.",paste(closeness_kp_names,collapse="; ")))
 
-betweenness_kp_names<-rownames(matrix_complete)[kp_betweenness$keyplayers[1:keyplayer_num]]
+betweenness_kp_names<-rownames(matrix_complete)[betweenness_kp_num]
 print(sprintf("The egos identified as keyplayers via the Betweenness metric are: %s. This metric suggests a brokering of information or initiatives between disconnected groups.",paste(betweenness_kp_names,collapse="; ")))
 
-degree_kp_names<-rownames(matrix_complete)[kp_degree$keyplayers[1:keyplayer_num]]
+degree_kp_names<-rownames(matrix_complete)[degree_kp_num]
 print(sprintf("The egos identified as keyplayers via the Degree metric are: %s. This metric suggests a direct connection to complex knowledge and initiatives.",paste(degree_kp_names,collapse="; ")))
 
-eigenvector_kp_names<-rownames(matrix_complete)[kp_eigenvector$keyplayers[1:keyplayer_num]]
+eigenvector_kp_names<-rownames(matrix_complete)[eigenvector_kp_num]
 print(sprintf("The egos identified as keyplayers via the Eigenvector metric are: %s. This metric suggests a facilitation of widespread diffusion of information to important others.",paste(eigenvector_kp_names,collapse="; ")))
 
 Overlap_vec<-c(closeness_kp_names,betweenness_kp_names,degree_kp_names,eigenvector_kp_names)
@@ -494,7 +502,7 @@ plot(graph_complete_simpl,
      layout=layout.graph,
      rescale=T,
      edge.color="Gray80",
-     edge.arrow.size=.1,
+     edge.arrow.size=.01,
      vertex.color=ego_col,
      #vertex.size=((in.degree)*1.5),
      #vertex.size=(igraph::degree(graph_complete)*0.5),
@@ -528,10 +536,10 @@ Keyplay.bool=ifelse(rownames(data_logistic_df) %in% Keyplayer.list,1,0)
 data_logistic_df<-cbind(Keyplay.bool,data_logistic_df)
 colnames(data_logistic_df)
 
-data_logistic_df <- subset(data_logistic_df,
+data_logistic_total_df <- subset(data_logistic_df,
                              select=c(1,3,11,14))
 
-model <- glm(Keyplay.bool ~.,family=binomial(link='logit'),data=data_logistic_df)
+model <- glm(Keyplay.bool ~.,family=binomial(link='logit'),data=data_logistic_total_df)
 summary(model)
 
 ########################################################
@@ -548,7 +556,7 @@ Overlap.bool=ifelse((data_logistic_df$ego) %in% Metrics_list[[5]],1,0)
 Metrics_logistic_df<-cbind(Closeness.bool,Betweenness.bool,Degree.bool,Eigenvector.bool,Overlap.bool,data_logistic_df)
 colnames(Metrics_logistic_df)
 
-Attribute_test<-c(7,14,15)
+Attribute_test<-c(7,8,9)
 
 Closeness_logistic_df <- subset(Metrics_logistic_df,select=c(1,Attribute_test))
 Betweenness_logistic_df <- subset(Metrics_logistic_df,select=c(2,Attribute_test))
@@ -567,7 +575,7 @@ summary(Eigenvector_model)
 Overlap_model <- glm(Overlap.bool ~.,family=binomial(link='logit'),data=Overlap_logistic_df)
 summary(Overlap_model)
 
-# Use 95% confidence interval for Estimated effect size ( ± 95% confidence intervals) of attributes
+# Use 95% confidence interval for Estimated effect size (95% confidence intervals) of attributes
 str(Closeness_model)
 Closeness_model$coefficients
 Closeness_model$residuals
