@@ -212,25 +212,25 @@ if(any(data.check==FALSE))
   V(graph_complete_symmetrized)$community <- vertex_df$profession.df
   colrs <- adjustcolor( c("gray50", "tomato", "gold", "yellowgreen","blue","pink","green","purple"), alpha=.6)
   
-  # plot(graph_complete_symmetrized,
-  #      #edge.color=edge_test$connection,
-  #      edge.arrow.size=.5,
-  #      vertex.color=colrs[V(graph_complete_symmetrized)$community],
-  #      vertex.size=((in.degree)*1.5),
-  #      vertex.color=colrs,
-  #      #vertex.size=((in.degree)*1.5),
-  #      vertex.size=3,
-  #      #vertex.label=vertex_df$profession.df,
-  #      vertex.label=NA,
-  #      vertex.label.cex=0.7,
-  #      vertex.label.dist=1,
-  #      vertex.label.degree=-0.6,
-  #      main='SNA with vertices grouped by profession (color) and weighted by in-degree',
-  #      #frame=TRUE,
-  #      margin=0.0001)
-  # 
-  # legend(x=-1.5, y = -0.85, unique(vertex_df$profession), pch=19,
-  #        col= colrs[V(graph_complete_symmetrized)$community], pt.cex=0.8, cex=0.8, bty="n", ncol=1) # Add legend to figure
+   plot(graph_complete_symmetrized,
+        #edge.color=edge_test$connection,
+        edge.arrow.size=.5,
+        vertex.color=colrs[V(graph_complete_symmetrized)$community],
+        vertex.size=((in.degree)*1.5),
+        vertex.color=colrs,
+        #vertex.size=((in.degree)*1.5),
+        vertex.size=3,
+        #vertex.label=vertex_df$profession.df,
+        vertex.label=NA,
+        vertex.label.cex=0.7,
+        vertex.label.dist=1,
+        vertex.label.degree=-0.6,
+        main='SNA with vertices grouped by profession (color) and weighted by in-degree',
+        #frame=TRUE,
+        margin=0.0001)
+   
+   legend(x=-1.5, y = -0.85, unique(vertex_df$profession), pch=19,
+          col= colrs[V(graph_complete_symmetrized)$community], pt.cex=0.8, cex=0.8, bty="n", ncol=1) # Add legend to figure
   
   # Plot with vertices weighted by total degree
 
@@ -239,7 +239,7 @@ if(any(data.check==FALSE))
        rescale = F,
        #edge.color=edge_test$connection,
        edge.arrow.size=.1,
-       #vertex.color=vertex.test.df$profession.df,
+       vertex.color=vertex_df$profession.df,
        #vertex.size=((in.degree)*1.5),
        vertex.size=igraph::degree(graph_complete_simpl),
        vertex.label=NA,
@@ -249,7 +249,7 @@ if(any(data.check==FALSE))
        main="SNA Vertices Weighted by Degree",
        #frame=TRUE,
        margin = 0.0001)
-  legend(x=-1.5, y = -0.85, unique(vertex_df$profession), pch=19,
+  legend(x=-1.5, y = -0.85, unique(vertex_df$profession.df), pch=19,
          col= categorical_pal(9), pt.cex=0.8, cex=0.8, bty="n", ncol=1)
   
   
