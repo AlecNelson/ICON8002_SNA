@@ -2,10 +2,8 @@
 title: "ICON8002 SNA"
 date: '`r format(Sys.Date())`'
 author: ICON 2017 Cohort
-geometry: margin=0.5cm
+geometry: margin=0.7cm
 output: pdf_document
-fig_width: 2
-fig_height: 2
 ---
 
 ```{r setup, include=FALSE}
@@ -19,26 +17,26 @@ This is a report generated from social network analysis of the actors within the
 ## Network attributes
 
 * Diameter
-```{r}
-diameter
-```
+
+The network has a diameter of $`r Diameter_stat_complete`$. This measure is the length of the longest geodesic (the largest distance between any two vertices in a connected graph).
 
 * Reciprocity
-```{r}
-reciprocity
-```
+
+The network has a reciprocity of $`r Reciprocity_stat_complete`$. The measure of reciprocity defines the proportion of mutual connections, in a directed graph.
+
 * Number of edges
-```{r}
-ecount
-```
+The network has $`r ecount_stat_complete`$ total edges.
+
 * Number of egos
-```{r}
-vcount
-```
+The network has $`r vcount_stat_complete`$ total egos
+
 * Edge density
-```{r}
-edge_density
-```
+
+The network has a density of $`r Density_stat_complete`$. This measure is the ratio of the number of edges and the number of possible edges.
+
+* Transitivity
+
+The network has a transitivity of $`r Transitivity_stat_complete`$. This measure is the probability that the adjacent vertices of a vertex are connected. This is sometimes also called the clustering coefficient.
 
 ## Vertex attributes
 

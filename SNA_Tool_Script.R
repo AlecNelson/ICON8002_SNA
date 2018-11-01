@@ -32,7 +32,7 @@ lapply(list.of.packages, require, character.only = TRUE)
 source("SNAfunction.R")
 
 # Run SNA function
-sna(input_datapath=input_datapath, vertex_datapath=vertex_datapath, edge_indiv_datapath=edge_indiv_datapath, edge_org_datapath=edge_org_datapath)
+sna(input_datapath=input_datapath, vertex_datapath=vertex_datapath, edge_indiv_datapath=edge_indiv_datapath, edge_org_datapath=edge_org_datapath) #, keyplayer = TRUE)
 
 
 
@@ -122,21 +122,32 @@ if(any(data.check==FALSE))
   # Network attributes
   
   ## Diameter
-  diameter<-diameter(graph_complete)
+  Diameter_stat_complete<-diameter(graph_complete)
+
+  ## Reciprocity
+  Reciprocity_stat_complete<-reciprocity(graph_complete)
   
-  ## reciprocity
-  reciprocity<-reciprocity(graph_complete)
+  ## Edge density
+  Density_stat_complete<-edge_density(graph_complete)
+  
+  ## Transitivity
+  Transitivity_stat_complete<-transitivity(graph_complete)
   
   ## edge count
-  ecount<-ecount(graph_complete)
+  ecount_stat_complete<-ecount(graph_complete)
   
   ## vertex count
-  vcount<-vcount(graph_complete)
+  vcount_stat_complete<-vcount(graph_complete)
+
+#   stats_overall_graph<-ls(pattern = "_stat_complete")
+#   stat_overall_names<-vector()
   
-  ## edge density
-  edge_density<-edge_density(graph_complete)
-
-
+  # for(k in 1:length(stats_overall_graph)){
+  #   stat_overall_names<-c(stat_overall_names,strsplit(stats_overall_graph[k],"_")[[1]][1])
+  # }
+  # 
+  # Stat_overall_table<-as.data.frame(cbind(as.vector(stat_overall_names),as.vector(mget(stats_overall_graph))),row.names = FALSE)
+  # names(Stat_overall_table)<-c("Statistic Name","Value")
   
   ######################################
   ########## Graphing network ##########
@@ -345,7 +356,9 @@ if(any(data.check==FALSE))
   ########## Identifying network keyplayers ##########
   ####################################################
   
-  
+  # if(keyplayer=TRUE){
+  #   
+  # }
   
   
   ####################################
@@ -354,8 +367,7 @@ if(any(data.check==FALSE))
 
   # Output network attributes and figures in an RMarkdown document
   rmarkdown::render("Rmarkdown_test.Rmd","pdf_document")
- 
-  ############ Need to figure out why figure legends don't show up in RMarkdown! #############
+
 }
 
 # saving SNA function
