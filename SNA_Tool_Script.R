@@ -37,7 +37,6 @@ sna(input_datapath=input_datapath, vertex_datapath=vertex_datapath, edge_indiv_d
 
 
 
-
 ######################################## Creating SNA function ####################################################
 
 sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath, edge_org_datapath){
@@ -106,17 +105,17 @@ if(any(data.check==FALSE))
   colnames(vertex_degree)<-"Degree"
   Degree_max_stat_indiv<-which.max(igraph::degree(graph_complete)) # individual with most degrees
   Degree_min_stat_indiv<-which.min(igraph::degree(graph_complete)) # individual with fewest degrees
-  write.csv(vertex_degree, file="SNA_Total_Degree.csv")
+  #write.csv(vertex_degree, file="SNA_Total_Degree.csv")
   
-  in.degree<-as.data.frame(igraph::degree(graph_complete,mode="in"))
-  colnames(in.degree)<-"In Degree"
-  write.csv(in.degree, file="SNA_In_Degree.csv")
+  in.degree<-igraph::degree(graph_complete,mode="in")
+  #colnames(in.degree)<-"In Degree"
+  #write.csv(in.degree, file="SNA_In_Degree.csv")
   
   
   ## Closeness centrality
   closeness<-as.data.frame(igraph::closeness(graph_complete))
   colnames(closeness)<-"Closeness"
-  write.csv(closeness, file="SNA_Closeness.csv")
+  #write.csv(closeness, file="SNA_Closeness.csv")
   Closeness_max_stat_indiv<-which.max(igraph::closeness(graph_complete)) # individual with highest closeness measure
   Closeness_min_stat_indiv<-which.min(igraph::closeness(graph_complete)) # indidivudal with lowest closeness measure
 
@@ -192,7 +191,6 @@ if(any(data.check==FALSE))
        #edge.color=edge_test$connection,
        edge.arrow.size=.1,
        vertex.color=profession.colors,
-       #vertex.size=((in.degree)*1.5),
        vertex.size=5,
        vertex.label=NA,
        vertex.label.cex=0.5,
@@ -210,28 +208,25 @@ if(any(data.check==FALSE))
   
   # Plotting by community/profession with vertices weighted by in.degree
   V(graph_complete_symmetrized)$community <- vertex_df$profession.df
-  colrs <- adjustcolor( c("gray50", "tomato", "gold", "yellowgreen","blue","pink","green","purple"), alpha=.6)
-  
+  colrs <- adjustcolor( c("gray50", "tomato", "gold", "yellowgreen","blue","pink","green","purple", "red"), alpha=.6)
+
    plot(graph_complete_symmetrized,
         #edge.color=edge_test$connection,
         edge.arrow.size=.5,
-        vertex.color=colrs[V(graph_complete_symmetrized)$community],
+        vertex.color=profession.colors,
         vertex.size=((in.degree)*1.5),
-        vertex.color=colrs,
-        #vertex.size=((in.degree)*1.5),
-        vertex.size=3,
         #vertex.label=vertex_df$profession.df,
-        vertex.label=NA,
+        vertex.label=vertex_df$profession.df,
         vertex.label.cex=0.7,
         vertex.label.dist=1,
         vertex.label.degree=-0.6,
         main='SNA with vertices grouped by profession (color) and weighted by in-degree',
         #frame=TRUE,
         margin=0.0001)
-   
-   legend(x=-1.5, y = -0.85, unique(vertex_df$profession), pch=19,
-          col= colrs[V(graph_complete_symmetrized)$community], pt.cex=0.8, cex=0.8, bty="n", ncol=1) # Add legend to figure
-  
+
+   legend(x=-1.5, y = -0.85, unique(vertex_df$profession.df), pch=19,
+          col= colr.palette, pt.cex=0.8, cex=0.8, bty="n", ncol=1) # Add legend to figure
+
   # Plot with vertices weighted by total degree
 
   plot(graph_complete_simpl,
@@ -240,7 +235,6 @@ if(any(data.check==FALSE))
        #edge.color=edge_test$connection,
        edge.arrow.size=.1,
        vertex.color=vertex_df$profession.df,
-       #vertex.size=((in.degree)*1.5),
        vertex.size=igraph::degree(graph_complete_simpl),
        vertex.label=NA,
        vertex.label.cex=0.5,
@@ -250,12 +244,108 @@ if(any(data.check==FALSE))
        #frame=TRUE,
        margin = 0.0001)
   legend(x=-1.5, y = -0.85, unique(vertex_df$profession.df), pch=19,
-         col= categorical_pal(9), pt.cex=0.8, cex=0.8, bty="n", ncol=1)
+         col= colr.palette, pt.cex=0.8, cex=0.8, bty="n", ncol=1)
   
   
   ########################################################
   ###### NOTE: Check legend. Legend colors do not match profession colors in network. Can check by adding vertex labels. 
   ########################################################
+  
+  # Plot depicting how long vertices have worked with each other with specified cut-off 
+  cut.off <- round(mean(edge_indiv_df$q3.years.worked.with.eiq))
+  graph_complete.years <- delete_edges(graph_complete, E(graph_complete)[q3.years.worked.with.eiq<cut.off])
+  
+  layout.graph <- layout_(graph_complete.years, nicely())
+  layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
+  
+
+  plot(graph_complete.years,
+       layout=(layout.graph*1.1),
+       rescale=F, 
+       #edge.color=edge_test$connection,
+       edge.arrow.size=.01,
+       vertex.color=vertex_df$profession,
+       #vertex.size=((in.degree)*0.9),
+       vertex.size=3,
+       #vertex.label=vertex_df$profession.df,
+       vertex.label=NA,
+       vertex.label.cex=0.6,
+       vertex.label.dist=1,
+       vertex.label.degree=-0.6,
+       main=paste0('Network of worked-together-with ',cut.off,' years connection'),
+       #frame=TRUE,
+       margin=0.0001)
+  legend(x=-1.5, y = -0.85, unique(vertex_df$profession.df), pch=19,
+         col= colr.palette, pt.cex=0.8, cex=0.8, bty="n", ncol=1)
+  
+  #Clustering function to add weights to edges with shared profession
+  G_Grouped = graph_complete_symmetrized
+  E(G_Grouped)$weight = 1
+  professions.list<-unique(V(G_Grouped)$profession.df)
+  ## Add edges with high weight between all nodes in the same group
+  for(i in 1:length(professions.list)) {
+    GroupV = which(V(G_Grouped)$profession.df == professions.list[i])
+    G_Grouped = add_edges(G_Grouped, combn(GroupV, 2), attr=list(weight=1.5))
+    #print(paste0("Ran loop for profession ",professions.list[i]))
+  } 
+  
+  ## Now create a layout based on G_Grouped
+  LO = layout_with_fr(G_Grouped)
+  LO<-norm_coords(LO, ymin=-1, ymax=1, xmin=-1, xmax=1)
+
+  plot(graph_complete_symmetrized,
+       layout=(LO*1.0),
+       rescale=F, 
+       #edge.color=edge_test$connection,
+       edge.arrow.size=.5,
+       vertex.color=vertex_df$profession.df,
+       #vertex.size=((in.degree)*0.7),
+       vertex.size=3,
+       #vertex.label=vertex_df$profession.df,
+       vertex.label=NA,
+       vertex.label.cex=0.7,
+       vertex.label.color= adjustcolor("black", 0.6),
+       vertex.label.dist=1,
+       vertex.label.degree=-0.6,
+       main='Test Data Connections (color by profession)',
+       #frame=TRUE,
+       margin=0.01)
+  
+  #Add graph of strong/weak connections between professional groups
+  V(graph_complete_symmetrized)$profession.df
+  E(graph_complete_symmetrized)$profession.df
+  
+  strength(graph_complete_symmetrized)
+  graph_attr(graph_complete_symmetrized)
+  
+  E(graph_complete)[inc(V(graph_complete)[profession.df==professions.list[1]])]
+  g2 <- subgraph.edges(graph_complete, E(graph_complete)[inc(V(graph_complete)[profession.df==professions.list[1]])])
+  
+  # plot(g2,
+  #      layout=layout_in_circle,
+  #      rescale=T, 
+  #      edge.color=adjustcolor("black", 0.1),
+  #      edge.arrow.size=0.1,
+  #      vertex.color=vertex_df$profession.df,
+  #      #vertex.size=((in.degree)*0.7),
+  #      vertex.size=3,
+  #      #vertex.label=vertex_df$profession.df,
+  #      vertex.label=NA,
+  #      vertex.label.cex=0.7,
+  #      vertex.label.color= adjustcolor("black", 0.5),
+  #      vertex.label.dist=1,
+  #      vertex.label.degree=-0.6,
+  #      main='Test Data Connections (color by profession)',
+  #      #frame=TRUE,
+  #      margin=0.0001)
+  
+  
+  
+  ####################################################
+  ########## Identifying network keyplayers ##########
+  ####################################################
+  
+  
   
   
   ####################################
@@ -265,6 +355,7 @@ if(any(data.check==FALSE))
   # Output network attributes and figures in an RMarkdown document
   rmarkdown::render("Rmarkdown_test.Rmd","pdf_document")
  
+  ############ Need to figure out why figure legends don't show up in RMarkdown! #############
 }
 
 # saving SNA function
