@@ -6,8 +6,8 @@
 basedirectory <-  "/Users/alecnelson/Documents/GitHub/ICON8002_SNA"
 input_datapath <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA/Data"
 
-vertex_datapath <- "vertex_test_df_11_01_18.csv"
-edge_indiv_datapath <- "edge_individual_test_df_11_01_18.csv"
+vertex_datapath <- "vertex_test_df_11_02_18.csv"
+edge_indiv_datapath <- "edge_individual_test_df_11_02_18.csv"
 edge_org_datapath <- "edge_org_test_df.csv"
 
 setwd(input_datapath)
@@ -345,17 +345,17 @@ names(Stat_overall_table)<-c("Statistic Name","Value")
 #Individual statistics
 #degree_complete<-igraph::degree(graph_complete)
 Degree_max_stat_indiv<-which.max(igraph::degree(graph_complete))
-print(paste0("The vertex with the greatest degree is ",as.character(vertex_df$ego[Degree_max_stat_indiv])," (number: ",Degree_max_stat_indiv,"). This measure is the number of its adjacent edges."))
+print(paste0("The vertex with the greatest degree is ",as.character(vertex_df$ego[Degree_max_stat_indiv])," (Degree of ",as.numeric(igraph::degree(graph_complete)[Degree_max_stat_indiv]),"). This measure is the number of its adjacent edges."))
 
 Degree_min_stat_indiv<-which.min(igraph::degree(graph_complete))
-print(paste0("The vertex with the fewest degree is ",as.character(vertex_df$ego[Degree_min_stat_indiv])," (number: ",Degree_min_stat_indiv,"). This measure is the number of its adjacent edges."))
+print(paste0("The vertex with the fewest degree is ",as.character(vertex_df$ego[Degree_min_stat_indiv])," (Degree of ",as.numeric(igraph::degree(graph_complete)[Degree_min_stat_indiv]),"). This measure is the number of its adjacent edges."))
 
 #closeness_complete<-igraph::closeness(graph_complete)
 Closeness_max_stat_indiv<-which.max(igraph::closeness(graph_complete))
-print(paste0("The vertex with the greatest closeness is ",as.character(vertex_df$ego[Closeness_max_stat_indiv])," (number: ",Closeness_max_stat_indiv,"). This measures how many steps is required to access every other vertex from a given vertex."))
+print(paste0("The vertex with the greatest closeness is ",as.character(vertex_df$ego[Closeness_max_stat_indiv])," (Closeness of ",as.numeric(igraph::degree(graph_complete)[Closeness_max_stat_indiv]),"). This measures how many steps is required to access every other vertex from a given vertex."))
 
 Closeness_min_stat_indiv<-which.min(igraph::closeness(graph_complete))
-print(paste0("The vertex with the least closeness is ",as.character(vertex_df$ego[Closeness_min_stat_indiv])," (number: ",Closeness_min_stat_indiv,"). This measures how many steps is required to access every other vertex from a given vertex."))
+print(paste0("The vertex with the least closeness is ",as.character(vertex_df$ego[Closeness_min_stat_indiv])," (Closeness of: ",as.numeric(igraph::degree(graph_complete)[Closeness_min_stat_indiv]),"). This measures how many steps is required to access every other vertex from a given vertex."))
 
 stats_indiv_graph<-ls(pattern = "_stat_indiv")
 stat_indiv_names<-vector()
@@ -409,8 +409,9 @@ matrix_complete_symm <- symmetrize(matrix_complete)
 matrix_non_zero_one <- matrix_complete
 matrix_non_zero_one[matrix_complete != 0] <- 1
 
-evcent(matrix_inv_non_zero, gmode = "digraph", ignore.eval = FALSE, use.eigen = TRUE)
-evcent(matrix_complete_symm)
+#evcent(matrix_inv_non_zero, gmode = "digraph", ignore.eval = FALSE, use.eigen = TRUE)
+#evcent(matrix_complete_symm)
+
 #Fragmentation centrality measures the extent to which a network is fragmented after a node is removed from the network 
 #fragment(matrix_inv_non_zero)
 
@@ -440,11 +441,11 @@ degree_kp_num<-kp_degree$keyplayers[1:keyplayer_num]
 eigenvector_kp_num<-kp_eigenvector$keyplayers[1:keyplayer_num]
 
 ####################################
-### Example Keyplayers - 11/1/18
-closeness_kp_num<-c(97,126,186)
-betweenness_kp_num<-c(31,153,196)
-degree_kp_num<-c(141,153,168)
-eigenvector_kp_num<-c(92,153,173)
+### Example Keyplayers - 11/2/18
+closeness_kp_num<-c(54,67,70)
+betweenness_kp_num<-c(100,102,110)
+degree_kp_num<-c(74,100,102)
+eigenvector_kp_num<-c(1,72,100)
 ####################################
 
 Keyplayer.list<-c(closeness_kp_num,betweenness_kp_num,degree_kp_num,eigenvector_kp_num)
@@ -463,7 +464,10 @@ eigenvector_kp_names<-rownames(matrix_complete)[eigenvector_kp_num]
 print(sprintf("The egos identified as keyplayers via the Eigenvector metric are: %s. This metric suggests a facilitation of widespread diffusion of information to important others.",paste(eigenvector_kp_names,collapse="; ")))
 
 Overlap_vec<-c(closeness_kp_names,betweenness_kp_names,degree_kp_names,eigenvector_kp_names)
-Overlap_vec<-Overlap_vec[duplicated(Overlap_vec)]
+########################################################
+###### NOTE: Added unique() function to the following line
+########################################################
+Overlap_vec<-unique(Overlap_vec[duplicated(Overlap_vec)])
 print(sprintf("The egos identified as keyplayers via multiple Overlapping metrics are: %s. This suggests the role of a keyplayer through multiple functions.",paste(Overlap_vec,collapse="; ")))
 
 Metrics_list<-list(closeness_kp_names,betweenness_kp_names,degree_kp_names,eigenvector_kp_names,Overlap_vec)
@@ -475,7 +479,12 @@ Eigenvector_vec<-c("Eigenvector",eigenvector_kp_names)
 #Overlap_vec<-c("Overlap",Overlap_vec)
 
 Keyplayer_df<-as.data.frame(rbind(Closeness_vec,Betweenness_vec,Degree_vec,Eigenvector_vec),row.names = F)
-names(Keyplayer_df)<-c("Statistic",seq(1:keyplayer_num))
+########################################################
+###### NOTE: Added A, B, C names to table of Keyplayers
+########################################################
+names(Keyplayer_df)<-c("Statistic",LETTERS[1:keyplayer_num])
+
+
 
 ########################################################
 ###### NOTE: Edge values can be included in this calculation in the "binary" option 
@@ -556,7 +565,7 @@ Overlap.bool=ifelse((data_logistic_df$ego) %in% Metrics_list[[5]],1,0)
 Metrics_logistic_df<-cbind(Closeness.bool,Betweenness.bool,Degree.bool,Eigenvector.bool,Overlap.bool,data_logistic_df)
 colnames(Metrics_logistic_df)
 
-Attribute_test<-c(7,8,9)
+Attribute_test<-c(8,9,10)
 
 Closeness_logistic_df <- subset(Metrics_logistic_df,select=c(1,Attribute_test))
 Betweenness_logistic_df <- subset(Metrics_logistic_df,select=c(2,Attribute_test))
