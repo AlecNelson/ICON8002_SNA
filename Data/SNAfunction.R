@@ -1,5 +1,5 @@
 sna <-
-function(input_datapath, vertex_datapath, edge_indiv_datapath, edge_org_datapath){
+function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_datapath){
   
   ##############################################
   ########## Import and checking data ##########
@@ -23,8 +23,8 @@ function(input_datapath, vertex_datapath, edge_indiv_datapath, edge_org_datapath
   # are the same :
   data.check<-sort(unique(as.character(vertex_df$ego))) == sort(unique(c(as.character(edge_indiv_df$ego),as.character(edge_indiv_df$alter))))
   
-if(any(data.check==FALSE))
-  stop("Please double check your data to make sure the egos and alters match") # Adding error message to tell users that ego/alter names do not match
+#if(any(data.check==FALSE))
+ # stop("Please double check your data to make sure the egos and alters match") # Adding error message to tell users that ego/alter names do not match
   
   # We can just have R return which row entries are not equal using the syntax below:
   which(unique(sort(as.character(vertex_df$ego))) != sort(unique(c(as.character(edge_indiv_df$ego),as.character(edge_indiv_df$alter)))))
@@ -292,23 +292,22 @@ if(any(data.check==FALSE))
   E(graph_complete)[inc(V(graph_complete)[profession.df==professions.list[1]])]
   g2 <- subgraph.edges(graph_complete, E(graph_complete)[inc(V(graph_complete)[profession.df==professions.list[1]])])
   
-  # plot(g2,
-  #      layout=layout_in_circle,
-  #      rescale=T, 
-  #      edge.color=adjustcolor("black", 0.1),
-  #      edge.arrow.size=0.1,
-  #      vertex.color=vertex_df$profession.df,
-  #      #vertex.size=((in.degree)*0.7),
-  #      vertex.size=3,
-  #      #vertex.label=vertex_df$profession.df,
-  #      vertex.label=NA,
-  #      vertex.label.cex=0.7,
-  #      vertex.label.color= adjustcolor("black", 0.5),
-  #      vertex.label.dist=1,
-  #      vertex.label.degree=-0.6,
-  #      main='Test Data Connections (color by profession)',
-  #      #frame=TRUE,
-  #      margin=0.0001)
+   plot(g2,
+        layout=layout_in_circle,
+        rescale=T, 
+        edge.color=adjustcolor("black", 0.1),
+        edge.arrow.size=0.1,
+        vertex.color=vertex_df$profession.df,
+        #vertex.size=((in.degree)*0.7),
+        vertex.size=3,
+        #vertex.label=vertex_df$profession.df,
+        vertex.label=NA,
+        vertex.label.cex=0.7,
+        vertex.label.color= adjustcolor("black", 0.5),
+        vertex.label.dist=1,
+        vertex.label.degree=-0.6,
+        main='Test Data Connections (color by profession)',
+        margin=0.0001)
   
   
   
@@ -327,6 +326,5 @@ if(any(data.check==FALSE))
 
   # Output network attributes and figures in an RMarkdown document
   rmarkdown::render("Rmarkdown_test.Rmd","pdf_document")
- 
-  ############ Need to figure out why figure legends don't show up in RMarkdown! #############
+
 }
