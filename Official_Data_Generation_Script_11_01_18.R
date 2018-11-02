@@ -25,7 +25,7 @@ setwd(input_datapath)
 # generated data sample size
 n = 200
 # Setting connections
-mean_connections = 3
+mean_connections = 4
 
 #List packages used
 list.of.packages <- c("igraph","randomNames","fabricatr","plyr","RColorBrewer","keyplayer","sna","MASS","naturalsort")
@@ -336,7 +336,7 @@ ego.df <- as.vector(vertex.test.df$ego)
 alter.test.df<-data.frame()
 conn_types<-c("In-Network","Out-of-Network","Shared-Profession")
 
-alter.outnetwork.num <- 100
+alter.outnetwork.num <- 30
 alter.outnetwork.df <- randomNames(alter.outnetwork.num, which.names="both",ethnicity = c(1:2),name.order="last.first",name.sep=", ")
 alter.outnetwork.df <- alter.outnetwork.df[!alter.outnetwork.df %in% ego.df]
 
@@ -349,7 +349,7 @@ for(i in 1:length(ego.df)){
   professional.names.rm<- professional.names[!professional.names == ego.df[i]]
   #names.sample.list<-c(ego.df.rm,alter.outnetwork.df,professional.names.rm)
   
-  sample_connections<-rnegbin(1,mean_connections, theta = 10)
+  sample_connections<-rnegbin(1,mean_connections, theta = 8)
   sample_prob<-sample(conn_types, sample_connections, replace = T, p = c(0.1,0.1,0.8))
   
   sample.In_Network<-length(which(sample_prob == conn_types[1]))
