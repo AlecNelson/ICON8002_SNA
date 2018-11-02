@@ -155,25 +155,25 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
   
   # Plotting original network
   ## Fruchterman.reingold fault layout, simplified (i.e., no loops), directed
-  plot.network.original <- plot(graph_complete_simpl,
-                                layout = layout.fruchterman.reingold,
-                                #edge.color=edge_test$connection,
-                                edge.arrow.size=.1,
-                                #vertex.color=profession.colors,
-                                #vertex.size=((in.degree)*1.5),
-                                vertex.size=5,
-                                vertex.label=NA,
-                                vertex.label.cex=0.7,
-                                vertex.label.dist=1,
-                                vertex.label.degree=-0.6,
-                                main="Network Plot",
-                                #frame=TRUE,
-                                margin=0.0001)
+  # plot.network.original <- plot(graph_complete_simpl,
+  #                               layout = layout.fruchterman.reingold,
+  #                               #edge.color=edge_test$connection,
+  #                               edge.arrow.size=.1,
+  #                               #vertex.color=profession.colors,
+  #                               #vertex.size=((in.degree)*1.5),
+  #                               vertex.size=5,
+  #                               vertex.label=NA,
+  #                               vertex.label.cex=0.7,
+  #                               vertex.label.dist=1,
+  #                               vertex.label.degree=-0.6,
+  #                               main="Network Plot",
+  #                               #frame=TRUE,
+  #                               margin=0.0001)
   
   
   ## Nicely layout, simplified (i.e., no loops), directed
 
-  plot(graph_complete_simpl,
+  original.nicely<-plot(graph_complete_simpl,
        #edge.color=edge_test$connection,
        edge.arrow.size=.1,
        #vertex.color=profession.colors,
@@ -190,7 +190,7 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
   
   # Plot network with vertex colored based on profession
   ## Nicely layout, simplified (i.e., no loops), directed, vertices colored by profession
-  professions<-unique(V(graph_complete)$q1.profession.df.vq)
+  professions<-sort(unique(V(graph_complete)$q1.profession.df.vq))
   
   layout.graph <- layout_(graph_complete_simpl, nicely())
   layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
@@ -201,81 +201,70 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
   plot(graph_complete_simpl,
        layout = layout.graph,
        rescale = F,
-       #edge.color=edge_test$connection,
        edge.arrow.size=.1,
        vertex.color=profession.colors,
        vertex.size=5,
-       vertex.label=NA,
+       #vertex.label=V(graph_complete)$q1.profession.df.vq,
        vertex.label.cex=0.5,
        vertex.label.dist=1,
        vertex.label.degree=-0.6,
        main="SNA by Profession",
        #frame=TRUE,
        margin = 0.0001)
-  
-  legend(x=-1.1, y = -1.1, legend = professions, 
+
+  legend(x=-1, y = -1, legend = professions,
          col = colr.palette, pch=19, pt.cex=0.8, cex=0.8, bty="n", ncol=2) # Adding legend to figure
-  
-  ###### Need to double check if colors match professions! #######
-  
+
   
   # Plotting by community/profession with vertices weighted by in.degree
-  # V(graph_complete_symmetrized)$community <- vertex_df$profession.df
-  # colrs <- adjustcolor( c("gray50", "tomato", "gold", "yellowgreen","blue","pink","green","purple", "red"), alpha=.6)
 
-   plot(graph_complete_symmetrized,
-        #edge.color=edge_test$connection,
-        edge.arrow.size=.5,
-        vertex.color=profession.colors,
-        vertex.size=((in.degree)*1.5),
-        #vertex.label=vertex_df$profession.df,
-        vertex.label.cex=0.7,
-        vertex.label.dist=1,
-        vertex.label.degree=-0.6,
-        main='SNA with vertices grouped by profession (color) and weighted by in-degree',
-        #frame=TRUE,
-        margin=0.0001)
-
-   legend(x=-1.1, y = -1.1, professions, pch=19,
-          col= colr.palette, pt.cex=0.8, cex=0.8, bty="n", ncol=2) # Add legend to figure
+   # plot(graph_complete_symmetrized,
+   #      #edge.color=edge_test$connection,
+   #      edge.arrow.size=.5,
+   #      vertex.color=profession.colors,
+   #      vertex.size=((in.degree)*1.5),
+   #      vertex.label=V(graph_complete)$q1.profession.df.vq,
+   #      vertex.label.cex=0.7,
+   #      vertex.label.dist=1,
+   #      vertex.label.degree=-0.6,
+   #      main='SNA with vertices grouped by profession (color) and weighted by in-degree',
+   #      #frame=TRUE,
+   #      margin=0.0001)
+   # 
+   # legend(x=-1.1, y = -1.1, professions, pch=19,
+   #        col= colr.palette, pt.cex=0.8, cex=0.8, bty="n", ncol=2) # Add legend to figure
 
   # Plot with vertices weighted by total degree
 
   plot(graph_complete_simpl,
        layout = layout.graph,
        rescale = F,
-       #edge.color=edge_test$connection,
        edge.arrow.size=.1,
        vertex.color=profession.colors,
        vertex.size=igraph::degree(graph_complete_simpl),
-       vertex.label=NA,
+       #vertex.label=V(graph_complete)$q1.profession.df.vq,
        vertex.label.cex=0.5,
        vertex.label.dist=1,
        vertex.label.degree=-0.6,
        main="SNA Vertices Weighted by Degree",
        #frame=TRUE,
        margin = 0.0001)
-  legend(x=-1.1, y = -1.1, professions, pch=19,
+  legend(x=-1, y = -1, professions, pch=19,
          col= colr.palette, pt.cex=0.8, cex=0.8, bty="n", ncol=2)
-  
-  
-  ########################################################
-  ###### NOTE: Check legend. Legend colors do not match profession colors in network. Can check by adding vertex labels. 
-  ########################################################
+
   
   # Plot depicting how long vertices have worked with each other with specified cut-off 
   cut.off <- round(mean(edge_indiv_df$q14.wk.relationship.quality.eiq))
   graph_complete.years <- delete_edges(graph_complete, E(graph_complete)[q14.wk.relationship.quality.eiq
 <cut.off])
   
-  layout.graph <- layout_(graph_complete.years, nicely())
-  layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
+  layout.graph.yrs.wk <- layout_(graph_complete.years, nicely())
+  layout.graph.yrs.wk<-norm_coords(layout.graph.yrs.wk, ymin=-1, ymax=1, xmin=-1, xmax=1)
   
 
   plot(graph_complete.years,
-       layout=(layout.graph*1.1),
+       layout=(layout.graph.yrs.wk*1.1),
        rescale=F, 
-       #edge.color=edge_test$connection,
        edge.arrow.size=.01,
        vertex.color=profession.colors,
        #vertex.size=((in.degree)*0.9),
@@ -286,7 +275,6 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
        vertex.label.dist=1,
        vertex.label.degree=-0.6,
        main=paste0('Network of worked-together-with ',cut.off,' years connection'),
-       #frame=TRUE,
        margin=0.0001)
   legend(x=-1.1, y = -1.1, professions, pch=19,
          col= colr.palette, pt.cex=0.8, cex=0.8, bty="n", ncol=2)
@@ -371,20 +359,20 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
    keyplayer_num<-3
    processer_cores<-4
    
-   # ##################
-   # # Start the clock!
-   # ptm <- proc.time()
-   # ##################
-   # 
-   # kp_closeness<-kpset(matrix_complete,size=keyplayer_num,type="closeness",parallel=TRUE,cluster=processer_cores,method="min")
-   # kp_betweenness<-kpset(matrix_complete,size=keyplayer_num,type="betweenness",parallel=TRUE,cluster=processer_cores,method="min")
-   # kp_degree<-kpset(matrix_complete,size=keyplayer_num,type="degree",cmode="total",parallel=TRUE,cluster=processer_cores,method="max")
-   # kp_eigenvector<-kpset(matrix_complete,size=keyplayer_num,type="evcent",parallel=TRUE,cluster=processer_cores,method="max")
-   # 
-   # ##################
-   # #Check the time elapsed
-   # proc.time() - ptm
-   # ##################
+   ##################
+   # Start the clock!
+   ptm <- proc.time()
+   ##################
+
+   kp_closeness<-kpset(matrix_complete,size=keyplayer_num,type="closeness",parallel=TRUE,cluster=processer_cores,method="min")
+   kp_betweenness<-kpset(matrix_complete,size=keyplayer_num,type="betweenness",parallel=TRUE,cluster=processer_cores,method="min")
+   kp_degree<-kpset(matrix_complete,size=keyplayer_num,type="degree",cmode="total",parallel=TRUE,cluster=processer_cores,method="max")
+   kp_eigenvector<-kpset(matrix_complete,size=keyplayer_num,type="evcent",parallel=TRUE,cluster=processer_cores,method="max")
+
+   ##################
+   #Check the time elapsed
+   proc.time() - ptm
+   ##################
    
    closeness_kp_num<-kp_closeness$keyplayers[1:keyplayer_num]
    betweenness_kp_num<-kp_betweenness$keyplayers[1:keyplayer_num]
