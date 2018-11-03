@@ -18,39 +18,39 @@ This is a report generated from social network analysis of the actors within the
 
 * Diameter
 
-The network has a diameter of $`r Diameter_stat_complete`$. This measure is the length of the longest geodesic (the largest distance between any two vertices in a connected graph).
+    The network has a diameter of **$`r Diameter_stat_complete`$**. This measure is the length of the longest geodesic (the largest distance between any two vertices in a connected graph).
 
 * Reciprocity
 
-The network has a reciprocity of $`r Reciprocity_stat_complete`$. The measure of reciprocity defines the proportion of mutual connections, in a directed graph.
+    The network has a reciprocity of $`r Reciprocity_stat_complete`$. The measure of reciprocity defines the proportion of mutual connections, in a directed graph.
 
 * Number of edges
 
-The network has $`r ecount_stat_complete`$ total edges.
+    The network has $`r ecount_stat_complete`$ total edges.
 
 * Number of egos
 
-The network has $`r vcount_stat_complete`$ total egos
+    The network has $`r vcount_stat_complete`$ total egos
 
 * Edge density
 
-The network has a density of $`r Density_stat_complete`$. This measure is the ratio of the number of edges and the number of possible edges.
+    The network has a density of $`r Density_stat_complete`$. This measure is the ratio of the number of edges and the number of possible edges.
 
 * Transitivity
 
-The network has a transitivity of $`r Transitivity_stat_complete`$. This measure is the probability that the adjacent vertices of a vertex are connected. This is sometimes also called the clustering coefficient.
+    The network has a transitivity of $`r Transitivity_stat_complete`$. This measure is the probability that the adjacent vertices of a vertex are connected. This is sometimes also called the clustering coefficient.
 
 ## Vertex attributes
 
 * Closeness
 
-The vertex with the greatest closeness is $`r as.character(vertex_df$ego[Closeness_max_stat_indiv])`$ (number: $`r Closeness_max_stat_indiv`$). This measures how many steps is required to access every other vertex from a given vertex.
+    The vertex with the greatest closeness is $`r as.character(vertex_df$ego[Closeness_max_stat_indiv])`$ (number: $`r Closeness_max_stat_indiv`$). This measures how many steps is required to access every other vertex from a given vertex.
 
-The vertex with the least closeness is $`r as.character(vertex_df$ego[Closeness_min_stat_indiv])`$ (number: $`r Closeness_min_stat_indiv`$). This measures how many steps is required to access every other vertex from a given vertex.
+    The vertex with the least closeness is $`r as.character(vertex_df$ego[Closeness_min_stat_indiv])`$ (number: $`r Closeness_min_stat_indiv`$). This measures how many steps is required to access every other vertex from a given vertex.
 
 * Degree
 
-The vertex with the greatest degree is $`r as.character(vertex_df$ego[Degree_max_stat_indiv])`$ (number: $`r Degree_max_stat_indiv`$). This measure is the number of its adjacent edges.
+    The vertex with the greatest degree is $`r as.character(vertex_df$ego[Degree_max_stat_indiv])`$ (number: $`r Degree_max_stat_indiv`$). This measure is the number of its adjacent edges.
 
 The vertex with the fewest degree is $`r as.character(vertex_df$ego[Degree_min_stat_indiv])`$ (number: $`r  Degree_min_stat_indiv`$). This measure is the number of its adjacent edges.
 

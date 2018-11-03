@@ -8,8 +8,8 @@ basedirectory <- "C:/Users/solit/Documents/GitHub/ICON8002_SNA"
 input_datapath <- "C:/Users/solit/Documents/GitHub/ICON8002_SNA/Data" # folder where data and outputs are stored
 
 # Input name of the data files that will be used in analysis
-vertex_datapath <- "vertex_test_df_11_01_18.csv" # vertex (ego) dataframe with attributes
-edge_indiv_datapath <- "edge_individual_test_df_11_01_18.csv" # edge-related data/attributes between individuals
+vertex_datapath <- "vertex_test_df_11_02_18.csv" # vertex (ego) dataframe with attributes
+edge_indiv_datapath <- "edge_individual_test_df_11_02_18.csv" # edge-related data/attributes between individuals
 edge_org_datapath <- "edge_org_test_df.csv" # edge between individuals and organizations
 
 # set working directory to the data folder
@@ -254,8 +254,8 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
 
   
   # Plot depicting how long vertices have worked with each other with specified cut-off 
-  cut.off <- round(mean(edge_indiv_df$q14.wk.relationship.quality.eiq))
-  graph_complete.years <- delete_edges(graph_complete, E(graph_complete)[q14.wk.relationship.quality.eiq
+  cut.off <- round(mean(edge_indiv_df$q2.years.worked.with.eiq))
+  graph_complete.years <- delete_edges(graph_complete, E(graph_complete)[q2.years.worked.with.eiq
 <cut.off])
   
   layout.graph.yrs.wk <- layout_(graph_complete.years, nicely())
