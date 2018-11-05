@@ -204,7 +204,7 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
        edge.arrow.size=.1,
        vertex.color=profession.colors,
        vertex.size=5,
-       #vertex.label=V(graph_complete)$q1.profession.df.vq,
+       vertex.label=NA,
        vertex.label.cex=0.5,
        vertex.label.dist=1,
        vertex.label.degree=-0.6,
@@ -242,7 +242,7 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
        edge.arrow.size=.1,
        vertex.color=profession.colors,
        vertex.size=igraph::degree(graph_complete_simpl),
-       #vertex.label=V(graph_complete)$q1.profession.df.vq,
+       vertex.label=NA,
        vertex.label.cex=0.5,
        vertex.label.dist=1,
        vertex.label.degree=-0.6,
@@ -329,7 +329,7 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
         rescale=T, 
         edge.color=adjustcolor("black", 0.1),
         edge.arrow.size=0.1,
-        vertex.color=vertex_df$profession.df,
+        vertex.color=profession.colors,
         #vertex.size=((in.degree)*0.7),
         vertex.size=3,
         #vertex.label=vertex_df$profession.df,
@@ -357,7 +357,7 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
    
    
    keyplayer_num<-3
-   processer_cores<-4
+   processer_cores<-2
    
    ##################
    # Start the clock!
@@ -379,13 +379,13 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
    degree_kp_num<-kp_degree$keyplayers[1:keyplayer_num]
    eigenvector_kp_num<-kp_eigenvector$keyplayers[1:keyplayer_num]
    
-   ####################################
-   ### Example Keyplayers - 11/1/18
-   closeness_kp_num<-c(97,126,186)
-   betweenness_kp_num<-c(31,153,196)
-   degree_kp_num<-c(141,153,168)
-   eigenvector_kp_num<-c(92,153,173)
-   ####################################
+   # ####################################
+   # ### Example Keyplayers - 11/1/18
+   # closeness_kp_num<-c(97,126,186)
+   # betweenness_kp_num<-c(31,153,196)
+   # degree_kp_num<-c(141,153,168)
+   # eigenvector_kp_num<-c(92,153,173)
+   # ####################################
    
    Keyplayer.list<-c(closeness_kp_num,betweenness_kp_num,degree_kp_num,eigenvector_kp_num)
    Keyplayer.list<-unique(Keyplayer.list)
@@ -403,7 +403,10 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
    print(sprintf("The egos identified as keyplayers via the Eigenvector metric are: %s. This metric suggests a facilitation of widespread diffusion of information to important others.",paste(eigenvector_kp_names,collapse="; ")))
    
    Overlap_vec<-c(closeness_kp_names,betweenness_kp_names,degree_kp_names,eigenvector_kp_names)
-   Overlap_vec<-Overlap_vec[duplicated(Overlap_vec)]
+   ########################################################
+   ###### NOTE: Added unique() function to the following line
+   ########################################################
+   Overlap_vec<-unique(Overlap_vec[duplicated(Overlap_vec)])
    print(sprintf("The egos identified as keyplayers via multiple Overlapping metrics are: %s. This suggests the role of a keyplayer through multiple functions.",paste(Overlap_vec,collapse="; ")))
    
    Metrics_list<-list(closeness_kp_names,betweenness_kp_names,degree_kp_names,eigenvector_kp_names,Overlap_vec)
@@ -414,8 +417,10 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
    Eigenvector_vec<-c("Eigenvector",eigenvector_kp_names)
    #Overlap_vec<-c("Overlap",Overlap_vec)
    
+   
    Keyplayer_df<-as.data.frame(rbind(Closeness_vec,Betweenness_vec,Degree_vec,Eigenvector_vec),row.names = F)
-   names(Keyplayer_df)<-c("Statistic",seq(1:keyplayer_num))
+
+   names(Keyplayer_df)<-c("Statistic",LETTERS[1:keyplayer_num])
    
    ########################################################
    ###### NOTE: Edge values can be included in this calculation in the "binary" option 
@@ -450,14 +455,14 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
         vertex.label= ifelse((igraph::get.vertex.attribute(graph_complete_simpl)$name %in% Keyplayer_names), as.character(igraph::get.vertex.attribute(graph_complete_simpl)$name), NA),
         vertex.label.color = "blue",
         vertex.label=NA,
-        vertex.label.cex=ifelse(vertex_df$ego == as.character(vertex_df$ego[177]), .5, NA),
-        vertex.label.dist=0,
+        vertex.label.cex=ifelse(vertex_df$ego == as.character(vertex_df$ego[177]), .4, NA),
+        vertex.label.dist=4,
         vertex.label.degree=0,
         main='Network with highlighted Key Players',
         #frame=TRUE,
         margin=0.0001)
    
-   legend(x=-1.5, y = 0, c("Closeness","Betweenness","Degree","Eigenvector","Overlap"), pch=19,
+   legend(x=-1, y = -0.7, c("Closeness","Betweenness","Degree","Eigenvector","Overlap"), pch=19,
           col= c("blue", "green", "red","yellow","purple"), pt.cex=1.5, cex=0.8, bty="n", ncol=1)
    
   
@@ -466,7 +471,7 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
   ####################################
 
   # Output network attributes and figures in an RMarkdown document
-  rmarkdown::render("Rmarkdown_test.Rmd","pdf_document")
+  rmarkdown::render("Rmarkdown_test.Rmd","word_document")
 
 }
 
