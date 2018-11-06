@@ -1,7 +1,7 @@
 # Data Processing for ICON 8002
 # This script serves the purpose of generating data with various input
 # formats for use in developing SNA tool
-# Edited on 11/01/18 by BBB
+# Edited on 11/05/18 by BBB
 
 ########## THIS IS THE OFFICIAL DATA GENERATION SCRIPT FOR ICON 8002 SNA FALL 2018 PROJECT
 
@@ -66,20 +66,16 @@ edge_org_test <- read.csv(edge_org_datapath, header=T, row.names = 1)
 ## Likert scale, binary, numerical, and categorical distributions sampled from throughout script
 industry.role.options <-c ("Commercial fisherman", "Commercial crabbers or dealer", "Dock and fish house", "Shellfish gatherer") # These are the industry role options as listed in the Tookes IRB
 binary.qual.options <- c("Yes", "No")
-good.poor.likert <- c("Very good", "Good", "Fair", "Poor", "Very Poor")
-pressing.likert <- c("Very pressing", "Pressing", "Moderately pressing", "Slightly pressing", "Not pressing") # This needs to be revised
+good.poor.likert <- c("Very good", "Good", "Fair", "Poor", "Very poor", "No opinion")
 agree.likert <- c("Strongly agree", "Agree", "Neither agree nor disagree", "Disagree", "Strongly disagree")
 likely.likert <- c("Very likely", "Likely", "Neither likely nor unlikely", "Unlikely", "Very unlikely")
-significantly.likert <- c("Very significantly", "Significantly", "Neither significant or insignificant", "Insignificantly", "Very insignificantly") # This needs to be revised
 dock.options <- c("Brunswick Dock", "Savannah Dock", "Piedmont Dock", "South GA Dock", "Derrien Dock", "St. Simons Dock", "Jekyll Dock") # These are hypothetical and will likely be open response in actual survey
 harvest.decline.location.options <- c("North of Savannah", "Between Sapelo Island and Savannah", "Between St. Simons Island and Sapelo Island", "Between St. Simons Island and Jekyll Island", "South of Jekyll Island") # These also are hypothetical and likely will be open response or indicated on a map in the actual survey
-change.docks.freq.options <- c("Very often (change dock 1 or more times/month)", "Often (change dock 1 time/3 months)", "Occasionally (change dock about 1 time/6 months", "Rarely (change dock 1 time per 9 months", "Very rarely (change dock less than 1 time/year") # This needs to be revised
-severity.options <- c("Very severe", "Severe", "Neither", "Not severe", "Very not severe") # This needs to be revised
 agency.options <- c("Georgia Sea Grant", "Georgia Department of Natural Resources", "Georgia Shrimping Association (Wild Georgia Shrimp)", "Southern Shrimp Alliance", "Other (please insert)")
-strength.options <- c("Very strong", "Somewhat strong", "Not very strong") # This needs to be revised
-interaction.freq.options <- c("Daily", "A few times per week", "Weekly", "Bi-weekly (every other week)", "A few times per month", "Monthly", "Less than once per month")
+interaction.freq.options <- c("Three or more times per week", "Two to three times per week", "Once per week", "More than once per month", "Once per month or less")
 related.options <- c("Parent", "Child", "Spouse or partner", "Cousin", "Other (please specify)")
 wk.relationship.options <- c("Employer", "Employee", "Other (please specify)") # Removed "Colleague" as an option for work relationship and manually added it where alter.type = "Shared-Profession"
+change.dock.freq.options <- c("Once per month", "Once every other month", "More than once per year", "Once per year", "Once per 5 years")
 
 # This code uses the "sample" function throughout, so various hypothesized scenarios can
 # easily be constructed by altering the probabilities ("prob = ...") within each line of code
@@ -119,9 +115,12 @@ q2c.when.leave.work.vq <- ifelse(q2a.currently.working.vq == "No", "Open Respons
 # This is question 9 in "Survey_Questions_V3" google drive doc.
 q3.rate.econ.conditions.vq <- sample(good.poor.likert, n, replace = T)
 
-# Question 4: In your opinion, how pressing are current environmental issues (e.g., shrimp black gill disease,
-# changing weather/climactic conditions) for Georgia coastal fisheries? This is question 10 in "Survey_Questions_V3" google drive doc.
-q4.rate.env.conditions.vq <- sample(pressing.likert, n, replace = T)
+# Question 4a: In your opinion, is the Georgia coastal fishery currently being impacted by environmental issues (e.g., shrimp black gill disease, changing weather/climatic conditions)?
+q4a.env.issues.vq <- sample(binary.qual.options, n, replace = T)
+
+# Question 4b: If yes, how pressing are current environmental issues for Georgia coastal fisheries on a scale of 0 - 5 (0 = Not pressing, 5 = Very pressing)? 
+# This is question 11 in "Survey_Questions_V3" google drive doc.
+q4b.rate.env.conditions.vq <- ifelse(q4a.env.issues.vq == "Yes", sample(0:5), "N/A") 
 
 # Question 5: How would you rate current communication between government agencies and individual fishers within Georgia coastal fisheries?
 # This is question 11 in "Survey_Questions_V3" google drive doc.
@@ -144,7 +143,7 @@ q6c.GADNR.why.not.mtg.vq <- ifelse(q6a.attended.GADNR.mtg.vq == "No", "Open Resp
 # This could also be an edge question.
 q7a.primary.dock.vq <- sample(dock.options, n, replace = T)
 
-# Question 7b: Do you have an active professional relationship with this dock?
+# Question 7b: Do you work at this dock?
 # This is question 16 in the "Survey_Questions_V3" google drive doc. 
 # This could also be an edge question.
 q7b.active.dock.relationship.vq <- sample(binary.qual.options, n, replace = T)
@@ -176,17 +175,21 @@ q8c.still.fish.decline.locations.vq <- ifelse(q8a.observed.decline.harvest.vq ==
 # This is question 22 in "Survey_Questions_V3" google drive doc.
 q9a.harvest.multiple.sp.vq <- sample(binary.qual.options, n, replace = T)
 
-# Question 9b: If yes, do you sell all types of catch/harvest to a single dock?
-# This is question 22a in "Survey_Questions_V3" google drive doc.
-q9b.sell.to.single.dock.vq <- ifelse(q9a.harvest.multiple.sp.vq == "Yes", sample(binary.qual.options), "N/A")
+# Question 9b: If yes, what species do you catch/harvest?
+# This is updated question 22i in "Survey_Questions_V3" google drive doc.
+q9b.species.harvested.vq <- ifelse(q9a.harvest.multiple.sp.vq == "Yes", "List of species harvested", "N/A")
 
-# Question 9c: If yes to 9b, how much do you generally earn per catch/harvest species?
-# This is question 22b in "Survey_Questions_V3" google drive doc.
-q9c.earned.per.species.vq <- ifelse(q9b.sell.to.single.dock.vq == "Yes", "Open response", "N/A")
+# Question 9c: Do you sell all types of catch/harvest to a single dock?
+# This is updated question 23 in "Survey_Questions_V3" google drive doc.
+q9c.sell.to.single.dock.vq <- sample(binary.qual.options, n, replace = T)
 
-# Question 9d: If no to 9b, please explain why.
-# This is question 22c in "Survey_Questions_V3" google drive doc.
-q9d.why.sell.multiple.docks.vq <- ifelse(q9b.sell.to.single.dock.vq == "No", "Open response", "N/A")
+# Question 9d: If yes to 9a, what is the average you expect to earn from a single catch/harvest?
+# This is updated question 23i in "Survey_Questions_V3" google drive doc.
+q9d.earned.per.species.vq <- ifelse(q9a.harvest.multiple.sp.vq == "Yes", "Average earned from single catch/harvest", "N/A")
+
+# Question 9e: If no to 9b, please explain why.
+# This is question 23iii in "Survey_Questions_V3" google drive doc.
+q9e.why.sell.multiple.docks.vq <- ifelse(q9c.sell.to.single.dock.vq == "No", "Explain why sell to multiple docks", "N/A")
 
 # Question 10: Are you aware of any dock owners who have difficulty selling products to land-based dealers?
 # This is question 27 in "Survey_Questions_V3" google drive doc.
@@ -202,7 +205,7 @@ q11b.change.docks.explain.vq <- rep("Open response", n)
 
 # Question 11c: If yes, please indicate how often.
 # This is question 28c in "Survey_Questions_V3" google drive doc.
-q11c.change.docks.freq.vq <- sample(change.docks.freq.options, n, replace = T)
+q11c.change.docks.freq.vq <- sample(change.dock.freq.options, n, replace = T)
 
 # Question 12a: Have you experienced a decline in fishery catch/harvest? 
 # This is question 29 in "Survey_Questions_V3" google drive doc.
@@ -216,17 +219,17 @@ q12b.explain.decline.vq <- ifelse(q12a.decline.in.catch.vq == "Yes", "Harvest de
 # This is question 29b in "Survey_Questions_V3" google drive doc.
 q12c.which.spp.decline.vq <- ifelse(q12a.decline.in.catch.vq == "Yes", "Declining species", "N/A")
 
-# Question 12d: If yes, please indicate the severity of the decline.
+# Question 12d: If yes, please indicate the severity of the decline on a scale of 0 - 5 (0 = Not severe, 5 = Very severe).
 # This is question 29c in "Survey_Questions_V3" google drive doc. 
-q12d.severity.decline.vq <- ifelse(q12a.decline.in.catch.vq == "Yes", sample(severity.options), "N/A")
+q12d.severity.decline.vq <- ifelse(q12a.decline.in.catch.vq == "Yes", sample(0:5), "N/A")
 
 # Question 13a: Did the decline in catch/harvest affect your business?
 # This is question 30 in "Survey_Questions_V3" google drive doc.
 q13a.decline.affect.business.vq <- sample(binary.qual.options, n, replace = T)
 
-# Question 13b: If yes, please indicate the severity of the effect on your business.
+# Question 13b: If yes, please indicate the severity of the effect on your business on a scale of 0 - 5 (0 = Not severe, 5 = Very severe).
 # This is question 30a in "Survey_Questions_V3" google drive doc.
-q13b.severity.decline.business.vq <- ifelse(q13a.decline.affect.business.vq == "Yes", sample(severity.options), "N/A")
+q13b.severity.decline.business.vq <- ifelse(q13a.decline.affect.business.vq == "Yes", sample(0:5), "N/A")
 
 # Question 14: Which of the following agency meeting(s) do you attend?
 # This is question 31 in "Survey_Questions_V3" google drive doc. 
@@ -290,18 +293,18 @@ q22.reg.change.close.water.Dec31.vq <- sample(likely.likert, n, replace = T)
 # This is underneath the "Other" category in the "Survey_Questions_V3" google drive doc.
 q23.reg.change.open.sounds.vq <- sample(likely.likert, n, replace = T)
 
-# Question 24: To what degree has Black Gill Disease in shrimp changed where and how you fish?
+# Question 24: To what degree has Black Gill Disease in shrimp changed where and how you fish on a scale of 0 - 5 (0 = not at all, 5 = very significantly)?
 # This is underneath the "Other" category in the "Survey_Questions_V3" google drive doc.
-q24.blackgill.change.fishing.vq <- sample(significantly.likert, n, replace = T)
+q24.blackgill.change.fishing.vq <- sample(c(0:5), n, replace =T)
 
 # Question 25a: Is black gill disease in shrimp a concern of others who use the same dock as you?
 # This is underneath the "Other" category in the "Survey_Questions_V3" google drive doc.
 q25a.blackgill.concern.dockmates.vq <- sample(binary.qual.options, n, replace = T)
 
-# Question 25b: If yes, how strong is this concern?
+# Question 25b: If yes, how strong is this concern on a scale of 0 - 5 (0 = Not strong, 5 = Very strong)?
 # This is underneath the "Other" category in the "Survey_Questions_V3" google drive doc.
 # I have slightly reworded this so that it makes more sense. 
-q25b.blackgill.concern.dockmates.strength.vq <- ifelse(q25a.blackgill.concern.dockmates.vq == "Yes", sample(strength.options), "N/A")
+q25b.blackgill.concern.dockmates.strength.vq <- ifelse(q25a.blackgill.concern.dockmates.vq == "Yes", sample(0:5), "N/A")
 
 # Question 26a: Have you observed black gill disease in your shrimp harvests? 
 # This is underneath the "Other" category in the "Survey_Questions_V3" google drive doc.
@@ -310,6 +313,11 @@ q26a.seen.blackgill.vq <- sample(binary.qual.options, n, replace = T)
 # Question 26b: If yes, in which of the following coastal areas have you observed black gill?
 # This is underneath the "Other" category in the "Survey_Questions_V3" google drive doc.
 q26b.where.seen.blackgill.vq <- ifelse(q26a.seen.blackgill.vq == "Yes", sample(harvest.decline.location.options), "N/A")
+
+# Question 27: In one year, how much do you expect to earn from your sales to each dock by catch/harvest?
+# This is question 27 in updated "Survey_Questions_V3" google drive doc.
+# Should probably be placed higher in the question list, but waiting on feedback from Jennifer Tookes
+q27.earn.one.year.dock.vq <- rep("How much earned per year per dock per catch", n)
 
 
 ### Put all questions and responses together into single Vertex information data frame.
@@ -449,7 +457,6 @@ q3b.wk.relationship.other.eiq <- ifelse(q3a.wk.relationship.eiq == "Other (pleas
 
 # Question 4a: Approximately how frequently do you interact with this person in a professional context?
 # This is question 3c in "Survey_Questions_V3" google drive doc.
-# I have slightly altered the answer options
 q4a.work.interaction.freq.eiq <- sample(interaction.freq.options, n.edge.indiv, replace = T)
 
 # Question 4b: Approximately how often do you interact with this individual outside of work (in your personal time)?
@@ -461,8 +468,13 @@ q4b.personal.interaction.freq.eiq <- sample(interaction.freq.options, n.edge.ind
 # I have reframed the question so that we don't have to continually sample from previously identified alters.
 q5a.likely.discuss.env.issues.eiq <- sample(c(0:10), n.edge.indiv, replace = T)
 
-# Question 5b: Please explain your reasoning
-q5b.likely.discuss.env.issues.exp.eiq <- rep("Explain why (not) discuss environmental issues", n.edge.indiv)
+# Question 5b: How often do you discuss these issues with this individual?
+# This is updated question 4b in "Survey_Questions_V3" google drive doc.
+# Need to figure out how to have this response make sense given response to 5a
+q5b.freq.discuss.env.issues.eiq <- sample(interaction.freq.options, n.edge.indiv, replace = T)
+
+# Question 5c: Please explain your reasoning
+q5c.likely.discuss.env.issues.exp.eiq <- rep("Explain why (not) discuss environmental issues", n.edge.indiv)
 
 # Question 6a: On a scale of 0 - 10 (0 = extremely unlikely, 10 = certain), how likely are you to discuss current economic issues
 # with this individual?
@@ -470,8 +482,13 @@ q5b.likely.discuss.env.issues.exp.eiq <- rep("Explain why (not) discuss environm
 # I have reframed the question so that we don't have to continually sample from previously identified alters.
 q6a.likely.discuss.econ.issues.eiq <- sample(c(0:10), n.edge.indiv, replace = T)
 
+# Question 6b: How often do you discuss these issues with this individual?
+# This is updated question 5b in "Survey_Questions_V3" google drive doc.
+# Need to figure out how to have this response make sense given response to 6a
+q6b.freq.discuss.econ.issues.eiq <- sample(interaction.freq.options, n.edge.indiv, replace = T)
+
 # Question 6b: Please explain your reasoning
-q6b.likely.discuss.econ.issues.exp.eiq <- rep("Explain why (not) discuss economic issues", n.edge.indiv)
+q6c.likely.discuss.econ.issues.exp.eiq <- rep("Explain why (not) discuss economic issues", n.edge.indiv)
 
 # Question 7a: On a scale of 0 - 10 (0 = extremely unlikely, 10 = certain), how likely are you to discuss issues regarding communication
 # between Georgia coastal fishery stakeholders/groups with this individual?
@@ -479,8 +496,13 @@ q6b.likely.discuss.econ.issues.exp.eiq <- rep("Explain why (not) discuss economi
 # I have reframed the question so that we don't have to continually sample from previously identified alters.
 q7a.likely.discuss.comm.issues.eiq <- sample(c(0:10), n.edge.indiv, replace = T)
 
+# Question 7b: How often do you discuss these issues with this individual?
+# This is updated question 6b in "Survey_Questions_V3" google drive doc.
+# Need to figure out how to have this response make sense given response to 7a
+q7b.freq.discuss.comm.issues.eiq <- sample(interaction.freq.options, n.edge.indiv, replace = T)
+
 # Question 7b: Please explain your reasoning
-q7b.likely.discuss.comm.issues.exp.eiq <- rep("Explain why (not) discuss communication issues", n.edge.indiv)
+q7c.likely.discuss.comm.issues.exp.eiq <- rep("Explain why (not) discuss communication issues", n.edge.indiv)
 
 # Question 8a: On a scale of 0 - 10 (0 = extremely unlikely, 10 = certain), how likely are you to discuss matters related to the availability of 
 # governmental resources within Georgia coastal fisheries with this individual?
@@ -488,8 +510,13 @@ q7b.likely.discuss.comm.issues.exp.eiq <- rep("Explain why (not) discuss communi
 # I have reframed the question so that we don't have to continually sample from previously identified alters.
 q8a.likely.discuss.gvmtresources.issues.eiq <- sample(c(0:10), n.edge.indiv, replace = T)
 
+# Question 8b: How often do you discuss these issues with this individual?
+# This is updated question 7b in "Survey_Questions_V3" google drive doc.
+# Need to figure out how to have this response make sense given response to 8a
+q8b.freq.discuss.gvmtresources.issues.eiq <- sample(interaction.freq.options, n.edge.indiv, replace = T)
+
 # Question 8b: Please explain your reasoning
-q8b.likely.discuss.gvmtresources.issues.exp.eiq <- rep("Explain why (not) discuss government resource availability issues", n.edge.indiv)
+q8c.likely.discuss.gvmtresources.issues.exp.eiq <- rep("Explain why (not) discuss government resource availability issues", n.edge.indiv)
 
 # Question 9a: On a scale of 0 - 10 (0 = extremely unlikely, 10 = certain), how likely are you to discuss matters related to the involvement of federal agencies (e.g., GA DNR)
 # in Georgia coastal fisheries with this individual?
@@ -497,8 +524,13 @@ q8b.likely.discuss.gvmtresources.issues.exp.eiq <- rep("Explain why (not) discus
 # I have reframed the question so that we don't have to continually sample from previously identified alters.
 q9a.likely.discuss.fedagency.issues.eiq <- sample(c(0:10), n.edge.indiv, replace = T)
 
-# Question 9b: Please explain your reasoning
-q9b.likely.discuss.fedagency.issues.exp.eiq <- rep("Explain why (not) discuss federal agency issues", n.edge.indiv)
+# Question 9b: How often do you discuss these issues with this individual?
+# This is updated question 8b in "Survey_Questions_V3" google drive doc.
+# Need to figure out how to have this response make sense given response to 9a
+q9b.freq.discuss.fedagency.issues.eiq <- sample(interaction.freq.options, n.edge.indiv, replace = T)
+
+# Question 9c: Please explain your reasoning
+q9c.likely.discuss.fedagency.issues.exp.eiq <- rep("Explain why (not) discuss federal agency issues", n.edge.indiv)
 
 # Question 10: Do you know if this individual has had difficulty selling their catch/harvest?
 # This is question 26 in the "Survey_Questions_V3" google drive doc.
