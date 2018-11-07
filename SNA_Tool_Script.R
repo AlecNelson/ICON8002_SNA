@@ -172,7 +172,10 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
   
   
   ## Nicely layout, simplified (i.e., no loops), directed
+  
 
+  
+  
   original.nicely<-plot(graph_complete_simpl,
        #edge.color=edge_test$connection,
        edge.arrow.size=.1,
@@ -480,4 +483,42 @@ dump("sna", file="SNAfunction.R")
 
 ############################################ End SNA function ####################################################
 
-rm(list=ls())
+########################################################
+########## Experiment with interactive graphs ##########
+########################################################
+
+# layout.graph <- layout_(graph_complete, nicely())
+# layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
+# Xn <- layout.graph[,1]
+# Yn <- layout.graph[,2]
+# vs <- V(graph_complete_simpl)
+# es <- as.data.frame(get.edgelist(graph_complete_simpl))
+# Nv <- length(vs)
+# Ne <- length(es[1]$V1)
+# 
+# edge_shapes <- list()
+# for(i in 1:Ne) {
+#   v0 <- es[i,]$V1
+#   v1 <- es[i,]$V2
+# 
+#   edge_shape = list(
+#     type = "line",
+#     line = list(color = "#030303", width = 0.3),
+#     x0 = Xn[v0],
+#     y0 = Yn[v0],
+#     x1 = Xn[v1],
+#     y1 = Yn[v1]
+#   )
+# 
+#   edge_shapes[[i]] <- edge_shape
+# }
+# 
+# 
+# network <- plot_ly(x = ~Xn, y = ~Yn, mode = "markers", text = V(graph_complete)$q1.profession.df.vq, hoverinfo = "text")
+# axis <- list(title = "", showgrid = FALSE, showticklabels = FALSE, zeroline = FALSE)
+# p <- layout(
+#   network,
+#   shapes = edge_shapes,
+#   xaxis = axis,
+#   yaxis = axis
+# )
