@@ -8,6 +8,7 @@
   #4. Produce GLMs according to sub-network deliniation
   #5. Adjust ego/alter labels to reflect numeric instead of named values
   #6. Add column sum of keyplayer bool values
+  #7. Add write.csv() to write out individual network statistics for each ego
 
 ############################
 #Type in the base directory and input datapaths below
@@ -407,6 +408,11 @@ for(j in 1:length(indiv_vals)){
 
 Stat_indiv_table<-as.data.frame(cbind(as.vector(stat_indiv_names),stat_indiv_vertices,indiv_vals),row.names = FALSE)
 names(Stat_indiv_table)<-c("Statistic Name","Vertex Name","Value")
+
+########################################################
+###### TASK: Add write.csv() to write out individual statistics for each ego
+########################################################
+
 
 
 # Reachability can only be computed on one vertex at a time. To
