@@ -1,5 +1,12 @@
 #Key Data Processing Functions for ICON 8002
-# 10/31/18
+# 11/8/18
+
+#To-DO List (11/8/18):
+  #1. Merge GLM-ready datasets with summarized edge attributes
+  #2. Format GLM models for AICc model selection algorithms
+  #3. Interface with question numbering labels for subsetting predictor vars
+  #4. Produce GLMs according to sub-network deliniation
+  #5. Adjust ego/alter labels to reflect numeric instead of named values
 
 ############################
 #Type in the base directory and input datapaths below
@@ -8,7 +15,7 @@ input_datapath <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA/Data"
 
 vertex_datapath <- "vertex_test_df_11_02_18.csv"
 edge_indiv_datapath <- "edge_individual_test_df_11_02_18.csv"
-edge_org_datapath <- "edge_org_test_df.csv"
+#edge_org_datapath <- "edge_org_test_df.csv"
 
 setwd(input_datapath)
 
@@ -56,9 +63,20 @@ in.degree<-igraph::degree(graph_complete,mode="in")
 
 summary(graph_complete)
 
-#V(graph_complete)$profession.df
-# igraph::get.vertex.attribute(graph_complete,'profession.df')
-# unique(igraph::get.vertex.attribute(graph_complete,'profession.df'))
+#Create sub-graphs based on profession attribute
+vertex.professional.i<-igraph::get.vertex.attribute(graph_complete,'q1.profession.df.vq')
+
+for(i in 1:length(unique(igraph::get.vertex.attribute(graph_complete,'q1.profession.df.vq')))){
+  profession.i<-unique(igraph::get.vertex.attribute(graph_complete,'q1.profession.df.vq'))[i]
+  subgraph.vector.i<-which(vertex.professional.i==profession.i)
+  subgraph.i<-igraph::induced_subgraph(graph_complete, subgraph.vector.i)
+  profession.i<-gsub(" ", "_", profession.i, fixed = TRUE)
+  subgraph.name<-paste0("sub_g_",profession.i)
+  assign(subgraph.name,subgraph.i)
+}
+
+subgraph_list<-ls(pattern = "sub_g_")
+summary(get(subgraph_list[1]))
 
 ########################################################
 # The write.graph() function exports a graph object in various
@@ -464,9 +482,7 @@ eigenvector_kp_names<-rownames(matrix_complete)[eigenvector_kp_num]
 print(sprintf("The egos identified as keyplayers via the Eigenvector metric are: %s. This metric suggests a facilitation of widespread diffusion of information to important others.",paste(eigenvector_kp_names,collapse="; ")))
 
 Overlap_vec<-c(closeness_kp_names,betweenness_kp_names,degree_kp_names,eigenvector_kp_names)
-########################################################
-###### NOTE: Added unique() function to the following line
-########################################################
+
 Overlap_vec<-unique(Overlap_vec[duplicated(Overlap_vec)])
 print(sprintf("The egos identified as keyplayers via multiple Overlapping metrics are: %s. This suggests the role of a keyplayer through multiple functions.",paste(Overlap_vec,collapse="; ")))
 
@@ -479,12 +495,8 @@ Eigenvector_vec<-c("Eigenvector",eigenvector_kp_names)
 #Overlap_vec<-c("Overlap",Overlap_vec)
 
 Keyplayer_df<-as.data.frame(rbind(Closeness_vec,Betweenness_vec,Degree_vec,Eigenvector_vec),row.names = F)
-########################################################
-###### NOTE: Added A, B, C names to table of Keyplayers
-########################################################
+
 names(Keyplayer_df)<-c("Statistic",LETTERS[1:keyplayer_num])
-
-
 
 ########################################################
 ###### NOTE: Edge values can be included in this calculation in the "binary" option 
@@ -545,6 +557,46 @@ Keyplay.bool=ifelse(rownames(data_logistic_df) %in% Keyplayer.list,1,0)
 data_logistic_df<-cbind(Keyplay.bool,data_logistic_df)
 colnames(data_logistic_df)
 
+
+#1. Update GLM-ready datasets to include summarized edge attributes
+
+edge_list<-as_edgelist(graph_complete, names = TRUE)
+ego_list<-unique(edge_list[,1])
+edge_summary_df<-data.frame(matrix(ncol=(length(igraph::edge_attr_names(graph_complete))+1),nrow=length(ego_list)))
+edge_summary_df[1]<-ego_list
+colnames(edge_summary_df)[1]<-"ego"
+colnames(edge_summary_df)[(1:length(igraph::edge_attr_names(graph_complete)))+1]<-igraph::edge_attr_names(graph_complete)
+
+for(i in 1:length(igraph::edge_attr_names(graph_complete))){
+  edge_var_i<-igraph::edge_attr_names(graph_complete)[i]
+  mode_class_i<-summary(igraph::get.edge.attribute(graph_complete))[i,3]
+  for(j in 1:length(ego_list)){
+    #attr_edge_vector<-vector()
+    attr_pos_j<-which(edge_list[,1]==ego_list[j])
+    if(mode_class_i=="numeric"){
+      edge_vect_i<-as.numeric(unlist(igraph::get.edge.attribute(graph_complete)[i]))
+      edge_vect_ij<-edge_vect_i[attr_pos_j]
+      edge_val_ij<-mean(edge_vect_ij)
+      edge_summary_df[j,(i+1)]<-edge_val_ij
+      #attr_edge_vector<-c(attr_edge_vector,edge_val_ij)
+      #print("Num: Subset edge vector by which rows by ego....") 
+    }else if(mode_class_i=="character"){
+      edge_vect_i<-as.character(unlist(igraph::get.edge.attribute(graph_complete)[i]))
+      edge_vect_ij<-edge_vect_i[attr_pos_j]
+      edge_val_ij<-length(unique(edge_vect_ij))
+      edge_summary_df[j,(i+1)]<-edge_val_ij
+      #attr_edge_vector<-c(attr_edge_vector,edge_val_ij)
+      #print("Char: Summarize unique values by which rows by ego....") 
+    }else{
+      print("Error: Could not identify mode correctly")
+    }
+    #print(paste0("Data summarized for ",ego_list[j]))
+    }
+  }
+
+str(edge_summary_df)
+
+
 data_logistic_total_df <- subset(data_logistic_df,
                              select=c(1,3,11,14))
 
@@ -552,7 +604,6 @@ model <- glm(Keyplay.bool ~.,family=binomial(link='logit'),data=data_logistic_to
 summary(model)
 
 ########################################################
-###### TASK: Determine useful statistical measures and graph
 ###### TASK: Figure out how to aggregate edge attribute information into single vertex characteristic
 ########################################################
 
@@ -572,6 +623,16 @@ Betweenness_logistic_df <- subset(Metrics_logistic_df,select=c(2,Attribute_test)
 Degree_logistic_df <- subset(Metrics_logistic_df,select=c(3,Attribute_test))
 Eigenvector_logistic_df <- subset(Metrics_logistic_df,select=c(4,Attribute_test))
 Overlap_logistic_df <- subset(Metrics_logistic_df,select=c(5,Attribute_test))
+
+
+
+#Added Write.csv() functionality w/ Keyplayer attributes
+vertex.df.keyplayer<-paste0("vertex_df_keyplayer_",
+                            format(Sys.time(), "%m_%d_%y"),".csv")
+write.csv(Metrics_logistic_df,vertex.df.keyplayer)
+
+
+#Model subset adn selection
 
 Closeness_model <- glm(Closeness.bool ~.,family=binomial(link='logit'),data=Closeness_logistic_df)
 summary(Closeness_model)
