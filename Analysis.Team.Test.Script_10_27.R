@@ -1,12 +1,13 @@
 #Key Data Processing Functions for ICON 8002
 # 11/8/18
 
-#To-DO List (11/8/18):
+#To-DO List (11/9/18):
   #1. Merge GLM-ready datasets with summarized edge attributes
   #2. Format GLM models for AICc model selection algorithms
   #3. Interface with question numbering labels for subsetting predictor vars
   #4. Produce GLMs according to sub-network deliniation
   #5. Adjust ego/alter labels to reflect numeric instead of named values
+  #6. Add column sum of keyplayer bool values
 
 ############################
 #Type in the base directory and input datapaths below
@@ -77,6 +78,23 @@ for(i in 1:length(unique(igraph::get.vertex.attribute(graph_complete,'q1.profess
 
 subgraph_list<-ls(pattern = "sub_g_")
 summary(get(subgraph_list[1]))
+
+
+plot.network.original <- plot(get(subgraph_list[5]),
+                              layout = layout.fruchterman.reingold,
+                              #edge.color=edge_test$connection,
+                              edge.arrow.size=.1,
+                              #vertex.color=profession.colors,
+                              #vertex.size=((in.degree)*1.5),
+                              vertex.size=5,
+                              vertex.label=NA,
+                              vertex.label.cex=0.7,
+                              vertex.label.dist=1,
+                              vertex.label.degree=-0.6,
+                              main=subgraph_list[5],
+                              #frame=TRUE,
+                              margin=0.0001)
+
 
 ########################################################
 # The write.graph() function exports a graph object in various
@@ -596,6 +614,26 @@ for(i in 1:length(igraph::edge_attr_names(graph_complete))){
 
 str(edge_summary_df)
 
+########################################################
+###### NOTE: Use this example section to add alter "NA" rows and rbind->cbind
+########################################################
+# tag for vertex sheet questions = ".vq"
+vq<-ls(pattern = ".vq")
+vq<-naturalsort(vq)
+vertex.test.df <-as.data.frame(cbind(ego.df, profession.df,as.data.frame(mget(vq))))
+names(vertex.test.df)[1]="ego"
+
+Out_Network_Names<-unique(alter.test.df[which(alter.test.df$alter_type=="Out-Network"),2])
+for(k in 1:length(Out_Network_Names)){
+  Name.k<-as.character(Out_Network_Names[k])
+  Out_Network<-as.character("Out-Network")
+  Out.row.k<-c(Name.k,Out_Network,rep("N/A",(length(colnames(vertex.test.df))-2)))
+  Out.row.k<-as.data.frame(t(Out.row.k))
+  colnames(Out.row.k)<-colnames(vertex.test.df)
+  vertex.test.df<-rbind(vertex.test.df,Out.row.k)
+}
+######################################################
+
 
 data_logistic_total_df <- subset(data_logistic_df,
                              select=c(1,3,11,14))
@@ -603,8 +641,6 @@ data_logistic_total_df <- subset(data_logistic_df,
 model <- glm(Keyplay.bool ~.,family=binomial(link='logit'),data=data_logistic_total_df)
 summary(model)
 
-########################################################
-###### TASK: Figure out how to aggregate edge attribute information into single vertex characteristic
 ########################################################
 
 Closeness.bool=ifelse((data_logistic_df$ego) %in% Metrics_list[[1]],1,0)
@@ -615,6 +651,11 @@ Overlap.bool=ifelse((data_logistic_df$ego) %in% Metrics_list[[5]],1,0)
 
 Metrics_logistic_df<-cbind(Closeness.bool,Betweenness.bool,Degree.bool,Eigenvector.bool,Overlap.bool,data_logistic_df)
 colnames(Metrics_logistic_df)
+
+
+########################################################
+###### TASK: Add SUM column after keyplayer stats_bool
+########################################################
 
 Attribute_test<-c(8,9,10)
 
@@ -631,8 +672,7 @@ date.text<-substr(vertex_datapath,(nchar(vertex_datapath)-11),(nchar(vertex_data
 vertex.df.keyplayer<-paste0("vertex_df_keyplayer_",date.text,".csv")
 write.csv(Metrics_logistic_df,vertex.df.keyplayer)
 
-
-#Model subset adn selection
+#Model subset and selection
 
 Closeness_model <- glm(Closeness.bool ~.,family=binomial(link='logit'),data=Closeness_logistic_df)
 summary(Closeness_model)
