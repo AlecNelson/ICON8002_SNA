@@ -42,7 +42,7 @@ lapply(list.of.packages, require, character.only = TRUE)
 
 vertex_df <- read.csv(vertex_datapath, header=T, row.names = 1)
 edge_indiv_df <- read.csv(edge_indiv_datapath, header=T, row.names = 1)
-edge_org_df <- read.csv(edge_org_datapath, header=T, row.names = 1)
+#edge_org_df <- read.csv(edge_org_datapath, header=T, row.names = 1)
 
 ########################################################
 # Before we merge these data, we need to make sure 'ego' and 'alter' are the
@@ -627,8 +627,8 @@ Overlap_logistic_df <- subset(Metrics_logistic_df,select=c(5,Attribute_test))
 
 
 #Added Write.csv() functionality w/ Keyplayer attributes
-vertex.df.keyplayer<-paste0("vertex_df_keyplayer_",
-                            format(Sys.time(), "%m_%d_%y"),".csv")
+date.text<-substr(vertex_datapath,(nchar(vertex_datapath)-11),(nchar(vertex_datapath)-4))
+vertex.df.keyplayer<-paste0("vertex_df_keyplayer_",date.text,".csv")
 write.csv(Metrics_logistic_df,vertex.df.keyplayer)
 
 
