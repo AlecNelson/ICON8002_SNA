@@ -1,6 +1,12 @@
 #Social Network Analysis Tool Script (ICON 8002)
 # 10/31/18
 
+## Notes 11/08/2018:
+## Output data files read in for analysis with keyplayer results
+## output figures as their own files
+## Name output files with date analysis was run
+
+
 #####################################
 ########## Set up analysis ##########
 #####################################
