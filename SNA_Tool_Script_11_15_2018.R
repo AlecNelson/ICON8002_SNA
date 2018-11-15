@@ -1,5 +1,51 @@
-sna <-
-function(input_datapath, vertex_datapath, edge_indiv_datapath, keyplayer){
+#Social Network Analysis Tool Script (ICON 8002)
+# 10/31/18
+
+## Notes 11/08/2018:
+## Output data files read in for analysis with keyplayer results
+## output figures as their own files
+## Name output files with date analysis was run
+
+
+#####################################
+########## Set up analysis ##########
+#####################################
+#basedirectory <- "C:/Users/solit/Documents/GitHub/ICON8002_SNA"
+input_datapath <- "C:/Users/solit/Documents/GitHub/ICON8002_SNA/Data" # folder where data and outputs are stored
+
+# Input name of the data files that will be used in analysis
+vertex_datapath <- "vertex_test_df_11_02_18.csv" # vertex (ego) dataframe with attributes
+edge_indiv_datapath <- "edge_individual_test_df_11_02_18.csv" # edge-related data/attributes between individuals
+#edge_org_datapath <- "edge_org_test_df.csv" # edge between individuals and organizations
+
+# set working directory to the data folder
+setwd(input_datapath) 
+
+# Install and load packages needed for the analysis
+
+list.of.packages <- c("igraph","fabricatr", "keyplayer", "rmarkdown", "knitr", "RColorBrewer","sna","MASS","naturalsort", "pander") # List packages used for the analysis
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])] # new packages that were not already installed
+
+# Install new packages
+if(length(new.packages)){install.packages(new.packages)} 
+
+# Load all packages for analysis
+lapply(list.of.packages, require, character.only = TRUE)
+
+# Load SNA function
+# This is the function that will run the social network analysis, calculate relevant statistics, and produce figures
+# that are helpful in visualizing the network (e.g. types of relationships between vertices, vertex attributes, etc.)
+source("SNAfunction.R")
+
+# Run SNA function
+sna(input_datapath=input_datapath, vertex_datapath=vertex_datapath, edge_indiv_datapath=edge_indiv_datapath, keyplayer = TRUE)
+
+
+
+
+######################################## Creating SNA function ####################################################
+
+sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath, keyplayer){
   
   ##############################################
   ########## Import and checking data ##########
@@ -86,40 +132,24 @@ sort(unique(as.character(vertex_df$ego))) == sort(unique(c(as.character(edge_ind
   ## vertex count
   vcount_stat_complete<-vcount(graph_complete)
 
-#   stats_overall_graph<-ls(pattern = "_stat_complete")
-#   stat_overall_names<-vector()
+  ## Putting together statistics into a table
+   stats_overall_graph<-ls(pattern = "_stat_complete")
+   stat_overall_names<-vector()
+
+   for(k in 1:length(stats_overall_graph)){
+     stat_overall_names<-c(stat_overall_names,strsplit(stats_overall_graph[k],"_")[[1]][1])
+   }
   
-  # for(k in 1:length(stats_overall_graph)){
-  #   stat_overall_names<-c(stat_overall_names,strsplit(stats_overall_graph[k],"_")[[1]][1])
-  # }
-  # 
-  # Stat_overall_table<-as.data.frame(cbind(as.vector(stat_overall_names),as.vector(mget(stats_overall_graph))),row.names = FALSE)
-  # names(Stat_overall_table)<-c("Statistic Name","Value")
+   Stat_overall_table<-as.data.frame(cbind(as.vector(stat_overall_names),as.vector(mget(stats_overall_graph))),row.names = FALSE)
+   names(Stat_overall_table)<-c("Statistic Name","Value")
   
   ######################################
   ########## Graphing network ##########
   ######################################
   
   # Plotting original network
-  ## Fruchterman.reingold fault layout, simplified (i.e., no loops), directed
-  # plot.network.original <- plot(graph_complete_simpl,
-  #                               layout = layout.fruchterman.reingold,
-  #                               #edge.color=edge_test$connection,
-  #                               edge.arrow.size=.1,
-  #                               #vertex.color=profession.colors,
-  #                               #vertex.size=((in.degree)*1.5),
-  #                               vertex.size=5,
-  #                               vertex.label=NA,
-  #                               vertex.label.cex=0.7,
-  #                               vertex.label.dist=1,
-  #                               vertex.label.degree=-0.6,
-  #                               main="Network Plot",
-  #                               #frame=TRUE,
-  #                               margin=0.0001)
-  
-  
-  ## Nicely layout, simplified (i.e., no loops), directed
-  
+  # igraph provides many different layouts for visualizing the social network.
+  # The layout chosen here is the "Nicely layout"
 
   original.nicely<-plot(graph_complete_simpl,
        #edge.color=edge_test$connection,
@@ -418,3 +448,51 @@ sort(unique(as.character(vertex_df$ego))) == sort(unique(c(as.character(edge_ind
    }
 
 }
+
+# saving SNA function
+dump("sna", file="SNAfunction.R")
+
+############################################ End SNA function ####################################################
+
+
+
+
+########################################################
+########## Experiment with interactive graphs ##########
+########################################################
+
+# layout.graph <- layout_(graph_complete, nicely())
+# layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
+# Xn <- layout.graph[,1]
+# Yn <- layout.graph[,2]
+# vs <- V(graph_complete_simpl)
+# es <- as.data.frame(get.edgelist(graph_complete_simpl))
+# Nv <- length(vs)
+# Ne <- length(es[1]$V1)
+# 
+# edge_shapes <- list()
+# for(i in 1:Ne) {
+#   v0 <- es[i,]$V1
+#   v1 <- es[i,]$V2
+# 
+#   edge_shape = list(
+#     type = "line",
+#     line = list(color = "#030303", width = 0.3),
+#     x0 = Xn[v0],
+#     y0 = Yn[v0],
+#     x1 = Xn[v1],
+#     y1 = Yn[v1]
+#   )
+# 
+#   edge_shapes[[i]] <- edge_shape
+# }
+# 
+# 
+# network <- plot_ly(x = ~Xn, y = ~Yn, mode = "markers", text = V(graph_complete)$q1.profession.df.vq, hoverinfo = "text")
+# axis <- list(title = "", showgrid = FALSE, showticklabels = FALSE, zeroline = FALSE)
+# p <- layout(
+#   network,
+#   shapes = edge_shapes,
+#   xaxis = axis,
+#   yaxis = axis
+# )

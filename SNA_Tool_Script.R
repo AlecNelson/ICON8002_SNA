@@ -10,13 +10,13 @@
 #####################################
 ########## Set up analysis ##########
 #####################################
-basedirectory <- "C:/Users/solit/Documents/GitHub/ICON8002_SNA"
+#basedirectory <- "C:/Users/solit/Documents/GitHub/ICON8002_SNA"
 input_datapath <- "C:/Users/solit/Documents/GitHub/ICON8002_SNA/Data" # folder where data and outputs are stored
 
 # Input name of the data files that will be used in analysis
 vertex_datapath <- "vertex_test_df_11_02_18.csv" # vertex (ego) dataframe with attributes
 edge_indiv_datapath <- "edge_individual_test_df_11_02_18.csv" # edge-related data/attributes between individuals
-edge_org_datapath <- "edge_org_test_df.csv" # edge between individuals and organizations
+#edge_org_datapath <- "edge_org_test_df.csv" # edge between individuals and organizations
 
 # set working directory to the data folder
 setwd(input_datapath) 
@@ -32,20 +32,20 @@ if(length(new.packages)){install.packages(new.packages)}
 # Load all packages for analysis
 lapply(list.of.packages, require, character.only = TRUE)
 
-#Load SNA function
+# Load SNA function
 # This is the function that will run the social network analysis, calculate relevant statistics, and produce figures
 # that are helpful in visualizing the network (e.g. types of relationships between vertices, vertex attributes, etc.)
 source("SNAfunction.R")
 
 # Run SNA function
-sna(input_datapath=input_datapath, vertex_datapath=vertex_datapath, edge_indiv_datapath=edge_indiv_datapath) #, keyplayer = TRUE)
+sna(input_datapath=input_datapath, vertex_datapath=vertex_datapath, edge_indiv_datapath=edge_indiv_datapath, keyplayer = FALSE)
 
 
 
 
 ######################################## Creating SNA function ####################################################
 
-sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_datapath){
+sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath, keyplayer){
   
   ##############################################
   ########## Import and checking data ##########
@@ -61,18 +61,15 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
   # Read in dataframes 
   vertex_df <- read.csv(vertex_datapath, header=T, row.names = 1)
   edge_indiv_df <- read.csv(edge_indiv_datapath, header=T, row.names = 1)
-  edge_org_df <- read.csv(edge_org_datapath, header=T, row.names = 1)
+  #edge_org_df <- read.csv(edge_org_datapath, header=T, row.names = 1)
   
   # Before we merge these data, we need to make sure 'ego' and 'alter' are the
   # same across data sets. We can compare each row using the == syntax. 
   # The command below should return TRUE for every row if all ego rows
   # are the same :
-  data.check<-sort(unique(as.character(vertex_df$ego))) == sort(unique(c(as.character(edge_indiv_df$ego),as.character(edge_indiv_df$alter))))
+sort(unique(as.character(vertex_df$ego))) == sort(unique(c(as.character(edge_indiv_df$ego),as.character(edge_indiv_df$alter))))
   
-#if(any(data.check==FALSE))
- # stop("Please double check your data to make sure the egos and alters match") # Adding error message to tell users that ego/alter names do not match
-  
-  # We can just have R return which row entries are not equal using the syntax below:
+  # We can have R return which row entries are not equal using the syntax below:
   which(unique(sort(as.character(vertex_df$ego))) != sort(unique(c(as.character(edge_indiv_df$ego),as.character(edge_indiv_df$alter)))))
 
   
@@ -93,12 +90,7 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
 
   # Summary of network
   summary(graph_complete)
-  
-  # Exporting edge list
-  
-  #setwd(basedirectory)
-  #write.graph(graph_complete, file='graph_sna_full.txt', format="edgelist")
-  
+
   
   ####################################################
   ########## Calculating network attributes ##########
@@ -111,17 +103,12 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
   colnames(vertex_degree)<-"Degree"
   Degree_max_stat_indiv<-which.max(igraph::degree(graph_complete)) # individual with most degrees
   Degree_min_stat_indiv<-which.min(igraph::degree(graph_complete)) # individual with fewest degrees
-  #write.csv(vertex_degree, file="SNA_Total_Degree.csv")
+  
   
   in.degree<-igraph::degree(graph_complete,mode="in")
-  #colnames(in.degree)<-"In Degree"
-  #write.csv(in.degree, file="SNA_In_Degree.csv")
-  
-  
+
   ## Closeness centrality
   closeness<-as.data.frame(igraph::closeness(graph_complete))
-  colnames(closeness)<-"Closeness"
-  #write.csv(closeness, file="SNA_Closeness.csv")
   Closeness_max_stat_indiv<-which.max(igraph::closeness(graph_complete)) # individual with highest closeness measure
   Closeness_min_stat_indiv<-which.min(igraph::closeness(graph_complete)) # indidivudal with lowest closeness measure
 
@@ -180,8 +167,6 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
   ## Nicely layout, simplified (i.e., no loops), directed
   
 
-  
-  
   original.nicely<-plot(graph_complete_simpl,
        #edge.color=edge_test$connection,
        edge.arrow.size=.1,
@@ -356,7 +341,7 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
   ########## Identifying network keyplayers ##########
   ####################################################
   
-  # if(keyplayer=TRUE){
+   if(keyplayer==TRUE){
    #Keyplayer functions:
    #Convert igraph object into matrix object, which can be read by sna package
    matrix_complete<-as.matrix(as_adjacency_matrix(graph_complete))
@@ -380,22 +365,14 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
 
    ##################
    #Check the time elapsed
-   proc.time() - ptm
+   print(proc.time() - ptm)
    ##################
    
    closeness_kp_num<-kp_closeness$keyplayers[1:keyplayer_num]
    betweenness_kp_num<-kp_betweenness$keyplayers[1:keyplayer_num]
    degree_kp_num<-kp_degree$keyplayers[1:keyplayer_num]
    eigenvector_kp_num<-kp_eigenvector$keyplayers[1:keyplayer_num]
-   
-   # ####################################
-   # ### Example Keyplayers - 11/1/18
-   # closeness_kp_num<-c(97,126,186)
-   # betweenness_kp_num<-c(31,153,196)
-   # degree_kp_num<-c(141,153,168)
-   # eigenvector_kp_num<-c(92,153,173)
-   # ####################################
-   
+
    Keyplayer.list<-c(closeness_kp_num,betweenness_kp_num,degree_kp_num,eigenvector_kp_num)
    Keyplayer.list<-unique(Keyplayer.list)
    
@@ -412,9 +389,7 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
    print(sprintf("The egos identified as keyplayers via the Eigenvector metric are: %s. This metric suggests a facilitation of widespread diffusion of information to important others.",paste(eigenvector_kp_names,collapse="; ")))
    
    Overlap_vec<-c(closeness_kp_names,betweenness_kp_names,degree_kp_names,eigenvector_kp_names)
-   ########################################################
-   ###### NOTE: Added unique() function to the following line
-   ########################################################
+
    Overlap_vec<-unique(Overlap_vec[duplicated(Overlap_vec)])
    print(sprintf("The egos identified as keyplayers via multiple Overlapping metrics are: %s. This suggests the role of a keyplayer through multiple functions.",paste(Overlap_vec,collapse="; ")))
    
@@ -449,8 +424,8 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
      colr_set_m<-which(ego_names %in% Metrics_list[[m]])
      ego_col[colr_set_m]<-colrs[m]
    }
-  # }
-  
+
+   # Network graph with keyplayers
    
    plot(graph_complete_simpl,
         layout=layout.graph,
@@ -473,13 +448,16 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
    
    legend(x=-1, y = -0.7, c("Closeness","Betweenness","Degree","Eigenvector","Overlap"), pch=19,
           col= c("blue", "green", "red","yellow","purple"), pt.cex=1.5, cex=0.8, bty="n", ncol=1)
-   
+   }
   
   ####################################
   ########## Network Output ##########
   ####################################
 
   # Output network attributes and figures in an RMarkdown document
+  lines <- readLines("Rmarkdown_test.Rmd")
+   
+  writeLines(purrr::map_chr(1:134, ~ lines[.]), "Rmarkdown_test.Rmd")
   rmarkdown::render("Rmarkdown_test.Rmd","word_document")
 
 }
@@ -488,6 +466,9 @@ sna<-function(input_datapath, vertex_datapath, edge_indiv_datapath){#, edge_org_
 dump("sna", file="SNAfunction.R")
 
 ############################################ End SNA function ####################################################
+
+
+
 
 ########################################################
 ########## Experiment with interactive graphs ##########

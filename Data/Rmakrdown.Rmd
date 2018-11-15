@@ -132,38 +132,3 @@ plot(graph_complete_simpl,
   legend(x=-1.1, y = -1.1, professions, pch=19,
          col= colr.palette, pt.cex=1, cex=1, bty="n", ncol=2)
 ```
-
-
-
-## Keyplayer
-
-
-```{r }
-kable(Keyplayer_df, caption = "Network keyplayers based on individual centrality statistics")
-```
-
-
-```{r fig.width=8, fig.height=8, fig.cap=paste("Social network plot with keyplayers highlighted based on network statistics") }
-
-  plot(graph_complete_simpl,
-        layout=layout.graph,
-        rescale=T,
-        edge.color="Gray60",
-        edge.arrow.size=.01,
-        vertex.color=ego_col,
-        #vertex.size=((in.degree)*1.5),
-        #vertex.size=(igraph::degree(graph_complete)*0.5),
-        vertex.size=ifelse((igraph::get.vertex.attribute(graph_complete_simpl)$name %in% Keyplayer_names), 8, 4),
-        vertex.label= ifelse((igraph::get.vertex.attribute(graph_complete_simpl)$name %in% Keyplayer_names), as.character(igraph::get.vertex.attribute(graph_complete_simpl)$name), NA),
-        vertex.label.color = "red",
-        vertex.label=NA,
-        vertex.label.cex=ifelse(vertex_df$ego == as.character(vertex_df$ego[177]), .5, NA),
-        vertex.label.dist=4,
-        vertex.label.degree=0,
-        #main='Network with highlighted Key Players',
-        #frame=TRUE,
-        margin=0.0001)
-   
-   legend(x=-1, y = -0.7, c("Closeness","Betweenness","Degree","Eigenvector","Overlap"), pch=19,
-          col= c("blue", "green", "red","yellow","purple"), pt.cex=1.5, cex=0.8, bty="n", ncol=1)
-```
