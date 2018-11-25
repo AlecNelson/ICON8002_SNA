@@ -2,23 +2,19 @@
 # 11/8/18
 
 #To-DO List (11/9/18):
-  #1. Merge GLM-ready datasets with summarized edge attributes
+  #1. Merge GLM-ready datasets with summarized edge attributes(????)
   #2. Format GLM models for AICc model selection algorithms
-  #3. Interface with question numbering labels for subsetting predictor vars
-  #4. Produce GLMs according to sub-network deliniation
-  #5. Adjust ego/alter labels to reflect numeric instead of named values
-  #6. Add column sum of keyplayer bool values
-  #7. Add write.csv() to write out individual network statistics for each ego
-  #8. Standardize file pathnames to single basedirectory
+    #3. Interface with question num. labels for subsetting predictor vars
+    #4. Produce GLMs according to sub-network deliniation
+    #5. Adjust ego/alter labels to reflect numeric instead of named values
 
 ############################
 #Type in the base directory and input datapaths below
-basedirectory <-  "/Users/alecnelson/Documents/GitHub/ICON8002_SNA"
-input_datapath <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA/Data"
+#basedirectory <-  "/Users/alecnelson/Documents/GitHub/ICON8002_SNA"
+input_datapath <- "/Users/alecnelson/Documents/GitHub/ICON8002_SNA"
 
 vertex_datapath <- "vertex_test_df_11_02_18.csv"
 edge_indiv_datapath <- "edge_individual_test_df_11_02_18.csv"
-#edge_org_datapath <- "edge_org_test_df.csv"
 
 setwd(input_datapath)
 
@@ -410,11 +406,18 @@ for(j in 1:length(indiv_vals)){
 Stat_indiv_table<-as.data.frame(cbind(as.vector(stat_indiv_names),stat_indiv_vertices,indiv_vals),row.names = FALSE)
 names(Stat_indiv_table)<-c("Statistic Name","Vertex Name","Value")
 
-########################################################
-###### TASK: Add write.csv() to write out individual statistics for each ego
-########################################################
+#Added code to produce .csv of individual statistics (we could add more)
+degree_indiv_full<-igraph::degree(graph_complete)
+closeness_indiv_full<-igraph::closeness(graph_complete)
+Stat_indiv_full<-as.data.frame(cbind(degree_indiv_full,closeness_indiv_full))
+names(Stat_indiv_full)<-c("Degree","Closeness")
 
+date.text<-substr(vertex_datapath,(nchar(vertex_datapath)-11),(nchar(vertex_datapath)-4))
+Stats_indiv_df<-paste0("Stats_indiv_df_",date.text,".csv")
+write.csv(Stat_indiv_full,Stats_indiv_df,row.names = TRUE)
 
+########################################################
+########################################################
 
 # Reachability can only be computed on one vertex at a time. To
 # get graph-wide statistics, change the value of "vertex"
@@ -524,7 +527,6 @@ Keyplayer_df<-as.data.frame(rbind(Closeness_vec,Betweenness_vec,Degree_vec,Eigen
 names(Keyplayer_df)<-c("Statistic",LETTERS[1:keyplayer_num])
 
 ########################################################
-###### NOTE: Edge values can be included in this calculation in the "binary" option 
 ########################################################
 
 Keyplayer_names<-igraph::get.vertex.attribute(graph_complete_simpl)$name[Keyplayer.list]
@@ -656,12 +658,12 @@ Degree.bool=ifelse((data_logistic_df$ego) %in% Metrics_list[[3]],1,0)
 Eigenvector.bool=ifelse((data_logistic_df$ego) %in% Metrics_list[[4]],1,0)
 Overlap.bool=ifelse((data_logistic_df$ego) %in% Metrics_list[[5]],1,0)
 
-Metrics_logistic_df<-cbind(Closeness.bool,Betweenness.bool,Degree.bool,Eigenvector.bool,Overlap.bool,data_logistic_df)
+Total.sum.bool=Closeness.bool+Betweenness.bool+Degree.bool+Eigenvector.bool
+
+Metrics_logistic_df<-cbind(Closeness.bool,Betweenness.bool,Degree.bool,Eigenvector.bool,Overlap.bool,Total.sum.bool,data_logistic_df)
 colnames(Metrics_logistic_df)
 
-
 ########################################################
-###### TASK: Add SUM column after keyplayer stats_bool
 ########################################################
 
 Attribute_test<-c(8,9,10)
