@@ -9,6 +9,7 @@
   #5. Adjust ego/alter labels to reflect numeric instead of named values
   #6. Add column sum of keyplayer bool values
   #7. Add write.csv() to write out individual network statistics for each ego
+  #8. Standardize file pathnames to single basedirectory
 
 ############################
 #Type in the base directory and input datapaths below
@@ -22,7 +23,7 @@ edge_indiv_datapath <- "edge_individual_test_df_11_02_18.csv"
 setwd(input_datapath)
 
 #List packages used
-list.of.packages <- c("igraph","randomNames","fabricatr","plyr","RColorBrewer","keyplayer","sna","MASS","naturalsort","stringr","Rmisc")
+list.of.packages <- c("igraph","randomNames","fabricatr","plyr","RColorBrewer","keyplayer","sna","MASS","naturalsort","stringr","Rmisc","rstudioapi")
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)){install.packages(new.packages)} 
