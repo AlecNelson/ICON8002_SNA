@@ -41,7 +41,7 @@ source("SNAfunction.R")
 ####### to produce (e.g. directed or undirected)
 ###############################################################################
 
-sna(input_datapath=input_datapath, vertex_datapath=vertex_datapath, edge_datapath=edge_datapath, keyplayer = FALSE, network="simplified")
+sna(input_datapath=input_datapath, vertex_datapath=vertex_datapath, edge_datapath=edge_datapath, keyplayer = FALSE, network="complete")
 
 
 
@@ -82,30 +82,30 @@ sort(unique(as.character(vertex_df$ego))) == sort(unique(c(as.character(edge_df$
 
   # Constructing network and check network structure
   # Combine edge and vertex attribute information into igraph format (four types of graphs)
-  
+
   graph_complete <- graph.data.frame(d = edge_df, vertices = vertex_df) # Complete network without modifications
   graph_simpl <- simplify(graph_complete) # Simplified network to remove loops and prepare variables
   graph_symm<-as.undirected(graph_complete, mode='collapse') # symmetrized network with no directed connections
   graph_simpl_symm <- as.undirected(graph_simpl, mode='collapse') # network that is both simplified and symmetrized
   #network.opt<-c(graph_complete, graph_simpl, graph_symm, graph_simpl_symm)
-  
+
   if(network=="complete"){
-    network<-graph_complete}
+    soc.network<-graph_complete}
   else if(network=="simplified"){
-    network<-graph_simpl}
+    soc.network<-graph_simpl}
   else if(network=="symmetrized"){
-    network<-graph_symm}
+    soc.network<-graph_symm}
   else if(network=="simpl.symm"){
-    network<-graph_simpl_symm}
+    soc.network<-graph_simpl_symm}
   else {
     stop("Please indicate the type of network you would like for the analysis")
   }
 
-
+#soc.network<-graph.data.frame(d=edge_df, vertices = vertex_df)
   # Summary of network
   # this command provides summary of the vertex and edge data frames, including the input attributes
   # for both vertices and edges
-  summary(network) 
+  summary(soc.network) 
 
   
   ####################################################
@@ -115,37 +115,37 @@ sort(unique(as.character(vertex_df$ego))) == sort(unique(c(as.character(edge_df$
   # Vertex-related network statistics
   
   ## Degree centrality
-  vertex_degree<-igraph::degree(network)
-  Degree_max_stat_indiv<-which.max(igraph::degree(network)) # individual with most degrees
-  Degree_min_stat_indiv<-which.min(igraph::degree(network)) # individual with fewest degrees
+  vertex_degree<-igraph::degree(soc.network)
+  Degree_max_stat_indiv<-which.max(igraph::degree(soc.network)) # individual with most degrees
+  Degree_min_stat_indiv<-which.min(igraph::degree(soc.network)) # individual with fewest degrees
   
   
-  in.degree<-igraph::degree(network,mode="in")
+  in.degree<-igraph::degree(soc.network,mode="in")
 
   ## Closeness centrality
-  closeness<-as.data.frame(igraph::closeness(network))
-  Closeness_max_stat_indiv<-which.max(igraph::closeness(network)) # individual with highest closeness measure
-  Closeness_min_stat_indiv<-which.min(igraph::closeness(network)) # indidivudal with lowest closeness measure
+  closeness<-as.data.frame(igraph::closeness(soc.network))
+  Closeness_max_stat_indiv<-which.max(igraph::closeness(soc.network)) # individual with highest closeness measure
+  Closeness_min_stat_indiv<-which.min(igraph::closeness(soc.network)) # indidivudal with lowest closeness measure
 
   # Network attributes
   
   ## Diameter
-  Diameter_stat_complete<-diameter(network)
+  Diameter_stat_complete<-diameter(soc.network)
 
   ## Reciprocity
-  Reciprocity_stat_complete<-reciprocity(network)
+  Reciprocity_stat_complete<-reciprocity(soc.network)
   
   ## Edge density
-  Density_stat_complete<-edge_density(network)
+  Density_stat_complete<-edge_density(soc.network)
   
   ## Transitivity
-  Transitivity_stat_complete<-transitivity(network)
+  Transitivity_stat_complete<-transitivity(soc.network)
   
   ## edge count
-  ecount_stat_complete<-ecount(network)
+  ecount_stat_complete<-ecount(soc.network)
   
   ## vertex count
-  vcount_stat_complete<-vcount(network)
+  vcount_stat_complete<-vcount(soc.network)
 
   ## Putting together statistics into a table
    stats_overall_graph<-ls(pattern = "_stat_complete")
@@ -165,10 +165,11 @@ sort(unique(as.character(vertex_df$ego))) == sort(unique(c(as.character(edge_df$
   # Plotting original network
   # igraph provides many different layouts for visualizing the social network.
   # The layout chosen here is the "Nicely layout"
-   layout.graph <- layout_(network, nicely())
+   layout.graph <- layout_(soc.network, nicely())
    layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
    
-plot(network,
+plot(soc.network,
+       layout = layout.graph,
        edge.arrow.size=.1,
        vertex.size=5,
        vertex.label=NA,
@@ -176,16 +177,15 @@ plot(network,
        vertex.label.dist=1,
        vertex.label.degree=-0.6,
        main="Network Plot_Nicely",
-       margin=0.0001,
-       layout = layout_nicely)
+       margin=0.0001)
   
   # Plot network with vertex colored based on profession
   ## Nicely layout, simplified (i.e., no loops), directed, vertices colored by profession
-  professions<-sort(unique(V(network)$q1.profession.df.vq))
+  professions<-sort(unique(V(soc.network)$q1.profession.df.vq))
     colr.palette <- brewer.pal(n = length(professions), name = "Spectral") # picking color palette to graph with
   profession.colors <- colr.palette[vertex_df$q1.profession.df.vq] # Assigning colors to professions
   
-  plot(network,
+  plot(soc.network,
        layout = layout.graph,
        rescale = F,
        edge.arrow.size=.1,
@@ -204,12 +204,12 @@ plot(network,
   
   # Plot with vertices weighted by total degree
 
-  plot(network,
+  plot(soc.network,
        layout = layout.graph,
        rescale = F,
        edge.arrow.size=.1,
        vertex.color=profession.colors,
-       vertex.size=igraph::degree(network),
+       vertex.size=igraph::degree(soc.network),
        vertex.label=NA,
        vertex.label.cex=0.5,
        vertex.label.dist=1,
@@ -220,31 +220,31 @@ plot(network,
          col= colr.palette, pt.cex=0.8, cex=0.8, bty="n", ncol=2)
 
   # Plot depicting how long vertices have worked with each other with specified cut-off 
-#   cut.off <- round(mean(edge_df$q2.years.worked.with.eiq))
-#   graph.years.wk <- delete_edges(network, E(network)[q2.years.worked.with.eiq
-# <cut.off])
-#   
-#   layout.graph.yrs.wk <- layout_(graph.years.wk, nicely())
-#   layout.graph.yrs.wk<-norm_coords(layout.graph.yrs.wk, ymin=-1, ymax=1, xmin=-1, xmax=1)
-#   
-# 
-#   plot(graph.years.wk,
-#        layout=(layout.graph.yrs.wk*1.1),
-#        rescale=F, 
-#        edge.arrow.size=.01,
-#        vertex.color=profession.colors,
-#        vertex.size=3,
-#        vertex.label=NA,
-#        vertex.label.cex=0.6,
-#        vertex.label.dist=1,
-#        vertex.label.degree=-0.6,
-#        main=paste0('Network of worked-together-with ',cut.off,' years connection'),
-#        margin=0.0001)
-#   legend(x=-1.1, y = -1.1, professions, pch=19,
-#          col= colr.palette, pt.cex=0.8, cex=0.8, bty="n", ncol=2)
-  
+ #   cut.off <- round(mean(edge_df$q2.years.worked.with.eiq))
+ #   graph.years.wk <- delete_edges(soc.network, E(soc.network)[q2.years.worked.with.eiq
+ # <cut.off])
+ # 
+ #   layout.graph.yrs.wk <- layout_(graph.years.wk, nicely())
+ #   layout.graph.yrs.wk<-norm_coords(layout.graph.yrs.wk, ymin=-1, ymax=1, xmin=-1, xmax=1)
+ # 
+ # 
+ #   plot(graph.years.wk,
+ #        layout=(layout.graph.yrs.wk*1.1),
+ #        rescale=F,
+ #        edge.arrow.size=.01,
+ #        vertex.color=profession.colors,
+ #        vertex.size=3,
+ #        vertex.label=NA,
+ #        vertex.label.cex=0.6,
+ #        vertex.label.dist=1,
+ #        vertex.label.degree=-0.6,
+ #        main=paste0('Network of worked-together-with ',cut.off,' years connection'),
+ #        margin=0.0001)
+ #   legend(x=-1.1, y = -1.1, professions, pch=19,
+ #          col= colr.palette, pt.cex=0.8, cex=0.8, bty="n", ncol=2)
+
   #Clustering function to add weights to edges with shared profession
-  G_Grouped = network
+  G_Grouped = soc.network
   E(G_Grouped)$weight = 1
   professions.list<-unique(V(G_Grouped)$q1.profession.df.vq)
   ## Add edges with high weight between all nodes in the same group
@@ -258,7 +258,7 @@ plot(network,
   LO = layout_with_fr(G_Grouped)
   LO<-norm_coords(LO, ymin=-1, ymax=1, xmin=-1, xmax=1)
 
-  plot(network,
+  plot(soc.network,
        layout=(LO*1.0),
        rescale=F, 
        edge.arrow.size=.5,
@@ -275,14 +275,14 @@ plot(network,
          col= colr.palette, pt.cex=0.8, cex=0.8, bty="n", ncol=2)
   
   #Add graph of strong/weak connections between professional groups
-  V(network)$q1.profession.df.vq
-  E(network)$q1.profession.df.vq
+  V(soc.network)$q1.profession.df.vq
+  E(soc.network)$q1.profession.df.vq
   
-  strength(network)
-  graph_attr(network)
+  strength(soc.network)
+  graph_attr(soc.network)
   
-  E(network)[inc(V(network)[q1.profession.df.vq==professions.list[1]])]
-  g2 <- subgraph.edges(network, E(network)[inc(V(network)[q1.profession.df.vq==professions.list[1]])])
+  E(soc.network)[inc(V(soc.network)[q1.profession.df.vq==professions.list[1]])]
+  g2 <- subgraph.edges(soc.network, E(soc.network)[inc(V(soc.network)[q1.profession.df.vq==professions.list[1]])])
   
    plot(g2,
         layout=layout_in_circle,
@@ -308,7 +308,7 @@ plot(network,
    if(keyplayer==TRUE){
    #Keyplayer functions:
    #Convert igraph object into matrix object, which can be read by sna package
-   matrix_complete<-as.matrix(as_adjacency_matrix(network))
+   matrix_complete<-as.matrix(as_adjacency_matrix(soc.network))
    
    #Determine Keyplayers via different statistical mesurements
    ## Set size of set group to number of keyplayers wanted per metric
@@ -374,14 +374,14 @@ plot(network,
    ###### NOTE: Edge values can be included in this calculation in the "binary" option 
    ########################################################
    
-   Keyplayer_names<-igraph::get.vertex.attribute(network)$name[Keyplayer.list]
+   Keyplayer_names<-igraph::get.vertex.attribute(soc.network)$name[Keyplayer.list]
    
    ##### Plotting network with key player as identified by above model.
-   layout.graph <- layout_(network, nicely())
+   layout.graph <- layout_(soc.network, nicely())
    layout.graph<-norm_coords(layout.graph, ymin=-1, ymax=1, xmin=-1, xmax=1)
    
    colrs <- c("blue", "green", "red","yellow","purple",adjustcolor("Gray60", alpha=.2))
-   ego_names<-igraph::get.vertex.attribute(network)$name
+   ego_names<-igraph::get.vertex.attribute(soc.network)$name
    ego_col<-rep(colrs[length(colrs)],length(ego_names))
    
    for(m in 1:length(Metrics_list)){
@@ -391,14 +391,14 @@ plot(network,
 
    # Network graph with keyplayers
    
-   plot(network,
+   plot(soc.network,
         layout=layout.graph,
         rescale=T,
         edge.color="Gray80",
         edge.arrow.size=.01,
         vertex.color=ego_col,
-        vertex.size=ifelse((igraph::get.vertex.attribute(network)$name %in% Keyplayer_names), 8, 4),
-        vertex.label= ifelse((igraph::get.vertex.attribute(network)$name %in% Keyplayer_names), as.character(igraph::get.vertex.attribute(network)$name), NA),
+        vertex.size=ifelse((igraph::get.vertex.attribute(soc.network)$name %in% Keyplayer_names), 8, 4),
+        vertex.label= ifelse((igraph::get.vertex.attribute(soc.network)$name %in% Keyplayer_names), as.character(igraph::get.vertex.attribute(soc.network)$name), NA),
         vertex.label.color = "blue",
         vertex.label=NA,
         vertex.label.cex=ifelse(vertex_df$ego == as.character(vertex_df$ego[177]), .4, NA),
@@ -411,7 +411,7 @@ plot(network,
           col= c("blue", "green", "red","yellow","purple"), pt.cex=1.5, cex=0.8, bty="n", ncol=1)
    
    
-   matrix_complete<-as.matrix(as_adjacency_matrix(network))
+   matrix_complete<-as.matrix(as_adjacency_matrix(soc.network))
    
    data_logistic_df<-vertex_df
    
@@ -422,28 +422,28 @@ plot(network,
    
    #1. Update GLM-ready datasets to include summarized edge attributes
    
-   edge_list<-as_edgelist(network, names = TRUE)
+   edge_list<-as_edgelist(soc.network, names = TRUE)
    ego_list<-unique(edge_list[,1])
-   edge_summary_df<-data.frame(matrix(ncol=(length(igraph::edge_attr_names(network))+1),nrow=length(ego_list)))
+   edge_summary_df<-data.frame(matrix(ncol=(length(igraph::edge_attr_names(soc.network))+1),nrow=length(ego_list)))
    edge_summary_df[1]<-ego_list
    colnames(edge_summary_df)[1]<-"ego"
-   colnames(edge_summary_df)[(1:length(igraph::edge_attr_names(network)))+1]<-igraph::edge_attr_names(network)
+   colnames(edge_summary_df)[(1:length(igraph::edge_attr_names(soc.network)))+1]<-igraph::edge_attr_names(soc.network)
    
-   for(i in 1:length(igraph::edge_attr_names(network))){
-     edge_var_i<-igraph::edge_attr_names(network)[i]
-     mode_class_i<-summary(igraph::get.edge.attribute(network))[i,3]
+   for(i in 1:length(igraph::edge_attr_names(soc.network))){
+     edge_var_i<-igraph::edge_attr_names(soc.network)[i]
+     mode_class_i<-summary(igraph::get.edge.attribute(soc.network))[i,3]
      for(j in 1:length(ego_list)){
        #attr_edge_vector<-vector()
        attr_pos_j<-which(edge_list[,1]==ego_list[j])
        if(mode_class_i=="numeric"){
-         edge_vect_i<-as.numeric(unlist(igraph::get.edge.attribute(network)[i]))
+         edge_vect_i<-as.numeric(unlist(igraph::get.edge.attribute(soc.network)[i]))
          edge_vect_ij<-edge_vect_i[attr_pos_j]
          edge_val_ij<-mean(edge_vect_ij)
          edge_summary_df[j,(i+1)]<-edge_val_ij
          #attr_edge_vector<-c(attr_edge_vector,edge_val_ij)
          #print("Num: Subset edge vector by which rows by ego....") 
        }else if(mode_class_i=="character"){
-         edge_vect_i<-as.character(unlist(igraph::get.edge.attribute(network)[i]))
+         edge_vect_i<-as.character(unlist(igraph::get.edge.attribute(soc.network)[i]))
          edge_vect_ij<-edge_vect_i[attr_pos_j]
          edge_val_ij<-length(unique(edge_vect_ij))
          edge_summary_df[j,(i+1)]<-edge_val_ij

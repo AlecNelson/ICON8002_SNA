@@ -7,7 +7,7 @@ output: word_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(fig.width=25, fig.height=25, echo = F)
+knitr::opts_chunk$set(echo = F)
 ```
 
 # Social Network Analysis
@@ -50,9 +50,9 @@ This is a report generated from social network analysis of the actors within the
 
 * Degree
 
-    The vertex with the greatest degree is $`r as.character(vertex_df$ego[Degree_max_stat_indiv])`$ (degree of $`r as.numeric(igraph::degree(graph_complete)[Degree_max_stat_indiv])`$). This measure is the number of its adjacent edges.
+    The vertex with the greatest degree is $`r as.character(vertex_df$ego[Degree_max_stat_indiv])`$ (degree of $`r as.numeric(igraph::degree(soc.network)[Degree_max_stat_indiv])`$). This measure is the number of its adjacent edges.
 
-    The vertex with the fewest degree is $`r as.character(vertex_df$ego[Degree_min_stat_indiv])`$ (degree of $`r as.numeric(igraph::degree(graph_complete)[Degree_min_stat_indiv])`$). This measure is the number of its adjacent edges.
+    The vertex with the fewest degree is $`r as.character(vertex_df$ego[Degree_min_stat_indiv])`$ (degree of $`r as.numeric(igraph::degree(soc.network)[Degree_min_stat_indiv])`$). This measure is the number of its adjacent edges.
 
 
 
@@ -61,7 +61,8 @@ This is a report generated from social network analysis of the actors within the
 
 
 ```{r fig.width=10, fig.height=10, fig.cap=paste("Original social network plot with no alterations (Nicely layout)")}
-  plot(network,
+  plot(soc.network,
+       layout = layout.graph,
        edge.arrow.size=.5,
        edge.color="Gray60",
        vertex.size=5,
@@ -69,13 +70,11 @@ This is a report generated from social network analysis of the actors within the
        vertex.label.cex=0.7,
        vertex.label.dist=1,
        vertex.label.degree=-0.6,
-       #main="Network Plot_Nicely",
-       margin=0.0001,
-       layout = layout_nicely)
+       margin=0.0001)
 ```
 
 ```{r fig.width=8, fig.height=8, fig.cap=paste("Social network plot with vertex colored based on profession (Nicely layout)")}
-plot(network,
+plot(soc.network,
        layout = layout.graph,
        rescale = F,
        edge.arrow.size=.5,
@@ -96,7 +95,7 @@ plot(network,
 
 
 ```{r fig.width=8, fig.height=8, fig.cap=paste("Social network plot with vertex colored based on profession and vertices weighed by total degree")}
-  plot(network,
+  plot(soc.network,
        layout = layout.graph,
        rescale = F,
        edge.arrow.size=.5,
