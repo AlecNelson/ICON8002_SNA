@@ -83,11 +83,11 @@ sort(unique(as.character(vertex_df$ego))) == sort(unique(c(as.character(edge_df$
   # Constructing network and check network structure
   # Combine edge and vertex attribute information into igraph format (four types of graphs)
   
-  graph_complete <- graph.data.frame(d = edge_indiv_df, vertices = vertex_df) # Complete network without modifications
+  graph_complete <- graph.data.frame(d = edge_df, vertices = vertex_df) # Complete network without modifications
   graph_simpl <- simplify(graph_complete) # Simplified network to remove loops and prepare variables
   graph_symm<-as.undirected(graph_complete, mode='collapse') # symmetrized network with no directed connections
   graph_simpl_symm <- as.undirected(graph_simpl, mode='collapse') # network that is both simplified and symmetrized
-  network.opt<-c(graph_complete, graph_simpl, graph_symm, graph_simpl_symm)
+  #network.opt<-c(graph_complete, graph_simpl, graph_symm, graph_simpl_symm)
   
   if(network=="complete"){
     network<-graph_complete}
@@ -220,28 +220,28 @@ plot(network,
          col= colr.palette, pt.cex=0.8, cex=0.8, bty="n", ncol=2)
 
   # Plot depicting how long vertices have worked with each other with specified cut-off 
-  cut.off <- round(mean(edge_indiv_df$q2.years.worked.with.eiq))
-  graph.years.wk <- delete_edges(network, E(network)[q2.years.worked.with.eiq
-<cut.off])
-  
-  layout.graph.yrs.wk <- layout_(graph.years.wk, nicely())
-  layout.graph.yrs.wk<-norm_coords(layout.graph.yrs.wk, ymin=-1, ymax=1, xmin=-1, xmax=1)
-  
-
-  plot(graph.years.wk,
-       layout=(layout.graph.yrs.wk*1.1),
-       rescale=F, 
-       edge.arrow.size=.01,
-       vertex.color=profession.colors,
-       vertex.size=3,
-       vertex.label=NA,
-       vertex.label.cex=0.6,
-       vertex.label.dist=1,
-       vertex.label.degree=-0.6,
-       main=paste0('Network of worked-together-with ',cut.off,' years connection'),
-       margin=0.0001)
-  legend(x=-1.1, y = -1.1, professions, pch=19,
-         col= colr.palette, pt.cex=0.8, cex=0.8, bty="n", ncol=2)
+#   cut.off <- round(mean(edge_df$q2.years.worked.with.eiq))
+#   graph.years.wk <- delete_edges(network, E(network)[q2.years.worked.with.eiq
+# <cut.off])
+#   
+#   layout.graph.yrs.wk <- layout_(graph.years.wk, nicely())
+#   layout.graph.yrs.wk<-norm_coords(layout.graph.yrs.wk, ymin=-1, ymax=1, xmin=-1, xmax=1)
+#   
+# 
+#   plot(graph.years.wk,
+#        layout=(layout.graph.yrs.wk*1.1),
+#        rescale=F, 
+#        edge.arrow.size=.01,
+#        vertex.color=profession.colors,
+#        vertex.size=3,
+#        vertex.label=NA,
+#        vertex.label.cex=0.6,
+#        vertex.label.dist=1,
+#        vertex.label.degree=-0.6,
+#        main=paste0('Network of worked-together-with ',cut.off,' years connection'),
+#        margin=0.0001)
+#   legend(x=-1.1, y = -1.1, professions, pch=19,
+#          col= colr.palette, pt.cex=0.8, cex=0.8, bty="n", ncol=2)
   
   #Clustering function to add weights to edges with shared profession
   G_Grouped = network

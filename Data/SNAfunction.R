@@ -34,7 +34,7 @@ sort(unique(as.character(vertex_df$ego))) == sort(unique(c(as.character(edge_df$
   # Constructing network and check network structure
   # Combine edge and vertex attribute information into igraph format (four types of graphs)
   
-  graph_complete <- graph.data.frame(d = edge_indiv_df, vertices = vertex_df) # Complete network without modifications
+  graph_complete <- graph.data.frame(d = edge_df, vertices = vertex_df) # Complete network without modifications
   graph_simpl <- simplify(graph_complete) # Simplified network to remove loops and prepare variables
   graph_symm<-as.undirected(graph_complete, mode='collapse') # symmetrized network with no directed connections
   graph_simpl_symm <- as.undirected(graph_simpl, mode='collapse') # network that is both simplified and symmetrized
@@ -171,7 +171,7 @@ plot(network,
          col= colr.palette, pt.cex=0.8, cex=0.8, bty="n", ncol=2)
 
   # Plot depicting how long vertices have worked with each other with specified cut-off 
-  cut.off <- round(mean(edge_indiv_df$q2.years.worked.with.eiq))
+  cut.off <- round(mean(edge_df$q2.years.worked.with.eiq))
   graph.years.wk <- delete_edges(network, E(network)[q2.years.worked.with.eiq
 <cut.off])
   
