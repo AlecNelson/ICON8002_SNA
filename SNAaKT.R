@@ -12,8 +12,8 @@
 input_datapath <- "C:/Users/solit/Documents/GitHub/ICON8002_SNA/Data" # folder where data and outputs are stored
 
 # Input name of the data files that will be used in analysis
-vertex_datapath <- "vertex_test_df_11_02_18.csv" # vertex (ego) dataframe with attributes
-edge_datapath <- "edge_individual_test_df_11_02_18.csv" # edge-related data/attributes between individuals
+vertex_datapath <- "vertex_df.csv" # vertex (ego) dataframe with attributes
+edge_datapath <- "edge_df.csv" # edge-related data/attributes between individuals
 
 
 # set working directory to the data folder
