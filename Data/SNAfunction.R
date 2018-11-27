@@ -171,28 +171,28 @@ plot(soc.network,
          col= colr.palette, pt.cex=0.8, cex=0.8, bty="n", ncol=2)
 
   # Plot depicting how long vertices have worked with each other with specified cut-off 
- #   cut.off <- round(mean(edge_df$q2.years.worked.with.eiq))
- #   graph.years.wk <- delete_edges(soc.network, E(soc.network)[q2.years.worked.with.eiq
- # <cut.off])
- # 
- #   layout.graph.yrs.wk <- layout_(graph.years.wk, nicely())
- #   layout.graph.yrs.wk<-norm_coords(layout.graph.yrs.wk, ymin=-1, ymax=1, xmin=-1, xmax=1)
- # 
- # 
- #   plot(graph.years.wk,
- #        layout=(layout.graph.yrs.wk*1.1),
- #        rescale=F,
- #        edge.arrow.size=.01,
- #        vertex.color=profession.colors,
- #        vertex.size=3,
- #        vertex.label=NA,
- #        vertex.label.cex=0.6,
- #        vertex.label.dist=1,
- #        vertex.label.degree=-0.6,
- #        main=paste0('Network of worked-together-with ',cut.off,' years connection'),
- #        margin=0.0001)
- #   legend(x=-1.1, y = -1.1, professions, pch=19,
- #          col= colr.palette, pt.cex=0.8, cex=0.8, bty="n", ncol=2)
+   cut.off <- round(mean(edge_df$q2.years.worked.with.eiq))
+   graph.years.wk <- delete_edges(soc.network, E(soc.network)[q2.years.worked.with.eiq
+ <cut.off])
+
+   layout.graph.yrs.wk <- layout_(graph.years.wk, nicely())
+   layout.graph.yrs.wk<-norm_coords(layout.graph.yrs.wk, ymin=-1, ymax=1, xmin=-1, xmax=1)
+
+
+   plot(graph.years.wk,
+        layout=(layout.graph.yrs.wk*1.1),
+        rescale=F,
+        edge.arrow.size=.01,
+        vertex.color=profession.colors,
+        vertex.size=3,
+        vertex.label=NA,
+        vertex.label.cex=0.6,
+        vertex.label.dist=1,
+        vertex.label.degree=-0.6,
+        main=paste0('Network of worked-together-with ',cut.off,' years connection'),
+        margin=0.0001)
+   legend(x=-1.1, y = -1.1, professions, pch=19,
+          col= colr.palette, pt.cex=0.8, cex=0.8, bty="n", ncol=2)
 
   #Clustering function to add weights to edges with shared profession
   G_Grouped = soc.network
@@ -225,30 +225,30 @@ plot(soc.network,
   legend(x=-1.1, y = -1.1, professions, pch=19,
          col= colr.palette, pt.cex=0.8, cex=0.8, bty="n", ncol=2)
   
-  #Add graph of strong/weak connections between professional groups
-  V(soc.network)$q1.profession.df.vq
-  E(soc.network)$q1.profession.df.vq
-  
-  strength(soc.network)
-  graph_attr(soc.network)
-  
-  E(soc.network)[inc(V(soc.network)[q1.profession.df.vq==professions.list[1]])]
-  g2 <- subgraph.edges(soc.network, E(soc.network)[inc(V(soc.network)[q1.profession.df.vq==professions.list[1]])])
-  
-   plot(g2,
-        layout=layout_in_circle,
-        rescale=T, 
-        edge.color=adjustcolor("black", 0.1),
-        edge.arrow.size=0.1,
-        vertex.color=profession.colors,
-        vertex.size=3,
-        vertex.label=NA,
-        vertex.label.cex=0.7,
-        vertex.label.color= adjustcolor("black", 0.5),
-        vertex.label.dist=1,
-        vertex.label.degree=-0.6,
-        main='Network Plot Strong and Weak Connections',
-        margin=0.0001)
+  # #Add graph of strong/weak connections between professional groups
+  # V(soc.network)$q1.profession.df.vq
+  # E(soc.network)$q1.profession.df.vq
+  # 
+  # strength(soc.network)
+  # graph_attr(soc.network)
+  # 
+  # E(soc.network)[inc(V(soc.network)[q1.profession.df.vq==professions.list[1]])]
+  # g2 <- subgraph.edges(soc.network, E(soc.network)[inc(V(soc.network)[q1.profession.df.vq==professions.list[1]])])
+  # 
+  #  plot(g2,
+  #       layout=layout_in_circle,
+  #       rescale=T, 
+  #       edge.color=adjustcolor("black", 0.1),
+  #       edge.arrow.size=0.1,
+  #       vertex.color=profession.colors,
+  #       vertex.size=3,
+  #       vertex.label=NA,
+  #       vertex.label.cex=0.7,
+  #       vertex.label.color= adjustcolor("black", 0.5),
+  #       vertex.label.dist=1,
+  #       vertex.label.degree=-0.6,
+  #       main='Network Plot Strong and Weak Connections',
+  #       margin=0.0001)
   
   
   
@@ -406,8 +406,6 @@ plot(soc.network,
        #print(paste0("Data summarized for ",ego_list[j]))
      }
    }
-   
-   str(edge_summary_df)
 
    ######################################################
    
@@ -478,9 +476,8 @@ plot(soc.network,
 
   # Output network attributes and figures in an RMarkdown document
   if(keyplayer==TRUE){
-    rmarkdown::render("SNA_Rmarkdown_Output_with_Keyplayers.Rmd","word_document", paste("SNA_Output ",Sys.time(), ".docx", sep = ""))}
+    rmarkdown::render("SNA_RMarkdown_Output_with_Keyplayers.Rmd","word_document", paste("SNA_Output (with keyplayers) ",Sys.Date(), ".docx", sep = ""))}
    else{
-    rmarkdown::render("SNA_Rmarkdown_Output_without_Keyplayers.Rmd","word_document", paste("SNA_Output ",Sys.time(), ".docx", sep = ""))
+    rmarkdown::render("SNA_RMarkdown_Output_without_Keyplayers.Rmd","word_document", paste("SNA_Output ",Sys.Date(), ".docx", sep = ""))
    }
-
 }
