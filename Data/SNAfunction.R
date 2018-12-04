@@ -35,20 +35,20 @@ sort(unique(as.character(vertex_df$ego))) == sort(unique(c(as.character(edge_df$
   # Combine edge and vertex attribute information into igraph format (four types of graphs)
 
   graph_complete <- graph.data.frame(d = edge_df, vertices = vertex_df) # Complete network without modifications
-  graph_simpl <- simplify(graph_complete) # Simplified network to remove loops and prepare variables
+  graph_simpl <- simplify(graph_complete, edge.attr.comb=toString) # Simplified network to remove loops and prepare variables
   graph_symm<-as.undirected(graph_complete, mode='collapse') # symmetrized network with no directed connections
   graph_simpl_symm <- as.undirected(graph_simpl, mode='collapse') # network that is both simplified and symmetrized
   #network.opt<-c(graph_complete, graph_simpl, graph_symm, graph_simpl_symm)
 
   if(network=="complete"){
-    soc.network<-graph_complete}
-  else if(network=="simplified"){
-    soc.network<-graph_simpl}
-  else if(network=="symmetrized"){
-    soc.network<-graph_symm}
-  else if(network=="simpl.symm"){
-    soc.network<-graph_simpl_symm}
-  else {
+    soc.network<-graph_complete
+    } else if(network=="simplified"){
+    soc.network<-graph_simpl
+    }else if(network=="symmetrized"){
+    soc.network<-graph_symm
+    }else if(network=="simpl.symm"){
+    soc.network<-graph_simpl_symm
+    }else{
     stop("Please indicate the type of network you would like for the analysis")
   }
 
@@ -172,8 +172,8 @@ plot(soc.network,
 
   # Plot depicting how long vertices have worked with each other with specified cut-off 
    cut.off <- round(mean(edge_df$q2.years.worked.with.eiq))
-   graph.years.wk <- delete_edges(soc.network, E(soc.network)[q2.years.worked.with.eiq
- <cut.off])
+   graph.years.wk <- delete_edges(soc.network, E(soc.network)[which(edge_df$q2.years.worked.with.eiq
+ <cut.off)])
 
    layout.graph.yrs.wk <- layout_(graph.years.wk, nicely())
    layout.graph.yrs.wk<-norm_coords(layout.graph.yrs.wk, ymin=-1, ymax=1, xmin=-1, xmax=1)

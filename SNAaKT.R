@@ -9,7 +9,7 @@
 #####################################
 ########## Set up analysis ##########
 #####################################
-input_datapath <- "C:/Users/solit/Documents/GitHub/ICON8002_SNA/Data" # folder where data and outputs are stored
+input_datapath <- "C:/Users/Angela/Documents/GitHub/ICON8002_SNA/Data" # folder where data and outputs are stored
 
 # Input name of the data files that will be used in analysis
 vertex_datapath <- "vertex_df.csv" # vertex (ego) dataframe with attributes
@@ -37,7 +37,7 @@ source("SNAfunction.R")
 
 # Run SNA function
 
-sna(input_datapath=input_datapath, vertex_datapath=vertex_datapath, edge_datapath=edge_datapath, keyplayer = TRUE, network="simplified")
+sna(input_datapath=input_datapath, vertex_datapath=vertex_datapath, edge_datapath=edge_datapath, keyplayer = FALSE, network="simplified")
 
 
 
