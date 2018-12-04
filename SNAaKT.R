@@ -1,26 +1,17 @@
 #Social Network Analysis Tool Script (ICON 8002)
-# 10/31/18
-
-## Notes 11/08/2018:
-## Output data files read in for analysis with keyplayer results
-## output figures as their own files
 
 
 #####################################
 ########## Set up analysis ##########
 #####################################
-input_datapath <- "C:/Users/solit/Documents/GitHub/ICON8002_SNA/Data" # folder where data and outputs are stored
+input_datapath <- getwd() # folder where data and outputs are stored
 
 # Input name of the data files that will be used in analysis
 vertex_datapath <- "vertex_df.csv" # vertex (ego) dataframe with attributes
 edge_datapath <- "edge_df.csv" # edge-related data/attributes between individuals
 
 
-# set working directory to the data folder
-setwd(input_datapath) 
-
 # Install and load packages needed for the analysis
-
 list.of.packages <- c("igraph","fabricatr", "keyplayer", "rmarkdown", "knitr", "RColorBrewer","sna","MASS","naturalsort", "pander") # List packages used for the analysis
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])] # new packages that were not already installed
 
