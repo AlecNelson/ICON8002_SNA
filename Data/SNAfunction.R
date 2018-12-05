@@ -1,5 +1,5 @@
 sna <-
-function(input_datapath, vertex_datapath, edge_datapath, keyplayer, network){
+function(vertex_datapath, edge_datapath, keyplayer, network){
   
   ##############################################
   ########## Import and checking data ##########
@@ -52,7 +52,6 @@ sort(unique(as.character(vertex_df$ego))) == sort(unique(c(as.character(edge_df$
     stop("Please indicate the type of network you would like for the analysis")
   }
 
-#soc.network<-graph.data.frame(d=edge_df, vertices = vertex_df)
   # Summary of network
   # this command provides summary of the vertex and edge data frames, including the input attributes
   # for both vertices and edges
@@ -66,18 +65,28 @@ sort(unique(as.character(vertex_df$ego))) == sort(unique(c(as.character(edge_df$
   # Vertex-related network statistics
   
   ## Degree centrality
-  vertex_degree<-igraph::degree(soc.network)
+  degree<-as.data.frame(igraph::degree(soc.network))
   Degree_max_stat_indiv<-which.max(igraph::degree(soc.network)) # individual with most degrees
   Degree_min_stat_indiv<-which.min(igraph::degree(soc.network)) # individual with fewest degrees
-  
-  
-  in.degree<-igraph::degree(soc.network,mode="in")
+    in.degree<-as.data.frame(igraph::degree(soc.network,mode="in"))
 
   ## Closeness centrality
   closeness<-as.data.frame(igraph::closeness(soc.network))
   Closeness_max_stat_indiv<-which.max(igraph::closeness(soc.network)) # individual with highest closeness measure
   Closeness_min_stat_indiv<-which.min(igraph::closeness(soc.network)) # indidivudal with lowest closeness measure
-
+  
+  ## Betweenness centrality
+  betweenness<-as.data.frame(igraph::betweenness(soc.network))
+  Betweenness_max_stat_indiv<-which.max(igraph::betweenness(soc.network)) # individual with highest closeness measure
+  Betweenness_min_stat_indiv<-which.min(igraph::betweenness(soc.network)) # indidivudal with lowest closeness measure
+  
+  ## Vertex statistics table
+  ego<-as.data.frame(vertex_df$ego)
+  vertex_stat_table<-cbind(ego, degree, in.degree, closeness, betweenness)
+  rownames(vertex_stat_table)<-c()
+  names(vertex_stat_table)<-c("ego","degree", "in-degree", "closeness", "betweenness")
+  write.csv(vertex_stat_table, file=paste0("Vertex_statistics_table_", Sys.Date(), ".csv"))
+  
   # Network attributes
   
   ## Diameter
@@ -108,7 +117,7 @@ sort(unique(as.character(vertex_df$ego))) == sort(unique(c(as.character(edge_df$
   
    Stat_overall_table<-as.data.frame(cbind(as.vector(stat_overall_names),as.vector(mget(stats_overall_graph))),row.names = FALSE)
    names(Stat_overall_table)<-c("Statistic Name","Value")
-  
+  Stat_overall_table
   ######################################
   ########## Graphing network ##########
   ######################################
@@ -202,8 +211,7 @@ plot(soc.network,
   for(i in 1:length(professions.list)) {
     GroupV = which(V(G_Grouped)$q1.profession.df.vq == professions.list[i])
     G_Grouped = add_edges(G_Grouped, combn(GroupV, 2), attr=list(weight=1.5))
-    #print(paste0("Ran loop for profession ",professions.list[i]))
-  } 
+    } 
   
   ## Now create a layout based on G_Grouped
   LO = layout_with_fr(G_Grouped)
@@ -224,32 +232,6 @@ plot(soc.network,
        margin=0.01)
   legend(x=-1.1, y = -1.1, professions, pch=19,
          col= colr.palette, pt.cex=0.8, cex=0.8, bty="n", ncol=2)
-  
-  # #Add graph of strong/weak connections between professional groups
-  # V(soc.network)$q1.profession.df.vq
-  # E(soc.network)$q1.profession.df.vq
-  # 
-  # strength(soc.network)
-  # graph_attr(soc.network)
-  # 
-  # E(soc.network)[inc(V(soc.network)[q1.profession.df.vq==professions.list[1]])]
-  # g2 <- subgraph.edges(soc.network, E(soc.network)[inc(V(soc.network)[q1.profession.df.vq==professions.list[1]])])
-  # 
-  #  plot(g2,
-  #       layout=layout_in_circle,
-  #       rescale=T, 
-  #       edge.color=adjustcolor("black", 0.1),
-  #       edge.arrow.size=0.1,
-  #       vertex.color=profession.colors,
-  #       vertex.size=3,
-  #       vertex.label=NA,
-  #       vertex.label.cex=0.7,
-  #       vertex.label.color= adjustcolor("black", 0.5),
-  #       vertex.label.dist=1,
-  #       vertex.label.degree=-0.6,
-  #       main='Network Plot Strong and Weak Connections',
-  #       margin=0.0001)
-  
   
   
   ####################################################
@@ -361,17 +343,13 @@ plot(soc.network,
    legend(x=-1, y = -0.7, c("Closeness","Betweenness","Degree","Eigenvector","Overlap"), pch=19,
           col= c("blue", "green", "red","yellow","purple"), pt.cex=1.5, cex=0.8, bty="n", ncol=1)
    
-   
-   matrix_complete<-as.matrix(as_adjacency_matrix(soc.network))
-   
    data_logistic_df<-vertex_df
    
    Keyplay.bool=ifelse(rownames(data_logistic_df) %in% Keyplayer.list,1,0)
    data_logistic_df<-cbind(Keyplay.bool,data_logistic_df)
    colnames(data_logistic_df)
    
-   
-   #1. Update GLM-ready datasets to include summarized edge attributes
+   # Update GLM-ready datasets to include summarized edge attributes
    
    edge_list<-as_edgelist(soc.network, names = TRUE)
    ego_list<-unique(edge_list[,1])
@@ -384,40 +362,23 @@ plot(soc.network,
      edge_var_i<-igraph::edge_attr_names(soc.network)[i]
      mode_class_i<-summary(igraph::get.edge.attribute(soc.network))[i,3]
      for(j in 1:length(ego_list)){
-       #attr_edge_vector<-vector()
        attr_pos_j<-which(edge_list[,1]==ego_list[j])
        if(mode_class_i=="numeric"){
          edge_vect_i<-as.numeric(unlist(igraph::get.edge.attribute(soc.network)[i]))
          edge_vect_ij<-edge_vect_i[attr_pos_j]
          edge_val_ij<-mean(edge_vect_ij)
          edge_summary_df[j,(i+1)]<-edge_val_ij
-         #attr_edge_vector<-c(attr_edge_vector,edge_val_ij)
-         #print("Num: Subset edge vector by which rows by ego....") 
        }else if(mode_class_i=="character"){
          edge_vect_i<-as.character(unlist(igraph::get.edge.attribute(soc.network)[i]))
          edge_vect_ij<-edge_vect_i[attr_pos_j]
          edge_val_ij<-length(unique(edge_vect_ij))
          edge_summary_df[j,(i+1)]<-edge_val_ij
-         #attr_edge_vector<-c(attr_edge_vector,edge_val_ij)
-         #print("Char: Summarize unique values by which rows by ego....") 
        }else{
          print("Error: Could not identify mode correctly")
        }
-       #print(paste0("Data summarized for ",ego_list[j]))
      }
    }
 
-   ######################################################
-   
-   
-   data_logistic_total_df <- subset(data_logistic_df,
-                                    select=c(1,3,11,14))
-   
-   model <- glm(Keyplay.bool ~.,family=binomial(link='logit'),data=data_logistic_total_df)
-   summary(model)
-   
-   ########################################################
-   
    Closeness.bool=ifelse((data_logistic_df$ego) %in% Metrics_list[[1]],1,0)
    Betweenness.bool=ifelse((data_logistic_df$ego) %in% Metrics_list[[2]],1,0)
    Degree.bool=ifelse((data_logistic_df$ego) %in% Metrics_list[[3]],1,0)
@@ -427,47 +388,10 @@ plot(soc.network,
    Metrics_logistic_df<-cbind(Closeness.bool,Betweenness.bool,Degree.bool,Eigenvector.bool,Overlap.bool,data_logistic_df)
    colnames(Metrics_logistic_df)
    
-   
-   ########################################################
-   ###### TASK: Add SUM column after keyplayer stats_bool
-   ########################################################
-   
-   Attribute_test<-c(8,9,10)
-   
-   Closeness_logistic_df <- subset(Metrics_logistic_df,select=c(1,Attribute_test))
-   Betweenness_logistic_df <- subset(Metrics_logistic_df,select=c(2,Attribute_test))
-   Degree_logistic_df <- subset(Metrics_logistic_df,select=c(3,Attribute_test))
-   Eigenvector_logistic_df <- subset(Metrics_logistic_df,select=c(4,Attribute_test))
-   Overlap_logistic_df <- subset(Metrics_logistic_df,select=c(5,Attribute_test))
-   
-   
-   
-   #Added Write.csv() functionality w/ Keyplayer attributes
-   # date.text<-substr(vertex_datapath,(nchar(vertex_datapath)-11),(nchar(vertex_datapath)-4))
-   # vertex.df.keyplayer<-paste0("vertex_df_keyplayer_",date.text,".csv")
-   #write.csv(Metrics_logistic_df,vertex.df.keyplayer)
-   
-   #Model subset and selection
-   
-   Closeness_model <- glm(Closeness.bool ~.,family=binomial(link='logit'),data=Closeness_logistic_df)
-   summary(Closeness_model)
-   Betweenness_model <- glm(Betweenness.bool ~.,family=binomial(link='logit'),data=Betweenness_logistic_df)
-   summary(Betweenness_model)
-   Degree_model <- glm(Degree.bool ~.,family=binomial(link='logit'),data=Degree_logistic_df)
-   summary(Degree_model)
-   Eigenvector_model <- glm(Eigenvector.bool ~.,family=binomial(link='logit'),data=Eigenvector_logistic_df)
-   summary(Eigenvector_model)
-   Overlap_model <- glm(Overlap.bool ~.,family=binomial(link='logit'),data=Overlap_logistic_df)
-   summary(Overlap_model)
-   
-   # Use 95% confidence interval for Estimated effect size (95% confidence intervals) of attributes
-   # str(Closeness_model)
-   # Closeness_model$coefficients
-   # Closeness_model$residuals
-   # Closeness_model$fitted.values
-   
-   #closeness_CI<-CI(Closeness_model$effects,ci=0.95)
-   
+   # Added Write.csv() functionality w/ Keyplayer attributes
+    vertex.df.keyplayer<-paste0("vertex_df_keyplayer_",Sys.Date(),".csv")
+    write.csv(Metrics_logistic_df,vertex.df.keyplayer)
+
    }
   
   ####################################
@@ -481,3 +405,5 @@ plot(soc.network,
     rmarkdown::render("SNA_RMarkdown_Output_without_Keyplayers.Rmd","word_document", paste("SNA_Output ",Sys.Date(), ".docx", sep = ""))
    }
 }
+
+
