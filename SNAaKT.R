@@ -1,4 +1,6 @@
-#Social Network Analysis Tool Script (ICON 8002)
+#Social Network Analysis and Keyplayer Tool (SNAaKT)
+#Created by: ICON8002 2018 Cohort
+#Last updated: 12/13/2018
 
 #####################################
 ########## Set up analysis ##########

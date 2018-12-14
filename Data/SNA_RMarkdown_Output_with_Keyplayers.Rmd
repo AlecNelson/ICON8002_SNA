@@ -170,6 +170,6 @@ kable(Keyplayer_df)
         main='Network with highlighted Key Players',
         margin=0.0001)
    
-   legend(x=-1, y = -0.7, c("Closeness","Betweenness","Degree","Eigenvector","Overlap"), pch=19,
+   legend(x=-1, y = -1, c("Closeness","Betweenness","Degree","Eigenvector","Overlap"), pch=19,
           col= c("blue", "green", "red","yellow","purple"), pt.cex=1.5, cex=0.8, bty="n", ncol=1)
 ```
